@@ -1,25 +1,51 @@
+# 开发文档
 
-Installation information
-=======
+## 一、模组介绍
 
-This template repository can be directly cloned to get you started with a new
-mod. Simply create a new repository cloned from this one, by following the
-instructions provided by [GitHub](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template).
+1. **前言**
+   我也不知道说啥，总之我就是想做一个还原脑叶公司内容的模组。
+   然后就是在mc里要一口气还原难度实在太大了，经过失败的总结，我觉得应该先做EGO这个模块，玩家应该没有不喜欢玩炫酷的EGO装备的吧。
+   先通过这个吸引受众，对于未来的发展更好！
+2. **特殊字段**
+    * Mod ID&工件ID：lobecorp
+    * Mod名称&项目文件名：LobeCorp
 
-Once you have your clone, simply open the repository in the IDE of your choice. The usual recommendation for an IDE is either IntelliJ IDEA or Eclipse.
+## 二、开发环境
 
-If at any point you are missing libraries in your IDE, or you've run into problems you can
-run `gradlew --refresh-dependencies` to refresh the local cache. `gradlew clean` to reset everything 
-{this does not affect your code} and then start the process again.
+* Java版本：21.0.7
+* Minecraft版本：1.20.6
+* NeoForge版本：20.6.134
+* 许可证类型：GNU GPL 3.0
 
-Mapping Names:
-============
-By default, the MDK is configured to use the official mapping names from Mojang for methods and fields 
-in the Minecraft codebase. These names are covered by a specific license. All modders should be aware of this
-license. For the latest license text, refer to the mapping file itself, or the reference copy here:
-https://github.com/NeoForged/NeoForm/blob/main/Mojang.md
+## 二、任务划分
 
-Additional Resources: 
-==========
-Community Documentation: https://docs.neoforged.net/  
-NeoForged Discord: https://discord.neoforged.net/
+LobeCorp制作组主要分为三个部分，分别是资源与素材、程序与设计、测试与运营
+
+1. **资源与素材组**
+    * 资料收集：整理游戏内/外部的参考素材（图片、音效、文本等）
+    * 美术创造：制作贴图、模型、动画、UI设计等
+    * 音效处理：采集或制作音效、背景音乐
+2. **程序与设计组**
+    * 模组开发：编写代码、实现功能
+    * 系统设计：规划模组的玩法机制、架构设计
+3. **测试与运营组**
+    * 质量测试：BUG排查、平衡性测试
+    * 文档与宣传：编写模组资料、制作宣传材料
+
+## 三、更新计划
+
+* **v0.0.0：** 项目配置好，要能跑MC，要有简介图标网站等
+* **v0.1.0：** 加入干渴值和精神值，让干渴值和精神值、饥饿值和生命值相互联系，要有喝水行为，配置类似于食物机制那样的含水机制，能通过json自定义回复干渴值的食物数值，同时对等设计状态效果
+* **v0.2.0：** 加入工作成率和工作效率、攻击速率和移动速率、等级，构成完善的品质及等级系统，同时要让攻击速率和移动速率去一定比例的影响原版的攻击速度和移动速度，加入一个物品能够让使用者去随意修改自己六大属性的数值
+* **v0.3.0：** 设计UI，更改原版的一些样式，同时新增模组属性的一些样式，比如生命值饥饿值、干渴值精神值都得做，同时属性面板显示和修改属性面板显示也得做，最后是让玩家能看到其他玩家头上的精神条和生命条
+* **v0.4.0：** 开始尝试加入EGO武器，主要是先在模型动画方面看能否自己做个工具，如果能的话，就开始对EGO武器进行模板分类，先做固定死的模板，最后来看特殊模板如何设计，模板如果做完了，就尽量要能做成json就能修改属性以及增加特殊能力的功能（双手拿的武器是个重点！）
+* **v0.5.0：** 设计四大恐慌机制，可以根据实际情况再重新设计下
+* **v0.6.0：** 为玩家加入插槽属性，只需要加武器和护甲插槽，让武器可以通过快捷键快速取出和放回，同时开始设计EGO护甲，让他能通过json就能修改属性以及增加特殊能力
+* **v0.7.0：** 再次加入新的饰品插槽，开始设计EGO饰品，让EGO饰品也能通过json文件修改属性和增加特殊能力
+* **v0.8.0：** 加入EGO反噬机制，弱抗减速机制，等级压制机制
+* **v0.9.0：** 增加玩家获取EGO的流程，让整个模组变得具有可玩性
+* **v1.0.0：** 完善EGO装备库和一些没注意到的机制，修Bug
+
+## 四、参考资料
+
+1. **模组**

@@ -34,14 +34,13 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
-// The value here should match an entry in the META-INF/neoforge.mods.toml file
 @Mod(LobeCorp.MODID)
 public class LobeCorp
 {
-    // Define mod id in a common place for everything to reference
+    //public的模组ID和private的日志记录器
     public static final String MODID = "lobecorp";
-    // Directly reference a slf4j logger
     private static final Logger LOGGER = LogUtils.getLogger();
+
     // Create a Deferred Register to hold Blocks which will all be registered under the "lobecorp" namespace
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(MODID);
     // Create a Deferred Register to hold Items which will all be registered under the "lobecorp" namespace
