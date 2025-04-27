@@ -15,7 +15,7 @@
 * Java版本：21.0.7
 * Minecraft版本：1.20.6
 * NeoForge版本：20.6.134
-* 许可证类型：GNU GPL 3.0
+* 许可证类型：GPL-3.0 / CC-BY-NC-ND-4.0
 
 ## 二、任务划分
 
