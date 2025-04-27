@@ -75,7 +75,6 @@ tasks.withType(ProcessResources).configureEach {
             mod_description        : mod_description,
             mod_credits            : mod_credits,
             displayURL             : displayURL,
-            updateJSONURL          : updateJSONURL,
             issueTrackerURL        : issueTrackerURL
     ]
     inputs.properties replaceProperties

@@ -16,4 +16,3 @@ public class LobeCorp {
         LOGGER.info("Face the Fear, Build the Future.");
     }
 }
-//推送测试2
