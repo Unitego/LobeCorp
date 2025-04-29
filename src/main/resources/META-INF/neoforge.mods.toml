@@ -6,7 +6,7 @@ license = "${mod_license}"
 modId = "${mod_id}"
 version = "${mod_version}"
 displayName = "${mod_name}"
-logoFile = "assets/lobecorp/logo.png"
+logoFile = "assets/lobecorp/lc_logo.png"
 credits = "${mod_credits}"
 authors = "${mod_authors}"
 description = '''${mod_description}'''
@@ -14,7 +14,7 @@ displayURL = "${displayURL}"
 issueTrackerURL = "${issueTrackerURL}"
 
 [[mixins]]
-config = "${mod_id}.mixins.json"
+config = "META-INF/lobecorp.mixins.json"
 
 [[accessTransformers]]
 file = "META-INF/accesstransformer.cfg"
@@ -34,5 +34,5 @@ ordering = "NONE"
 side = "BOTH"
 
 [modproperties.${ mod_id }]
-catalogueImageIcon = "assets/lobecorp/icon.png"
-catalogueBackground = "assets/lobecorp/background.png"
+catalogueImageIcon = "assets/lobecorp/lc_icon.png"
+catalogueBackground = "assets/lobecorp/lc_bg.png"
