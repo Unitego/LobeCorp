@@ -4,6 +4,9 @@
   "package": "net.unitego.lobecorp.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
+    "LivingEntityMixin",
+    "PlayerMixin",
+    "ServerPlayerMixin"
   ],
   "client": [
   ],
