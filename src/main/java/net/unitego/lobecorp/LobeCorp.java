@@ -9,11 +9,8 @@ import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.client.event.RegisterGuiLayersEvent;
-import net.neoforged.neoforge.client.event.RenderGuiLayerEvent;
-import net.neoforged.neoforge.common.NeoForge;
-import net.unitego.lobecorp.hud.HUDEvent;
-import net.unitego.lobecorp.network.sender.S2CSyncIconSender;
-import net.unitego.lobecorp.registry.*;
+import net.unitego.lobecorp.client.hud.HUDEvent;
+import net.unitego.lobecorp.common.registry.*;
 import org.slf4j.Logger;
 
 @Mod(LobeCorp.MOD_ID)
@@ -42,14 +39,6 @@ public class LobeCorp {
         @SubscribeEvent
         public static void onRegisterGuiLayers(RegisterGuiLayersEvent event) {
             HUDEvent.registerCustomHUDLayers(event);
-        }
-    }
-
-    @EventBusSubscriber(modid = MOD_ID, bus = EventBusSubscriber.Bus.GAME, value = Dist.CLIENT)
-    public static class ClientGameEvents {
-        @SubscribeEvent
-        public static void onRenderGuiLayerPre(RenderGuiLayerEvent.Pre event) {
-            HUDEvent.suppressVanillaHUDLayers(event);
         }
     }
 }

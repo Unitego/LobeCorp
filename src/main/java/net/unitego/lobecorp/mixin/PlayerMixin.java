@@ -1,15 +1,13 @@
 package net.unitego.lobecorp.mixin;
 
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
-import net.unitego.lobecorp.access.DataAccess;
-import net.unitego.lobecorp.data.SanityData;
-import net.unitego.lobecorp.data.WaterData;
-import net.unitego.lobecorp.registry.SEDRegistry;
+import net.unitego.lobecorp.common.access.DataAccess;
+import net.unitego.lobecorp.common.data.SanityData;
+import net.unitego.lobecorp.common.data.WaterData;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;

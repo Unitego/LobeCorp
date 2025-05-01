@@ -5,7 +5,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.EntityAttributeModificationEvent;
 import net.unitego.lobecorp.LobeCorp;
-import net.unitego.lobecorp.registry.AttributeRegistry;
+import net.unitego.lobecorp.common.registry.AttributeRegistry;
 
 /**
  * @author : baka4n
