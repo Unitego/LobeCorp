@@ -24,9 +24,9 @@ jobs:
         with:
           fetch-depth: 0
           fetch-tags: true
-      - name: Get Modid
+      - name: Get Properties
         uses: BrycensRanch/read-properties-action@v1
-        id: modid
+        id: all
         with:
           file: gradle.properties
           all: true
