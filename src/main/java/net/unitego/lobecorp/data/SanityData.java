@@ -3,6 +3,7 @@ package net.unitego.lobecorp.data;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Player;
+import net.unitego.lobecorp.registry.AttachmentTypeRegistry;
 import net.unitego.lobecorp.registry.AttributeRegistry;
 import net.unitego.lobecorp.registry.SEDRegistry;
 
@@ -35,7 +36,8 @@ public class SanityData {
     }
 
     public float getSanity() {
-        return player.getEntityData().get(SEDRegistry.DATA_PLAYER_SANITY_ID);
+
+        return player.getData(AttachmentTypeRegistry.PLAYER_SANITY);
     }
 
     public void setSanity(float sanity) {
@@ -47,7 +49,7 @@ public class SanityData {
             System.out.println("Server getMaxSanity:" + getMaxSanity());
         }
         System.out.println("——————————");
-        player.getEntityData().set(SEDRegistry.DATA_PLAYER_SANITY_ID, Mth.clamp(sanity, 0.0F, getMaxSanity()));
+        player.setData(AttachmentTypeRegistry.PLAYER_SANITY, Mth.clamp(sanity, 0.0F, getMaxSanity()));
     }
 
     public boolean isBlow() {
@@ -71,7 +73,7 @@ public class SanityData {
     }
 
     public float getAssimilationAmount() {
-        return player.getEntityData().get(SEDRegistry.DATA_PLAYER_ASSIMILATION_ID);
+        return player.getData(AttachmentTypeRegistry.PLAYER_ASSIMILATION);
     }
 
     public final void setAssimilationAmount(float assimilationAmount) {
@@ -79,6 +81,6 @@ public class SanityData {
     }
 
     private void internalSetAssimilationAmount(float assimilationAmount) {
-        player.getEntityData().set(SEDRegistry.DATA_PLAYER_ASSIMILATION_ID, assimilationAmount);
+        player.setData(AttachmentTypeRegistry.PLAYER_ASSIMILATION, assimilationAmount);
     }
 }
