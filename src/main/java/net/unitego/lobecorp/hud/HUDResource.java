@@ -9,6 +9,7 @@ import net.unitego.lobecorp.LobeCorp;
 @OnlyIn(Dist.CLIENT)
 public final class HUDResource {
     //纹理路径
+    public static final ResourceLocation GAP = LobeCorp.rl("textures/gui/sprites/hud/gap_full.png");
     public static final ResourceLocation ABSORPTION_FULL_SPRITE = LobeCorp.rl("hud/absorption_full");
     public static final ResourceLocation ARMOR_FULL_SPRITE = LobeCorp.rl("hud/armor_full");
     public static final ResourceLocation ARMOR_TOUGHNESS_FULL_SPRITE = LobeCorp.rl("hud/armor_toughness_full");
@@ -19,7 +20,6 @@ public final class HUDResource {
     public static final ResourceLocation FOOD_FULL_HUNGER_SPRITE = LobeCorp.rl("hud/food_full_hunger");
     public static final ResourceLocation FOOD_HALF_SPRITE = LobeCorp.rl("hud/food_half");
     public static final ResourceLocation FOOD_HALF_HUNGER_SPRITE = LobeCorp.rl("hud/food_half_hunger");
-    public static final ResourceLocation GAP_FULL_SPRITE = LobeCorp.rl("hud/gap_full");
     public static final ResourceLocation HEALTH_EMPTY_SPRITE = LobeCorp.rl("hud/health_empty");
     public static final ResourceLocation HEALTH_FROZEN_FULL_SPRITE = LobeCorp.rl("hud/health_frozen_full");
     public static final ResourceLocation HEALTH_FULL_SPRITE = LobeCorp.rl("hud/health_full");

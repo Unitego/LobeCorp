@@ -2,6 +2,7 @@ package net.unitego.lobecorp.hud.element;
 
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodData;
@@ -25,12 +26,20 @@ public class FoodElement extends BaseElement {
         FoodData foodData = Objects.requireNonNull(minecraft.player).getFoodData();//获取玩家的饥饿数据
         int foodLevel = foodData.getFoodLevel();//获取玩家饥饿值
         float saturationLevel = foodData.getSaturationLevel();//获取玩家饱食度
+        float exhaustionLevel = foodData.getExhaustionLevel();//获取玩家消耗度
 
         int size = 9;
 
         int x = guiWidth / 2 + 91;
         int y = guiHeight - 37;
         int posY = y;
+
+        int width = 81;
+        float ratio = Mth.clamp(exhaustionLevel / 4.0f, 0, 1);
+        int offset = (int) (ratio * width);
+
+        //渲染消耗度条
+        guiGraphics.blit(HUDResource.GAP, x - offset, y, width - offset, 0, offset, size, width, size);
 
         //渲染饥饿条
         for (int food = 0; food < 10; food++) {

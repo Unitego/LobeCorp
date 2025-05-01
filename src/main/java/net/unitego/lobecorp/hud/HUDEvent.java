@@ -7,7 +7,7 @@ import net.neoforged.neoforge.client.event.RegisterGuiLayersEvent;
 import net.neoforged.neoforge.client.event.RenderGuiLayerEvent;
 import net.neoforged.neoforge.client.gui.VanillaGuiLayers;
 import net.unitego.lobecorp.LobeCorp;
-import net.unitego.lobecorp.init.HUDRegistry;
+import net.unitego.lobecorp.registry.HUDRegistry;
 
 @OnlyIn(Dist.CLIENT)
 public final class HUDEvent {
@@ -17,11 +17,11 @@ public final class HUDEvent {
     public static void registerCustomHUDLayers(RegisterGuiLayersEvent event) {
         event.registerAboveAll(LC_HUD, ((guiGraphics, partialTick) -> {
             for (BaseElement element : HUDRegistry.getElements()) {
-                if (element.check()) {
-                    guiGraphics.pose().pushPose();
-                    element.draw(guiGraphics, partialTick, guiGraphics.guiWidth(), guiGraphics.guiHeight());
-                    guiGraphics.pose().popPose();
-                }
+                //if (element.check()) {
+                guiGraphics.pose().pushPose();
+                element.draw(guiGraphics, partialTick, guiGraphics.guiWidth(), guiGraphics.guiHeight());
+                guiGraphics.pose().popPose();
+                //}
             }
         }));
     }

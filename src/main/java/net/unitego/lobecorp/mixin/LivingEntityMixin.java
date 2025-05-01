@@ -6,7 +6,7 @@ import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.player.Player;
 import net.unitego.lobecorp.access.DataAccess;
 import net.unitego.lobecorp.data.SanityData;
-import net.unitego.lobecorp.init.AttributeRegistry;
+import net.unitego.lobecorp.registry.AttributeRegistry;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;

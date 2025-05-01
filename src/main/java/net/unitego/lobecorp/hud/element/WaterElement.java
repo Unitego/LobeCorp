@@ -2,6 +2,7 @@ package net.unitego.lobecorp.hud.element;
 
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.effect.MobEffects;
 import net.neoforged.api.distmarker.Dist;
@@ -26,12 +27,20 @@ public class WaterElement extends BaseElement {
         WaterData waterData = ((DataAccess) Objects.requireNonNull(minecraft.player)).lobeCorp$getWaterData();//获取玩家的干渴数据
         int waterLevel = waterData.getWaterLevel();//获取玩家干渴值
         float hydrationLevel = waterData.getHydrationLevel();//获取玩家饱水度
+        float desiccationLevel = waterData.getDesiccationLevel();//获取玩家枯竭度
 
         int size = 9;
 
         int x = guiWidth / 2 - 91;
         int y = guiHeight - 37;
         int posY = y;
+
+        int width = 81;
+        float ratio = Mth.clamp(desiccationLevel / 4.0f, 0, 1);
+        int offset = (int) (ratio * width);
+
+        //渲染消耗度条
+        guiGraphics.blit(HUDResource.GAP, x, y, 0, 0, offset, size, width, size);
 
         //渲染干渴条
         for (int water = 0; water < 10; water++) {

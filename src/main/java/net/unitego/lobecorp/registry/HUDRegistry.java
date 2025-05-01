@@ -1,4 +1,4 @@
-package net.unitego.lobecorp.init;
+package net.unitego.lobecorp.registry;
 
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
@@ -16,7 +16,7 @@ import java.util.Set;
 public final class HUDRegistry {
     private static final Set<BaseElement> ELEMENTS = new LinkedHashSet<>();
 
-    public static void register(BaseElement element) {
+    private static void register(BaseElement element) {
         ELEMENTS.add(element);
     }
 

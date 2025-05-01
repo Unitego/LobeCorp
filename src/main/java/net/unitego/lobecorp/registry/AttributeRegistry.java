@@ -1,4 +1,4 @@
-package net.unitego.lobecorp.init;
+package net.unitego.lobecorp.registry;
 
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;

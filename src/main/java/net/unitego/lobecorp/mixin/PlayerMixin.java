@@ -10,8 +10,8 @@ import net.minecraft.world.level.Level;
 import net.unitego.lobecorp.access.DataAccess;
 import net.unitego.lobecorp.data.SanityData;
 import net.unitego.lobecorp.data.WaterData;
-import net.unitego.lobecorp.init.AttributeRegistry;
-import net.unitego.lobecorp.init.SEDRegistry;
+import net.unitego.lobecorp.registry.AttributeRegistry;
+import net.unitego.lobecorp.registry.SEDRegistry;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
@@ -92,4 +92,6 @@ public abstract class PlayerMixin extends LivingEntity implements DataAccess {
     private void causeFoodExhaustionMixin(float exhaustion, CallbackInfo ci) {
         lobeCorp$waterData.addDesiccation(exhaustion);
     }
+
+
 }

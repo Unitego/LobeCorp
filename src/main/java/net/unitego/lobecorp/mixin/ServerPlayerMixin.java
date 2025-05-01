@@ -7,7 +7,8 @@ import net.neoforged.neoforge.common.util.ITeleporter;
 import net.unitego.lobecorp.access.DataAccess;
 import net.unitego.lobecorp.data.SanityData;
 import net.unitego.lobecorp.data.WaterData;
-import net.unitego.lobecorp.network.sender.S2CSetSanitySender;
+import net.unitego.lobecorp.network.sender.S2CSyncIconSender;
+import net.unitego.lobecorp.network.sender.S2CSyncStatsSender;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
@@ -30,13 +31,18 @@ public abstract class ServerPlayerMixin {
     @Unique
     private boolean lobeCorp$lastWaterHydrationZero = true;
 
+    @Inject(method = "tick", at = @At("TAIL"))
+    private void tickMixin(CallbackInfo ci) {
+        S2CSyncIconSender.send(lobeCorp$serverPlayer);
+    }
+
     @Inject(method = "doTick", at = @At(value = "INVOKE",
             target = "Lnet/minecraft/server/level/ServerPlayer;getHealth()F", ordinal = 0))
     private void doTickMixin(CallbackInfo ci) {
         if (lobeCorp$sanityData.getSanity() != lobeCorp$lastSentSanity
                 || lobeCorp$lastSentWater != lobeCorp$waterData.getWaterLevel() ||
                 lobeCorp$waterData.getHydrationLevel() == 0.0F != lobeCorp$lastWaterHydrationZero) {
-            S2CSetSanitySender.send(lobeCorp$serverPlayer);
+            S2CSyncStatsSender.send(lobeCorp$serverPlayer);
             lobeCorp$lastSentSanity = lobeCorp$sanityData.getSanity();
             lobeCorp$lastSentWater = lobeCorp$waterData.getWaterLevel();
             lobeCorp$lastWaterHydrationZero = lobeCorp$waterData.getHydrationLevel() == 0.0F;
@@ -60,7 +66,9 @@ public abstract class ServerPlayerMixin {
             target = "Lnet/minecraft/server/level/ServerPlayer;foodData:Lnet/minecraft/world/food/FoodData;", ordinal = 0))
     private void restoreFromMixin1(ServerPlayer that, boolean keepEverything, CallbackInfo ci) {
         lobeCorp$sanityData.setSanity(((DataAccess) that).lobeCorp$getSanityData().getSanity());
-        lobeCorp$waterData = ((DataAccess) that).lobeCorp$getWaterData();
+        lobeCorp$waterData.setWaterLevel(((DataAccess) that).lobeCorp$getWaterData().getWaterLevel());
+        lobeCorp$waterData.setHydration(((DataAccess) that).lobeCorp$getWaterData().getHydrationLevel());
+        lobeCorp$waterData.setDesiccation(((DataAccess) that).lobeCorp$getWaterData().getDesiccationLevel());
     }
 
     @Inject(method = "restoreFrom", at = @At(value = "FIELD",

@@ -3,8 +3,8 @@ package net.unitego.lobecorp.data;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Player;
-import net.unitego.lobecorp.init.AttributeRegistry;
-import net.unitego.lobecorp.init.SEDRegistry;
+import net.unitego.lobecorp.registry.AttributeRegistry;
+import net.unitego.lobecorp.registry.SEDRegistry;
 
 public class SanityData {
     private final Player player;
@@ -39,6 +39,14 @@ public class SanityData {
     }
 
     public void setSanity(float sanity) {
+        if (player.level().isClientSide) {
+            System.out.println("Client sanity:" + sanity);
+            System.out.println("Client getMaxSanity:" + getMaxSanity());
+        } else {
+            System.out.println("Server sanity:" + sanity);
+            System.out.println("Server getMaxSanity:" + getMaxSanity());
+        }
+        System.out.println("——————————");
         player.getEntityData().set(SEDRegistry.DATA_PLAYER_SANITY_ID, Mth.clamp(sanity, 0.0F, getMaxSanity()));
     }
 

@@ -4,11 +4,11 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.food.FoodConstants;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.GameRules;
 import net.unitego.lobecorp.access.DataAccess;
+import net.unitego.lobecorp.registry.DamageRegistry;
 
 import javax.annotation.Nullable;
 
@@ -29,7 +29,7 @@ public class WaterData {
     }
 
     public void drink(int waterLevelModifier, float hydrationLevelModifier) {
-        add(waterLevelModifier, FoodConstants.saturationByModifier(waterLevelModifier, hydrationLevelModifier));
+        add(waterLevelModifier, waterLevelModifier * hydrationLevelModifier * 2.0f);
     }
 
     public void drink(ItemStack stack, @Nullable LivingEntity entity) {
@@ -75,7 +75,7 @@ public class WaterData {
                         difficulty == Difficulty.HARD ||
                         sanityData.getSanity() > 1.0F &&
                                 difficulty == Difficulty.NORMAL) {
-                    player.hurt(player.damageSources().starve(), 1.0F);
+                    player.hurt(player.damageSources().source(DamageRegistry.DRY), 1.0F);
                 }
 
                 tickTimer = 0;

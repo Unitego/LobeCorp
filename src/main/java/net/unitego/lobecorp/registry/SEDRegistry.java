@@ -1,4 +1,4 @@
-package net.unitego.lobecorp.init;
+package net.unitego.lobecorp.registry;
 
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;

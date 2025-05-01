@@ -10,10 +10,13 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.client.event.RegisterGuiLayersEvent;
 import net.neoforged.neoforge.client.event.RenderGuiLayerEvent;
+import net.neoforged.neoforge.common.NeoForge;
 import net.unitego.lobecorp.hud.HUDEvent;
-import net.unitego.lobecorp.init.HUDRegistry;
-import net.unitego.lobecorp.init.NetworkRegistry;
-import net.unitego.lobecorp.init.SEDRegistry;
+import net.unitego.lobecorp.network.sender.S2CSyncIconSender;
+import net.unitego.lobecorp.registry.EffectRegistry;
+import net.unitego.lobecorp.registry.HUDRegistry;
+import net.unitego.lobecorp.registry.NetworkRegistry;
+import net.unitego.lobecorp.registry.SEDRegistry;
 import org.slf4j.Logger;
 
 @Mod(LobeCorp.MOD_ID)
@@ -23,9 +26,15 @@ public class LobeCorp {
 
     public LobeCorp(IEventBus bus, ModContainer container) {
         LOGGER.info("Face the Fear, Build the Future.");
+
         HUDRegistry.init();
         SEDRegistry.init();
+
+        EffectRegistry.init(bus);
+
         bus.addListener(NetworkRegistry::init);
+
+        NeoForge.EVENT_BUS.register(S2CSyncIconSender.class);
     }
 
     public static ResourceLocation rl(String path) {
