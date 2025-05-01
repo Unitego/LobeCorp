@@ -9,8 +9,9 @@ import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.client.event.RegisterGuiLayersEvent;
-import net.unitego.lobecorp.client.hud.HUDEvent;
+
 import net.unitego.lobecorp.common.registry.*;
+import net.unitego.lobecorp.event.mod.HUDEvents;
 import org.slf4j.Logger;
 
 @Mod(LobeCorp.MOD_ID)
@@ -38,7 +39,7 @@ public class LobeCorp {
     public static class ClientModEvents {
         @SubscribeEvent
         public static void onRegisterGuiLayers(RegisterGuiLayersEvent event) {
-            HUDEvent.registerCustomHUDLayers(event);
+            HUDEvents.registerCustomHUDLayers(event);
         }
     }
 }
