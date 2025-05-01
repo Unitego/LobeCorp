@@ -29,15 +29,8 @@ jobs:
         id: modid
         with:
           file: gradle.properties
-          property: mod_id
-          default: lobecorp
-      - name: Get Mod Version
-        uses: BrycensRanch/read-properties-action@v1
-        id: version
-        with:
-          file: gradle.properties
-          property: mod_version
-          default: 'null'
+          all: true
+
       - name: Setup JDK 21
         uses: actions/setup-java@v4
         with:
@@ -62,6 +55,6 @@ jobs:
         uses:
           actions/upload-artifact@v4
         with:
-          name: ${{ steps.modid.outputs.value }}-${{ steps.version.outputs.version }}-${{ env.git_sha }}.jar
-          path: build/libs/${{ steps.modid.outputs.value }}-${{ steps.version.outputs.version }}.jar
+          name: ${{ steps.all.outputs.mod_id }}-${{steps.all.outputs.minecraft_version}}-${{ steps.all.outputs.mod_version }}-${{ env.git_sha }}.jar
+          path: build/libs/${{ steps.all.outputs.mod_id }}-${{steps.all.outputs.minecraft_version}}-${{ steps.all.outputs.mod_version }}.jar
           repo-token: ${{ secrets.ACTION_TOKEN }}
