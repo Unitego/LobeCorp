@@ -11,12 +11,11 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.client.event.RegisterGuiLayersEvent;
 import net.neoforged.neoforge.client.event.RenderGuiLayerEvent;
 import net.neoforged.neoforge.common.NeoForge;
+import net.unitego.lobecorp.event.AttributeEvents;
+import net.unitego.lobecorp.event.TickEvents;
 import net.unitego.lobecorp.hud.HUDEvent;
 import net.unitego.lobecorp.network.sender.S2CSyncIconSender;
-import net.unitego.lobecorp.registry.EffectRegistry;
-import net.unitego.lobecorp.registry.HUDRegistry;
-import net.unitego.lobecorp.registry.NetworkRegistry;
-import net.unitego.lobecorp.registry.SEDRegistry;
+import net.unitego.lobecorp.registry.*;
 import org.slf4j.Logger;
 
 @Mod(LobeCorp.MOD_ID)
@@ -30,11 +29,13 @@ public class LobeCorp {
         HUDRegistry.init();
         SEDRegistry.init();
 
+        AttributeRegistry.init(bus);
         EffectRegistry.init(bus);
 
         bus.addListener(NetworkRegistry::init);
-
+        bus.addListener(AttributeEvents::modify);
         NeoForge.EVENT_BUS.register(S2CSyncIconSender.class);
+        NeoForge.EVENT_BUS.addListener(TickEvents::playerTickEvent);
     }
 
     public static ResourceLocation rl(String path) {
