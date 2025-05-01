@@ -3,13 +3,10 @@ package net.unitego.lobecorp.event.game;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
-import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
-import net.unitego.lobecorp.LobeCorp;
-import net.unitego.lobecorp.access.DataAccess;
-import net.unitego.lobecorp.data.SanityData;
-import net.unitego.lobecorp.registry.tag.DamageTypeTagRegistry;
+import net.unitego.lobecorp.common.access.DataAccess;
+import net.unitego.lobecorp.common.data.SanityData;
+import net.unitego.lobecorp.common.registry.tag.DamageTypeTagRegistry;
 
 /**
  * @author : baka4n
