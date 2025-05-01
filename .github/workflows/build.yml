@@ -2,22 +2,42 @@ name: Build
 
 on: [push, pull_request]
 
+env:
+  git_sha: ${{ github.sha }}
+  git_branch: ${{github.ref_name}}
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ env.git_branch }}
+          restore-keys: |
+            ${{ runner.os }}-gradle
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
           fetch-tags: true
+      - name: Get Properties
+        uses: BrycensRanch/read-properties-action@v1
+        id: all
+        with:
+          file: gradle.properties
+          all: true
 
       - name: Setup JDK 21
         uses: actions/setup-java@v4
         with:
           java-version: '21'
           distribution: 'temurin'
-
+      - name: Set version env
+        run: echo "RELEASE_VERSION=${GITHUB_REF:10}" >> $GITHUB_ENV
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v4
 
@@ -25,6 +45,16 @@ jobs:
       # You can run `git update-index --chmod +x gradlew` then remove this step.
       - name: Make Gradle wrapper executable
         run: chmod +x ./gradlew
+## if you need datagen please cancel annotation it.
+#      - name: Datagen with ${{steps.modid.outputs.value}}
+#        run: ./gradlew runData
 
       - name: Build with Gradle
         run: ./gradlew build
+      - name: Upload binaries to release
+        uses:
+          actions/upload-artifact@v4
+        with:
+          name: ${{ steps.all.outputs.mod_id }}-${{steps.all.outputs.minecraft_version}}-${{ steps.all.outputs.mod_version }}-${{ env.git_sha }}.jar
+          path: build/libs/${{ steps.all.outputs.mod_id }}-${{steps.all.outputs.minecraft_version}}-${{ steps.all.outputs.mod_version }}.jar
+          repo-token: ${{ secrets.ACTION_TOKEN }}
