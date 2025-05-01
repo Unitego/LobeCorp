@@ -6,6 +6,8 @@ bin
 .classpath
 .project
 
+.xcodemap/
+
 # idea
 out
 *.ipr

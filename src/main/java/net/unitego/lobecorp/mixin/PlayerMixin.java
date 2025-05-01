@@ -32,13 +32,6 @@ public abstract class PlayerMixin extends LivingEntity implements DataAccess {
         super(entityType, level);
     }
 
-    @Inject(method = "createAttributes", at = @At("RETURN"))
-    private static void createAttributesMixin(CallbackInfoReturnable<AttributeSupplier.Builder> cir) {
-        cir.getReturnValue()
-                .add(AttributeRegistry.MAX_SANITY)
-                .add(AttributeRegistry.MAX_ASSIMILATION);
-    }
-
     @Override
     public WaterData lobeCorp$getWaterData() {
         return lobeCorp$waterData;
