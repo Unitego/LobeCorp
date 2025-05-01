@@ -55,6 +55,9 @@ jobs:
 ## if you need datagen please cancel annotation it.
 #      - name: Datagen with ${{steps.modid.outputs.value}}
 #        run: ./gradlew runData
+
+      - name: Build with Gradle
+        run: ./gradlew build
       - name: Upload binaries to release
         uses:
           actions/upload-artifact@v4
@@ -62,6 +65,3 @@ jobs:
           name: ${{ steps.modid.outputs.value }}-${{ steps.version.outputs.version }}-${{ env.git_sha }}.jar
           path: build/libs/${{ steps.modid.outputs.value }}-${{ steps.version.outputs.version }}.jar
           repo-token: ${{ secrets.ACTION_TOKEN }}
-
-      - name: Build with Gradle
-        run: ./gradlew build
