@@ -11,8 +11,6 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.client.event.RegisterGuiLayersEvent;
 import net.neoforged.neoforge.client.event.RenderGuiLayerEvent;
 import net.neoforged.neoforge.common.NeoForge;
-import net.unitego.lobecorp.event.AttributeEvents;
-import net.unitego.lobecorp.event.TickEvents;
 import net.unitego.lobecorp.hud.HUDEvent;
 import net.unitego.lobecorp.network.sender.S2CSyncIconSender;
 import net.unitego.lobecorp.registry.*;
@@ -27,15 +25,12 @@ public class LobeCorp {
         LOGGER.info("Face the Fear, Build the Future.");
 
         HUDRegistry.init();
-        SEDRegistry.init();
-
         AttributeRegistry.init(bus);
         EffectRegistry.init(bus);
+        AttachmentTypeRegistry.init(bus);
 
-        bus.addListener(NetworkRegistry::init);
-        bus.addListener(AttributeEvents::modify);
-        NeoForge.EVENT_BUS.register(S2CSyncIconSender.class);
-        NeoForge.EVENT_BUS.addListener(TickEvents::playerTickEvent);
+//        bus.addListener(NetworkRegistry::init);
+//        NeoForge.EVENT_BUS.register(S2CSyncIconSender.class);
     }
 
     public static ResourceLocation rl(String path) {

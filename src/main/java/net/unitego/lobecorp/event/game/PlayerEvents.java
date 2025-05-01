@@ -1,7 +1,10 @@
-package net.unitego.lobecorp.event;
+package net.unitego.lobecorp.event.game;
 
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
+import net.unitego.lobecorp.LobeCorp;
 import net.unitego.lobecorp.access.DataAccess;
 import net.unitego.lobecorp.data.SanityData;
 import net.unitego.lobecorp.registry.AttributeRegistry;
@@ -10,7 +13,9 @@ import net.unitego.lobecorp.registry.AttributeRegistry;
  * @author : baka4n
  * {@code @Date : 2025/05/01 14:20:08}
  */
-public class TickEvents {
+@EventBusSubscriber(modid = LobeCorp.MOD_ID, bus = EventBusSubscriber.Bus.GAME)
+public class PlayerEvents {
+    @SubscribeEvent
     public static void playerTickEvent(PlayerTickEvent.Pre event){
         var player = event.getEntity();
         for (AttributeInstance attributeinstance : player.getAttributes().getDirtyAttributes()) {

@@ -1,10 +1,12 @@
-package net.unitego.lobecorp.event;
+package net.unitego.lobecorp.event.game;
 
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
-import net.neoforged.neoforge.event.entity.living.LivingHurtEvent;
+import net.unitego.lobecorp.LobeCorp;
 import net.unitego.lobecorp.access.DataAccess;
 import net.unitego.lobecorp.data.SanityData;
 import net.unitego.lobecorp.registry.tag.DamageTypeTagRegistry;
@@ -13,7 +15,9 @@ import net.unitego.lobecorp.registry.tag.DamageTypeTagRegistry;
  * @author : baka4n
  * {@code @Date : 2025/05/01 12:19:08}
  */
-public class HurtEvents {
+//@EventBusSubscriber(modid = LobeCorp.MOD_ID, bus = EventBusSubscriber.Bus.GAME)
+public class LivingEvents {
+//    @SubscribeEvent
     public static void huntEvent(LivingDamageEvent event) {
         DamageSource source = event.getSource();
         Entity entity = source.getEntity();

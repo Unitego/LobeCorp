@@ -2,8 +2,10 @@ package net.unitego.lobecorp.network.sender;
 
 import net.minecraft.server.level.ServerPlayer;
 import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.network.PacketDistributor;
+import net.unitego.lobecorp.LobeCorp;
 import net.unitego.lobecorp.access.DataAccess;
 import net.unitego.lobecorp.network.payload.S2CSyncIconPayload;
 
@@ -11,6 +13,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
+@EventBusSubscriber(modid = LobeCorp.MOD_ID, bus = EventBusSubscriber.Bus.GAME)
 public class S2CSyncIconSender {
     private static final Map<UUID, Float> HYDRATIONS = new HashMap<>();
     private static final Map<UUID, Float> DESICCATIONS = new HashMap<>();
