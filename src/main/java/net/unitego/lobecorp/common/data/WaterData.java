@@ -8,7 +8,7 @@ import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.GameRules;
 import net.unitego.lobecorp.common.access.DataAccess;
-import net.unitego.lobecorp.common.registry.DamageRegistry;
+import net.unitego.lobecorp.common.registry.ModDamageTypes;
 
 import javax.annotation.Nullable;
 
@@ -75,7 +75,7 @@ public class WaterData {
                         difficulty == Difficulty.HARD ||
                         sanityData.getSanity() > 1.0F &&
                                 difficulty == Difficulty.NORMAL) {
-                    player.hurt(player.damageSources().source(DamageRegistry.DRY), 1.0F);
+                    player.hurt(player.damageSources().source(ModDamageTypes.DRY), 1.0F);
                 }
 
                 tickTimer = 0;

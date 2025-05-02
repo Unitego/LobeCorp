@@ -3,7 +3,7 @@ package net.unitego.lobecorp.common.effect;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;
-import net.unitego.lobecorp.common.registry.DamageRegistry;
+import net.unitego.lobecorp.common.registry.ModDamageTypes;
 
 public class InsaneMobEffect extends MobEffect {
     public InsaneMobEffect(MobEffectCategory category, int color) {
@@ -12,7 +12,7 @@ public class InsaneMobEffect extends MobEffect {
 
     @Override
     public boolean applyEffectTick(LivingEntity livingEntity, int amplifier) {
-        livingEntity.hurt(livingEntity.damageSources().source(DamageRegistry.INSANE), 1.0f);
+        livingEntity.hurt(livingEntity.damageSources().source(ModDamageTypes.INSANE), 1.0f);
         return true;
     }
 

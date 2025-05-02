@@ -6,7 +6,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.unitego.lobecorp.common.access.DataAccess;
 import net.unitego.lobecorp.common.data.SanityData;
-import net.unitego.lobecorp.common.registry.DamageRegistry;
+import net.unitego.lobecorp.common.registry.ModDamageTypes;
 import org.jetbrains.annotations.NotNull;
 
 public class AbsentMobEffect extends MobEffect {
@@ -19,11 +19,11 @@ public class AbsentMobEffect extends MobEffect {
         if (livingEntity instanceof Player player) {
             SanityData sanityData = ((DataAccess) player).lobeCorp$getSanityData();
             if (sanityData.getSanity() > 1.0f) {
-                player.hurt(player.damageSources().source(DamageRegistry.MYSTIC), 1.0f);
+                player.hurt(player.damageSources().source(ModDamageTypes.MYSTIC), 1.0f);
             }
         } else {
             if (livingEntity.getHealth() > 1.0f) {
-                livingEntity.hurt(livingEntity.damageSources().source(DamageRegistry.MYSTIC), 1.0f);
+                livingEntity.hurt(livingEntity.damageSources().source(ModDamageTypes.MYSTIC), 1.0f);
             }
         }
         return true;

@@ -1,0 +1,13 @@
+{
+  "attribute.name.lobecorp.max_assimilation": "Max Assimilation",
+  "attribute.name.lobecorp.max_sanity": "Max Sanity",
+  "effect.lobecorp.absent": "Absent",
+  "effect.lobecorp.assimilation": "Assimilation",
+  "effect.lobecorp.hydration": "Hydration",
+  "effect.lobecorp.insane": "Insane",
+  "effect.lobecorp.instant_injury": "Instant Injury",
+  "effect.lobecorp.instant_sanity": "Instant Sanity",
+  "effect.lobecorp.restoration": "Restoration",
+  "effect.lobecorp.sanity_boost": "Sanity Boost",
+  "effect.lobecorp.thirst": "Thirst"
+}
