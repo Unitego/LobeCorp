@@ -19,7 +19,6 @@ public abstract class LocalPlayerMixin extends AbstractClientPlayer {
     public LocalPlayerMixin(ClientLevel clientLevel, GameProfile gameProfile) {
         super(clientLevel, gameProfile);
     }
-
     //冲刺条件加个干渴机制限制
     @Inject(method = "hasEnoughFoodToStartSprinting", at = @At("RETURN"), cancellable = true)
     private void hasEnoughFoodToStartSprintingMixin(CallbackInfoReturnable<Boolean> cir) {
