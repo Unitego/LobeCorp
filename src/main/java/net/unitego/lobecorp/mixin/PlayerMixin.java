@@ -32,6 +32,12 @@ public abstract class PlayerMixin extends LivingEntity implements DataAccess {
         super(entityType, level);
     }
 
+    //为玩家附加最大精神值和最大认知同化值的属性
+    @Inject(method = "createAttributes", at = @At("RETURN"))
+    private static void createAttributesMixin(CallbackInfoReturnable<AttributeSupplier.Builder> cir) {
+        cir.getReturnValue().add(ModAttributes.MAX_SANITY).add(ModAttributes.MAX_ASSIMILATION);
+    }
+
     @Override
     public WaterData lobeCorp$getWaterData() {
         return lobeCorp$waterData;
@@ -40,12 +46,6 @@ public abstract class PlayerMixin extends LivingEntity implements DataAccess {
     @Override
     public SanityData lobeCorp$getSanityData() {
         return lobeCorp$sanityData;
-    }
-
-    //为玩家附加最大精神值和最大认知同化值的属性
-    @Inject(method = "createAttributes", at = @At("RETURN"))
-    private static void createAttributesMixin(CallbackInfoReturnable<AttributeSupplier.Builder> cir) {
-        cir.getReturnValue().add(ModAttributes.MAX_SANITY).add(ModAttributes.MAX_ASSIMILATION);
     }
 
     //定义同步实体数据

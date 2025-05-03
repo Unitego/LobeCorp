@@ -12,7 +12,7 @@ import net.unitego.lobecorp.LobeCorp;
 public class HUDGameEvents {
     //取消原版HUD图层
     @SubscribeEvent
-    public static void cancelVanillaHUDLayers(RenderGuiLayerEvent.Pre event) {
+    public static void onRenderGuiLayerPre(RenderGuiLayerEvent.Pre event) {
         ResourceLocation name = event.getName();
         if (VanillaGuiLayers.AIR_LEVEL.equals(name)) {
             event.setCanceled(true);

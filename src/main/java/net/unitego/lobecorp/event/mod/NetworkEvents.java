@@ -15,7 +15,7 @@ public class NetworkEvents {
 
     //注册网络包
     @SubscribeEvent
-    public static void registerPayloads(RegisterPayloadHandlersEvent event) {
+    public static void onRegisterPayloadHandlers(RegisterPayloadHandlersEvent event) {
         event.registrar(NETWORK_VERSION).playToClient(
                 S2CSyncStatsPayload.TYPE,
                 S2CSyncStatsPayload.STREAM_CODEC,

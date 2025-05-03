@@ -1,10 +1,10 @@
-// 1.20.6	2025-05-03T04:09:41.3372778	Tags for minecraft:damage_type mod id lobecorp
-5bc9df7453acd9d71c94b665d82c44ac9f99cc00 data/lobecorp/tags/damage_type/black.json
-33de6a92359a4bd2a078d190324bd1cb47c56aef data/lobecorp/tags/damage_type/censored.json
-8ca2867ee923b252885a717a3eadf0b90f1d50ca data/lobecorp/tags/damage_type/pale.json
-2ec226fbc6f79b0f3e69b20501e749df981a48cf data/lobecorp/tags/damage_type/red.json
-c15f2b42d4cf36f330825a2289f940997f7a2317 data/lobecorp/tags/damage_type/spirit.json
-f3615641af43ad11cf91e34542a12cb9b4195c43 data/lobecorp/tags/damage_type/white.json
+// 1.20.6	2025-05-03T10:45:28.2844146	Tags for minecraft:damage_type mod id lobecorp
+5bc9df7453acd9d71c94b665d82c44ac9f99cc00 data/lobecorp/tags/damage_type/black_damage_type.json
+33de6a92359a4bd2a078d190324bd1cb47c56aef data/lobecorp/tags/damage_type/censored_damage_type.json
+8ca2867ee923b252885a717a3eadf0b90f1d50ca data/lobecorp/tags/damage_type/pale_damage_type.json
+2ec226fbc6f79b0f3e69b20501e749df981a48cf data/lobecorp/tags/damage_type/red_damage_type.json
+c15f2b42d4cf36f330825a2289f940997f7a2317 data/lobecorp/tags/damage_type/spirit_damage_type.json
+f3615641af43ad11cf91e34542a12cb9b4195c43 data/lobecorp/tags/damage_type/white_damage_type.json
 6550843a1aebb74f4e853b8d88a267f57fed56fe data/minecraft/tags/damage_type/avoids_guardian_thorns.json
 213019290d61ebba67403f31b072226bc9e1fcd4 data/minecraft/tags/damage_type/bypasses_armor.json
 754b764f75a881b706a50e203833441e9da31908 data/minecraft/tags/damage_type/bypasses_effects.json

@@ -11,17 +11,17 @@ public class DamageUtils {
     //处理玩家伤害
     public static void handlePlayerDamage(Player player, DamageSource source, float amount) {
         SanityData sanityData = ((DataAccess) player).lobeCorp$getSanityData();
-        if (source.is(DamageTypeTagRegistry.CENSORED.get())) {
+        if (source.is(DamageTypeTagRegistry.CENSORED_DAMAGE_TYPE.get())) {
             handleCensoredDamage(player, amount, sanityData);
-        } else if (source.is(DamageTypeTagRegistry.SPIRIT.get())) {
+        } else if (source.is(DamageTypeTagRegistry.SPIRIT_DAMAGE_TYPE.get())) {
             handleSpiritDamage(player, amount, sanityData);
-        } else if (source.is(DamageTypeTagRegistry.RED.get())) {
+        } else if (source.is(DamageTypeTagRegistry.RED_DAMAGE_TYPE.get())) {
             handleRedDamage(player, amount, sanityData);
-        } else if (source.is(DamageTypeTagRegistry.WHITE.get())) {
+        } else if (source.is(DamageTypeTagRegistry.WHITE_DAMAGE_TYPE.get())) {
             handleWhiteDamage(player, amount, sanityData);
-        } else if (source.is(DamageTypeTagRegistry.BLACK.get())) {
+        } else if (source.is(DamageTypeTagRegistry.BLACK_DAMAGE_TYPE.get())) {
             handleBlackDamage(player, amount, sanityData);
-        } else if (source.is(DamageTypeTagRegistry.PALE.get())) {
+        } else if (source.is(DamageTypeTagRegistry.PALE_DAMAGE_TYPE.get())) {
             handlePaleDamage(player, amount, sanityData);
         } else {
             handleVanillaDamage(player, amount, sanityData);

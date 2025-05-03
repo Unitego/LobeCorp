@@ -11,7 +11,7 @@ import net.unitego.lobecorp.common.network.payload.S2CSyncStatsPayload;
 public class PlayerEvents {
     //移除玩家数据
     @SubscribeEvent
-    public static void removePlayerData(PlayerEvent.PlayerLoggedInEvent event) {
+    public static void onPlayerLoggedIn(PlayerEvent.PlayerLoggedInEvent event) {
         if (event.getEntity() instanceof ServerPlayer serverPlayer) {
             S2CSyncStatsPayload.HYDRATIONS.remove(serverPlayer.getUUID());
             S2CSyncStatsPayload.DESICCATIONS.remove(serverPlayer.getUUID());

@@ -2,15 +2,10 @@ package net.unitego.lobecorp.common.data;
 
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.Difficulty;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.food.FoodProperties;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.GameRules;
 import net.unitego.lobecorp.common.access.DataAccess;
 import net.unitego.lobecorp.common.registry.ModDamageTypes;
-
-import javax.annotation.Nullable;
 
 public class WaterData {
     private int waterLevel = 20;
@@ -30,13 +25,6 @@ public class WaterData {
 
     public void drink(int waterLevelModifier, float hydrationLevelModifier) {
         add(waterLevelModifier, waterLevelModifier * hydrationLevelModifier * 2.0f);
-    }
-
-    public void drink(ItemStack stack, @Nullable LivingEntity entity) {
-        FoodProperties foodproperties = stack.getFoodProperties(entity);
-        if (foodproperties != null) {
-            add(foodproperties.nutrition(), foodproperties.saturation());
-        }
     }
 
     public void tick(Player player) {

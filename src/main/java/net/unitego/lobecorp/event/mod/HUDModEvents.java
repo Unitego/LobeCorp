@@ -13,7 +13,8 @@ import net.unitego.lobecorp.common.registry.HUDRegistry;
 public class HUDModEvents {
     //渲染自定义HUD图层
     @SubscribeEvent
-    public static void renderCustomHUDLayers(RegisterGuiLayersEvent event) {
+    public static void onRegisterGuiLayers(RegisterGuiLayersEvent event) {
+        HUDRegistry.init();
         event.registerAboveAll(HUDResource.LC_HUD, ((guiGraphics, partialTick) -> {
             for (BaseElement element : HUDRegistry.getElements()) {
                 //if (element.check()) {
