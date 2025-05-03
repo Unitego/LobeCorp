@@ -9,9 +9,6 @@ import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-/**
- * 管理所有HUD元素的注册
- */
 @OnlyIn(Dist.CLIENT)
 public final class HUDRegistry {
     private static final Set<BaseElement> ELEMENTS = new LinkedHashSet<>();

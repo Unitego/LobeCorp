@@ -7,7 +7,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.unitego.lobecorp.common.access.DataAccess;
 import net.unitego.lobecorp.common.data.SanityData;
-import net.unitego.lobecorp.common.registry.DamageRegistry;
+import net.unitego.lobecorp.common.registry.ModDamageTypes;
 import org.jetbrains.annotations.Nullable;
 
 public class CureOrHarmMobEffect extends InstantenousMobEffect {
@@ -21,7 +21,7 @@ public class CureOrHarmMobEffect extends InstantenousMobEffect {
     @Override
     public boolean applyEffectTick(LivingEntity livingEntity, int amplifier) {
         if (isHarm != livingEntity.isInvertedHealAndHarm()) {
-            livingEntity.hurt(livingEntity.damageSources().source(DamageRegistry.MYSTIC), (float) (6 << amplifier));
+            livingEntity.hurt(livingEntity.damageSources().source(ModDamageTypes.MYSTIC), (float) (6 << amplifier));
         } else {
             if (livingEntity instanceof Player player) {
                 SanityData sanityData = ((DataAccess) player).lobeCorp$getSanityData();
@@ -36,9 +36,9 @@ public class CureOrHarmMobEffect extends InstantenousMobEffect {
         if (isHarm != livingEntity.isInvertedHealAndHarm()) {
             int j = (int) (health * (double) (6 << amplifier) + 0.5);
             if (source == null) {
-                livingEntity.hurt(livingEntity.damageSources().source(DamageRegistry.MYSTIC), (float) j);
+                livingEntity.hurt(livingEntity.damageSources().source(ModDamageTypes.MYSTIC), (float) j);
             } else {
-                livingEntity.hurt(livingEntity.damageSources().source(DamageRegistry.INDIRECT_MYSTIC, source, indirectSource), (float) j);
+                livingEntity.hurt(livingEntity.damageSources().source(ModDamageTypes.INDIRECT_MYSTIC, source, indirectSource), (float) j);
             }
         } else {
             if (livingEntity instanceof Player player) {

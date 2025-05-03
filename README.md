@@ -52,4 +52,4 @@ LobeCorp制作组主要分为三个部分，分别是资源与素材、程序与
 1. **模组**
 
 * RPG-Hud:<https://www.mcmod.cn/class/5711.html>
-* AppleSkin:<https://www.mcmod.cn/class/744.html>
+* AppleSkin:<<https://www.mcmod.cn/class/744.html>

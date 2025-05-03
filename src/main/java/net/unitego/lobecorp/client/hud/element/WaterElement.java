@@ -7,10 +7,10 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.effect.MobEffects;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
-import net.unitego.lobecorp.common.access.DataAccess;
-import net.unitego.lobecorp.common.data.WaterData;
 import net.unitego.lobecorp.client.hud.BaseElement;
 import net.unitego.lobecorp.client.hud.HUDResource;
+import net.unitego.lobecorp.common.access.DataAccess;
+import net.unitego.lobecorp.common.data.WaterData;
 
 import java.util.Objects;
 

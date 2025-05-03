@@ -13,7 +13,6 @@ import java.util.Objects;
 
 @OnlyIn(Dist.CLIENT)//坐骑生命
 public class MountHealthElement extends BaseElement {
-
     @Override
     public boolean check() {//没隐藏ui&&能受伤
         return !minecraft.options.hideGui &&
