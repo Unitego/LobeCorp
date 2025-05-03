@@ -11,14 +11,11 @@ public class S2CSyncStatsHandler {
         context.enqueueWork(() -> {
             WaterData waterData = ((DataAccess) context.player()).lobeCorp$getWaterData();
             FoodData foodData = context.player().getFoodData();
-            if (S2CSyncStatsPayload.HYDRATION.equals(payload.name())) {
-                waterData.setHydration(payload.value());
-            } else if (S2CSyncStatsPayload.DESICCATION.equals(payload.name())) {
-                waterData.setDesiccation(payload.value());
-            } else if (S2CSyncStatsPayload.SATURATION.equals(payload.name())) {
-                foodData.setSaturation(payload.value());
-            } else if (S2CSyncStatsPayload.EXHAUSTION.equals(payload.name())) {
-                foodData.setExhaustion(payload.value());
+            switch (payload.name()) {
+                case S2CSyncStatsPayload.HYDRATION -> waterData.setHydration(payload.value());
+                case S2CSyncStatsPayload.DESICCATION -> waterData.setDesiccation(payload.value());
+                case S2CSyncStatsPayload.SATURATION -> foodData.setSaturation(payload.value());
+                case S2CSyncStatsPayload.EXHAUSTION -> foodData.setExhaustion(payload.value());
             }
         });
     }

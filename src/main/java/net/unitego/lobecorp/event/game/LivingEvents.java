@@ -19,10 +19,11 @@ public class LivingEvents {
     //玩家使用物品回复干渴值
     @SubscribeEvent
     public static void onLivingEntityUseItemFinish(LivingEntityUseItemEvent.Finish event) {
-        if (!(event.getEntity() instanceof Player player)) return;
-        Item item = event.getItem().getItem();
-        WaterData waterData = ((DataAccess) player).lobeCorp$getWaterData();
-        HydratingFoodLoader.get(item).ifPresent(data -> waterData.drink(data.water(), data.hydration()));
+        if (event.getEntity() instanceof Player player && !player.level().isClientSide()) {
+            Item item = event.getItem().getItem();
+            WaterData waterData = ((DataAccess) player).lobeCorp$getWaterData();
+            HydratingFoodLoader.get(item).ifPresent(data -> waterData.drink(data.water(), data.hydration()));
+        }
     }
 
     //LivingDamageEvent用这个会导致每次都先扣伤害吸收值，所以用LivingHurtEvent

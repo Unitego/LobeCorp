@@ -3,8 +3,7 @@ package net.unitego.lobecorp.gen;
 import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.common.data.LanguageProvider;
 import net.unitego.lobecorp.LobeCorp;
-import net.unitego.lobecorp.common.registry.ModAttributes;
-import net.unitego.lobecorp.common.registry.ModMobEffects;
+import net.unitego.lobecorp.common.registry.*;
 
 public class ZhCnLangDataGen extends LanguageProvider {
     public ZhCnLangDataGen(PackOutput output) {
@@ -26,5 +25,12 @@ public class ZhCnLangDataGen extends LanguageProvider {
         add(ModMobEffects.THIRST.get(), "干渴");
         add(ModMobEffects.INSTANT_SANITY.get(), "瞬间镇定");
         add(ModMobEffects.INSTANT_INJURY.get(), "瞬间损伤");
+        //物品名
+        add(ModItems.LOBE_CORP_LOGO.get(), "脑叶公司Logo");
+        add(ModItems.BLUE_LEAF.get(), "蓝叶");
+        //创造栏名
+        add(ModCreativeModeTabs.LOBE_CORP_NAME, "脑叶公司");
+        //声音名
+        add(ModSoundEvents.SWALLOW_WATER.get().getLocation().toLanguageKey(), "咽水");
     }
 }

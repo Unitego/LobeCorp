@@ -4,14 +4,13 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
-import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.unitego.lobecorp.LobeCorp;
 import net.unitego.lobecorp.common.effect.*;
 
 public class ModMobEffects {
-    private static final DeferredRegister<MobEffect> MOB_EFFECTS = DeferredRegister.create(Registries.MOB_EFFECT, LobeCorp.MOD_ID);
+    public static final DeferredRegister<MobEffect> MOB_EFFECTS = DeferredRegister.create(Registries.MOB_EFFECT, LobeCorp.MOD_ID);
 
     public static final DeferredHolder<MobEffect, MobEffect> ABSENT = MOB_EFFECTS.register("absent",
             () -> new AbsentMobEffect(MobEffectCategory.HARMFUL, 2588492));//恍惚
@@ -35,8 +34,4 @@ public class ModMobEffects {
                             4.0, AttributeModifier.Operation.ADD_VALUE));//精神提升
     public static final DeferredHolder<MobEffect, MobEffect> THIRST = MOB_EFFECTS.register("thirst",
             () -> new ThirstMobEffect(MobEffectCategory.HARMFUL, 13819490));//干渴
-
-    public static void init(IEventBus bus) {
-        MOB_EFFECTS.register(bus);
-    }
 }

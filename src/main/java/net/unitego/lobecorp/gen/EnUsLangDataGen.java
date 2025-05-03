@@ -3,8 +3,7 @@ package net.unitego.lobecorp.gen;
 import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.common.data.LanguageProvider;
 import net.unitego.lobecorp.LobeCorp;
-import net.unitego.lobecorp.common.registry.ModAttributes;
-import net.unitego.lobecorp.common.registry.ModMobEffects;
+import net.unitego.lobecorp.common.registry.*;
 
 public class EnUsLangDataGen extends LanguageProvider {
     public EnUsLangDataGen(PackOutput output) {
@@ -26,5 +25,12 @@ public class EnUsLangDataGen extends LanguageProvider {
         add(ModMobEffects.THIRST.get(), "Thirst");
         add(ModMobEffects.INSTANT_SANITY.get(), "Instant Sanity");
         add(ModMobEffects.INSTANT_INJURY.get(), "Instant Injury");
+        //物品名
+        add(ModItems.LOBE_CORP_LOGO.get(), "Lobe Corp Logo");
+        add(ModItems.BLUE_LEAF.get(), "Blue Leaf");
+        //创造栏名
+        add(ModCreativeModeTabs.LOBE_CORP_NAME, "Lobe Corp");
+        //声音名
+        add(ModSoundEvents.SWALLOW_WATER.get().getLocation().toLanguageKey(), "Swallow Water");
     }
 }

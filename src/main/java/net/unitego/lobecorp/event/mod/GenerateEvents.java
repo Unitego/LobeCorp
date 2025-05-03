@@ -8,10 +8,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 import net.unitego.lobecorp.LobeCorp;
-import net.unitego.lobecorp.gen.DamageTypeTagDataGen;
-import net.unitego.lobecorp.gen.EnUsLangDataGen;
-import net.unitego.lobecorp.gen.RegistryDataGen;
-import net.unitego.lobecorp.gen.ZhCnLangDataGen;
+import net.unitego.lobecorp.gen.*;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -33,5 +30,7 @@ public class GenerateEvents {
         generator.addProvider(true, new EnUsLangDataGen(packOutput));
         //标签文件
         generator.addProvider(true, new DamageTypeTagDataGen(packOutput, registryProvider, existingFileHelper));
+        //模型文件
+        generator.addProvider(true, new ItemModelDataGen(packOutput, existingFileHelper));
     }
 }

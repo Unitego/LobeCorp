@@ -11,6 +11,7 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.unitego.lobecorp.LobeCorp;
+import net.unitego.lobecorp.common.registry.ModItems;
 
 import java.io.Reader;
 import java.nio.file.Files;
@@ -42,7 +43,8 @@ public class HydratingFoodLoader {
                     getItemString(Items.POISONOUS_POTATO, 1, 0.01f),
                     getItemString(Items.BEETROOT, 1, 0.1f),
                     getItemString(Items.SWEET_BERRIES, 3, 0.09f),
-                    getItemString(Items.GLOW_BERRIES, 4, 0.1f)
+                    getItemString(Items.GLOW_BERRIES, 4, 0.1f),
+                    getItemString(ModItems.BLUE_LEAF.get(), 6, 1.2f)
             );
     private static final Map<Item, HydratingFood> FOODS = new HashMap<>();
 

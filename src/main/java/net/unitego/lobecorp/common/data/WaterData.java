@@ -1,11 +1,13 @@
 package net.unitego.lobecorp.common.data;
 
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.GameRules;
 import net.unitego.lobecorp.common.access.DataAccess;
 import net.unitego.lobecorp.common.registry.ModDamageTypes;
+import net.unitego.lobecorp.common.registry.ModSoundEvents;
 
 public class WaterData {
     private int waterLevel = 20;
@@ -13,6 +15,12 @@ public class WaterData {
     private float desiccationLevel;
     private int tickTimer;
     private int lastWaterLevel = 20;
+    public boolean hasDrunkStream;
+    public boolean hasDrunkRain;
+    public boolean hasDrunkCauldron;
+    private int streamTickTimer;
+    private int rainTickTimer;
+    private int cauldronTickTimer;
 
     public WaterData() {
         hydrationLevel = 5.0F;
@@ -71,6 +79,29 @@ public class WaterData {
         } else {
             tickTimer = 0;
         }
+        //喝水状态冷却时间及声音播放
+        if (hasDrunkStream) {
+            ++streamTickTimer;
+            if (streamTickTimer >= 20) {
+                player.level().playSound(null, player.blockPosition(), ModSoundEvents.SWALLOW_WATER.get(), SoundSource.PLAYERS, 1, 1);
+                streamTickTimer = 0;
+                hasDrunkStream = false;
+            }
+        } else if (hasDrunkRain) {
+            ++rainTickTimer;
+            if (rainTickTimer >= 40) {
+                player.level().playSound(null, player.blockPosition(), ModSoundEvents.SWALLOW_WATER.get(), SoundSource.PLAYERS, 1, 1);
+                rainTickTimer = 0;
+                hasDrunkRain = false;
+            }
+        } else if (hasDrunkCauldron) {
+            ++cauldronTickTimer;
+            if (cauldronTickTimer >= 20) {
+                player.level().playSound(null, player.blockPosition(), ModSoundEvents.SWALLOW_WATER.get(), SoundSource.PLAYERS, 1, 1);
+                cauldronTickTimer = 0;
+                hasDrunkCauldron = false;
+            }
+        }
     }
 
     public void readAdditionalSaveData(CompoundTag compoundTag) {
@@ -87,6 +118,10 @@ public class WaterData {
         compoundTag.putInt("waterTickTimer", tickTimer);
         compoundTag.putFloat("waterHydrationLevel", hydrationLevel);
         compoundTag.putFloat("waterDesiccationLevel", desiccationLevel);
+    }
+
+    public boolean noDrink() {
+        return !hasDrunkStream && !hasDrunkRain && !hasDrunkCauldron;
     }
 
     public int getWaterLevel() {
