@@ -11,7 +11,7 @@ import org.slf4j.Logger;
 @Mod(LobeCorp.MOD_ID)
 public class LobeCorp {
     public static final String MOD_ID = "lobecorp";
-    public static final Logger LOGGER = LogUtils.getLogger();
+    private static final Logger LOGGER = LogUtils.getLogger();
 
     public LobeCorp(IEventBus bus, ModContainer container) {
         LOGGER.info("Face the Fear, Build the Future.");

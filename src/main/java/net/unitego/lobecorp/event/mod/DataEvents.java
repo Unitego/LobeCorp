@@ -8,6 +8,7 @@ import net.unitego.lobecorp.loader.HydratingFoodLoader;
 
 @EventBusSubscriber(modid = LobeCorp.MOD_ID, bus = EventBusSubscriber.Bus.GAME)
 public class DataEvents {
+    //数据驱动
     @SubscribeEvent
     public static void onServerStarting(ServerStartingEvent event) {
         HydratingFoodLoader.load(event.getServer()).thenRun(() -> {

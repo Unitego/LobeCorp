@@ -17,11 +17,11 @@ public class HUDModEvents {
         HUDRegistry.init();
         event.registerAboveAll(HUDResource.LC_HUD, ((guiGraphics, partialTick) -> {
             for (BaseElement element : HUDRegistry.getElements()) {
-                //if (element.check()) {
-                guiGraphics.pose().pushPose();
-                element.draw(guiGraphics, partialTick, guiGraphics.guiWidth(), guiGraphics.guiHeight());
-                guiGraphics.pose().popPose();
-                //}
+                if (element.check()) {
+                    guiGraphics.pose().pushPose();
+                    element.draw(guiGraphics, partialTick, guiGraphics.guiWidth(), guiGraphics.guiHeight());
+                    guiGraphics.pose().popPose();
+                }
             }
         }));
     }

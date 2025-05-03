@@ -10,14 +10,14 @@ import net.unitego.lobecorp.common.registry.ModDamageTypes;
 import net.unitego.lobecorp.common.registry.ModSoundEvents;
 
 public class WaterData {
+    public boolean hasDrunkStream;
+    public boolean hasDrunkRain;
+    public boolean hasDrunkCauldron;
     private int waterLevel = 20;
     private float hydrationLevel;
     private float desiccationLevel;
     private int tickTimer;
     private int lastWaterLevel = 20;
-    public boolean hasDrunkStream;
-    public boolean hasDrunkRain;
-    public boolean hasDrunkCauldron;
     private int streamTickTimer;
     private int rainTickTimer;
     private int cauldronTickTimer;

@@ -10,6 +10,7 @@ import net.unitego.lobecorp.common.registry.SEDRegistry;
 
 @EventBusSubscriber(modid = LobeCorp.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
 public class AttributeEvents {
+    //给玩家增加属性
     @SubscribeEvent
     public static void onEntityAttributeModification(EntityAttributeModificationEvent event) {
         SEDRegistry.init();
