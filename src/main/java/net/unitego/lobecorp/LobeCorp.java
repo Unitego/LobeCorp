@@ -11,6 +11,7 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.client.event.RegisterGuiLayersEvent;
 
 import net.unitego.lobecorp.common.registry.*;
+import net.unitego.lobecorp.common.registry.tag.DamageTypeTagRegistry;
 import net.unitego.lobecorp.event.mod.HUDEvents;
 import org.slf4j.Logger;
 
@@ -26,6 +27,7 @@ public class LobeCorp {
         AttributeRegistry.init(bus);
         EffectRegistry.init(bus);
         AttachmentTypeRegistry.init(bus);
+        DamageTypeRegistry.init(bus);
 
 //        bus.addListener(NetworkRegistry::init);
 //        NeoForge.EVENT_BUS.register(S2CSyncIconSender.class);
