@@ -7,8 +7,6 @@ import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
 import net.unitego.lobecorp.common.registry.*;
 
-import net.unitego.lobecorp.common.registry.tag.DamageTypeTagRegistry;
-
 import org.slf4j.Logger;
 
 @Mod(LobeCorp.MOD_ID)
