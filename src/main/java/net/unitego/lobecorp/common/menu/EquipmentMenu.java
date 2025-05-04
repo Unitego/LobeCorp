@@ -24,7 +24,25 @@ public class EquipmentMenu extends AbstractContainerMenu {
 
     @Override
     public @NotNull ItemStack quickMoveStack(@NotNull Player player, int index) {
-        return ItemStack.EMPTY;
+        Slot slot = slots.get(index);
+        if (!slot.hasItem()) return ItemStack.EMPTY;
+        ItemStack original = slot.getItem();
+        ItemStack copy = original.copy();
+        if (index < 27) {
+            if (!moveItemStackTo(original, 27, 36, false)) {
+                return ItemStack.EMPTY;
+            }
+        } else if (index < 36) {
+            if (!moveItemStackTo(original, 0, 27, false)) {
+                return ItemStack.EMPTY;
+            }
+        }
+        if (original.isEmpty()) {
+            slot.set(ItemStack.EMPTY);
+        } else {
+            slot.setChanged();
+        }
+        return copy;
     }
 
     @Override

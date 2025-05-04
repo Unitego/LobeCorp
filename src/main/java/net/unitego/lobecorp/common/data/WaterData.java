@@ -2,7 +2,6 @@ package net.unitego.lobecorp.common.data;
 
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.GameRules;
@@ -10,6 +9,7 @@ import net.unitego.lobecorp.common.access.DataAccess;
 import net.unitego.lobecorp.common.network.sender.S2CDrinkResetSender;
 import net.unitego.lobecorp.common.registry.ModDamageTypes;
 import net.unitego.lobecorp.common.registry.ModSoundEvents;
+import net.unitego.lobecorp.common.util.LobeCorpUtils;
 
 public class WaterData {
     public boolean hasDrunkWater;
@@ -82,7 +82,7 @@ public class WaterData {
         if (hasDrunkWater) {
             --cooldownTickTimer;
             if (cooldownTickTimer == 0) {
-                serverPlayer.level().playSound(null, serverPlayer.blockPosition(), ModSoundEvents.SWALLOW_WATER_SOUND.get(), SoundSource.PLAYERS, 1, 1);
+                LobeCorpUtils.playServerSound(serverPlayer, ModSoundEvents.SWALLOW_WATER_SOUND.get());
                 hasDrunkWater = false;
                 S2CDrinkResetSender.send(serverPlayer);
             }

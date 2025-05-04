@@ -30,6 +30,12 @@ public class EquipmentScreen extends EffectRenderingInventoryScreen<EquipmentMen
     }
 
     @Override
+    public void render(@NotNull GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
+        super.render(guiGraphics, mouseX, mouseY, partialTick);
+        renderTooltip(guiGraphics, mouseX, mouseY);
+    }
+
+    @Override
     protected void renderLabels(@NotNull GuiGraphics guiGraphics, int mouseX, int mouseY) {
         int x = titleLabelX + 73;
         int y = titleLabelY + 60;
@@ -69,11 +75,9 @@ public class EquipmentScreen extends EffectRenderingInventoryScreen<EquipmentMen
     }
 
     @Override
-    protected void renderBg(GuiGraphics guiGraphics, float partialTick, int mouseX, int mouseY) {
-        int x = leftPos;
-        int y = topPos;
-        guiGraphics.blit(EQUIPMENT_BACKGROUND, x, y, 0, 0, imageWidth, imageHeight);
-        InventoryScreen.renderEntityInInventoryFollowsMouse(guiGraphics, x - 8, y + 8, x + 75, y + 78,
+    protected void renderBg(@NotNull GuiGraphics guiGraphics, float partialTick, int mouseX, int mouseY) {
+        guiGraphics.blit(EQUIPMENT_BACKGROUND, leftPos, topPos, 0, 0, imageWidth, imageHeight);
+        InventoryScreen.renderEntityInInventoryFollowsMouse(guiGraphics, leftPos - 8, topPos + 8, leftPos + 75, topPos + 78,
                 30, 0.0625F, mouseX, mouseY, Objects.requireNonNull(Objects.requireNonNull(minecraft).player));
     }
 

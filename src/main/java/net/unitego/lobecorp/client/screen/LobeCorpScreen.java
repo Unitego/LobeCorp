@@ -68,7 +68,7 @@ public class LobeCorpScreen extends Screen {
                     }
                 }
 
-                box.setMaxLength(6);
+                box.setMaxLength(4);
                 addRenderableWidget(box);
                 inputBoxes[i] = box;
             }

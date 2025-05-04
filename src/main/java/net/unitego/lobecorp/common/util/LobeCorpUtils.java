@@ -1,5 +1,8 @@
 package net.unitego.lobecorp.common.util;
 
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundSource;
 import net.unitego.lobecorp.LobeCorp;
 
 /**
@@ -18,5 +21,9 @@ public class LobeCorpUtils {
 
     private static String info(String string) {
         return LobeCorp.MOD_ID + ".info." + string;
+    }
+
+    public static void playServerSound(ServerPlayer serverPlayer, SoundEvent soundEvent) {
+        serverPlayer.level().playSound(null, serverPlayer.blockPosition(), soundEvent, SoundSource.PLAYERS, 1, 1);
     }
 }
