@@ -1,4 +1,4 @@
-package net.unitego.lobecorp.util;
+package net.unitego.lobecorp.common.util;
 
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.LivingEntity;

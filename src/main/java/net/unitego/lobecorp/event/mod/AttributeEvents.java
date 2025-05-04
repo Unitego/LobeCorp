@@ -16,5 +16,9 @@ public class AttributeEvents {
         SEDRegistry.init();
         event.add(EntityType.PLAYER, ModAttributes.MAX_SANITY);
         event.add(EntityType.PLAYER, ModAttributes.MAX_ASSIMILATION);
+        event.add(EntityType.PLAYER, ModAttributes.WORK_SUCCESS);
+        event.add(EntityType.PLAYER, ModAttributes.WORK_VELOCITY);
+        event.add(EntityType.PLAYER, ModAttributes.ATTACK_VELOCITY);
+        event.add(EntityType.PLAYER, ModAttributes.MOVE_VELOCITY);
     }
 }

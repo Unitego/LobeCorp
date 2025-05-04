@@ -11,8 +11,8 @@ import net.neoforged.neoforge.event.entity.living.LivingHurtEvent;
 import net.unitego.lobecorp.LobeCorp;
 import net.unitego.lobecorp.common.access.DataAccess;
 import net.unitego.lobecorp.common.data.WaterData;
+import net.unitego.lobecorp.common.util.DamageUtils;
 import net.unitego.lobecorp.loader.HydratingFoodLoader;
-import net.unitego.lobecorp.util.DamageUtils;
 
 @EventBusSubscriber(modid = LobeCorp.MOD_ID, bus = EventBusSubscriber.Bus.GAME)
 public class LivingEvents {

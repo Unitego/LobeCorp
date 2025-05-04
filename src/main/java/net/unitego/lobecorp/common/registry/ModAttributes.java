@@ -12,6 +12,10 @@ public class ModAttributes {
 
     public static final DeferredHolder<Attribute, Attribute> MAX_SANITY = register("max_sanity", 20.0, 1.0, 1024.0);
     public static final DeferredHolder<Attribute, Attribute> MAX_ASSIMILATION = register("max_assimilation", 0.0, 0.0, 2048.0);
+    public static final DeferredHolder<Attribute, Attribute> WORK_SUCCESS = register("work_success", 20.0, 1.0, 1024.0);
+    public static final DeferredHolder<Attribute, Attribute> WORK_VELOCITY = register("work_velocity", 20.0, 1.0, 1024.0);
+    public static final DeferredHolder<Attribute, Attribute> ATTACK_VELOCITY = register("attack_velocity", 20.0, 1.0, 1024.0);
+    public static final DeferredHolder<Attribute, Attribute> MOVE_VELOCITY = register("move_velocity", 20.0, 1.0, 1024.0);
 
     private static DeferredHolder<Attribute, Attribute> register(String name, double defaultValue, double min, double max) {
         return ATTRIBUTES.register(name, location -> new RangedAttribute(

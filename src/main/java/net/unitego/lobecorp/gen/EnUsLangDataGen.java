@@ -3,6 +3,7 @@ package net.unitego.lobecorp.gen;
 import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.common.data.LanguageProvider;
 import net.unitego.lobecorp.LobeCorp;
+import net.unitego.lobecorp.common.data.StaffData;
 import net.unitego.lobecorp.common.registry.*;
 
 public class EnUsLangDataGen extends LanguageProvider {
@@ -15,6 +16,10 @@ public class EnUsLangDataGen extends LanguageProvider {
         //属性名
         add(ModAttributes.MAX_SANITY.get().getDescriptionId(), "Max Sanity");
         add(ModAttributes.MAX_ASSIMILATION.get().getDescriptionId(), "Max Assimilation");
+        add(ModAttributes.WORK_SUCCESS.get().getDescriptionId(), "Work Success");
+        add(ModAttributes.WORK_VELOCITY.get().getDescriptionId(), "Work Velocity");
+        add(ModAttributes.ATTACK_VELOCITY.get().getDescriptionId(), "Attack Velocity");
+        add(ModAttributes.MOVE_VELOCITY.get().getDescriptionId(), "Move Velocity");
         //效果名
         add(ModMobEffects.ABSENT.get(), "Absent");
         add(ModMobEffects.ASSIMILATION.get(), "Assimilation");
@@ -32,5 +37,33 @@ public class EnUsLangDataGen extends LanguageProvider {
         add(ModCreativeModeTabs.LOBE_CORP_NAME, "Lobe Corp");
         //声音名
         add(ModSoundEvents.SWALLOW_WATER.get().getLocation().toLanguageKey(), "Swallow Water");
+        //按键名
+        add(ModKeyMappings.CATEGORIES_LOBE_CORP, "Lobe Corp");
+        add(ModKeyMappings.TOGGLE_EQUIPMENT.get().getName(), "Open/Close Equipment");
+        //界面名
+        add(ModMenus.CONTAINER_LOBECORP_EQUIPMENT, "Equipment");
+        //死亡信息
+        add(ModDamageTypes.DEATH_ATTACK_DRY, "%1$s dried to death");
+        add(ModDamageTypes.DEATH_ATTACK_DRY_PLAYER, "%1$s dried to death whilst fighting %2$s");
+        add(ModDamageTypes.DEATH_ATTACK_INSANE, "%1$s died due to insanity");
+        add(ModDamageTypes.DEATH_ATTACK_INSANE_PLAYER, "%1$s experienced insanity to death whilst fighting %2$s");
+        add(ModDamageTypes.DEATH_ATTACK_INDIRECT_MYSTIC, "%1$s was killed by %2$s using mystic");
+        add(ModDamageTypes.DEATH_ATTACK_INDIRECT_MYSTIC_ITEM, "%1$s was killed by %2$s using %3$s");
+        add(ModDamageTypes.DEATH_ATTACK_MYSTIC, "%1$s was killed by mystic");
+        add(ModDamageTypes.DEATH_ATTACK_MYSTIC_PLAYER, "%1$s was killed by mystic whilst trying to escape %2$s");
+        add(ModDamageTypes.DEATH_ATTACK_RED, "%2$s caused %1$s died from Physical Shattering");
+        add(ModDamageTypes.DEATH_ATTACK_RED_ITEM, "%2$s using %3$s caused %1$s died from Physical Shattering");
+        add(ModDamageTypes.DEATH_ATTACK_WHITE, "%2$s caused %1$s died from Mental Collapse");
+        add(ModDamageTypes.DEATH_ATTACK_WHITE_ITEM, "%2$s using %3$s caused %1$s died from Mental Collapse");
+        add(ModDamageTypes.DEATH_ATTACK_BLACK, "%2$s caused %1$s died from Erosion Penetration");
+        add(ModDamageTypes.DEATH_ATTACK_BLACK_ITEM, "%2$s using %3$s caused %1$s died from Erosion Penetration");
+        add(ModDamageTypes.DEATH_ATTACK_PALE, "%2$s caused %1$s died from Soul Erasure");
+        add(ModDamageTypes.DEATH_ATTACK_PALE_ITEM, "%2$s using %3$s caused %1$s died from Soul Erasure");
+        //脑叶公司
+        add(StaffData.STAFF_RANK, "Staff Rank");
+        add(StaffData.STAFF_FORTITUDE, "Fortitude");
+        add(StaffData.STAFF_PRUDENCE, "Prudence");
+        add(StaffData.STAFF_TEMPERANCE, "Temperance");
+        add(StaffData.STAFF_JUSTICE, "Justice");
     }
 }

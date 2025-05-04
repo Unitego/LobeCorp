@@ -40,7 +40,7 @@ public class WaterElement extends BaseElement {
         int offset = (int) (ratio * width);
 
         //渲染消耗度条
-        guiGraphics.blit(HUDResource.GAP, x, y, 0, 0, offset, size, width, size);
+        guiGraphics.blit(HUDResource.GAP_FULL, x, y, 0, 0, offset, size, width, size);
 
         //渲染干渴条
         for (int water = 0; water < 10; water++) {
@@ -72,7 +72,7 @@ public class WaterElement extends BaseElement {
         }
 
         //渲染饱水度条
-        int hydrationCount = (int) Math.ceil(hydrationLevel / 2.0F);
+        int hydrationCount = Mth.ceil(hydrationLevel / 2.0F);
         for (int hydration = 0; hydration < hydrationCount; hydration++) {
             float value = (hydrationLevel / 2.0F) - hydration;
             int posX = x + hydration * (size - 1);
