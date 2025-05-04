@@ -1,8 +1,8 @@
 package net.unitego.lobecorp.common.item;
 
 import net.minecraft.ChatFormatting;
-import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
@@ -11,7 +11,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
-import net.unitego.lobecorp.client.screen.LobeCorpScreen;
+import net.unitego.lobecorp.common.network.sender.S2CUseLogoSender;
 import net.unitego.lobecorp.common.util.LobeCorpUtils;
 import org.jetbrains.annotations.NotNull;
 
@@ -24,7 +24,9 @@ public class LobeCorpLogo extends Item {
 
     @Override
     public @NotNull InteractionResultHolder<ItemStack> use(@NotNull Level level, @NotNull Player player, @NotNull InteractionHand usedHand) {
-        if (level.isClientSide) Minecraft.getInstance().setScreen(new LobeCorpScreen());
+        if (!level.isClientSide && player instanceof ServerPlayer serverPlayer) {
+            S2CUseLogoSender.send(serverPlayer);
+        }
         return InteractionResultHolder.success(player.getItemInHand(usedHand));
     }
 

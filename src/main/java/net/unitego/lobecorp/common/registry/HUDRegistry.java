@@ -21,6 +21,7 @@ public final class HUDRegistry {
         register(new AirElement());
         register(new ArmorElement());
         register(new AvatarElement());
+        register(new EntityInspectElement());
         register(new ExperienceElement());
         register(new FoodElement());
         register(new HealthElement());

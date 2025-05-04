@@ -10,6 +10,8 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
 import net.unitego.lobecorp.common.network.sender.C2SLobeCorpSender;
 import net.unitego.lobecorp.common.registry.ModAttributes;
 import net.unitego.lobecorp.common.util.LobeCorpUtils;
@@ -17,6 +19,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Arrays;
 
+@OnlyIn(Dist.CLIENT)
 public class LobeCorpScreen extends Screen {
     public static final Attribute[] ATTRIBUTES = {
             Attributes.MAX_HEALTH.value(), ModAttributes.MAX_SANITY.value(),
