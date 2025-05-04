@@ -3,8 +3,8 @@ package net.unitego.lobecorp.gen;
 import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.common.data.LanguageProvider;
 import net.unitego.lobecorp.LobeCorp;
-import net.unitego.lobecorp.common.data.StaffData;
 import net.unitego.lobecorp.common.registry.*;
+import net.unitego.lobecorp.common.util.LobeCorpUtils;
 
 public class EnUsLangDataGen extends LanguageProvider {
     public EnUsLangDataGen(PackOutput output) {
@@ -34,9 +34,9 @@ public class EnUsLangDataGen extends LanguageProvider {
         add(ModItems.LOBE_CORP_LOGO.get(), "Lobe Corp Logo");
         add(ModItems.BLUE_LEAF.get(), "Blue Leaf");
         //创造栏名
-        add(ModCreativeModeTabs.LOBE_CORP_NAME, "Lobe Corp");
+        add(ModCreativeModeTabs.LOBE_CORP_TAB_NAME, "Lobe Corp");
         //声音名
-        add(ModSoundEvents.SWALLOW_WATER.get().getLocation().toLanguageKey(), "Swallow Water");
+        add(ModSoundEvents.SWALLOW_WATER_SOUND.get().getLocation().toLanguageKey(), "Swallow Water");
         //按键名
         add(ModKeyMappings.CATEGORIES_LOBE_CORP, "Lobe Corp");
         add(ModKeyMappings.TOGGLE_EQUIPMENT.get().getName(), "Open/Close Equipment");
@@ -60,10 +60,13 @@ public class EnUsLangDataGen extends LanguageProvider {
         add(ModDamageTypes.DEATH_ATTACK_PALE, "%2$s caused %1$s died from Soul Erasure");
         add(ModDamageTypes.DEATH_ATTACK_PALE_ITEM, "%2$s using %3$s caused %1$s died from Soul Erasure");
         //脑叶公司
-        add(StaffData.STAFF_RANK, "Staff Rank");
-        add(StaffData.STAFF_FORTITUDE, "Fortitude");
-        add(StaffData.STAFF_PRUDENCE, "Prudence");
-        add(StaffData.STAFF_TEMPERANCE, "Temperance");
-        add(StaffData.STAFF_JUSTICE, "Justice");
+        add(LobeCorpUtils.MOTTO, "Face the Fear, Build the Future");
+        add(LobeCorpUtils.CONFIRM, "Confirm");
+        add(LobeCorpUtils.INVALID_VALUE, "Invalid Input，please check the values.");
+        add(LobeCorpUtils.STAFF_RANK, "Staff Rank");
+        add(LobeCorpUtils.STAFF_FORTITUDE, "Fortitude");
+        add(LobeCorpUtils.STAFF_PRUDENCE, "Prudence");
+        add(LobeCorpUtils.STAFF_TEMPERANCE, "Temperance");
+        add(LobeCorpUtils.STAFF_JUSTICE, "Justice");
     }
 }

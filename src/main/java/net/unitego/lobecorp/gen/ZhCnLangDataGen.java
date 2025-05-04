@@ -3,8 +3,8 @@ package net.unitego.lobecorp.gen;
 import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.common.data.LanguageProvider;
 import net.unitego.lobecorp.LobeCorp;
-import net.unitego.lobecorp.common.data.StaffData;
 import net.unitego.lobecorp.common.registry.*;
+import net.unitego.lobecorp.common.util.LobeCorpUtils;
 
 public class ZhCnLangDataGen extends LanguageProvider {
     public ZhCnLangDataGen(PackOutput output) {
@@ -34,9 +34,9 @@ public class ZhCnLangDataGen extends LanguageProvider {
         add(ModItems.LOBE_CORP_LOGO.get(), "脑叶公司Logo");
         add(ModItems.BLUE_LEAF.get(), "蓝叶");
         //创造栏名
-        add(ModCreativeModeTabs.LOBE_CORP_NAME, "脑叶公司");
+        add(ModCreativeModeTabs.LOBE_CORP_TAB_NAME, "脑叶公司");
         //声音名
-        add(ModSoundEvents.SWALLOW_WATER.get().getLocation().toLanguageKey(), "咽水");
+        add(ModSoundEvents.SWALLOW_WATER_SOUND.get().getLocation().toLanguageKey(), "咽水");
         //按键名
         add(ModKeyMappings.CATEGORIES_LOBE_CORP, "脑叶公司");
         add(ModKeyMappings.TOGGLE_EQUIPMENT.get().getName(), "开启/关闭 装备");
@@ -60,10 +60,13 @@ public class ZhCnLangDataGen extends LanguageProvider {
         add(ModDamageTypes.DEATH_ATTACK_PALE, "%2$s致使%1$s死于灵魂削除");
         add(ModDamageTypes.DEATH_ATTACK_PALE_ITEM, "%2$s使用%3$s致使%1$s死于灵魂削除");
         //脑叶公司
-        add(StaffData.STAFF_RANK, "职员等级");
-        add(StaffData.STAFF_FORTITUDE, "勇气");
-        add(StaffData.STAFF_PRUDENCE, "谨慎");
-        add(StaffData.STAFF_TEMPERANCE, "自律");
-        add(StaffData.STAFF_JUSTICE, "正义");
+        add(LobeCorpUtils.MOTTO, "直面恐惧，创造未来");
+        add(LobeCorpUtils.CONFIRM, "确认");
+        add(LobeCorpUtils.INVALID_VALUE, "输入无效，请检查输入值。");
+        add(LobeCorpUtils.STAFF_RANK, "职员等级");
+        add(LobeCorpUtils.STAFF_FORTITUDE, "勇气");
+        add(LobeCorpUtils.STAFF_PRUDENCE, "谨慎");
+        add(LobeCorpUtils.STAFF_TEMPERANCE, "自律");
+        add(LobeCorpUtils.STAFF_JUSTICE, "正义");
     }
 }

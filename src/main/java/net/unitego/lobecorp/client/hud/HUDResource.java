@@ -8,7 +8,7 @@ import net.unitego.lobecorp.LobeCorp;
 //HUD元素资源
 @OnlyIn(Dist.CLIENT)
 public final class HUDResource {
-    public static final ResourceLocation LC_HUD = LobeCorp.rl("lc_hud");
+    public static final ResourceLocation LOBE_CORP_HUD = LobeCorp.rl("lobe_corp_hud");
     //纹理路径
     public static final ResourceLocation GAP_FULL = LobeCorp.rl("textures/gui/sprites/hud/gap_full.png");
     public static final ResourceLocation ABSORPTION_FULL_SPRITE = LobeCorp.rl("hud/absorption_full");

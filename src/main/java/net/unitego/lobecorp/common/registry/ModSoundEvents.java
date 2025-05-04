@@ -9,7 +9,7 @@ import net.unitego.lobecorp.LobeCorp;
 public class ModSoundEvents {
     public static final DeferredRegister<SoundEvent> SOUND_EVENTS = DeferredRegister.create(Registries.SOUND_EVENT, LobeCorp.MOD_ID);
 
-    public static final DeferredHolder<SoundEvent, SoundEvent> SWALLOW_WATER = register("swallow_water");
+    public static final DeferredHolder<SoundEvent, SoundEvent> SWALLOW_WATER_SOUND = register("swallow_water_sound");
 
     private static DeferredHolder<SoundEvent, SoundEvent> register(String name) {
         return SOUND_EVENTS.register(name, () -> SoundEvent.createVariableRangeEvent(LobeCorp.rl(name)));

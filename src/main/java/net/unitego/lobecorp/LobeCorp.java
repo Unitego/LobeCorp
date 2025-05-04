@@ -14,13 +14,13 @@ public class LobeCorp {
     private static final Logger LOGGER = LogUtils.getLogger();
 
     public LobeCorp(IEventBus bus, ModContainer container) {
-        LOGGER.info("Face the Fear, Build the Future.");
+        LOGGER.info("Unitego.");
 
         ModAttributes.ATTRIBUTES.register(bus);
-        ModCreativeModeTabs.CREATIVE_MODE_TAB.register(bus);
+        ModCreativeModeTabs.CREATIVE_MODE_TABS.register(bus);
         ModItems.ITEMS.register(bus);
-        ModMobEffects.MOB_EFFECTS.register(bus);
         ModMenus.MENUS.register(bus);
+        ModMobEffects.MOB_EFFECTS.register(bus);
         ModSoundEvents.SOUND_EVENTS.register(bus);
     }
 

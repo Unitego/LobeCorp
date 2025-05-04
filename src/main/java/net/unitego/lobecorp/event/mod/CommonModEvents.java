@@ -15,30 +15,32 @@ import net.unitego.lobecorp.common.network.handler.*;
 import net.unitego.lobecorp.common.network.payload.*;
 import net.unitego.lobecorp.common.registry.ModAttributes;
 import net.unitego.lobecorp.common.registry.SEDRegistry;
+import net.unitego.lobecorp.common.util.LobeCorpUtils;
 import net.unitego.lobecorp.gen.*;
 
 import java.util.concurrent.CompletableFuture;
 
 @EventBusSubscriber(modid = LobeCorp.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
 public class CommonModEvents {
-    public static final String NETWORK_VERSION = "1.0.0";
-
     //注册网络包
     @SubscribeEvent
     public static void onRegisterPayloadHandlers(RegisterPayloadHandlersEvent event) {
-        event.registrar(NETWORK_VERSION).playToServer(
+        event.registrar(LobeCorpUtils.NETWORK_VERSION).playToServer(
                 C2SDrinkWaterPayload.TYPE, C2SDrinkWaterPayload.STREAM_CODEC, C2SDrinkWaterHandler::handle
         );
-        event.registrar(NETWORK_VERSION).playToServer(
+        event.registrar(LobeCorpUtils.NETWORK_VERSION).playToServer(
                 C2SOpenEquipmentPayload.TYPE, C2SOpenEquipmentPayload.STREAM_CODEC, C2SOpenEquipmentHandler::handle
         );
-        event.registrar(NETWORK_VERSION).playToClient(
+        event.registrar(LobeCorpUtils.NETWORK_VERSION).playToServer(
+                C2SLobeCorpPayload.TYPE, C2SLobeCorpPayload.STREAM_CODEC, C2SLobeCorpHandler::handle
+        );
+        event.registrar(LobeCorpUtils.NETWORK_VERSION).playToClient(
                 S2CDrinkResetPayload.TYPE, S2CDrinkResetPayload.STREAM_CODEC, S2CDrinkResetHandler::handle
         );
-        event.registrar(NETWORK_VERSION).playToClient(
+        event.registrar(LobeCorpUtils.NETWORK_VERSION).playToClient(
                 S2CSyncStatsPayload.TYPE, S2CSyncStatsPayload.STREAM_CODEC, S2CSyncStatsHandler::handle
         );
-        event.registrar(NETWORK_VERSION).playToClient(
+        event.registrar(LobeCorpUtils.NETWORK_VERSION).playToClient(
                 S2CSetSanityPayload.TYPE, S2CSetSanityPayload.STREAM_CODEC, S2CSetSanityHandler::handle
         );
     }
@@ -63,7 +65,6 @@ public class CommonModEvents {
         //模型文件
         generator.addProvider(true, new ItemModelDataGen(packOutput, existingFileHelper));
     }
-
 
     //给玩家增加属性
     @SubscribeEvent

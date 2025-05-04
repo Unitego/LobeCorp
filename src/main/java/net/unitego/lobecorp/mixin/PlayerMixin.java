@@ -4,12 +4,16 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ai.attributes.AttributeInstance;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.unitego.lobecorp.common.access.DataAccess;
 import net.unitego.lobecorp.common.data.SanityData;
 import net.unitego.lobecorp.common.data.StaffData;
 import net.unitego.lobecorp.common.data.WaterData;
+import net.unitego.lobecorp.common.registry.ModAttributes;
 import net.unitego.lobecorp.common.registry.SEDRegistry;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
@@ -27,6 +31,10 @@ public abstract class PlayerMixin extends LivingEntity implements DataAccess {
     private final SanityData lobeCorp$sanityData = new SanityData(lobeCorp$player);
     @Unique
     private final StaffData lobeCorp$staffData = new StaffData(lobeCorp$player);
+    @Unique
+    private double lobeCorp$lastAttackVelocity = -1;
+    @Unique
+    private double lobeCorp$lastMoveVelocity = -1;
 
     protected PlayerMixin(EntityType<? extends LivingEntity> entityType, Level level) {
         super(entityType, level);
@@ -61,10 +69,39 @@ public abstract class PlayerMixin extends LivingEntity implements DataAccess {
         lobeCorp$waterData.tick(lobeCorp$player);
     }
 
+    //让脑叶公司的攻击速率和移动速率去一定方式的修饰原版的攻击速度和移动速度
+    @Inject(method = "aiStep", at = @At(value = "HEAD"))
+    private void aiStepMixin1(CallbackInfo ci) {
+        if (lobeCorp$player.level().isClientSide) return;
+        StaffData staffData = ((DataAccess) lobeCorp$player).lobeCorp$getStaffData();
+        double attackVelocity = staffData.getAttackVelocity();
+        double moveVelocity = staffData.getMoveVelocity();
+        //修改原版攻击速度
+        AttributeInstance attackSpeed = lobeCorp$player.getAttribute(Attributes.ATTACK_SPEED);
+        if (attackVelocity != lobeCorp$lastAttackVelocity && attackSpeed != null) {
+            AttributeModifier modifier = attackSpeed.getModifier(ModAttributes.ATTACK_VELOCITY_MODIFIER_ID);
+            if (modifier != null) attackSpeed.removeModifier(modifier);
+            attackSpeed.addPermanentModifier(new AttributeModifier(ModAttributes.ATTACK_VELOCITY_MODIFIER_ID,
+                    "LobeCorp Attack Velocity Modifier",
+                    (attackVelocity * 0.2f) / 100, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+            lobeCorp$lastAttackVelocity = attackVelocity;
+        }
+        // 修改原版移动速度
+        AttributeInstance movementSpeed = lobeCorp$player.getAttribute(Attributes.MOVEMENT_SPEED);
+        if (moveVelocity != lobeCorp$lastMoveVelocity && movementSpeed != null) {
+            AttributeModifier modifier = movementSpeed.getModifier(ModAttributes.MOVE_VELOCITY_MODIFIER_ID);
+            if (modifier != null) movementSpeed.removeModifier(modifier);
+            movementSpeed.addPermanentModifier(new AttributeModifier(ModAttributes.MOVE_VELOCITY_MODIFIER_ID,
+                    "LobeCorp Move Velocity Modifier",
+                    (moveVelocity * 0.2f) / 100, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+            lobeCorp$lastMoveVelocity = moveVelocity;
+        }
+    }
+
     //使精神值和干渴值能在和平模式且游戏规则自然恢复启用下回复
     @Inject(method = "aiStep", at = @At(value = "INVOKE",
             target = "Lnet/minecraft/world/entity/player/Player;getHealth()F", ordinal = 0))
-    private void aiStepMixin(CallbackInfo ci) {
+    private void aiStepMixin2(CallbackInfo ci) {
         if (lobeCorp$sanityData.getSanity() < lobeCorp$sanityData.getMaxSanity() && lobeCorp$player.tickCount % 20 == 0) {
             lobeCorp$sanityData.cure(1.0F);
         }

@@ -32,7 +32,7 @@ public class ClientModEvents {
     @SubscribeEvent
     public static void onRegisterGuiLayers(RegisterGuiLayersEvent event) {
         HUDRegistry.init();
-        event.registerAboveAll(HUDResource.LC_HUD, ((guiGraphics, partialTick) -> {
+        event.registerAboveAll(HUDResource.LOBE_CORP_HUD, ((guiGraphics, partialTick) -> {
             for (BaseElement element : HUDRegistry.getElements()) {
                 if (element.check()) {
                     guiGraphics.pose().pushPose();

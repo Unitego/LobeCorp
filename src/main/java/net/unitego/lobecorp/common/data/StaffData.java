@@ -9,11 +9,6 @@ import java.util.Objects;
 
 //职员数据
 public class StaffData {
-    public static final String STAFF_RANK = "lobecorp.info.staff_rank";//职员等级
-    public static final String STAFF_FORTITUDE = "lobecorp.info.staff_fortitude";//勇气
-    public static final String STAFF_PRUDENCE = "lobecorp.info.staff_prudence";//谨慎
-    public static final String STAFF_TEMPERANCE = "lobecorp.info.staff_temperance";//自律
-    public static final String STAFF_JUSTICE = "lobecorp.info.staff_justice";//正义
     private final Player player;
 
     public StaffData(Player player) {
@@ -46,68 +41,68 @@ public class StaffData {
         };
     }
 
-    public int getMaxHealth() {
-        return (int) Objects.requireNonNull(player.getAttribute(Attributes.MAX_HEALTH)).getValue();
+    public double getMaxHealth() {
+        return Objects.requireNonNull(player.getAttribute(Attributes.MAX_HEALTH)).getValue();
     }
 
-    public void setMaxHealth(int maxHealth) {
+    public void setMaxHealth(double maxHealth) {
         Objects.requireNonNull(player.getAttribute(Attributes.MAX_HEALTH)).setBaseValue(maxHealth);
     }
 
-    public int getMaxSanity() {
-        return (int) Objects.requireNonNull(player.getAttribute(ModAttributes.MAX_SANITY)).getValue();
+    public double getMaxSanity() {
+        return Objects.requireNonNull(player.getAttribute(ModAttributes.MAX_SANITY)).getValue();
     }
 
-    public void setMaxSanity(int maxSanity) {
+    public void setMaxSanity(double maxSanity) {
         Objects.requireNonNull(player.getAttribute(ModAttributes.MAX_SANITY)).setBaseValue(maxSanity);
     }
 
-    public int getWorkSuccess() {
-        return (int) Objects.requireNonNull(player.getAttribute(ModAttributes.WORK_SUCCESS)).getValue();
+    public double getWorkSuccess() {
+        return Objects.requireNonNull(player.getAttribute(ModAttributes.WORK_SUCCESS)).getValue();
     }
 
-    public void setWorkSuccess(int workSuccess) {
+    public void setWorkSuccess(double workSuccess) {
         Objects.requireNonNull(player.getAttribute(ModAttributes.WORK_SUCCESS)).setBaseValue(workSuccess);
     }
 
-    public int getWorkVelocity() {
-        return (int) Objects.requireNonNull(player.getAttribute(ModAttributes.WORK_VELOCITY)).getValue();
+    public double getWorkVelocity() {
+        return Objects.requireNonNull(player.getAttribute(ModAttributes.WORK_VELOCITY)).getValue();
     }
 
-    public void setWorkVelocity(int workVelocity) {
+    public void setWorkVelocity(double workVelocity) {
         Objects.requireNonNull(player.getAttribute(ModAttributes.WORK_VELOCITY)).setBaseValue(workVelocity);
     }
 
-    public int getAttackVelocity() {
-        return (int) Objects.requireNonNull(player.getAttribute(ModAttributes.ATTACK_VELOCITY)).getValue();
+    public double getAttackVelocity() {
+        return Objects.requireNonNull(player.getAttribute(ModAttributes.ATTACK_VELOCITY)).getValue();
     }
 
-    public void setAttackVelocity(int attackVelocity) {
+    public void setAttackVelocity(double attackVelocity) {
         Objects.requireNonNull(player.getAttribute(ModAttributes.ATTACK_VELOCITY)).setBaseValue(attackVelocity);
     }
 
-    public int getMoveVelocity() {
-        return (int) Objects.requireNonNull(player.getAttribute(ModAttributes.MOVE_VELOCITY)).getValue();
+    public double getMoveVelocity() {
+        return Objects.requireNonNull(player.getAttribute(ModAttributes.MOVE_VELOCITY)).getValue();
     }
 
-    public void setMoveVelocity(int moveVelocity) {
+    public void setMoveVelocity(double moveVelocity) {
         Objects.requireNonNull(player.getAttribute(ModAttributes.MOVE_VELOCITY)).setBaseValue(moveVelocity);
     }
 
     public StaffRank getJusticeRank() {
-        return calculateVirtueRank((getAttackVelocity() + getMoveVelocity()) / 2);
+        return calculateVirtueRank((int) ((getAttackVelocity() + getMoveVelocity()) / 2));
     }
 
     public StaffRank getTemperanceRank() {
-        return calculateVirtueRank((getWorkSuccess() + getWorkVelocity()) / 2);
+        return calculateVirtueRank((int) ((getWorkSuccess() + getWorkVelocity()) / 2));
     }
 
     public StaffRank getPrudenceRank() {
-        return calculateVirtueRank(getMaxSanity());
+        return calculateVirtueRank((int) getMaxSanity());
     }
 
     public StaffRank getFortitudeRank() {
-        return calculateVirtueRank(getMaxHealth());
+        return calculateVirtueRank((int) getMaxHealth());
     }
 
     public StaffRank getStaffRank() {

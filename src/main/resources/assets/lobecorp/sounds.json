@@ -1,8 +1,8 @@
 {
-  "swallow_water": {
-    "subtitle": "lobecorp.swallow_water",
+  "swallow_water_sound": {
+    "subtitle": "lobecorp.swallow_water_sound",
     "sounds": [
-      "lobecorp:swallow_water"
+      "lobecorp:swallow_water_sound"
     ]
   }
 }

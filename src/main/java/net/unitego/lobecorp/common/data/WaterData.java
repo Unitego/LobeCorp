@@ -82,7 +82,7 @@ public class WaterData {
         if (hasDrunkWater) {
             --cooldownTickTimer;
             if (cooldownTickTimer == 0) {
-                serverPlayer.level().playSound(null, serverPlayer.blockPosition(), ModSoundEvents.SWALLOW_WATER.get(), SoundSource.PLAYERS, 1, 1);
+                serverPlayer.level().playSound(null, serverPlayer.blockPosition(), ModSoundEvents.SWALLOW_WATER_SOUND.get(), SoundSource.PLAYERS, 1, 1);
                 hasDrunkWater = false;
                 S2CDrinkResetSender.send(serverPlayer);
             }
