@@ -8,7 +8,6 @@ import net.neoforged.neoforge.network.handling.IPayloadContext;
 import net.unitego.lobecorp.common.access.DataAccess;
 import net.unitego.lobecorp.common.data.WaterData;
 import net.unitego.lobecorp.common.network.payload.C2SDrinkWaterPayload;
-import net.unitego.lobecorp.common.network.sender.S2CSwingHandSender;
 import net.unitego.lobecorp.common.registry.ModMobEffects;
 
 public class C2SDrinkWaterHandler {
@@ -16,30 +15,30 @@ public class C2SDrinkWaterHandler {
         context.enqueueWork(() -> {
             if (!((context.player()) instanceof ServerPlayer serverPlayer)) return;
             WaterData waterData = ((DataAccess) serverPlayer).lobeCorp$getWaterData();
-            if (waterData.noDrink() && (waterData.needsWater() || serverPlayer.isCreative())) {
+            if (!waterData.hasDrunkWater && (waterData.needsWater() || serverPlayer.isCreative())) {
                 switch (payload.waterSource()) {
                     case C2SDrinkWaterPayload.STREAM -> {
-                        S2CSwingHandSender.send(serverPlayer);
                         serverPlayer.swing(serverPlayer.getUsedItemHand());
                         serverPlayer.level().playSound(null, serverPlayer.blockPosition(), SoundEvents.GENERIC_DRINK, SoundSource.PLAYERS, 1, 1);
                         waterData.drink(2, 0.05f);
                         serverPlayer.addEffect(new MobEffectInstance(ModMobEffects.THIRST, 600, 1));
-                        waterData.hasDrunkStream = true;
+                        waterData.cooldownTickTimer = 40;
+                        waterData.hasDrunkWater = true;
                     }
                     case C2SDrinkWaterPayload.RAIN -> {
-                        S2CSwingHandSender.send(serverPlayer);
                         serverPlayer.swing(serverPlayer.getUsedItemHand());
                         serverPlayer.level().playSound(null, serverPlayer.blockPosition(), SoundEvents.GENERIC_DRINK, SoundSource.PLAYERS, 1, 1);
                         waterData.drink(1, 0.01f);
-                        waterData.hasDrunkRain = true;
+                        waterData.cooldownTickTimer = 30;
+                        waterData.hasDrunkWater = true;
                     }
                     case C2SDrinkWaterPayload.CAULDRON -> {
-                        S2CSwingHandSender.send(serverPlayer);
                         serverPlayer.swing(serverPlayer.getUsedItemHand());
                         serverPlayer.level().playSound(null, serverPlayer.blockPosition(), SoundEvents.GENERIC_DRINK, SoundSource.PLAYERS, 1, 1);
                         waterData.drink(2, 0.01f);
                         serverPlayer.addEffect(new MobEffectInstance(ModMobEffects.THIRST, 300));
-                        waterData.hasDrunkCauldron = true;
+                        waterData.cooldownTickTimer = 20;
+                        waterData.hasDrunkWater = true;
                     }
                 }
             }

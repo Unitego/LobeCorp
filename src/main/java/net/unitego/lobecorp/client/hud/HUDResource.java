@@ -10,7 +10,7 @@ import net.unitego.lobecorp.LobeCorp;
 public final class HUDResource {
     public static final ResourceLocation LC_HUD = LobeCorp.rl("lc_hud");
     //纹理路径
-    public static final ResourceLocation GAP = LobeCorp.rl("textures/gui/sprites/hud/gap_full.png");
+    public static final ResourceLocation GAP_FULL = LobeCorp.rl("textures/gui/sprites/hud/gap_full.png");
     public static final ResourceLocation ABSORPTION_FULL_SPRITE = LobeCorp.rl("hud/absorption_full");
     public static final ResourceLocation ARMOR_FULL_SPRITE = LobeCorp.rl("hud/armor_full");
     public static final ResourceLocation ARMOR_TOUGHNESS_FULL_SPRITE = LobeCorp.rl("hud/armor_toughness_full");

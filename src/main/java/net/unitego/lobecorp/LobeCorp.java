@@ -20,6 +20,7 @@ public class LobeCorp {
         ModCreativeModeTabs.CREATIVE_MODE_TAB.register(bus);
         ModItems.ITEMS.register(bus);
         ModMobEffects.MOB_EFFECTS.register(bus);
+        ModMenus.MENUS.register(bus);
         ModSoundEvents.SOUND_EVENTS.register(bus);
     }
 

@@ -3,6 +3,7 @@ package net.unitego.lobecorp.gen;
 import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.common.data.LanguageProvider;
 import net.unitego.lobecorp.LobeCorp;
+import net.unitego.lobecorp.common.data.StaffData;
 import net.unitego.lobecorp.common.registry.*;
 
 public class ZhCnLangDataGen extends LanguageProvider {
@@ -15,6 +16,10 @@ public class ZhCnLangDataGen extends LanguageProvider {
         //属性名
         add(ModAttributes.MAX_SANITY.get().getDescriptionId(), "最大精神值");
         add(ModAttributes.MAX_ASSIMILATION.get().getDescriptionId(), "最大认知同化值");
+        add(ModAttributes.WORK_SUCCESS.get().getDescriptionId(), "工作成率");
+        add(ModAttributes.WORK_VELOCITY.get().getDescriptionId(), "工作速率");
+        add(ModAttributes.ATTACK_VELOCITY.get().getDescriptionId(), "攻击速率");
+        add(ModAttributes.MOVE_VELOCITY.get().getDescriptionId(), "移动速率");
         //效果名
         add(ModMobEffects.ABSENT.get(), "恍惚");
         add(ModMobEffects.ASSIMILATION.get(), "认知同化");
@@ -32,5 +37,33 @@ public class ZhCnLangDataGen extends LanguageProvider {
         add(ModCreativeModeTabs.LOBE_CORP_NAME, "脑叶公司");
         //声音名
         add(ModSoundEvents.SWALLOW_WATER.get().getLocation().toLanguageKey(), "咽水");
+        //按键名
+        add(ModKeyMappings.CATEGORIES_LOBE_CORP, "脑叶公司");
+        add(ModKeyMappings.TOGGLE_EQUIPMENT.get().getName(), "开启/关闭 装备");
+        //界面名
+        add(ModMenus.CONTAINER_LOBECORP_EQUIPMENT, "装备");
+        //死亡信息
+        add(ModDamageTypes.DEATH_ATTACK_DRY, "%1$s渴死了");
+        add(ModDamageTypes.DEATH_ATTACK_DRY_PLAYER, "%1$s在与%2$s战斗时渴死了");
+        add(ModDamageTypes.DEATH_ATTACK_INSANE, "%1$s狂乱了");
+        add(ModDamageTypes.DEATH_ATTACK_INSANE_PLAYER, "%1$s在与%2$s战斗时狂乱了");
+        add(ModDamageTypes.DEATH_ATTACK_INDIRECT_MYSTIC, "%1$s被%2$s使用的神秘杀死了");
+        add(ModDamageTypes.DEATH_ATTACK_INDIRECT_MYSTIC_ITEM, "%1$s被%2$s使用%3$s杀死了");
+        add(ModDamageTypes.DEATH_ATTACK_MYSTIC, "%1$s被神秘杀死了");
+        add(ModDamageTypes.DEATH_ATTACK_MYSTIC_PLAYER, "%1$s在试图逃离%2$s时被神秘杀死了");
+        add(ModDamageTypes.DEATH_ATTACK_RED, "%2$s致使%1$s死于物理破碎");
+        add(ModDamageTypes.DEATH_ATTACK_RED_ITEM, "%2$s使用%3$s致使%1$s死于物理破碎");
+        add(ModDamageTypes.DEATH_ATTACK_WHITE, "%2$s致使%1$s死于精神崩溃");
+        add(ModDamageTypes.DEATH_ATTACK_WHITE_ITEM, "%2$s使用%3$s致使%1$s死于精神崩溃");
+        add(ModDamageTypes.DEATH_ATTACK_BLACK, "%2$s致使%1$s死于侵蚀贯穿");
+        add(ModDamageTypes.DEATH_ATTACK_BLACK_ITEM, "%2$s使用%3$s致使%1$s死于侵蚀贯穿");
+        add(ModDamageTypes.DEATH_ATTACK_PALE, "%2$s致使%1$s死于灵魂削除");
+        add(ModDamageTypes.DEATH_ATTACK_PALE_ITEM, "%2$s使用%3$s致使%1$s死于灵魂削除");
+        //脑叶公司
+        add(StaffData.STAFF_RANK, "职员等级");
+        add(StaffData.STAFF_FORTITUDE, "勇气");
+        add(StaffData.STAFF_PRUDENCE, "谨慎");
+        add(StaffData.STAFF_TEMPERANCE, "自律");
+        add(StaffData.STAFF_JUSTICE, "正义");
     }
 }

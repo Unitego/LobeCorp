@@ -1,26 +1,24 @@
 package net.unitego.lobecorp.common.data;
 
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.GameRules;
 import net.unitego.lobecorp.common.access.DataAccess;
+import net.unitego.lobecorp.common.network.sender.S2CDrinkResetSender;
 import net.unitego.lobecorp.common.registry.ModDamageTypes;
 import net.unitego.lobecorp.common.registry.ModSoundEvents;
 
 public class WaterData {
-    public boolean hasDrunkStream;
-    public boolean hasDrunkRain;
-    public boolean hasDrunkCauldron;
+    public boolean hasDrunkWater;
+    public int cooldownTickTimer;
     private int waterLevel = 20;
     private float hydrationLevel;
     private float desiccationLevel;
     private int tickTimer;
     private int lastWaterLevel = 20;
-    private int streamTickTimer;
-    private int rainTickTimer;
-    private int cauldronTickTimer;
 
     public WaterData() {
         hydrationLevel = 5.0F;
@@ -80,26 +78,13 @@ public class WaterData {
             tickTimer = 0;
         }
         //喝水状态冷却时间及声音播放
-        if (hasDrunkStream) {
-            ++streamTickTimer;
-            if (streamTickTimer >= 20) {
-                player.level().playSound(null, player.blockPosition(), ModSoundEvents.SWALLOW_WATER.get(), SoundSource.PLAYERS, 1, 1);
-                streamTickTimer = 0;
-                hasDrunkStream = false;
-            }
-        } else if (hasDrunkRain) {
-            ++rainTickTimer;
-            if (rainTickTimer >= 40) {
-                player.level().playSound(null, player.blockPosition(), ModSoundEvents.SWALLOW_WATER.get(), SoundSource.PLAYERS, 1, 1);
-                rainTickTimer = 0;
-                hasDrunkRain = false;
-            }
-        } else if (hasDrunkCauldron) {
-            ++cauldronTickTimer;
-            if (cauldronTickTimer >= 20) {
-                player.level().playSound(null, player.blockPosition(), ModSoundEvents.SWALLOW_WATER.get(), SoundSource.PLAYERS, 1, 1);
-                cauldronTickTimer = 0;
-                hasDrunkCauldron = false;
+        if (!(player instanceof ServerPlayer serverPlayer)) return;
+        if (hasDrunkWater) {
+            --cooldownTickTimer;
+            if (cooldownTickTimer == 0) {
+                serverPlayer.level().playSound(null, serverPlayer.blockPosition(), ModSoundEvents.SWALLOW_WATER.get(), SoundSource.PLAYERS, 1, 1);
+                hasDrunkWater = false;
+                S2CDrinkResetSender.send(serverPlayer);
             }
         }
     }
@@ -118,10 +103,6 @@ public class WaterData {
         compoundTag.putInt("waterTickTimer", tickTimer);
         compoundTag.putFloat("waterHydrationLevel", hydrationLevel);
         compoundTag.putFloat("waterDesiccationLevel", desiccationLevel);
-    }
-
-    public boolean noDrink() {
-        return !hasDrunkStream && !hasDrunkRain && !hasDrunkCauldron;
     }
 
     public int getWaterLevel() {

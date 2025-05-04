@@ -39,7 +39,7 @@ public class FoodElement extends BaseElement {
         int offset = (int) (ratio * width);
 
         //渲染消耗度条
-        guiGraphics.blit(HUDResource.GAP, x - offset, y, width - offset, 0, offset, size, width, size);
+        guiGraphics.blit(HUDResource.GAP_FULL, x - offset, y, width - offset, 0, offset, size, width, size);
 
         //渲染饥饿条
         for (int food = 0; food < 10; food++) {
@@ -71,7 +71,7 @@ public class FoodElement extends BaseElement {
         }
 
         //渲染饱食度条
-        int saturationCount = (int) Math.ceil(saturationLevel / 2.0F);
+        int saturationCount = Mth.ceil(saturationLevel / 2.0F);
         for (int saturation = 0; saturation < saturationCount; saturation++) {
             float value = (saturationLevel / 2.0F) - saturation;
             int posX = x - saturation * (size - 1) - 9;
