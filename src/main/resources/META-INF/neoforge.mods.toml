@@ -6,7 +6,7 @@ license = "${mod_license}"
 modId = "${mod_id}"
 version = "${mod_version}"
 displayName = "${mod_name}"
-logoFile = "assets/lobecorp/lc_logo.png"
+logoFile = "assets/lobecorp/lobecorp_logo.png"
 credits = "${mod_credits}"
 authors = "${mod_authors}"
 description = '''${mod_description}'''
@@ -34,5 +34,5 @@ ordering = "NONE"
 side = "BOTH"
 
 [modproperties.${ mod_id }]
-catalogueImageIcon = "assets/lobecorp/lc_icon.png"
-catalogueBackground = "assets/lobecorp/lc_bg.png"
+catalogueImageIcon = "assets/lobecorp/lobecorp_icon.png"
+catalogueBackground = "assets/lobecorp/lobecorp_bg.png"

@@ -47,7 +47,7 @@ public class EntityInspectElement extends BaseElement {
             LobeCorpUtils.drawEntityOnScreen(guiGraphics, x + 2, y + 2, boxSize - 4, boxSize - 4, 25.0f / living.getBbHeight(), living);
             //名字板
             drawRect(guiGraphics, x + boxSize, y, nameWidth, nameHeight, HUDResource.BG3);
-            guiGraphics.drawString(minecraft.font, nameString, x + boxSize, y + nameHeightOffset, -1);
+            guiGraphics.drawString(minecraft.font, nameString, x + boxSize + 2, y + nameHeightOffset, -1);
             //生命条
             drawTrap(x + boxSize, y + nameHeight, nameWidth, backWidthBottom, nameHeight - 2, HUDResource.BG1);
             drawTrap(x + boxSize, y + nameHeight + 2, nameWidth - 6,

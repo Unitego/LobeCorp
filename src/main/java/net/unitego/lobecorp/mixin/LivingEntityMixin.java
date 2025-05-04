@@ -16,6 +16,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(LivingEntity.class)
 public abstract class LivingEntityMixin {
     @Unique
+    final
     LivingEntity lobeCorp$livingEntity = (LivingEntity) (Object) this;
 
     //钳制精神值和认知同化值，让他们小于等于对应的最大值

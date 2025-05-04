@@ -23,11 +23,12 @@ import java.util.Objects;
 @Mixin(ServerPlayer.class)
 public abstract class ServerPlayerMixin {
     @Unique
+    final
     ServerPlayer lobeCorp$serverPlayer = (ServerPlayer) (Object) this;
     @Unique
-    private WaterData lobeCorp$waterData = ((DataAccess) this).lobeCorp$getWaterData();
+    private final WaterData lobeCorp$waterData = ((DataAccess) this).lobeCorp$getWaterData();
     @Unique
-    private SanityData lobeCorp$sanityData = ((DataAccess) this).lobeCorp$getSanityData();
+    private final SanityData lobeCorp$sanityData = ((DataAccess) this).lobeCorp$getSanityData();
     @Unique
     private float lobeCorp$lastSentSanity = -1.0E8F;
     @Unique

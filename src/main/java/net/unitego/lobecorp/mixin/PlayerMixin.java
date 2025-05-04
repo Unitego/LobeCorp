@@ -24,9 +24,10 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(Player.class)
 public abstract class PlayerMixin extends LivingEntity implements DataAccess {
     @Unique
-    private final WaterData lobeCorp$waterData = new WaterData();
-    @Unique
+    final
     Player lobeCorp$player = (Player) (Object) this;
+    @Unique
+    private final WaterData lobeCorp$waterData = new WaterData();
     @Unique
     private final SanityData lobeCorp$sanityData = new SanityData(lobeCorp$player);
     @Unique
