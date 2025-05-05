@@ -34,7 +34,9 @@ public class ZhCnLangDataGen extends LanguageProvider {
         //物品名
         add(ModItems.LOBECORP_LOGO.get(), "脑叶公司Logo");
         add(ModItems.BLUE_LEAF.get(), "蓝叶");
+        add(ModItems.CODE_SUIT.get(), "代码西装");
         add(ModItems.CODE_RIOT_STICK.get(), "代码镇暴棍");
+        add(ModItems.STANDARD_SUIT.get(), "标准西装");
         add(ModItems.RED_RIOT_STICK.get(), "物理镇暴棍");
         add(ModItems.WHITE_RIOT_STICK.get(), "精神镇暴棍");
         add(ModItems.BLACK_RIOT_STICK.get(), "侵蚀镇暴棍");
@@ -80,9 +82,10 @@ public class ZhCnLangDataGen extends LanguageProvider {
         add(LobeCorpUtils.STAFF_JUSTICE, "正义");
         add(LobeCorpUtils.HOLD_LEFT_SHIFT_SHOW_SKILL, "按住左Shift显示技能");
         add(LobeCorpUtils.EGO_RANK, "EGO等级：");
+        add(LobeCorpUtils.EQUIP_REQUIRE, "装备要求：");
         add(LobeCorpUtils.WEAPON_TEMPLATE, "武器模板：");
         add(LobeCorpUtils.DAMAGE_TYPE, "伤害类型：");
-        add(LobeCorpUtils.EQUIP_REQUIRE, "装备要求：");
+        add(LobeCorpUtils.DAMAGE_RESIST, "伤害抗性：");
         add(LobeCorpUtils.RED, "物理");
         add(LobeCorpUtils.WHITE, "精神");
         add(LobeCorpUtils.BLACK, "侵蚀");

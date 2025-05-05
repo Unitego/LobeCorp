@@ -15,7 +15,9 @@ public class ItemModelDataGen extends ItemModelProvider {
     protected void registerModels() {
         basicItem(ModItems.LOBECORP_LOGO.get());
         basicItem(ModItems.BLUE_LEAF.get());
+        basicItem(ModItems.CODE_SUIT.get());
         basicItem(ModItems.CODE_RIOT_STICK.get());
+        basicItem(ModItems.STANDARD_SUIT.get());
         basicItem(ModItems.RED_RIOT_STICK.get());
         basicItem(ModItems.WHITE_RIOT_STICK.get());
         basicItem(ModItems.BLACK_RIOT_STICK.get());

@@ -8,6 +8,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import net.unitego.lobecorp.LobeCorp;
 import net.unitego.lobecorp.common.data.StaffData;
 import net.unitego.lobecorp.common.item.LobeCorpLogo;
+import net.unitego.lobecorp.common.item.ego.suit.EGOSuitItem;
 import net.unitego.lobecorp.common.item.ego.weapon.EGOWeaponItem;
 import net.unitego.lobecorp.common.item.ego.weapon.EGOWeaponTemplate;
 import net.unitego.lobecorp.common.util.EGORank;
@@ -21,19 +22,25 @@ public class ModItems {
     public static final DeferredItem<Item> BLUE_LEAF = ITEMS.register("blue_leaf",
             () -> new Item(new Item.Properties().food(new FoodProperties.Builder().nutrition(1).saturationModifier(0.1f).fast().build())));
 
-    public static final DeferredItem<EGOWeaponItem> CODE_RIOT_STICK = ModItems.ITEMS.register("code_riot_stick", () ->
+    public static final DeferredItem<EGOSuitItem> CODE_SUIT = ITEMS.register("code_suit", () ->
+            new EGOSuitItem(new Item.Properties().rarity(Rarity.RARE), List.of(), EGORank.ZAYIN,
+                    0.0f, 0.0f, 0.0f, 0.0f, StaffData.EquipRequire.NONE));//代码西装
+    public static final DeferredItem<EGOWeaponItem> CODE_RIOT_STICK = ITEMS.register("code_riot_stick", () ->
             new EGOWeaponItem(new Item.Properties().rarity(Rarity.RARE), List.of(), EGORank.ZAYIN, EGOWeaponTemplate.MACE,
                     List.of(ModDamageTypes.RED, ModDamageTypes.WHITE, ModDamageTypes.BLACK, ModDamageTypes.PALE), 0.0f, StaffData.EquipRequire.NONE));//代码镇暴棍
-    public static final DeferredItem<EGOWeaponItem> RED_RIOT_STICK = ModItems.ITEMS.register("red_riot_stick", () ->
+    public static final DeferredItem<EGOSuitItem> STANDARD_SUIT = ITEMS.register("standard_suit", () ->
+            new EGOSuitItem(new Item.Properties().rarity(Rarity.UNCOMMON), List.of(), EGORank.ZAYIN,
+                    1.0f, 1.0f, 1.5f, 2.0f, StaffData.EquipRequire.NONE));//标准西装
+    public static final DeferredItem<EGOWeaponItem> RED_RIOT_STICK = ITEMS.register("red_riot_stick", () ->
             new EGOWeaponItem(new Item.Properties().rarity(Rarity.UNCOMMON), List.of(), EGORank.ZAYIN, EGOWeaponTemplate.MACE,
                     List.of(ModDamageTypes.RED), 4.0f, StaffData.EquipRequire.NONE));//物理镇暴棍
-    public static final DeferredItem<EGOWeaponItem> WHITE_RIOT_STICK = ModItems.ITEMS.register("white_riot_stick", () ->
+    public static final DeferredItem<EGOWeaponItem> WHITE_RIOT_STICK = ITEMS.register("white_riot_stick", () ->
             new EGOWeaponItem(new Item.Properties().rarity(Rarity.UNCOMMON), List.of(), EGORank.ZAYIN, EGOWeaponTemplate.MACE,
                     List.of(ModDamageTypes.WHITE), 4.0f, StaffData.EquipRequire.NONE));//精神镇暴棍
-    public static final DeferredItem<EGOWeaponItem> BLACK_RIOT_STICK = ModItems.ITEMS.register("black_riot_stick", () ->
+    public static final DeferredItem<EGOWeaponItem> BLACK_RIOT_STICK = ITEMS.register("black_riot_stick", () ->
             new EGOWeaponItem(new Item.Properties().rarity(Rarity.UNCOMMON), List.of(), EGORank.ZAYIN, EGOWeaponTemplate.MACE,
                     List.of(ModDamageTypes.BLACK), 4.0f, StaffData.EquipRequire.NONE));//侵蚀镇暴棍
-    public static final DeferredItem<EGOWeaponItem> PALE_RIOT_STICK = ModItems.ITEMS.register("pale_riot_stick", () ->
+    public static final DeferredItem<EGOWeaponItem> PALE_RIOT_STICK = ITEMS.register("pale_riot_stick", () ->
             new EGOWeaponItem(new Item.Properties().rarity(Rarity.UNCOMMON), List.of(), EGORank.ZAYIN, EGOWeaponTemplate.MACE,
                     List.of(ModDamageTypes.PALE), 4.0f, StaffData.EquipRequire.NONE));//灵魂镇暴棍
 }

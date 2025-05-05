@@ -34,7 +34,9 @@ public class EnUsLangDataGen extends LanguageProvider {
         //物品名
         add(ModItems.LOBECORP_LOGO.get(), "LobeCorp Logo");
         add(ModItems.BLUE_LEAF.get(), "Blue Leaf");
+        add(ModItems.CODE_SUIT.get(), "Code Suit");
         add(ModItems.CODE_RIOT_STICK.get(), "Code Riot Stick");
+        add(ModItems.STANDARD_SUIT.get(), "Standard Suit");
         add(ModItems.RED_RIOT_STICK.get(), "Red Riot Stick");
         add(ModItems.WHITE_RIOT_STICK.get(), "White Riot Stick");
         add(ModItems.BLACK_RIOT_STICK.get(), "Black Riot Stick");
@@ -80,9 +82,10 @@ public class EnUsLangDataGen extends LanguageProvider {
         add(LobeCorpUtils.STAFF_JUSTICE, "Justice");
         add(LobeCorpUtils.HOLD_LEFT_SHIFT_SHOW_SKILL, "Hold Left Shift Show Skill");
         add(LobeCorpUtils.EGO_RANK, "EGO Rank: ");
+        add(LobeCorpUtils.EQUIP_REQUIRE, "Equip Require: ");
         add(LobeCorpUtils.WEAPON_TEMPLATE, "Weapon Template: ");
         add(LobeCorpUtils.DAMAGE_TYPE, "Damage Type: ");
-        add(LobeCorpUtils.EQUIP_REQUIRE, "Equip Require: ");
+        add(LobeCorpUtils.DAMAGE_RESIST, "Damage Resist: ");
         add(LobeCorpUtils.RED, "Red");
         add(LobeCorpUtils.WHITE, "White");
         add(LobeCorpUtils.BLACK, "Black");

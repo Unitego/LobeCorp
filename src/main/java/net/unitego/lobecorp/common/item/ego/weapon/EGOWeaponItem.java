@@ -42,8 +42,9 @@ public class EGOWeaponItem extends EGOEquipmentItem {
     public EGOWeaponItem(Properties properties, List<String> egoSkillTranslationKeys, EGORank egoRank, EGOWeaponTemplate weaponTemplate,
                          List<ResourceKey<DamageType>> damageTypes, double attackDamage, StaffData.EquipRequire equipRequire) {
 
-        super(properties.component(DataComponents.ATTRIBUTE_MODIFIERS, buildModifiers(attackDamage, weaponTemplate.getAttackSpeed(),
-                weaponTemplate.getInteractionRange() - 3)), egoSkillTranslationKeys);
+        super(properties.component(DataComponents.ATTRIBUTE_MODIFIERS,
+                        buildModifiers(attackDamage, weaponTemplate.getAttackSpeed(), weaponTemplate.getInteractionRange() - 3)),
+                egoSkillTranslationKeys);
 
         this.egoRank = egoRank;
         this.weaponTemplate = weaponTemplate;

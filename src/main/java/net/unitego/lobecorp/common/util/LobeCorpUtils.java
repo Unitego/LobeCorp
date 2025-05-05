@@ -25,6 +25,7 @@ import java.util.UUID;
  */
 public class LobeCorpUtils {
     public static final UUID INTERACTION_RANGE_MODIFIER_ID = UUID.fromString("F17D5E0B-44D0-4E2B-B81B-9C471B547B29");
+    public static final UUID LOBECORP_SUIT_MODIFIER_ID = UUID.fromString("EE3CBD25-29F0-4496-8D0F-CE1094AE095C");
 
     public static final String NETWORK_VERSION = "1.0.0";
     public static final String MOTTO = info("motto");
@@ -37,9 +38,11 @@ public class LobeCorpUtils {
     public static final String STAFF_JUSTICE = info("staff_justice");//正义
     public static final String HOLD_LEFT_SHIFT_SHOW_SKILL = info("press_left_shift_show_skill");
     public static final String EGO_RANK = info("ego_rank");
+    public static final String EQUIP_REQUIRE = info("equip_require");
     public static final String WEAPON_TEMPLATE = info("weapon_template");
     public static final String DAMAGE_TYPE = info("damage_type");
-    public static final String EQUIP_REQUIRE = info("equip_require");
+    public static final String DAMAGE_RESIST = info("damage_resist");
+    //四色
     public static final String RED = info("red");
     public static final String WHITE = info("white");
     public static final String BLACK = info("black");
