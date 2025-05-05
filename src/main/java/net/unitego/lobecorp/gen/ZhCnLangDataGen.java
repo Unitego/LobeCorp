@@ -32,7 +32,7 @@ public class ZhCnLangDataGen extends LanguageProvider {
         add(ModMobEffects.INSTANT_SANITY.get(), "瞬间镇定");
         add(ModMobEffects.INSTANT_INJURY.get(), "瞬间损伤");
         //物品名
-        add(ModItems.LOBE_CORP_LOGO.get(), "脑叶公司Logo");
+        add(ModItems.LOBECORP_LOGO.get(), "脑叶公司Logo");
         add(ModItems.BLUE_LEAF.get(), "蓝叶");
         add(ModItems.CODE_RIOT_STICK.get(), "代码镇暴棍");
         add(ModItems.RED_RIOT_STICK.get(), "物理镇暴棍");
@@ -40,11 +40,11 @@ public class ZhCnLangDataGen extends LanguageProvider {
         add(ModItems.BLACK_RIOT_STICK.get(), "侵蚀镇暴棍");
         add(ModItems.PALE_RIOT_STICK.get(), "灵魂镇暴棍");
         //创造栏名
-        add(ModCreativeModeTabs.LOBE_CORP_TAB_NAME, "脑叶公司");
+        add(ModCreativeModeTabs.LOBECORP_TAB_NAME, "脑叶公司");
         //声音名
         add(ModSoundEvents.SWALLOW_WATER_SOUND.get().getLocation().toLanguageKey(), "咽水");
         //按键名
-        add(ModKeyMappings.CATEGORIES_LOBE_CORP, "脑叶公司");
+        add(ModKeyMappings.CATEGORIES_LOBECORP, "脑叶公司");
         add(ModKeyMappings.TOGGLE_EQUIPMENT.get().getName(), "开启/关闭 装备");
         //界面名
         add(ModMenus.CONTAINER_LOBECORP_EQUIPMENT, "装备");

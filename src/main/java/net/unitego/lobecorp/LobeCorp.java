@@ -3,7 +3,6 @@ package net.unitego.lobecorp;
 import com.mojang.logging.LogUtils;
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.bus.api.IEventBus;
-import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
 import net.unitego.lobecorp.common.registry.*;
 import org.slf4j.Logger;
@@ -13,9 +12,10 @@ public class LobeCorp {
     public static final String MOD_ID = "lobecorp";
     private static final Logger LOGGER = LogUtils.getLogger();
 
-    public LobeCorp(IEventBus bus, ModContainer container) {
+    public LobeCorp(IEventBus bus) {
         LOGGER.info("Unitego.");
 
+        ModAttachmentTypes.ATTACHMENT_TYPES.register(bus);
         ModAttributes.ATTRIBUTES.register(bus);
         ModCreativeModeTabs.CREATIVE_MODE_TABS.register(bus);
         ModItems.ITEMS.register(bus);

@@ -5,12 +5,25 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
+import net.neoforged.neoforge.items.ItemStackHandler;
+import net.neoforged.neoforge.items.SlotItemHandler;
+import net.unitego.lobecorp.common.registry.ModAttachmentTypes;
 import net.unitego.lobecorp.common.registry.ModMenus;
 import org.jetbrains.annotations.NotNull;
 
 public class EquipmentMenu extends AbstractContainerMenu {
     public EquipmentMenu(int containerId, Inventory playerInventory) {
         super(ModMenus.EQUIPMENT_MENU.get(), containerId);
+        ItemStackHandler handler = playerInventory.player.getData(ModAttachmentTypes.LOBECORP_SLOTS);
+        //脑叶公司插槽
+        for (int i = 0; i < handler.getSlots(); i++) {
+            if (i <= 3) {
+                int x = 62;
+                int y = 62 - i * 18;
+                addSlot(new SlotItemHandler(handler, i, x, y) {
+                });
+            }
+        }
         //三排背包和一排快捷栏
         for (int i = 0; i < 3; ++i) {
             for (int j = 0; j < 9; ++j) {

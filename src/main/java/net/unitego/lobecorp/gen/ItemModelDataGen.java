@@ -13,7 +13,7 @@ public class ItemModelDataGen extends ItemModelProvider {
 
     @Override
     protected void registerModels() {
-        basicItem(ModItems.LOBE_CORP_LOGO.get());
+        basicItem(ModItems.LOBECORP_LOGO.get());
         basicItem(ModItems.BLUE_LEAF.get());
         basicItem(ModItems.CODE_RIOT_STICK.get());
         basicItem(ModItems.RED_RIOT_STICK.get());

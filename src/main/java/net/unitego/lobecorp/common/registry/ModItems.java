@@ -17,7 +17,7 @@ import java.util.List;
 public class ModItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(LobeCorp.MOD_ID);
 
-    public static final DeferredItem<LobeCorpLogo> LOBE_CORP_LOGO = ITEMS.register("lobe_corp_logo", LobeCorpLogo::new);
+    public static final DeferredItem<LobeCorpLogo> LOBECORP_LOGO = ITEMS.register("lobecorp_logo", LobeCorpLogo::new);
     public static final DeferredItem<Item> BLUE_LEAF = ITEMS.register("blue_leaf",
             () -> new Item(new Item.Properties().food(new FoodProperties.Builder().nutrition(1).saturationModifier(0.1f).fast().build())));
 

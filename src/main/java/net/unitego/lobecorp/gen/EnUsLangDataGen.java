@@ -32,7 +32,7 @@ public class EnUsLangDataGen extends LanguageProvider {
         add(ModMobEffects.INSTANT_SANITY.get(), "Instant Sanity");
         add(ModMobEffects.INSTANT_INJURY.get(), "Instant Injury");
         //物品名
-        add(ModItems.LOBE_CORP_LOGO.get(), "Lobe Corp Logo");
+        add(ModItems.LOBECORP_LOGO.get(), "LobeCorp Logo");
         add(ModItems.BLUE_LEAF.get(), "Blue Leaf");
         add(ModItems.CODE_RIOT_STICK.get(), "Code Riot Stick");
         add(ModItems.RED_RIOT_STICK.get(), "Red Riot Stick");
@@ -40,11 +40,11 @@ public class EnUsLangDataGen extends LanguageProvider {
         add(ModItems.BLACK_RIOT_STICK.get(), "Black Riot Stick");
         add(ModItems.PALE_RIOT_STICK.get(), "Pale Riot Stick");
         //创造栏名
-        add(ModCreativeModeTabs.LOBE_CORP_TAB_NAME, "Lobe Corp");
+        add(ModCreativeModeTabs.LOBECORP_TAB_NAME, "Lobe Corp");
         //声音名
         add(ModSoundEvents.SWALLOW_WATER_SOUND.get().getLocation().toLanguageKey(), "Swallow Water");
         //按键名
-        add(ModKeyMappings.CATEGORIES_LOBE_CORP, "Lobe Corp");
+        add(ModKeyMappings.CATEGORIES_LOBECORP, "Lobe Corp");
         add(ModKeyMappings.TOGGLE_EQUIPMENT.get().getName(), "Open/Close Equipment");
         //界面名
         add(ModMenus.CONTAINER_LOBECORP_EQUIPMENT, "Equipment");
