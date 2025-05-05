@@ -11,10 +11,13 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.*;
 import net.unitego.lobecorp.LobeCorp;
+import net.unitego.lobecorp.common.registry.ModAttachmentTypes;
+import net.unitego.lobecorp.common.component.LobeCorpEquipmentSlot;
 import org.joml.Quaternionf;
 
 import java.util.List;
@@ -50,6 +53,10 @@ public class LobeCorpUtils {
 
     private static String info(String string) {
         return LobeCorp.MOD_ID + ".info." + string;
+    }
+
+    public static ItemStack getLobeCorpStack(Player player, LobeCorpEquipmentSlot slot) {
+        return player.getData(ModAttachmentTypes.LOBECORP_SLOTS).getStackInSlot(slot.ordinal());
     }
 
     public static void playServerSound(ServerPlayer serverPlayer, SoundEvent soundEvent) {

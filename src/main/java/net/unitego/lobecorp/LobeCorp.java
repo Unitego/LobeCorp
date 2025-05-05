@@ -18,6 +18,7 @@ public class LobeCorp {
         ModAttachmentTypes.ATTACHMENT_TYPES.register(bus);
         ModAttributes.ATTRIBUTES.register(bus);
         ModCreativeModeTabs.CREATIVE_MODE_TABS.register(bus);
+        ModDataComponentTypes.DATA_COMPONENT_TYPES.register(bus);
         ModItems.ITEMS.register(bus);
         ModMenus.MENUS.register(bus);
         ModMobEffects.MOB_EFFECTS.register(bus);

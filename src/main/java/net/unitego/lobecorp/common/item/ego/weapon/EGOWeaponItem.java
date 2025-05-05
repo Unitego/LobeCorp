@@ -101,4 +101,8 @@ public class EGOWeaponItem extends EGOEquipmentItem {
     public StaffData.EquipRequire getEquipRequire() {
         return equipRequire;
     }
+
+    public EGORank getEGORank() {
+        return egoRank;
+    }
 }

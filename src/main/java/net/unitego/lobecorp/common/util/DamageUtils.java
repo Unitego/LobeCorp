@@ -19,15 +19,135 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.entity.projectile.ProjectileDeflection;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.phys.Vec3;
 import net.unitego.lobecorp.common.access.DataAccess;
 import net.unitego.lobecorp.common.data.SanityData;
+import net.unitego.lobecorp.common.item.ego.suit.EGOSuitItem;
 import net.unitego.lobecorp.common.item.ego.weapon.EGOWeaponItem;
 import net.unitego.lobecorp.common.registry.tag.DamageTypeTagRegistry;
+import net.unitego.lobecorp.common.component.LobeCorpEquipmentSlot;
 
 public class DamageUtils {
+    //处理玩家受伤
+    public static void handlePlayerHurt(Player defender, DamageSource source, float amount) {
+        //等级抗性和四色抗性计算
+        Item defenderItem = LobeCorpUtils.getLobeCorpStack(defender, LobeCorpEquipmentSlot.LOBECORP_SUIT).getItem();
+        Entity attacker = source.getEntity();
+        EGORank attackerRank = EGORank.ZAYIN, defenderRank = EGORank.ZAYIN;
+        float redResist = 2.0f, whiteResist = 2.0f, blackResist = 2.0f, paleResist = 2.0f;
+        if (defenderItem instanceof EGOSuitItem egoSuitItem) {
+            defenderRank = egoSuitItem.getEGORank();
+            redResist = egoSuitItem.getRedResist();
+            whiteResist = egoSuitItem.getWhiteResist();
+            blackResist = egoSuitItem.getBlackResist();
+            paleResist = egoSuitItem.getPaleResist();
+        }
+        if (attacker instanceof Player) {
+            Item attackerItem = ((Player) attacker).getMainHandItem().getItem();
+            if (attackerItem instanceof EGOWeaponItem egoWeaponItem) {
+                attackerRank = egoWeaponItem.getEGORank();
+            }
+        }
+        float rankResist = attackerRank.calculateSuppression(defenderRank);
+
+        SanityData sanityData = ((DataAccess) defender).lobeCorp$getSanityData();
+        if (source.is(DamageTypeTagRegistry.CENSORED_DAMAGE_TYPE.get())) {
+            handleCensoredDamage(defender, sanityData, amount);
+        } else if (source.is(DamageTypeTagRegistry.SPIRIT_DAMAGE_TYPE.get())) {
+            handleSpiritDamage(sanityData, amount);
+        } else if (source.is(DamageTypeTagRegistry.RED_DAMAGE_TYPE.get())) {
+            handleRedDamage(defender, amount, redResist, rankResist);
+        } else if (source.is(DamageTypeTagRegistry.WHITE_DAMAGE_TYPE.get())) {
+            handleWhiteDamage(sanityData, amount, whiteResist, rankResist);
+        } else if (source.is(DamageTypeTagRegistry.BLACK_DAMAGE_TYPE.get())) {
+            handleBlackDamage(defender, sanityData, amount, blackResist, rankResist);
+        } else if (source.is(DamageTypeTagRegistry.PALE_DAMAGE_TYPE.get())) {
+            handlePaleDamage(defender, amount, paleResist, rankResist);
+        } else {
+            handleVanillaDamage(defender, amount);
+        }
+    }
+
+    //处理非玩家受伤
+    public static void handleNonPlayerHurt(LivingEntity living, DamageSource source, float amount) {
+        float health = amount;
+        health = Math.max(health - living.getAbsorptionAmount(), 0);
+        living.setAbsorptionAmount(living.getAbsorptionAmount() - (amount - health));
+        living.setHealth(living.getHealth() - health);
+    }
+
+    private static void handleVanillaDamage(Player defender, float amount) {
+        float health = Math.max(amount - defender.getAbsorptionAmount(), 0);
+        defender.setAbsorptionAmount(defender.getAbsorptionAmount() - (amount - health));
+        defender.setHealth(defender.getHealth() - health);
+    }
+
+    private static void handleRedDamage(Player defender, float amount, float redResit, float rankResist) {
+        float health = amount * redResit * rankResist;
+        if (health > defender.getAbsorptionAmount()) defender.setAbsorptionAmount(0);
+        if (redResit > 0) {
+            health = Math.max(health - defender.getAbsorptionAmount(), 0);
+            defender.setAbsorptionAmount(defender.getAbsorptionAmount() - (amount * redResit * rankResist - health));
+        }
+        defender.setHealth(defender.getHealth() - health);
+    }
+
+    private static void handleWhiteDamage(SanityData sanityData, float amount, float whiteResist, float rankResist) {
+        float sanity = amount * whiteResist * rankResist;
+        if (sanity > sanityData.getAssimilationAmount()) sanityData.setAssimilationAmount(0);
+        if (whiteResist > 0) {
+            sanity = Math.max(sanity - sanityData.getAssimilationAmount(), 0);
+            sanityData.setAssimilationAmount(sanityData.getAssimilationAmount() - (amount * whiteResist * rankResist - sanity));
+        }
+        sanityData.setSanity(sanityData.getSanity() - sanity);
+    }
+
+    private static void handleBlackDamage(Player defender, SanityData sanityData, float amount, float blackResist, float rankResist) {
+        float sanity = amount * blackResist * rankResist;
+        float health = amount * blackResist * rankResist;
+        if (sanity > sanityData.getAssimilationAmount()) sanityData.setAssimilationAmount(0);
+        if (health > defender.getAbsorptionAmount()) defender.setAbsorptionAmount(0);
+        if (blackResist > 0) {
+            sanity = Math.max(sanity - sanityData.getAssimilationAmount(), 0);
+            health = Math.max(health - defender.getAbsorptionAmount(), 0);
+            sanityData.setAssimilationAmount(sanityData.getAssimilationAmount() - (amount * blackResist * rankResist - sanity));
+            defender.setAbsorptionAmount(defender.getAbsorptionAmount() - (amount * blackResist * rankResist - health));
+        }
+        sanityData.setSanity(sanityData.getSanity() - sanity);
+        defender.setHealth(defender.getHealth() - health);
+    }
+
+    private static void handlePaleDamage(Player defender, float amount, float paleResist, float rankResist) {
+        float health = (amount / 100.0f) * defender.getMaxHealth() * paleResist * rankResist;
+        if (health > defender.getAbsorptionAmount()) defender.setAbsorptionAmount(0);
+        if (paleResist > 0) {
+            health = Math.max(health - defender.getAbsorptionAmount(), 0);
+            defender.setAbsorptionAmount(defender.getAbsorptionAmount() - ((amount / 100.0f) * defender.getMaxHealth() * paleResist * rankResist - health));
+        }
+        defender.setHealth(defender.getHealth() - health);
+    }
+
+    private static void handleSpiritDamage(SanityData sanityData, float amount) {
+        float sanity = amount;
+        sanity = Math.max(sanity - sanityData.getAssimilationAmount(), 0);
+        sanityData.setAssimilationAmount(sanityData.getAssimilationAmount() - (amount - sanity));
+        sanityData.setSanity(sanityData.getSanity() - sanity);
+    }
+
+    private static void handleCensoredDamage(Player defender, SanityData sanityData, float amount) {
+        float sanity = amount;
+        float health = amount;
+        sanity = Math.max(sanity - sanityData.getAssimilationAmount(), 0);
+        health = Math.max(health - defender.getAbsorptionAmount(), 0);
+        sanityData.setAssimilationAmount(sanityData.getAssimilationAmount() - (amount - sanity));
+        defender.setAbsorptionAmount(defender.getAbsorptionAmount() - (amount - health));
+        sanityData.setSanity(sanityData.getSanity() - sanity);
+        defender.setHealth(defender.getHealth() - health);
+    }
+
     //处理玩家攻击
     public static void handlePlayerAttack(Entity target, Player player, EGOWeaponItem egoWeaponItem) {
         if (target.isAttackable()) {
@@ -159,95 +279,5 @@ public class DamageUtils {
                 player.resetAttackStrengthTicker();
             }
         }
-    }
-
-    //处理玩家受伤
-    public static void handlePlayerHurt(Player player, DamageSource source, float amount) {
-        SanityData sanityData = ((DataAccess) player).lobeCorp$getSanityData();
-        if (source.is(DamageTypeTagRegistry.CENSORED_DAMAGE_TYPE.get())) {
-            handleCensoredDamage(player, amount, sanityData);
-        } else if (source.is(DamageTypeTagRegistry.SPIRIT_DAMAGE_TYPE.get())) {
-            handleSpiritDamage(player, amount, sanityData);
-        } else if (source.is(DamageTypeTagRegistry.RED_DAMAGE_TYPE.get())) {
-            handleRedDamage(player, amount, sanityData);
-        } else if (source.is(DamageTypeTagRegistry.WHITE_DAMAGE_TYPE.get())) {
-            handleWhiteDamage(player, amount, sanityData);
-        } else if (source.is(DamageTypeTagRegistry.BLACK_DAMAGE_TYPE.get())) {
-            handleBlackDamage(player, amount, sanityData);
-        } else if (source.is(DamageTypeTagRegistry.PALE_DAMAGE_TYPE.get())) {
-            handlePaleDamage(player, amount, sanityData);
-        } else {
-            handleVanillaDamage(player, amount, sanityData);
-        }
-    }
-
-    //处理非玩家受伤
-    public static void handleNonPlayerHurt(LivingEntity living, DamageSource source, float amount) {
-        float health = amount;
-        health = Math.max(health - living.getAbsorptionAmount(), 0);
-        living.setAbsorptionAmount(living.getAbsorptionAmount() - (amount - health));
-        living.setHealth(living.getHealth() - health);
-    }
-
-    private static void handleVanillaDamage(Player player, float amount, SanityData sanityData) {
-        float health = amount;
-        health = Math.max(health - player.getAbsorptionAmount(), 0);
-        player.setAbsorptionAmount(player.getAbsorptionAmount() - (amount - health));
-        player.setHealth(player.getHealth() - health);
-    }
-
-    private static void handleRedDamage(Player player, float amount, SanityData sanityData) {
-        float health = amount;
-        if (health > player.getAbsorptionAmount()) player.setAbsorptionAmount(0);
-        health = Math.max(health - player.getAbsorptionAmount(), 0);
-        player.setAbsorptionAmount(player.getAbsorptionAmount() - (amount - health));
-        player.setHealth(player.getHealth() - health);
-    }
-
-    private static void handleWhiteDamage(Player player, float amount, SanityData sanityData) {
-        float sanity = amount;
-        if (sanity > sanityData.getAssimilationAmount()) sanityData.setAssimilationAmount(0);
-        sanity = Math.max(sanity - sanityData.getAssimilationAmount(), 0);
-        sanityData.setAssimilationAmount(sanityData.getAssimilationAmount() - (amount - sanity));
-        sanityData.setSanity(sanityData.getSanity() - sanity);
-    }
-
-    private static void handleBlackDamage(Player player, float amount, SanityData sanityData) {
-        float sanity = amount;
-        float health = amount;
-        if (sanity > sanityData.getAssimilationAmount()) sanityData.setAssimilationAmount(0);
-        if (health > player.getAbsorptionAmount()) player.setAbsorptionAmount(0);
-        sanity = Math.max(sanity - sanityData.getAssimilationAmount(), 0);
-        health = Math.max(health - player.getAbsorptionAmount(), 0);
-        sanityData.setAssimilationAmount(sanityData.getAssimilationAmount() - (amount - sanity));
-        player.setAbsorptionAmount(player.getAbsorptionAmount() - (amount - health));
-        sanityData.setSanity(sanityData.getSanity() - sanity);
-        player.setHealth(player.getHealth() - health);
-    }
-
-    private static void handlePaleDamage(Player player, float amount, SanityData sanityData) {
-        float health = (amount / 100.0f) * player.getMaxHealth();
-        if (health > player.getAbsorptionAmount()) player.setAbsorptionAmount(0);
-        health = Math.max(health - player.getAbsorptionAmount(), 0);
-        player.setAbsorptionAmount(player.getAbsorptionAmount() - ((amount / 100.0f) * player.getMaxHealth() - health));
-        player.setHealth(player.getHealth() - health);
-    }
-
-    private static void handleSpiritDamage(Player player, float amount, SanityData sanityData) {
-        float sanity = amount;
-        sanity = Math.max(sanity - sanityData.getAssimilationAmount(), 0);
-        sanityData.setAssimilationAmount(sanityData.getAssimilationAmount() - (amount - sanity));
-        sanityData.setSanity(sanityData.getSanity() - sanity);
-    }
-
-    private static void handleCensoredDamage(Player player, float amount, SanityData sanityData) {
-        float sanity = amount;
-        float health = amount;
-        sanity = Math.max(sanity - sanityData.getAssimilationAmount(), 0);
-        health = Math.max(health - player.getAbsorptionAmount(), 0);
-        sanityData.setAssimilationAmount(sanityData.getAssimilationAmount() - (amount - sanity));
-        player.setAbsorptionAmount(player.getAbsorptionAmount() - (amount - health));
-        sanityData.setSanity(sanityData.getSanity() - sanity);
-        player.setHealth(player.getHealth() - health);
     }
 }

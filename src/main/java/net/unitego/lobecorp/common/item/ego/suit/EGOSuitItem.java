@@ -1,18 +1,18 @@
 package net.unitego.lobecorp.common.item.ego.suit;
 
 import net.minecraft.ChatFormatting;
-import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.unitego.lobecorp.common.data.StaffData;
 import net.unitego.lobecorp.common.item.ego.EGOEquipmentItem;
+import net.unitego.lobecorp.common.registry.ModDataComponentTypes;
 import net.unitego.lobecorp.common.util.EGORank;
 import net.unitego.lobecorp.common.util.LobeCorpUtils;
+import net.unitego.lobecorp.common.component.LobeCorpAttributeModifiers;
+import net.unitego.lobecorp.common.component.LobeCorpEquipmentSlot;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
@@ -28,8 +28,7 @@ public class EGOSuitItem extends EGOEquipmentItem {
     public EGOSuitItem(Properties properties, List<String> egoSkillTranslationKeys, EGORank egoRank,
                        float redResist, float whiteResist, float blackResist, float paleResist,
                        StaffData.EquipRequire equipRequire) {
-        super(properties.component(DataComponents.ATTRIBUTE_MODIFIERS,
-                        buildModifiers(egoRank)),
+        super(properties.component(ModDataComponentTypes.LOBECORP_ATTRIBUTE_MODIFIERS, buildModifiers(egoRank)),
                 egoSkillTranslationKeys);
 
         this.egoRank = egoRank;
@@ -40,10 +39,10 @@ public class EGOSuitItem extends EGOEquipmentItem {
         this.equipRequire = equipRequire;
     }
 
-    private static ItemAttributeModifiers buildModifiers(EGORank egoRank) {
-        return ItemAttributeModifiers.builder()
-                .add(Attributes.ARMOR, egoSuitModifier(egoRank.getValue() * 6), EquipmentSlotGroup.MAINHAND)
-                .add(Attributes.ARMOR_TOUGHNESS, egoSuitModifier((egoRank.getValue() - 1) * 5), EquipmentSlotGroup.MAINHAND)
+    private static LobeCorpAttributeModifiers buildModifiers(EGORank egoRank) {
+        return LobeCorpAttributeModifiers.builder()
+                .add(Attributes.ARMOR, egoSuitModifier(egoRank.getValue() * 6), LobeCorpEquipmentSlot.LOBECORP_SUIT)
+                .add(Attributes.ARMOR_TOUGHNESS, egoSuitModifier((egoRank.getValue() - 1) * 5), LobeCorpEquipmentSlot.LOBECORP_SUIT)
                 .build();
     }
 
@@ -69,5 +68,25 @@ public class EGOSuitItem extends EGOEquipmentItem {
         tooltipComponents.addAll(equipRequire.getDisplayTooltip());
 
         super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
+    }
+
+    public EGORank getEGORank() {
+        return egoRank;
+    }
+
+    public float getRedResist() {
+        return redResist;
+    }
+
+    public float getWhiteResist() {
+        return whiteResist;
+    }
+
+    public float getPaleResist() {
+        return paleResist;
+    }
+
+    public float getBlackResist() {
+        return blackResist;
     }
 }

@@ -36,19 +36,14 @@ public class CommonGameEvents {
         }
     }
 
-    //LivingDamageEvent用这个会导致每次都先扣伤害吸收值，所以用LivingHurtEvent
     //伤害分流事件
     @SubscribeEvent
     public static void onLivingHurt(LivingHurtEvent event) {
-        LivingEntity living = event.getEntity();
-        DamageSource source = event.getSource();
-        float amount = event.getAmount();
-
-        if (living instanceof Player player) {
-            DamageUtils.handlePlayerHurt(player, source, amount);
-        } else {
-            DamageUtils.handleNonPlayerHurt(living, source, amount);
-        }
+        LivingEntity living = event.getEntity();//受击者
+        DamageSource source = event.getSource();//伤害源
+        float amount = event.getAmount();//伤害
+        if (living instanceof Player player) DamageUtils.handlePlayerHurt(player, source, amount);
+        else DamageUtils.handleNonPlayerHurt(living, source, amount);
         event.setCanceled(true);
     }
 
