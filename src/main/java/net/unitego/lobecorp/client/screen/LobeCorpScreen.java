@@ -133,9 +133,9 @@ public class LobeCorpScreen extends Screen {
             int labelY = box.getY() + (box.getHeight() - font.lineHeight) / 2;
             int color = switch (i) {
                 case 0 -> 11141120;
-                case 1 -> 11184810;
+                case 1 -> 16777215;
                 case 2, 4 -> 11141290;
-                case 3, 5 -> 43690;
+                case 3, 5 -> 5636095;
                 default -> 0xAAAAAA;
             };
             guiGraphics.drawString(font, label, labelX, labelY, color, false);

@@ -46,11 +46,11 @@ public class EquipmentScreen extends EffectRenderingInventoryScreen<EquipmentMen
         guiGraphics.drawString(minecraft.font, Component.translatable(LobeCorpUtils.STAFF_FORTITUDE).append(" " +
                 staffData.getFortitudeRank().getRank()).withStyle(ChatFormatting.DARK_RED), x, y - 50, -1);
         guiGraphics.drawString(minecraft.font, Component.translatable(LobeCorpUtils.STAFF_PRUDENCE).append(" " +
-                staffData.getPrudenceRank().getRank()).withStyle(ChatFormatting.GRAY), x, y - 36, -1);
+                staffData.getPrudenceRank().getRank()).withStyle(ChatFormatting.WHITE), x, y - 36, -1);
         guiGraphics.drawString(minecraft.font, Component.translatable(LobeCorpUtils.STAFF_TEMPERANCE).append(" " +
                 staffData.getTemperanceRank().getRank()).withStyle(ChatFormatting.DARK_PURPLE), x, y - 22, -1);
         guiGraphics.drawString(minecraft.font, Component.translatable(LobeCorpUtils.STAFF_JUSTICE).append(" " +
-                staffData.getJusticeRank().getRank()).withStyle(ChatFormatting.DARK_AQUA), x, y - 4, -1);
+                staffData.getJusticeRank().getRank()).withStyle(ChatFormatting.AQUA), x, y - 4, -1);
         //属性
         guiGraphics.pose().scale(0.5f, 0.5f, 0.5f);
         guiGraphics.drawString(minecraft.font, Component.literal("●").withStyle(style -> style.withColor(ChatFormatting.GOLD).withBold(true))

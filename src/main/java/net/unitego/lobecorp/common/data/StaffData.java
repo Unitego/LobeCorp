@@ -1,10 +1,15 @@
 package net.unitego.lobecorp.common.data;
 
+import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.Component;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.unitego.lobecorp.common.registry.ModAttributes;
+import net.unitego.lobecorp.common.util.LobeCorpUtils;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 //职员数据
@@ -132,6 +137,84 @@ public class StaffData {
 
         public int getValue() {
             return value;
+        }
+    }
+
+    public record EquipRequire(StaffRank fortitudeRank, StaffRank prudenceRank, StaffRank temperanceRank,
+                               StaffRank justiceRank, StaffRank staffRank) {
+        public static final EquipRequire NONE = new EquipRequire(null, null, null, null, null);
+
+        public boolean isSatisfiedBy(StaffData data) {
+            return (staffRank == null || data.getStaffRank().getValue() >= staffRank.getValue()) &&
+                    (fortitudeRank == null || data.getFortitudeRank().getValue() >= fortitudeRank.getValue()) &&
+                    (prudenceRank == null || data.getPrudenceRank().getValue() >= prudenceRank.getValue()) &&
+                    (temperanceRank == null || data.getTemperanceRank().getValue() >= temperanceRank.getValue()) &&
+                    (justiceRank == null || data.getJusticeRank().getValue() >= justiceRank.getValue());
+        }
+
+        public List<Component> getDisplayTooltip() {
+            StaffRank displayStaff = staffRank != null ? staffRank : StaffRank.I;
+            StaffRank displayFortitude = fortitudeRank != null ? fortitudeRank : StaffRank.I;
+            StaffRank displayPrudence = prudenceRank != null ? prudenceRank : StaffRank.I;
+            StaffRank displayTemperance = temperanceRank != null ? temperanceRank : StaffRank.I;
+            StaffRank displayJustice = justiceRank != null ? justiceRank : StaffRank.I;
+
+            List<Component> lines = new ArrayList<>();
+
+            lines.add(Component.translatable(LobeCorpUtils.EQUIP_REQUIRE).withStyle(ChatFormatting.DARK_GRAY)
+                    .append(Component.translatable(LobeCorpUtils.STAFF_RANK)
+                            .append(Component.literal(displayStaff.getRank())).withStyle(ChatFormatting.GOLD)));
+            lines.add(Component.empty()
+                    .append(Component.translatable(LobeCorpUtils.STAFF_FORTITUDE)
+                            .append(Component.literal(displayFortitude.getRank())).withStyle(ChatFormatting.DARK_RED))
+                    .append(Component.literal("|").withStyle(ChatFormatting.DARK_GRAY))
+                    .append(Component.translatable(LobeCorpUtils.STAFF_PRUDENCE)
+                            .append(Component.literal(displayPrudence.getRank())).withStyle(ChatFormatting.WHITE))
+                    .append(Component.literal("|").withStyle(ChatFormatting.DARK_GRAY))
+                    .append(Component.translatable(LobeCorpUtils.STAFF_TEMPERANCE)
+                            .append(Component.literal(displayTemperance.getRank())).withStyle(ChatFormatting.DARK_PURPLE))
+                    .append(Component.literal("|").withStyle(ChatFormatting.DARK_GRAY))
+                    .append(Component.translatable(LobeCorpUtils.STAFF_JUSTICE)
+                            .append(Component.literal(displayJustice.getRank())).withStyle(ChatFormatting.AQUA))
+            );
+            return lines;
+        }
+
+        public static Builder builder() {
+            return new Builder();
+        }
+
+        public static class Builder {
+            private StaffRank fortitude, prudence, temperance, justice, staff;
+
+            public Builder fortitude(StaffRank rank) {
+                this.fortitude = rank;
+                return this;
+            }
+
+            public Builder prudence(StaffRank rank) {
+                this.prudence = rank;
+                return this;
+            }
+
+            public Builder temperance(StaffRank rank) {
+                this.temperance = rank;
+                return this;
+            }
+
+            public Builder justice(StaffRank rank) {
+                this.justice = rank;
+                return this;
+            }
+
+            public Builder staff(StaffRank rank) {
+                this.staff = rank;
+                return this;
+            }
+
+            public EquipRequire build() {
+                return new EquipRequire(fortitude, prudence, temperance, justice, staff);
+            }
         }
     }
 }

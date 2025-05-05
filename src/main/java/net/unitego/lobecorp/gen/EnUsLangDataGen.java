@@ -3,6 +3,7 @@ package net.unitego.lobecorp.gen;
 import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.common.data.LanguageProvider;
 import net.unitego.lobecorp.LobeCorp;
+import net.unitego.lobecorp.common.item.ego.weapon.EGOWeaponTemplate;
 import net.unitego.lobecorp.common.registry.*;
 import net.unitego.lobecorp.common.util.LobeCorpUtils;
 
@@ -33,6 +34,11 @@ public class EnUsLangDataGen extends LanguageProvider {
         //物品名
         add(ModItems.LOBE_CORP_LOGO.get(), "Lobe Corp Logo");
         add(ModItems.BLUE_LEAF.get(), "Blue Leaf");
+        add(ModItems.CODE_RIOT_STICK.get(), "Code Riot Stick");
+        add(ModItems.RED_RIOT_STICK.get(), "Red Riot Stick");
+        add(ModItems.WHITE_RIOT_STICK.get(), "White Riot Stick");
+        add(ModItems.BLACK_RIOT_STICK.get(), "Black Riot Stick");
+        add(ModItems.PALE_RIOT_STICK.get(), "Pale Riot Stick");
         //创造栏名
         add(ModCreativeModeTabs.LOBE_CORP_TAB_NAME, "Lobe Corp");
         //声音名
@@ -59,6 +65,10 @@ public class EnUsLangDataGen extends LanguageProvider {
         add(ModDamageTypes.DEATH_ATTACK_BLACK_ITEM, "%2$s using %3$s caused %1$s died from Erosion Penetration");
         add(ModDamageTypes.DEATH_ATTACK_PALE, "%2$s caused %1$s died from Soul Erasure");
         add(ModDamageTypes.DEATH_ATTACK_PALE_ITEM, "%2$s using %3$s caused %1$s died from Soul Erasure");
+        //武器模板
+        add(EGOWeaponTemplate.MACE.getTranslationKey(), "Mace");
+        add(EGOWeaponTemplate.AXE.getTranslationKey(), "Axe");
+        add(EGOWeaponTemplate.KNIFE.getTranslationKey(), "Knife");
         //脑叶公司
         add(LobeCorpUtils.MOTTO, "Face the Fear, Build the Future");
         add(LobeCorpUtils.CONFIRM, "Confirm");
@@ -68,5 +78,14 @@ public class EnUsLangDataGen extends LanguageProvider {
         add(LobeCorpUtils.STAFF_PRUDENCE, "Prudence");
         add(LobeCorpUtils.STAFF_TEMPERANCE, "Temperance");
         add(LobeCorpUtils.STAFF_JUSTICE, "Justice");
+        add(LobeCorpUtils.HOLD_LEFT_SHIFT_SHOW_SKILL, "Hold Left Shift Show Skill");
+        add(LobeCorpUtils.EGO_RANK, "EGO Rank: ");
+        add(LobeCorpUtils.WEAPON_TEMPLATE, "Weapon Template: ");
+        add(LobeCorpUtils.DAMAGE_TYPE, "Damage Type: ");
+        add(LobeCorpUtils.EQUIP_REQUIRE, "Equip Require: ");
+        add(LobeCorpUtils.RED, "Red");
+        add(LobeCorpUtils.WHITE, "White");
+        add(LobeCorpUtils.BLACK, "Black");
+        add(LobeCorpUtils.PALE, "Pale");
     }
 }

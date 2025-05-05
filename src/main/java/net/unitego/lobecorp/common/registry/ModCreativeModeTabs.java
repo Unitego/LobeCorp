@@ -17,5 +17,10 @@ public class ModCreativeModeTabs {
                     .displayItems((parameters, output) -> {
                         output.accept(ModItems.LOBE_CORP_LOGO.get());
                         output.accept(ModItems.BLUE_LEAF);
+                        output.accept(ModItems.CODE_RIOT_STICK);
+                        output.accept(ModItems.RED_RIOT_STICK);
+                        output.accept(ModItems.WHITE_RIOT_STICK);
+                        output.accept(ModItems.BLACK_RIOT_STICK);
+                        output.accept(ModItems.PALE_RIOT_STICK);
                     }).build());
 }

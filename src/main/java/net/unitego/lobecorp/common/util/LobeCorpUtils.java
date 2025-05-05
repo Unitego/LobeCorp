@@ -18,11 +18,14 @@ import net.unitego.lobecorp.LobeCorp;
 import org.joml.Quaternionf;
 
 import java.util.List;
+import java.util.UUID;
 
 /**
  * 不知道放哪的东西就都丢这里吧！
  */
 public class LobeCorpUtils {
+    public static final UUID INTERACTION_RANGE_MODIFIER_ID = UUID.fromString("F17D5E0B-44D0-4E2B-B81B-9C471B547B29");
+
     public static final String NETWORK_VERSION = "1.0.0";
     public static final String MOTTO = info("motto");
     public static final String CONFIRM = info("confirm");
@@ -32,6 +35,15 @@ public class LobeCorpUtils {
     public static final String STAFF_PRUDENCE = info("staff_prudence");//谨慎
     public static final String STAFF_TEMPERANCE = info("staff_temperance");//自律
     public static final String STAFF_JUSTICE = info("staff_justice");//正义
+    public static final String HOLD_LEFT_SHIFT_SHOW_SKILL = info("press_left_shift_show_skill");
+    public static final String EGO_RANK = info("ego_rank");
+    public static final String WEAPON_TEMPLATE = info("weapon_template");
+    public static final String DAMAGE_TYPE=info("damage_type");
+    public static final String EQUIP_REQUIRE=info("equip_require");
+    public static final String RED=info("red");
+    public static final String WHITE=info("white");
+    public static final String BLACK=info("black");
+    public static final String PALE=info("pale");
 
     private static String info(String string) {
         return LobeCorp.MOD_ID + ".info." + string;

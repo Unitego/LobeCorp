@@ -3,6 +3,7 @@ package net.unitego.lobecorp.gen;
 import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.common.data.LanguageProvider;
 import net.unitego.lobecorp.LobeCorp;
+import net.unitego.lobecorp.common.item.ego.weapon.EGOWeaponTemplate;
 import net.unitego.lobecorp.common.registry.*;
 import net.unitego.lobecorp.common.util.LobeCorpUtils;
 
@@ -33,6 +34,11 @@ public class ZhCnLangDataGen extends LanguageProvider {
         //物品名
         add(ModItems.LOBE_CORP_LOGO.get(), "脑叶公司Logo");
         add(ModItems.BLUE_LEAF.get(), "蓝叶");
+        add(ModItems.CODE_RIOT_STICK.get(), "代码镇暴棍");
+        add(ModItems.RED_RIOT_STICK.get(), "物理镇暴棍");
+        add(ModItems.WHITE_RIOT_STICK.get(), "精神镇暴棍");
+        add(ModItems.BLACK_RIOT_STICK.get(), "侵蚀镇暴棍");
+        add(ModItems.PALE_RIOT_STICK.get(), "灵魂镇暴棍");
         //创造栏名
         add(ModCreativeModeTabs.LOBE_CORP_TAB_NAME, "脑叶公司");
         //声音名
@@ -59,6 +65,10 @@ public class ZhCnLangDataGen extends LanguageProvider {
         add(ModDamageTypes.DEATH_ATTACK_BLACK_ITEM, "%2$s使用%3$s致使%1$s死于侵蚀贯穿");
         add(ModDamageTypes.DEATH_ATTACK_PALE, "%2$s致使%1$s死于灵魂削除");
         add(ModDamageTypes.DEATH_ATTACK_PALE_ITEM, "%2$s使用%3$s致使%1$s死于灵魂削除");
+        //武器模板
+        add(EGOWeaponTemplate.MACE.getTranslationKey(), "棁");
+        add(EGOWeaponTemplate.AXE.getTranslationKey(), "斧");
+        add(EGOWeaponTemplate.KNIFE.getTranslationKey(), "刀");
         //脑叶公司
         add(LobeCorpUtils.MOTTO, "直面恐惧，创造未来");
         add(LobeCorpUtils.CONFIRM, "确认");
@@ -68,5 +78,14 @@ public class ZhCnLangDataGen extends LanguageProvider {
         add(LobeCorpUtils.STAFF_PRUDENCE, "谨慎");
         add(LobeCorpUtils.STAFF_TEMPERANCE, "自律");
         add(LobeCorpUtils.STAFF_JUSTICE, "正义");
+        add(LobeCorpUtils.HOLD_LEFT_SHIFT_SHOW_SKILL, "按住左Shift显示技能");
+        add(LobeCorpUtils.EGO_RANK, "EGO等级：");
+        add(LobeCorpUtils.WEAPON_TEMPLATE, "武器模板：");
+        add(LobeCorpUtils.DAMAGE_TYPE, "伤害类型：");
+        add(LobeCorpUtils.EQUIP_REQUIRE, "装备要求：");
+        add(LobeCorpUtils.RED, "物理");
+        add(LobeCorpUtils.WHITE, "精神");
+        add(LobeCorpUtils.BLACK, "侵蚀");
+        add(LobeCorpUtils.PALE, "灵魂");
     }
 }
