@@ -38,12 +38,12 @@ public class LobeCorpUtils {
     public static final String HOLD_LEFT_SHIFT_SHOW_SKILL = info("press_left_shift_show_skill");
     public static final String EGO_RANK = info("ego_rank");
     public static final String WEAPON_TEMPLATE = info("weapon_template");
-    public static final String DAMAGE_TYPE=info("damage_type");
-    public static final String EQUIP_REQUIRE=info("equip_require");
-    public static final String RED=info("red");
-    public static final String WHITE=info("white");
-    public static final String BLACK=info("black");
-    public static final String PALE=info("pale");
+    public static final String DAMAGE_TYPE = info("damage_type");
+    public static final String EQUIP_REQUIRE = info("equip_require");
+    public static final String RED = info("red");
+    public static final String WHITE = info("white");
+    public static final String BLACK = info("black");
+    public static final String PALE = info("pale");
 
     private static String info(String string) {
         return LobeCorp.MOD_ID + ".info." + string;

@@ -144,6 +144,10 @@ public class StaffData {
                                StaffRank justiceRank, StaffRank staffRank) {
         public static final EquipRequire NONE = new EquipRequire(null, null, null, null, null);
 
+        public static Builder builder() {
+            return new Builder();
+        }
+
         public boolean isSatisfiedBy(StaffData data) {
             return (staffRank == null || data.getStaffRank().getValue() >= staffRank.getValue()) &&
                     (fortitudeRank == null || data.getFortitudeRank().getValue() >= fortitudeRank.getValue()) &&
@@ -178,10 +182,6 @@ public class StaffData {
                             .append(Component.literal(displayJustice.getRank())).withStyle(ChatFormatting.AQUA))
             );
             return lines;
-        }
-
-        public static Builder builder() {
-            return new Builder();
         }
 
         public static class Builder {

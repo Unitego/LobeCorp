@@ -23,7 +23,7 @@ public class ModItems {
 
     public static final DeferredItem<EGOWeaponItem> CODE_RIOT_STICK = ModItems.ITEMS.register("code_riot_stick", () ->
             new EGOWeaponItem(new Item.Properties().rarity(Rarity.RARE), List.of(), EGORank.ZAYIN, EGOWeaponTemplate.MACE,
-                    List.of(ModDamageTypes.RED, ModDamageTypes.WHITE, ModDamageTypes.BLACK, ModDamageTypes.PALE), 54498.0f, StaffData.EquipRequire.NONE));//代码镇暴棍
+                    List.of(ModDamageTypes.RED, ModDamageTypes.WHITE, ModDamageTypes.BLACK, ModDamageTypes.PALE), 0.0f, StaffData.EquipRequire.NONE));//代码镇暴棍
     public static final DeferredItem<EGOWeaponItem> RED_RIOT_STICK = ModItems.ITEMS.register("red_riot_stick", () ->
             new EGOWeaponItem(new Item.Properties().rarity(Rarity.UNCOMMON), List.of(), EGORank.ZAYIN, EGOWeaponTemplate.MACE,
                     List.of(ModDamageTypes.RED), 4.0f, StaffData.EquipRequire.NONE));//物理镇暴棍

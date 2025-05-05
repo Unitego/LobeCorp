@@ -24,22 +24,20 @@ import java.util.Map;
 import java.util.UUID;
 
 public class EGOWeaponItem extends EGOEquipmentItem {
-    private final EGORank egoRank;
-    private final EGOWeaponTemplate weaponTemplate;
-    private final List<ResourceKey<DamageType>> damageTypes;
-    private final double attackDamage;
-    private final StaffData.EquipRequire equipRequire;
-
     private static final List<ResourceKey<DamageType>> DAMAGE_ORDER = List.of(
             ModDamageTypes.RED, ModDamageTypes.WHITE, ModDamageTypes.BLACK, ModDamageTypes.PALE
     );
-
     private static final Map<ResourceKey<DamageType>, Component> DAMAGE_COMPONENTS = Map.of(
             ModDamageTypes.RED, Component.translatable(LobeCorpUtils.RED).withStyle(ChatFormatting.DARK_RED),
             ModDamageTypes.WHITE, Component.translatable(LobeCorpUtils.WHITE).withStyle(ChatFormatting.WHITE),
             ModDamageTypes.BLACK, Component.translatable(LobeCorpUtils.BLACK).withStyle(ChatFormatting.DARK_PURPLE),
             ModDamageTypes.PALE, Component.translatable(LobeCorpUtils.PALE).withStyle(ChatFormatting.AQUA)
     );
+    private final EGORank egoRank;
+    private final EGOWeaponTemplate weaponTemplate;
+    private final List<ResourceKey<DamageType>> damageTypes;
+    private final double attackDamage;
+    private final StaffData.EquipRequire equipRequire;
 
     public EGOWeaponItem(Properties properties, List<String> egoSkillTranslationKeys, EGORank egoRank, EGOWeaponTemplate weaponTemplate,
                          List<ResourceKey<DamageType>> damageTypes, double attackDamage, StaffData.EquipRequire equipRequire) {
