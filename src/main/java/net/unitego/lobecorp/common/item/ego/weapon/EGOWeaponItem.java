@@ -12,6 +12,7 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
+import net.unitego.lobecorp.common.component.LobeCorpEquipmentSlot;
 import net.unitego.lobecorp.common.data.StaffData;
 import net.unitego.lobecorp.common.item.ego.EGOEquipmentItem;
 import net.unitego.lobecorp.common.registry.ModDamageTypes;
@@ -44,7 +45,7 @@ public class EGOWeaponItem extends EGOEquipmentItem {
 
         super(properties.component(DataComponents.ATTRIBUTE_MODIFIERS,
                         buildModifiers(attackDamage, weaponTemplate.getAttackSpeed(), weaponTemplate.getInteractionRange() - 3)),
-                egoSkillTranslationKeys);
+                egoSkillTranslationKeys, LobeCorpEquipmentSlot.LOBECORP_WEAPON);
 
         this.egoRank = egoRank;
         this.weaponTemplate = weaponTemplate;
@@ -90,19 +91,19 @@ public class EGOWeaponItem extends EGOEquipmentItem {
         super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
     }
 
-    public double getAttackDamage() {
-        return attackDamage;
+    public EGORank getEGORank() {
+        return egoRank;
     }
 
     public List<ResourceKey<DamageType>> getDamageTypes() {
         return damageTypes;
     }
 
-    public StaffData.EquipRequire getEquipRequire() {
-        return equipRequire;
+    public double getAttackDamage() {
+        return attackDamage;
     }
 
-    public EGORank getEGORank() {
-        return egoRank;
+    public StaffData.EquipRequire getEquipRequire() {
+        return equipRequire;
     }
 }

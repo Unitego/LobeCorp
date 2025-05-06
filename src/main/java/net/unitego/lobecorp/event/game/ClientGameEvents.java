@@ -1,12 +1,17 @@
 package net.unitego.lobecorp.event.game;
 
+import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.CommonComponents;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.world.InteractionHand;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.LayeredCauldronBlock;
 import net.minecraft.world.level.block.state.BlockState;
@@ -18,16 +23,45 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.ClientTickEvent;
 import net.neoforged.neoforge.client.event.RenderGuiLayerEvent;
 import net.neoforged.neoforge.client.gui.VanillaGuiLayers;
+import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
 import net.unitego.lobecorp.LobeCorp;
 import net.unitego.lobecorp.common.access.DataAccess;
+import net.unitego.lobecorp.common.component.LobeCorpAttributeModifiers;
+import net.unitego.lobecorp.common.component.LobeCorpEquipmentSlot;
 import net.unitego.lobecorp.common.data.WaterData;
 import net.unitego.lobecorp.common.network.payload.C2SDrinkWaterPayload;
 import net.unitego.lobecorp.common.network.sender.C2SDrinkWaterSender;
 import net.unitego.lobecorp.common.network.sender.C2SOpenEquipmentSender;
+import net.unitego.lobecorp.common.registry.ModDataComponentTypes;
 import net.unitego.lobecorp.common.registry.ModKeyMappings;
+import net.unitego.lobecorp.common.util.LobeCorpUtils;
+import org.apache.commons.lang3.mutable.MutableBoolean;
+
+import java.util.List;
 
 @EventBusSubscriber(modid = LobeCorp.MOD_ID, bus = EventBusSubscriber.Bus.GAME, value = Dist.CLIENT)
 public class ClientGameEvents {
+    //附加工具提示
+    @SubscribeEvent
+    public static void onItemToolTip(ItemTooltipEvent event) {
+        ItemStack stack = event.getItemStack();
+        Player player = event.getEntity();
+        List<Component> toolTip = event.getToolTip();
+        LobeCorpAttributeModifiers component = stack.getOrDefault(ModDataComponentTypes.LOBECORP_ATTRIBUTE_MODIFIERS, LobeCorpAttributeModifiers.EMPTY);
+        if (!component.showInTooltip()) return;
+        for (LobeCorpEquipmentSlot slot : LobeCorpEquipmentSlot.values()) {
+            MutableBoolean mutableBoolean = new MutableBoolean(true);
+            LobeCorpUtils.forEachModifier(slot, stack, (attribute, modifier) -> {
+                if (mutableBoolean.isTrue()) {
+                    toolTip.add(CommonComponents.EMPTY);
+                    toolTip.add(Component.translatable("item.modifiers." + slot.getSerializedName()).withStyle(ChatFormatting.GRAY));
+                    mutableBoolean.setFalse();
+                }
+                LobeCorpUtils.addModifierTooltip(toolTip, player, attribute, modifier, stack);
+            });
+        }
+    }
+
     //客户端喝水
     @SubscribeEvent
     public static void onClientTickPre(ClientTickEvent.Pre event) {

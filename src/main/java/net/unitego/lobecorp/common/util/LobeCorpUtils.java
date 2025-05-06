@@ -1,27 +1,41 @@
 package net.unitego.lobecorp.common.util;
 
 import com.mojang.blaze3d.vertex.PoseStack;
+import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRenderDispatcher;
+import net.minecraft.core.Holder;
+import net.minecraft.network.chat.CommonComponents;
+import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ai.attributes.Attribute;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.component.ItemAttributeModifiers;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.*;
 import net.unitego.lobecorp.LobeCorp;
-import net.unitego.lobecorp.common.registry.ModAttachmentTypes;
+import net.unitego.lobecorp.common.component.LobeCorpAttributeModifiers;
 import net.unitego.lobecorp.common.component.LobeCorpEquipmentSlot;
+import net.unitego.lobecorp.common.registry.ModAttachmentTypes;
+import net.unitego.lobecorp.common.registry.ModDataComponentTypes;
 import org.joml.Quaternionf;
 
+import javax.annotation.Nullable;
 import java.util.List;
 import java.util.UUID;
+import java.util.function.BiConsumer;
 
 /**
  * 不知道放哪的东西就都丢这里吧！
@@ -55,8 +69,49 @@ public class LobeCorpUtils {
         return LobeCorp.MOD_ID + ".info." + string;
     }
 
+    public static String getItemModifiersName(LobeCorpEquipmentSlot slot) {
+        return "item.modifiers." + slot.getSerializedName();
+    }
+
+    public static void forEachModifier(LobeCorpEquipmentSlot slot, ItemStack stack, BiConsumer<Holder<Attribute>, AttributeModifier> biConsumer) {
+        LobeCorpAttributeModifiers component = stack.getOrDefault(ModDataComponentTypes.LOBECORP_ATTRIBUTE_MODIFIERS, LobeCorpAttributeModifiers.EMPTY);
+        if (!component.modifiers().isEmpty()) {
+            component.forEach(slot, biConsumer);
+        }
+    }
+
+    public static void addModifierTooltip(List<Component> tooltipAdder, @Nullable Player player, Holder<Attribute> attribute, AttributeModifier modifier, ItemStack stack) {
+        double d0 = modifier.amount();
+        boolean flag = false;
+        if (player != null) {
+            if (modifier.id() == Item.BASE_ATTACK_DAMAGE_UUID) {
+                d0 += player.getAttributeBaseValue(Attributes.ATTACK_DAMAGE);
+                d0 += EnchantmentHelper.getDamageBonus(stack, null);
+                flag = true;
+            } else if (modifier.id() == Item.BASE_ATTACK_SPEED_UUID) {
+                d0 += player.getAttributeBaseValue(Attributes.ATTACK_SPEED);
+                flag = true;
+            }
+        }
+        double d1;
+        if (modifier.operation() == AttributeModifier.Operation.ADD_MULTIPLIED_BASE || modifier.operation() == AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL) {
+            d1 = d0 * 100.0;
+        } else if (attribute.equals(Attributes.KNOCKBACK_RESISTANCE)) {
+            d1 = d0 * 10.0;
+        } else {
+            d1 = d0;
+        }
+        if (flag) {
+            tooltipAdder.add(CommonComponents.space().append(Component.translatable("attribute.modifier.equals." + modifier.operation().id(), ItemAttributeModifiers.ATTRIBUTE_MODIFIER_FORMAT.format(d1), Component.translatable(attribute.value().getDescriptionId()))).withStyle(ChatFormatting.DARK_GREEN));
+        } else if (d0 > 0.0) {
+            tooltipAdder.add(Component.translatable("attribute.modifier.plus." + modifier.operation().id(), ItemAttributeModifiers.ATTRIBUTE_MODIFIER_FORMAT.format(d1), Component.translatable(attribute.value().getDescriptionId())).withStyle(ChatFormatting.BLUE));
+        } else if (d0 < 0.0) {
+            tooltipAdder.add(Component.translatable("attribute.modifier.take." + modifier.operation().id(), ItemAttributeModifiers.ATTRIBUTE_MODIFIER_FORMAT.format(-d1), Component.translatable(attribute.value().getDescriptionId())).withStyle(ChatFormatting.RED));
+        }
+    }
+
     public static ItemStack getLobeCorpStack(Player player, LobeCorpEquipmentSlot slot) {
-        return player.getData(ModAttachmentTypes.LOBECORP_SLOTS).getStackInSlot(slot.ordinal());
+        return player.getData(ModAttachmentTypes.LOBECORP_SLOTS).getStackInSlot(slot.ordinal() - 1);
     }
 
     public static void playServerSound(ServerPlayer serverPlayer, SoundEvent soundEvent) {

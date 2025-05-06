@@ -22,13 +22,13 @@ import java.util.function.BiConsumer;
 //脑叶公司属性修饰符
 public record LobeCorpAttributeModifiers(List<Entry> modifiers, boolean showInTooltip) {
     public static final LobeCorpAttributeModifiers EMPTY = new LobeCorpAttributeModifiers(List.of(), true);
+    public static final Codec<LobeCorpAttributeModifiers> CODEC;
+    public static final StreamCodec<RegistryFriendlyByteBuf, LobeCorpAttributeModifiers> STREAM_CODEC;
+    public static final DecimalFormat ATTRIBUTE_MODIFIER_FORMAT;
     private static final Codec<LobeCorpAttributeModifiers> FULL_CODEC = RecordCodecBuilder.create(instance ->
             instance.group(Entry.CODEC.listOf().fieldOf("modifiers").forGetter(LobeCorpAttributeModifiers::modifiers),
                             Codec.BOOL.optionalFieldOf("show_in_tooltip", true).forGetter(LobeCorpAttributeModifiers::showInTooltip))
                     .apply(instance, LobeCorpAttributeModifiers::new));
-    public static final Codec<LobeCorpAttributeModifiers> CODEC;
-    public static final StreamCodec<RegistryFriendlyByteBuf, LobeCorpAttributeModifiers> STREAM_CODEC;
-    public static final DecimalFormat ATTRIBUTE_MODIFIER_FORMAT;
 
     static {
         CODEC = Codec.withAlternative(FULL_CODEC, Entry.CODEC.listOf(), entries -> new LobeCorpAttributeModifiers(entries, true));
@@ -77,6 +77,14 @@ public record LobeCorpAttributeModifiers(List<Entry> modifiers, boolean showInTo
 
         public static final StreamCodec<RegistryFriendlyByteBuf, Entry> STREAM_CODEC;
 
+        static {
+            STREAM_CODEC = StreamCodec.composite(
+                    ByteBufCodecs.holderRegistry(Registries.ATTRIBUTE), Entry::attribute,
+                    AttributeModifier.STREAM_CODEC, Entry::modifier,
+                    LobeCorpEquipmentSlot.STREAM_CODEC, Entry::slot,
+                    Entry::new);
+        }
+
         public Holder<Attribute> attribute() {
             return attribute;
         }
@@ -87,14 +95,6 @@ public record LobeCorpAttributeModifiers(List<Entry> modifiers, boolean showInTo
 
         public LobeCorpEquipmentSlot slot() {
             return slot;
-        }
-
-        static {
-            STREAM_CODEC = StreamCodec.composite(
-                    ByteBufCodecs.holderRegistry(Registries.ATTRIBUTE), Entry::attribute,
-                    AttributeModifier.STREAM_CODEC, Entry::modifier,
-                    LobeCorpEquipmentSlot.STREAM_CODEC, Entry::slot,
-                    Entry::new);
         }
     }
 }

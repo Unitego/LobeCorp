@@ -1,0 +1,20 @@
+{
+  "sources": [
+    {
+      "type": "single",
+      "resource": "lobecorp:gui/sprites/empty_lobecorp_weapon"
+    },
+    {
+      "type": "single",
+      "resource": "lobecorp:gui/sprites/empty_lobecorp_suit"
+    },
+    {
+      "type": "single",
+      "resource": "lobecorp:gui/sprites/empty_lobecorp_badge"
+    },
+    {
+      "type": "single",
+      "resource": "lobecorp:gui/sprites/empty_lobecorp_tool"
+    }
+  ]
+}

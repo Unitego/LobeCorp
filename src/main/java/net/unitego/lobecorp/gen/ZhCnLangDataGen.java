@@ -3,6 +3,7 @@ package net.unitego.lobecorp.gen;
 import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.common.data.LanguageProvider;
 import net.unitego.lobecorp.LobeCorp;
+import net.unitego.lobecorp.common.component.LobeCorpEquipmentSlot;
 import net.unitego.lobecorp.common.item.ego.weapon.EGOWeaponTemplate;
 import net.unitego.lobecorp.common.registry.*;
 import net.unitego.lobecorp.common.util.LobeCorpUtils;
@@ -50,6 +51,11 @@ public class ZhCnLangDataGen extends LanguageProvider {
         add(ModKeyMappings.TOGGLE_EQUIPMENT.get().getName(), "开启/关闭 装备");
         //界面名
         add(ModMenus.CONTAINER_LOBECORP_EQUIPMENT, "装备");
+        //插槽名
+        add(LobeCorpUtils.getItemModifiersName(LobeCorpEquipmentSlot.LOBECORP_WEAPON), "在武器位时：");
+        add(LobeCorpUtils.getItemModifiersName(LobeCorpEquipmentSlot.LOBECORP_SUIT), "在护甲位时：");
+        add(LobeCorpUtils.getItemModifiersName(LobeCorpEquipmentSlot.LOBECORP_BADGE), "在袖标位时：");
+        add(LobeCorpUtils.getItemModifiersName(LobeCorpEquipmentSlot.LOBECORP_TOOL), "在工具位时：");
         //死亡信息
         add(ModDamageTypes.DEATH_ATTACK_DRY, "%1$s渴死了");
         add(ModDamageTypes.DEATH_ATTACK_DRY_PLAYER, "%1$s在与%2$s战斗时渴死了");

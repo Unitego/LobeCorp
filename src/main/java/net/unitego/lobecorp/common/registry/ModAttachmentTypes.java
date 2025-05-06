@@ -12,5 +12,5 @@ public class ModAttachmentTypes {
     public static final DeferredRegister<AttachmentType<?>> ATTACHMENT_TYPES = DeferredRegister.create(NeoForgeRegistries.ATTACHMENT_TYPES, LobeCorp.MOD_ID);
 
     public static final Supplier<AttachmentType<ItemStackHandler>> LOBECORP_SLOTS = ATTACHMENT_TYPES.register(
-            "lobecorp_slots", () -> AttachmentType.serializable(() -> new ItemStackHandler(18)).build());
+            "lobecorp_slots", () -> AttachmentType.serializable(() -> new ItemStackHandler(4)).build());
 }

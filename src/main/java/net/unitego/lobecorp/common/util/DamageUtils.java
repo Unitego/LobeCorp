@@ -24,11 +24,11 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.phys.Vec3;
 import net.unitego.lobecorp.common.access.DataAccess;
+import net.unitego.lobecorp.common.component.LobeCorpEquipmentSlot;
 import net.unitego.lobecorp.common.data.SanityData;
 import net.unitego.lobecorp.common.item.ego.suit.EGOSuitItem;
 import net.unitego.lobecorp.common.item.ego.weapon.EGOWeaponItem;
 import net.unitego.lobecorp.common.registry.tag.DamageTypeTagRegistry;
-import net.unitego.lobecorp.common.component.LobeCorpEquipmentSlot;
 
 public class DamageUtils {
     //处理玩家受伤

@@ -6,13 +6,13 @@ import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
+import net.unitego.lobecorp.common.component.LobeCorpAttributeModifiers;
+import net.unitego.lobecorp.common.component.LobeCorpEquipmentSlot;
 import net.unitego.lobecorp.common.data.StaffData;
 import net.unitego.lobecorp.common.item.ego.EGOEquipmentItem;
 import net.unitego.lobecorp.common.registry.ModDataComponentTypes;
 import net.unitego.lobecorp.common.util.EGORank;
 import net.unitego.lobecorp.common.util.LobeCorpUtils;
-import net.unitego.lobecorp.common.component.LobeCorpAttributeModifiers;
-import net.unitego.lobecorp.common.component.LobeCorpEquipmentSlot;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
@@ -29,7 +29,7 @@ public class EGOSuitItem extends EGOEquipmentItem {
                        float redResist, float whiteResist, float blackResist, float paleResist,
                        StaffData.EquipRequire equipRequire) {
         super(properties.component(ModDataComponentTypes.LOBECORP_ATTRIBUTE_MODIFIERS, buildModifiers(egoRank)),
-                egoSkillTranslationKeys);
+                egoSkillTranslationKeys, LobeCorpEquipmentSlot.LOBECORP_SUIT);
 
         this.egoRank = egoRank;
         this.redResist = redResist;
@@ -88,5 +88,9 @@ public class EGOSuitItem extends EGOEquipmentItem {
 
     public float getBlackResist() {
         return blackResist;
+    }
+
+    public StaffData.EquipRequire getEquipRequire() {
+        return equipRequire;
     }
 }

@@ -3,6 +3,7 @@ package net.unitego.lobecorp.gen;
 import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.common.data.LanguageProvider;
 import net.unitego.lobecorp.LobeCorp;
+import net.unitego.lobecorp.common.component.LobeCorpEquipmentSlot;
 import net.unitego.lobecorp.common.item.ego.weapon.EGOWeaponTemplate;
 import net.unitego.lobecorp.common.registry.*;
 import net.unitego.lobecorp.common.util.LobeCorpUtils;
@@ -50,6 +51,11 @@ public class EnUsLangDataGen extends LanguageProvider {
         add(ModKeyMappings.TOGGLE_EQUIPMENT.get().getName(), "Open/Close Equipment");
         //界面名
         add(ModMenus.CONTAINER_LOBECORP_EQUIPMENT, "Equipment");
+        //插槽名
+        add(LobeCorpUtils.getItemModifiersName(LobeCorpEquipmentSlot.LOBECORP_WEAPON), "When in Weapon Slot: ");
+        add(LobeCorpUtils.getItemModifiersName(LobeCorpEquipmentSlot.LOBECORP_SUIT), "When in Suit Slot: ");
+        add(LobeCorpUtils.getItemModifiersName(LobeCorpEquipmentSlot.LOBECORP_BADGE), "When in Badge Slot: ");
+        add(LobeCorpUtils.getItemModifiersName(LobeCorpEquipmentSlot.LOBECORP_TOOL), "When in Tool Slot: ");
         //死亡信息
         add(ModDamageTypes.DEATH_ATTACK_DRY, "%1$s dried to death");
         add(ModDamageTypes.DEATH_ATTACK_DRY_PLAYER, "%1$s dried to death whilst fighting %2$s");
