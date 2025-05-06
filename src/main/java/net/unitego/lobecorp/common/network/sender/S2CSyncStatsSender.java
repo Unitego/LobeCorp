@@ -6,31 +6,47 @@ import net.neoforged.neoforge.network.PacketDistributor;
 import net.unitego.lobecorp.common.access.DataAccess;
 import net.unitego.lobecorp.common.network.payload.S2CSyncStatsPayload;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
+
 public class S2CSyncStatsSender {
+    private static final Map<UUID, Float> HYDRATIONS = new HashMap<>();
+    private static final Map<UUID, Float> DESICCATIONS = new HashMap<>();
+    private static final Map<UUID, Float> SATURATIONS = new HashMap<>();
+    private static final Map<UUID, Float> EXHAUSTIONS = new HashMap<>();
+
     public static void send(ServerPlayer serverPlayer) {
-        Float hydration = S2CSyncStatsPayload.HYDRATIONS.get(serverPlayer.getUUID());
+        Float hydration = HYDRATIONS.get(serverPlayer.getUUID());
         float hydrationLevel = ((DataAccess) serverPlayer).lobeCorp$getWaterData().getHydrationLevel();
         if (hydration == null || hydration != hydrationLevel) {
             PacketDistributor.sendToPlayer(serverPlayer, new S2CSyncStatsPayload(S2CSyncStatsPayload.HYDRATION, hydrationLevel));
-            S2CSyncStatsPayload.HYDRATIONS.put(serverPlayer.getUUID(), hydrationLevel);
+            HYDRATIONS.put(serverPlayer.getUUID(), hydrationLevel);
         }
-        Float desiccation = S2CSyncStatsPayload.DESICCATIONS.get(serverPlayer.getUUID());
+        Float desiccation = DESICCATIONS.get(serverPlayer.getUUID());
         float desiccationLevel = ((DataAccess) serverPlayer).lobeCorp$getWaterData().getDesiccationLevel();
         if (desiccation == null || Mth.abs(desiccation - desiccationLevel) >= 0.01F) {
             PacketDistributor.sendToPlayer(serverPlayer, new S2CSyncStatsPayload(S2CSyncStatsPayload.DESICCATION, desiccationLevel));
-            S2CSyncStatsPayload.DESICCATIONS.put(serverPlayer.getUUID(), desiccationLevel);
+            DESICCATIONS.put(serverPlayer.getUUID(), desiccationLevel);
         }
-        Float saturation = S2CSyncStatsPayload.SATURATIONS.get(serverPlayer.getUUID());
+        Float saturation = SATURATIONS.get(serverPlayer.getUUID());
         float saturationLevel = serverPlayer.getFoodData().getSaturationLevel();
         if (saturation == null || saturation != saturationLevel) {
             PacketDistributor.sendToPlayer(serverPlayer, new S2CSyncStatsPayload(S2CSyncStatsPayload.SATURATION, saturationLevel));
-            S2CSyncStatsPayload.SATURATIONS.put(serverPlayer.getUUID(), saturationLevel);
+            SATURATIONS.put(serverPlayer.getUUID(), saturationLevel);
         }
-        Float exhaustion = S2CSyncStatsPayload.EXHAUSTIONS.get(serverPlayer.getUUID());
+        Float exhaustion = EXHAUSTIONS.get(serverPlayer.getUUID());
         float exhaustionLevel = serverPlayer.getFoodData().getExhaustionLevel();
         if (exhaustion == null || Mth.abs(exhaustion - exhaustionLevel) >= 0.01F) {
             PacketDistributor.sendToPlayer(serverPlayer, new S2CSyncStatsPayload(S2CSyncStatsPayload.EXHAUSTION, exhaustionLevel));
-            S2CSyncStatsPayload.EXHAUSTIONS.put(serverPlayer.getUUID(), exhaustionLevel);
+            EXHAUSTIONS.put(serverPlayer.getUUID(), exhaustionLevel);
         }
+    }
+
+    public static void remove(ServerPlayer serverPlayer) {
+        HYDRATIONS.remove(serverPlayer.getUUID());
+        DESICCATIONS.remove(serverPlayer.getUUID());
+        SATURATIONS.remove(serverPlayer.getUUID());
+        EXHAUSTIONS.remove(serverPlayer.getUUID());
     }
 }

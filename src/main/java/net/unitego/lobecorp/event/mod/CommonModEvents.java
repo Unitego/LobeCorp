@@ -38,6 +38,9 @@ public class CommonModEvents {
                 S2CDrinkResetPayload.TYPE, S2CDrinkResetPayload.STREAM_CODEC, S2CDrinkResetHandler::handle
         );
         event.registrar(LobeCorpUtils.NETWORK_VERSION).playToClient(
+                S2CSyncEquipmentPayload.TYPE, S2CSyncEquipmentPayload.STREAM_CODEC, S2CSyncEquipmentHandler::handle
+        );
+        event.registrar(LobeCorpUtils.NETWORK_VERSION).playToClient(
                 S2CSyncStatsPayload.TYPE, S2CSyncStatsPayload.STREAM_CODEC, S2CSyncStatsHandler::handle
         );
         event.registrar(LobeCorpUtils.NETWORK_VERSION).playToClient(

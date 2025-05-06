@@ -9,8 +9,7 @@ import org.jetbrains.annotations.NotNull;
 
 public record S2CSetSanityPayload(float sanity, int waterLevel, float hydrationLevel
 ) implements CustomPacketPayload {
-    public static final CustomPacketPayload.Type<S2CSetSanityPayload> TYPE =
-            new CustomPacketPayload.Type<>(LobeCorp.rl("set_sanity"));
+    public static final Type<S2CSetSanityPayload> TYPE = new Type<>(LobeCorp.rl("set_sanity"));
 
     public static final StreamCodec<FriendlyByteBuf, S2CSetSanityPayload> STREAM_CODEC =
             StreamCodec.composite(

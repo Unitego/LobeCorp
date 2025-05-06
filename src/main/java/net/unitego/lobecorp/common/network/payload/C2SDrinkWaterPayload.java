@@ -12,8 +12,7 @@ public record C2SDrinkWaterPayload(String waterSource) implements CustomPacketPa
     public static final String RAIN = "rain";
     public static final String CAULDRON = "cauldron";
 
-    public static final CustomPacketPayload.Type<C2SDrinkWaterPayload> TYPE =
-            new CustomPacketPayload.Type<>(LobeCorp.rl("drink_water"));
+    public static final Type<C2SDrinkWaterPayload> TYPE = new Type<>(LobeCorp.rl("drink_water"));
 
     public static final StreamCodec<FriendlyByteBuf, C2SDrinkWaterPayload> STREAM_CODEC =
             StreamCodec.composite(

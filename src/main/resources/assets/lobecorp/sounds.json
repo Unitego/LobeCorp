@@ -4,5 +4,11 @@
     "sounds": [
       "lobecorp:swallow_water_sound"
     ]
+  },
+  "change_equipment_sound": {
+    "subtitle": "lobecorp.change_equipment_sound",
+    "sounds": [
+      "lobecorp:change_equipment_sound"
+    ]
   }
 }

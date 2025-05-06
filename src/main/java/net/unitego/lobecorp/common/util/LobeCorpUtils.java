@@ -114,7 +114,11 @@ public class LobeCorpUtils {
         return player.getData(ModAttachmentTypes.LOBECORP_SLOTS).getStackInSlot(slot.ordinal() - 1);
     }
 
-    public static void playServerSound(ServerPlayer serverPlayer, SoundEvent soundEvent) {
+    public static void setLobeCorpStack(Player player, LobeCorpEquipmentSlot slot, ItemStack stack) {
+        player.getData(ModAttachmentTypes.LOBECORP_SLOTS).setStackInSlot(slot.ordinal() - 1, stack.copy());
+    }
+
+    public static void playSound(ServerPlayer serverPlayer, SoundEvent soundEvent) {
         serverPlayer.level().playSound(null, serverPlayer.blockPosition(), soundEvent, SoundSource.PLAYERS, 1, 1);
     }
 

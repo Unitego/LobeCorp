@@ -7,8 +7,7 @@ import net.unitego.lobecorp.LobeCorp;
 import org.jetbrains.annotations.NotNull;
 
 public record S2CDrinkResetPayload() implements CustomPacketPayload {
-    public static final CustomPacketPayload.Type<S2CDrinkResetPayload> TYPE =
-            new CustomPacketPayload.Type<>(LobeCorp.rl("drink_reset"));
+    public static final Type<S2CDrinkResetPayload> TYPE = new Type<>(LobeCorp.rl("drink_reset"));
 
     public static final StreamCodec<FriendlyByteBuf, S2CDrinkResetPayload> STREAM_CODEC =
             StreamCodec.unit(new S2CDrinkResetPayload());

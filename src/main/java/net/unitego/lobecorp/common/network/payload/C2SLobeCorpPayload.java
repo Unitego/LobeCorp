@@ -10,8 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public record C2SLobeCorpPayload(Map<String, Double> values) implements CustomPacketPayload {
-    public static final CustomPacketPayload.Type<C2SLobeCorpPayload> TYPE =
-            new CustomPacketPayload.Type<>(LobeCorp.rl("lobe_corp"));
+    public static final Type<C2SLobeCorpPayload> TYPE = new Type<>(LobeCorp.rl("lobe_corp"));
 
     public static final StreamCodec<FriendlyByteBuf, C2SLobeCorpPayload> STREAM_CODEC =
             StreamCodec.of(

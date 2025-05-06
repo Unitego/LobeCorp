@@ -46,6 +46,7 @@ public class ZhCnLangDataGen extends LanguageProvider {
         add(ModCreativeModeTabs.LOBECORP_TAB_NAME, "脑叶公司");
         //声音名
         add(ModSoundEvents.SWALLOW_WATER_SOUND.get().getLocation().toLanguageKey(), "咽水");
+        add(ModSoundEvents.CHANGE_EQUIPMENT_SOUND.get().getLocation().toLanguageKey(), "变换装备");
         //按键名
         add(ModKeyMappings.CATEGORIES_LOBECORP, "脑叶公司");
         add(ModKeyMappings.TOGGLE_EQUIPMENT.get().getName(), "开启/关闭 装备");

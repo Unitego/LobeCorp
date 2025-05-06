@@ -7,8 +7,7 @@ import net.unitego.lobecorp.LobeCorp;
 import org.jetbrains.annotations.NotNull;
 
 public record C2SOpenEquipmentPayload() implements CustomPacketPayload {
-    public static final CustomPacketPayload.Type<C2SOpenEquipmentPayload> TYPE =
-            new CustomPacketPayload.Type<>(LobeCorp.rl("open_equipment"));
+    public static final Type<C2SOpenEquipmentPayload> TYPE = new Type<>(LobeCorp.rl("open_equipment"));
 
     public static final StreamCodec<FriendlyByteBuf, C2SOpenEquipmentPayload> STREAM_CODEC =
             StreamCodec.unit(new C2SOpenEquipmentPayload());

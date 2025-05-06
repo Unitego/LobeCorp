@@ -18,7 +18,8 @@ import net.unitego.lobecorp.LobeCorp;
 import net.unitego.lobecorp.common.access.DataAccess;
 import net.unitego.lobecorp.common.data.WaterData;
 import net.unitego.lobecorp.common.item.ego.weapon.EGOWeaponItem;
-import net.unitego.lobecorp.common.network.payload.S2CSyncStatsPayload;
+import net.unitego.lobecorp.common.network.sender.S2CSyncEquipmentSender;
+import net.unitego.lobecorp.common.network.sender.S2CSyncStatsSender;
 import net.unitego.lobecorp.common.util.DamageUtils;
 import net.unitego.lobecorp.loader.HydratingFoodLoader;
 
@@ -68,10 +69,8 @@ public class CommonGameEvents {
     @SubscribeEvent
     public static void onPlayerLoggedIn(PlayerEvent.PlayerLoggedInEvent event) {
         if (event.getEntity() instanceof ServerPlayer serverPlayer) {
-            S2CSyncStatsPayload.HYDRATIONS.remove(serverPlayer.getUUID());
-            S2CSyncStatsPayload.DESICCATIONS.remove(serverPlayer.getUUID());
-            S2CSyncStatsPayload.SATURATIONS.remove(serverPlayer.getUUID());
-            S2CSyncStatsPayload.EXHAUSTIONS.remove(serverPlayer.getUUID());
+            S2CSyncStatsSender.remove(serverPlayer);
+            S2CSyncEquipmentSender.remove(serverPlayer);
         }
     }
 }

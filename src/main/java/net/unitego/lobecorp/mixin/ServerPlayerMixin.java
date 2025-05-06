@@ -9,6 +9,7 @@ import net.unitego.lobecorp.common.access.DataAccess;
 import net.unitego.lobecorp.common.data.SanityData;
 import net.unitego.lobecorp.common.data.WaterData;
 import net.unitego.lobecorp.common.network.sender.S2CSetSanitySender;
+import net.unitego.lobecorp.common.network.sender.S2CSyncEquipmentSender;
 import net.unitego.lobecorp.common.network.sender.S2CSyncStatsSender;
 import net.unitego.lobecorp.common.registry.ModAttributes;
 import org.spongepowered.asm.mixin.Mixin;
@@ -40,6 +41,7 @@ public abstract class ServerPlayerMixin {
     @Inject(method = "tick", at = @At("TAIL"))
     private void tickMixin(CallbackInfo ci) {
         S2CSyncStatsSender.send(lobeCorp$serverPlayer);
+        S2CSyncEquipmentSender.send(lobeCorp$serverPlayer);
     }
 
     //同步精神机制相关数值

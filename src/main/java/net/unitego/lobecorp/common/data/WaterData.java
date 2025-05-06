@@ -82,7 +82,7 @@ public class WaterData {
         if (hasDrunkWater) {
             --cooldownTickTimer;
             if (cooldownTickTimer == 0) {
-                LobeCorpUtils.playServerSound(serverPlayer, ModSoundEvents.SWALLOW_WATER_SOUND.get());
+                LobeCorpUtils.playSound(serverPlayer, ModSoundEvents.SWALLOW_WATER_SOUND.get());
                 hasDrunkWater = false;
                 S2CDrinkResetSender.send(serverPlayer);
             }

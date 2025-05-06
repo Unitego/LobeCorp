@@ -7,8 +7,7 @@ import net.unitego.lobecorp.LobeCorp;
 import org.jetbrains.annotations.NotNull;
 
 public record S2CUseLogoPayload() implements CustomPacketPayload {
-    public static final CustomPacketPayload.Type<S2CUseLogoPayload> TYPE =
-            new CustomPacketPayload.Type<>(LobeCorp.rl("use_logo"));
+    public static final Type<S2CUseLogoPayload> TYPE = new Type<>(LobeCorp.rl("use_logo"));
 
     public static final StreamCodec<FriendlyByteBuf, S2CUseLogoPayload> STREAM_CODEC =
             StreamCodec.unit(new S2CUseLogoPayload());

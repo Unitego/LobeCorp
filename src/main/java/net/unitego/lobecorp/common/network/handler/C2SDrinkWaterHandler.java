@@ -17,31 +17,21 @@ public class C2SDrinkWaterHandler {
             WaterData waterData = ((DataAccess) serverPlayer).lobeCorp$getWaterData();
             if (!waterData.hasDrunkWater && (waterData.needsWater() || serverPlayer.isCreative())) {
                 switch (payload.waterSource()) {
-                    case C2SDrinkWaterPayload.STREAM -> {
-                        serverPlayer.swing(serverPlayer.getUsedItemHand());
-                        LobeCorpUtils.playServerSound(serverPlayer, SoundEvents.GENERIC_DRINK);
-                        waterData.drink(2, 0.05f);
-                        serverPlayer.addEffect(new MobEffectInstance(ModMobEffects.THIRST, 600, 1));
-                        waterData.cooldownTickTimer = 40;
-                        waterData.hasDrunkWater = true;
-                    }
-                    case C2SDrinkWaterPayload.RAIN -> {
-                        serverPlayer.swing(serverPlayer.getUsedItemHand());
-                        LobeCorpUtils.playServerSound(serverPlayer, SoundEvents.GENERIC_DRINK);
-                        waterData.drink(1, 0.01f);
-                        waterData.cooldownTickTimer = 30;
-                        waterData.hasDrunkWater = true;
-                    }
-                    case C2SDrinkWaterPayload.CAULDRON -> {
-                        serverPlayer.swing(serverPlayer.getUsedItemHand());
-                        LobeCorpUtils.playServerSound(serverPlayer, SoundEvents.GENERIC_DRINK);
-                        waterData.drink(2, 0.01f);
-                        serverPlayer.addEffect(new MobEffectInstance(ModMobEffects.THIRST, 300));
-                        waterData.cooldownTickTimer = 20;
-                        waterData.hasDrunkWater = true;
-                    }
+                    case C2SDrinkWaterPayload.STREAM -> drinkWater(serverPlayer, waterData, 2, 0.05f, 40, 600, 1);
+                    case C2SDrinkWaterPayload.RAIN -> drinkWater(serverPlayer, waterData, 1, 0.01f, 30, 200, 0);
+                    case C2SDrinkWaterPayload.CAULDRON -> drinkWater(serverPlayer, waterData, 2, 0.01f, 20, 300, 0);
                 }
             }
         });
+    }
+
+    private static void drinkWater(ServerPlayer serverPlayer, WaterData waterData, int water, float hydrationLevel,
+                                   int cooldownTickTimer, int duration, int amplifier) {
+        serverPlayer.swing(serverPlayer.getUsedItemHand());
+        LobeCorpUtils.playSound(serverPlayer, SoundEvents.GENERIC_DRINK);
+        waterData.drink(water, hydrationLevel);
+        serverPlayer.addEffect(new MobEffectInstance(ModMobEffects.THIRST, duration, amplifier));
+        waterData.cooldownTickTimer = cooldownTickTimer;
+        waterData.hasDrunkWater = true;
     }
 }
