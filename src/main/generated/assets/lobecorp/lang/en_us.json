@@ -50,7 +50,7 @@
   "itemGroup.lobecorp.lobecorp_tab": "Lobe Corp",
   "key.categories.lobecorp": "Lobe Corp",
   "key.lobecorp.toggle_equipment": "Open/Close Equipment",
-  "lobecorp.change_equipment_sound": "Change Equipment",
+  "lobecorp.change_equipment": "Change Equipment",
   "lobecorp.info.black": "Black",
   "lobecorp.info.confirm": "Confirm",
   "lobecorp.info.damage_resist": "Damage Resist: ",
@@ -69,5 +69,5 @@
   "lobecorp.info.staff_temperance": "Temperance",
   "lobecorp.info.weapon_template": "Weapon Template: ",
   "lobecorp.info.white": "White",
-  "lobecorp.swallow_water_sound": "Swallow Water"
+  "lobecorp.swallow_water": "Swallow Water"
 }

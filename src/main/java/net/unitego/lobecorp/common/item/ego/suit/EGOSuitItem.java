@@ -6,6 +6,7 @@ import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
+import net.unitego.lobecorp.common.access.LobeCorpSlotAccess;
 import net.unitego.lobecorp.common.component.LobeCorpAttributeModifiers;
 import net.unitego.lobecorp.common.component.LobeCorpEquipmentSlot;
 import net.unitego.lobecorp.common.data.StaffData;
@@ -17,7 +18,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-public class EGOSuitItem extends EGOEquipmentItem {
+public class EGOSuitItem extends EGOEquipmentItem implements LobeCorpSlotAccess {
     private final EGORank egoRank;
     private final float redResist;
     private final float whiteResist;
@@ -29,7 +30,7 @@ public class EGOSuitItem extends EGOEquipmentItem {
                        float redResist, float whiteResist, float blackResist, float paleResist,
                        StaffData.EquipRequire equipRequire) {
         super(properties.component(ModDataComponentTypes.LOBECORP_ATTRIBUTE_MODIFIERS, buildModifiers(egoRank)),
-                egoSkillTranslationKeys, LobeCorpEquipmentSlot.LOBECORP_SUIT);
+                egoSkillTranslationKeys);
 
         this.egoRank = egoRank;
         this.redResist = redResist;
@@ -92,5 +93,10 @@ public class EGOSuitItem extends EGOEquipmentItem {
 
     public StaffData.EquipRequire getEquipRequire() {
         return equipRequire;
+    }
+
+    @Override
+    public LobeCorpEquipmentSlot getLobeCorpSlot() {
+        return LobeCorpEquipmentSlot.LOBECORP_SUIT;
     }
 }

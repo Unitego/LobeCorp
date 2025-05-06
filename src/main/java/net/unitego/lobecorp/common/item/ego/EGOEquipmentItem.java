@@ -7,7 +7,6 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
-import net.unitego.lobecorp.common.component.LobeCorpEquipmentSlot;
 import net.unitego.lobecorp.common.util.LobeCorpUtils;
 import org.jetbrains.annotations.NotNull;
 import org.lwjgl.glfw.GLFW;
@@ -16,12 +15,10 @@ import java.util.List;
 
 public abstract class EGOEquipmentItem extends Item {
     private final List<String> egoSkillTranslationKeys;
-    private final LobeCorpEquipmentSlot lobeCorpEquipmentSlot;
 
-    public EGOEquipmentItem(Properties properties, List<String> egoSkillTranslationKeys, LobeCorpEquipmentSlot lobeCorpEquipmentSlot) {
+    public EGOEquipmentItem(Properties properties, List<String> egoSkillTranslationKeys) {
         super(properties.stacksTo(1).fireResistant());
         this.egoSkillTranslationKeys = egoSkillTranslationKeys == null ? List.of() : List.copyOf(egoSkillTranslationKeys);
-        this.lobeCorpEquipmentSlot = lobeCorpEquipmentSlot;
     }
 
     @Override
@@ -55,9 +52,5 @@ public abstract class EGOEquipmentItem extends Item {
                 }
             }
         }
-    }
-
-    public LobeCorpEquipmentSlot getLobeCorpEquipmentSlot() {
-        return lobeCorpEquipmentSlot;
     }
 }

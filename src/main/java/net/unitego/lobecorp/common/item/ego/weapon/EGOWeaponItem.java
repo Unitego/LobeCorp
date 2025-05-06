@@ -12,6 +12,7 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
+import net.unitego.lobecorp.common.access.LobeCorpSlotAccess;
 import net.unitego.lobecorp.common.component.LobeCorpEquipmentSlot;
 import net.unitego.lobecorp.common.data.StaffData;
 import net.unitego.lobecorp.common.item.ego.EGOEquipmentItem;
@@ -24,7 +25,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
-public class EGOWeaponItem extends EGOEquipmentItem {
+public class EGOWeaponItem extends EGOEquipmentItem implements LobeCorpSlotAccess {
     private static final List<ResourceKey<DamageType>> DAMAGE_ORDER = List.of(
             ModDamageTypes.RED, ModDamageTypes.WHITE, ModDamageTypes.BLACK, ModDamageTypes.PALE
     );
@@ -45,7 +46,7 @@ public class EGOWeaponItem extends EGOEquipmentItem {
 
         super(properties.component(DataComponents.ATTRIBUTE_MODIFIERS,
                         buildModifiers(attackDamage, weaponTemplate.getAttackSpeed(), weaponTemplate.getInteractionRange() - 3)),
-                egoSkillTranslationKeys, LobeCorpEquipmentSlot.LOBECORP_WEAPON);
+                egoSkillTranslationKeys);
 
         this.egoRank = egoRank;
         this.weaponTemplate = weaponTemplate;
@@ -105,5 +106,10 @@ public class EGOWeaponItem extends EGOEquipmentItem {
 
     public StaffData.EquipRequire getEquipRequire() {
         return equipRequire;
+    }
+
+    @Override
+    public LobeCorpEquipmentSlot getLobeCorpSlot() {
+        return LobeCorpEquipmentSlot.LOBECORP_WEAPON;
     }
 }

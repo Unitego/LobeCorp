@@ -9,6 +9,11 @@ import net.unitego.lobecorp.LobeCorp;
 @OnlyIn(Dist.CLIENT)
 public final class HUDResource {
     public static final ResourceLocation LOBECORP_HUD = LobeCorp.rl("lobecorp_hud");
+    //插槽路径
+    public static final ResourceLocation EMPTY_LOBECORP_WEAPON_SPRITE = LobeCorp.rl("gui/sprites/empty_lobecorp_weapon");
+    public static final ResourceLocation EMPTY_LOBECORP_SUIT_SPRITE = LobeCorp.rl("gui/sprites/empty_lobecorp_suit");
+    public static final ResourceLocation EMPTY_LOBECORP_BADGE_SPRITE = LobeCorp.rl("gui/sprites/empty_lobecorp_badge");
+    public static final ResourceLocation EMPTY_LOBECORP_TOOL_SPRITE = LobeCorp.rl("gui/sprites/empty_lobecorp_tool");
     //纹理路径
     public static final ResourceLocation GAP_FULL = LobeCorp.rl("textures/gui/sprites/hud/gap_full.png");
     public static final ResourceLocation ABSORPTION_FULL_SPRITE = LobeCorp.rl("hud/absorption_full");

@@ -46,7 +46,7 @@ public class S2CSyncEquipmentSender {
             ItemStack oldItemStack = getOrCreateStacks(serverPlayer.getUUID()).getOrDefault(slot, ItemStack.EMPTY);
             ItemStack newItemStack = LobeCorpUtils.getLobeCorpStack(serverPlayer, slot);
             if (serverPlayer.equipmentHasChanged(oldItemStack, newItemStack)) {
-                LobeCorpUtils.playSound(serverPlayer, ModSoundEvents.CHANGE_EQUIPMENT_SOUND.get());
+                LobeCorpUtils.playSound(serverPlayer, ModSoundEvents.CHANGE_EQUIPMENT.get());
                 // 添加变化到变化列表
                 equipmentChanges.put(slot, newItemStack);
                 // 更新属性

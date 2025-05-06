@@ -1,14 +1,14 @@
 {
-  "swallow_water_sound": {
-    "subtitle": "lobecorp.swallow_water_sound",
+  "swallow_water": {
+    "subtitle": "lobecorp.swallow_water",
     "sounds": [
-      "lobecorp:swallow_water_sound"
+      "lobecorp:swallow_water"
     ]
   },
-  "change_equipment_sound": {
-    "subtitle": "lobecorp.change_equipment_sound",
+  "change_equipment": {
+    "subtitle": "lobecorp.change_equipment",
     "sounds": [
-      "lobecorp:change_equipment_sound"
+      "lobecorp:change_equipment"
     ]
   }
 }

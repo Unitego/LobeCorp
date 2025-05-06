@@ -50,7 +50,7 @@
   "itemGroup.lobecorp.lobecorp_tab": "脑叶公司",
   "key.categories.lobecorp": "脑叶公司",
   "key.lobecorp.toggle_equipment": "开启/关闭 装备",
-  "lobecorp.change_equipment_sound": "变换装备",
+  "lobecorp.change_equipment": "变换装备",
   "lobecorp.info.black": "侵蚀",
   "lobecorp.info.confirm": "确认",
   "lobecorp.info.damage_resist": "伤害抗性：",
@@ -69,5 +69,5 @@
   "lobecorp.info.staff_temperance": "自律",
   "lobecorp.info.weapon_template": "武器模板：",
   "lobecorp.info.white": "精神",
-  "lobecorp.swallow_water_sound": "咽水"
+  "lobecorp.swallow_water": "咽水"
 }

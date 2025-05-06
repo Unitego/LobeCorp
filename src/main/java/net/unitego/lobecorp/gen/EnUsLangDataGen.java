@@ -45,8 +45,8 @@ public class EnUsLangDataGen extends LanguageProvider {
         //创造栏名
         add(ModCreativeModeTabs.LOBECORP_TAB_NAME, "Lobe Corp");
         //声音名
-        add(ModSoundEvents.SWALLOW_WATER_SOUND.get().getLocation().toLanguageKey(), "Swallow Water");
-        add(ModSoundEvents.CHANGE_EQUIPMENT_SOUND.get().getLocation().toLanguageKey(), "Change Equipment");
+        add(ModSoundEvents.SWALLOW_WATER.get().getLocation().toLanguageKey(), "Swallow Water");
+        add(ModSoundEvents.CHANGE_EQUIPMENT.get().getLocation().toLanguageKey(), "Change Equipment");
         //按键名
         add(ModKeyMappings.CATEGORIES_LOBECORP, "Lobe Corp");
         add(ModKeyMappings.TOGGLE_EQUIPMENT.get().getName(), "Open/Close Equipment");
