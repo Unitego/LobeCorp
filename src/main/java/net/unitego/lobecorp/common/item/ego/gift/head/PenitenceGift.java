@@ -1,0 +1,15 @@
+package net.unitego.lobecorp.common.item.ego.gift.head;
+
+import net.unitego.lobecorp.common.component.LobeCorpEquipmentSlot;
+import net.unitego.lobecorp.common.item.ego.gift.EGOGiftItem;
+
+import java.util.List;
+
+public class PenitenceGift extends EGOGiftItem {
+    public static final String GIFT_PENITENCE1 = "gift.penitence1";
+
+    public PenitenceGift() {
+        super(new Properties(), List.of(GIFT_PENITENCE1),
+                EGOGiftBonus.builder().maxSanity(2).build(), LobeCorpEquipmentSlot.LOBECORP_HEAD);
+    }
+}

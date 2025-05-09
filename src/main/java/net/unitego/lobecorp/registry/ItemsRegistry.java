@@ -7,10 +7,16 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.unitego.lobecorp.LobeCorp;
+import net.unitego.lobecorp.common.component.LobeCorpEquipmentSlot;
 import net.unitego.lobecorp.common.item.LobeCorpLogo;
+import net.unitego.lobecorp.common.item.ego.gift.EGOGiftItem;
+import net.unitego.lobecorp.common.item.ego.gift.head.PenitenceGift;
+import net.unitego.lobecorp.common.item.ego.gift.occiput.BlessGift;
 import net.unitego.lobecorp.common.item.ego.suit.EGOSuitItem;
+import net.unitego.lobecorp.common.item.ego.suit.PenitenceSuit;
 import net.unitego.lobecorp.common.item.ego.weapon.EGOWeaponItem;
 import net.unitego.lobecorp.common.item.ego.weapon.EGOWeaponTemplate;
+import net.unitego.lobecorp.common.item.ego.weapon.mace.PenitenceWeapon;
 import net.unitego.lobecorp.common.manager.StaffManager;
 import net.unitego.lobecorp.common.util.EGORank;
 
@@ -44,6 +50,21 @@ public class ItemsRegistry {
     public static final DeferredItem<EGOWeaponItem> PALE_RIOT_STICK = REGISTER.register("pale_riot_stick", () ->
             new EGOWeaponItem(new Item.Properties().rarity(Rarity.UNCOMMON), List.of(), EGORank.ZAYIN, EGOWeaponTemplate.MACE,
                     List.of(DamageTypesRegistry.PALE), 4.0f, StaffManager.EquipRequire.NONE));//灵魂镇暴棍
+
+    //EGO武器
+    public static final DeferredItem<EGOWeaponItem> STANDARD_TRAINING_EGO_WEAPON = REGISTER.register("standard_training_ego_weapon", () ->
+            new EGOWeaponItem(new Item.Properties(), List.of(), EGORank.TETH, EGOWeaponTemplate.MACE, List.of(DamageTypesRegistry.WHITE), 5.0f, StaffManager.EquipRequire.NONE));
+    public static final DeferredItem<PenitenceWeapon> PENITENCE_WEAPON = REGISTER.register("penitence_weapon", PenitenceWeapon::new);
+    //EGO护甲
+    public static final DeferredItem<EGOSuitItem> STANDARD_TRAINING_EGO_SUIT = REGISTER.register("standard_training_ego_suit", () ->
+            new EGOSuitItem(new Item.Properties(), List.of(), EGORank.TETH, 0.5f, 1.0f, 1.5f, 2.0f, StaffManager.EquipRequire.NONE));
+    public static final DeferredItem<EGOSuitItem> PENITENCE_SUIT = REGISTER.register("penitence_suit", PenitenceSuit::new);
+    //EGO饰品
+    public static final DeferredItem<EGOGiftItem> STANDARD_TRAINING_EGO_GIFT = REGISTER.register("standard_training_ego_gift", () ->
+            new EGOGiftItem(new Item.Properties(), List.of(), EGOGiftItem.EGOGiftBonus.builder().maxHealth(2).maxSanity(2).build(), LobeCorpEquipmentSlot.LOBECORP_HEAD));
+    public static final DeferredItem<EGOGiftItem> PENITENCE_GIFT = REGISTER.register("penitence_gift", PenitenceGift::new);
+
+    public static final DeferredItem<BlessGift> BLESS_GIFT = REGISTER.register("bless_gift", BlessGift::new);
 
     public static void init(IEventBus bus) {
         REGISTER.register(bus);

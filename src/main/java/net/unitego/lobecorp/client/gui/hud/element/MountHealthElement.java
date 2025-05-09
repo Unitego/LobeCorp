@@ -6,7 +6,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
-import net.unitego.lobecorp.client.gui.GuiResources;
+import net.unitego.lobecorp.client.gui.GuiResource;
 import net.unitego.lobecorp.client.gui.hud.BaseElement;
 
 import java.util.Objects;
@@ -41,16 +41,16 @@ public class MountHealthElement extends BaseElement {
             int heightOffset = txtHeight - minecraft.font.lineHeight / 2;
 
             //渲染坐骑生命条背景
-            drawTrap(x, y, widthTop, widthBottom, barHeight, GuiResources.BG1);
-            drawTrap(x + gap, y, widthTop - gap * 2, widthBottom - gap, barHeight - gap, GuiResources.BG2);
+            drawTrap(x, y, widthTop, widthBottom, barHeight, GuiResource.BG1);
+            drawTrap(x + gap, y, widthTop - gap * 2, widthBottom - gap, barHeight - gap, GuiResource.BG2);
             //渲染坐骑生命条
-            drawTrap(x + gap, y, (widthTop - gap * 2) * ratio, (widthBottom - gap) * ratio, barHeight - gap, GuiResources.NORMAL_HEALTH_BAR);
+            drawTrap(x + gap, y, (widthTop - gap * 2) * ratio, (widthBottom - gap) * ratio, barHeight - gap, GuiResource.NORMAL_HEALTH_BAR);
 
             //渲染坐骑生命值背景
-            drawRect(guiGraphics, x + gap, y + barHeight, mountHealthOffset, txtHeight, GuiResources.BG1);
+            drawRect(guiGraphics, x + gap, y + barHeight, mountHealthOffset, txtHeight, GuiResource.BG1);
             //渲染坐骑生命值字体
             guiGraphics.pose().scale(0.5f, 0.5f, 0.5f);
-            guiGraphics.drawCenteredString(minecraft.font, mountHealthString, (x + gap) * 2 + mountHealthOffset, (y + barHeight) * 2 + heightOffset, GuiResources.TXT);
+            guiGraphics.drawCenteredString(minecraft.font, mountHealthString, (x + gap) * 2 + mountHealthOffset, (y + barHeight) * 2 + heightOffset, GuiResource.TXT);
             guiGraphics.pose().scale(2.0f, 2.0f, 2.0f);
         }
     }

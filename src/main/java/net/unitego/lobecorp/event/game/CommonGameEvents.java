@@ -25,7 +25,6 @@ import net.unitego.lobecorp.common.util.MiscUtils;
 import net.unitego.lobecorp.data.loader.HydratingFoodLoader;
 import net.unitego.lobecorp.network.sender.S2CSyncEquipmentSender;
 import net.unitego.lobecorp.network.sender.S2CSyncStatsSender;
-import net.unitego.lobecorp.registry.AttributesRegistry;
 
 @EventBusSubscriber(modid = LobeCorp.MOD_ID, bus = EventBusSubscriber.Bus.GAME)
 public class CommonGameEvents {
@@ -55,7 +54,7 @@ public class CommonGameEvents {
         // 修改原版攻击速度（仅当数值变化时更新）
         AttributeInstance attackSpeed = player.getAttribute(Attributes.ATTACK_SPEED);
         if (attackSpeed != null) {
-            MiscUtils.updateAttributeModifier(attackSpeed, AttributesRegistry.ATTRIBUTE_ATTACK_VELOCITY_MODIFIER_ID,
+            MiscUtils.updateAttributeModifier(attackSpeed, MiscUtils.ATTRIBUTE_ATTACK_VELOCITY_MODIFIER_ID,
                     "LobeCorp Attack Velocity Modifier", (attackVelocity * 0.2f) / 100,
                     AttributeModifier.Operation.ADD_MULTIPLIED_BASE
             );
@@ -63,7 +62,7 @@ public class CommonGameEvents {
         // 修改原版移动速度（仅当数值变化时更新）
         AttributeInstance movementSpeed = player.getAttribute(Attributes.MOVEMENT_SPEED);
         if (movementSpeed != null) {
-            MiscUtils.updateAttributeModifier(movementSpeed, AttributesRegistry.ATTRIBUTE_MOVE_VELOCITY_MODIFIER_ID,
+            MiscUtils.updateAttributeModifier(movementSpeed, MiscUtils.ATTRIBUTE_MOVE_VELOCITY_MODIFIER_ID,
                     "LobeCorp Move Velocity Modifier", (moveVelocity * 0.2f) / 100,
                     AttributeModifier.Operation.ADD_MULTIPLIED_BASE
             );

@@ -17,8 +17,14 @@ import java.util.UUID;
  * 不知道放哪的东西就都丢这里吧！
  */
 public class MiscUtils {
-    public static final UUID INTERACTION_RANGE_MODIFIER_ID = UUID.fromString("F17D5E0B-44D0-4E2B-B81B-9C471B547B29");
-    public static final UUID LOBECORP_SUIT_MODIFIER_ID = UUID.fromString("EE3CBD25-29F0-4496-8D0F-CE1094AE095C");
+    public static final UUID ATTRIBUTE_ATTACK_VELOCITY_MODIFIER_ID = UUID.fromString("9F0BF5D-8C67-40D0-9A7C-C9E29011F02B");//攻击速率修饰ID
+    public static final UUID ATTRIBUTE_MOVE_VELOCITY_MODIFIER_ID = UUID.fromString("A12BFDCB-F7D2-458A-B2B5-9C4F7AFAC2E8");//移动速率修饰ID
+    public static final UUID INTERACTION_RANGE_MODIFIER_ID = UUID.fromString("F17D5E0B-44D0-4E2B-B81B-9C471B547B29");//交互范围修饰ID
+    //插槽修饰ID
+    public static final UUID LOBECORP_WEAPON_MODIFIER_ID = UUID.fromString("91D1DBFF-954B-4399-A2A3-B5CC7D838E98");//EGO武器修饰ID
+    public static final UUID LOBECORP_SUIT_MODIFIER_ID = UUID.fromString("EE3CBD25-29F0-4496-8D0F-CE1094AE095C");//EGO护甲修饰ID
+    public static final UUID LOBECORP_BADGE_MODIFIER_ID = UUID.fromString("A4D67FF2-34CB-4704-A01D-62DC1BD306AF");//EGO袖标修饰ID
+    public static final UUID LOBECORP_TOOL_MODIFIER_ID = UUID.fromString("48C60708-5D00-4BA1-85D4-62137DB8ADCE");//EGO工具修饰ID
 
     public static final String NETWORK_VERSION = "1.0.0";//网络版本
     public static final String MOTTO = info("motto");

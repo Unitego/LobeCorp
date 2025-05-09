@@ -5,7 +5,10 @@ import net.neoforged.neoforge.common.data.LanguageProvider;
 import net.unitego.lobecorp.LobeCorp;
 import net.unitego.lobecorp.client.init.KeyInit;
 import net.unitego.lobecorp.common.component.LobeCorpEquipmentSlot;
+import net.unitego.lobecorp.common.item.ego.gift.head.PenitenceGift;
+import net.unitego.lobecorp.common.item.ego.suit.PenitenceSuit;
 import net.unitego.lobecorp.common.item.ego.weapon.EGOWeaponTemplate;
+import net.unitego.lobecorp.common.item.ego.weapon.mace.PenitenceWeapon;
 import net.unitego.lobecorp.common.util.MiscUtils;
 import net.unitego.lobecorp.registry.*;
 
@@ -43,6 +46,7 @@ public class ZhCnLangGenerator extends LanguageProvider {
         add(DamageTypesRegistry.DEATH_ATTACK_PALE, "%2$s致使%1$s死于灵魂削除");
         add(DamageTypesRegistry.DEATH_ATTACK_PALE_ITEM, "%2$s使用%3$s致使%1$s死于灵魂削除");
         //物品名
+        //脑叶公司
         add(ItemsRegistry.LOBECORP_LOGO.get(), "脑叶公司Logo");
         add(ItemsRegistry.BLUE_LEAF.get(), "蓝叶");
         add(ItemsRegistry.CODE_SUIT.get(), "代码西装");
@@ -52,6 +56,16 @@ public class ZhCnLangGenerator extends LanguageProvider {
         add(ItemsRegistry.WHITE_RIOT_STICK.get(), "精神镇暴棍");
         add(ItemsRegistry.BLACK_RIOT_STICK.get(), "侵蚀镇暴棍");
         add(ItemsRegistry.PALE_RIOT_STICK.get(), "灵魂镇暴棍");
+        //EGO武器
+        add(ItemsRegistry.STANDARD_TRAINING_EGO_WEAPON.get(), "教学用E.G.O");
+        add(ItemsRegistry.PENITENCE_WEAPON.get(), "忏悔");
+        //EGO护甲
+        add(ItemsRegistry.STANDARD_TRAINING_EGO_SUIT.get(), "教学用E.G.O");
+        add(ItemsRegistry.PENITENCE_SUIT.get(), "忏悔");
+        //EGO饰品
+        add(ItemsRegistry.STANDARD_TRAINING_EGO_GIFT.get(), "教学用E.G.O");
+        add(ItemsRegistry.PENITENCE_GIFT.get(), "忏悔");
+        add(ItemsRegistry.BLESS_GIFT.get(), "祝福");
         //菜单名
         add(MenusRegistry.CONTAINER_LOBECORP_EQUIPMENT, "装备");
         //效果名
@@ -81,6 +95,20 @@ public class ZhCnLangGenerator extends LanguageProvider {
         add(LobeCorpEquipmentSlot.LOBECORP_SUIT.getSlotModifiersName(), "在护甲位时：");
         add(LobeCorpEquipmentSlot.LOBECORP_BADGE.getSlotModifiersName(), "在袖标位时：");
         add(LobeCorpEquipmentSlot.LOBECORP_TOOL.getSlotModifiersName(), "在工具位时：");
+        add(LobeCorpEquipmentSlot.LOBECORP_HAT.getSlotModifiersName(), "在头饰位时：");
+        add(LobeCorpEquipmentSlot.LOBECORP_HEAD.getSlotModifiersName(), "在头部位时：");
+        add(LobeCorpEquipmentSlot.LOBECORP_OCCIPUT.getSlotModifiersName(), "在后脑位时：");
+        add(LobeCorpEquipmentSlot.LOBECORP_EYE.getSlotModifiersName(), "在眼部位时：");
+        add(LobeCorpEquipmentSlot.LOBECORP_FACE.getSlotModifiersName(), "在面部位时：");
+        add(LobeCorpEquipmentSlot.LOBECORP_CHEEK.getSlotModifiersName(), "在脸颊位时：");
+        add(LobeCorpEquipmentSlot.LOBECORP_MASK.getSlotModifiersName(), "在面具位时：");
+        add(LobeCorpEquipmentSlot.LOBECORP_MOUTH.getSlotModifiersName(), "在口部位时：");
+        add(LobeCorpEquipmentSlot.LOBECORP_NECK.getSlotModifiersName(), "在颈部位时：");
+        add(LobeCorpEquipmentSlot.LOBECORP_CHEST.getSlotModifiersName(), "在胸部位时：");
+        add(LobeCorpEquipmentSlot.LOBECORP_HAND.getSlotModifiersName(), "在手部位时：");
+        add(LobeCorpEquipmentSlot.LOBECORP_GLOVE.getSlotModifiersName(), "在手套位时：");
+        add(LobeCorpEquipmentSlot.LOBECORP_RIGHTBACK.getSlotModifiersName(), "在右背位时：");
+        add(LobeCorpEquipmentSlot.LOBECORP_LEFTBACK.getSlotModifiersName(), "在左背位时：");
 
         //脑叶公司
         add(MiscUtils.MOTTO, "直面恐惧，创造未来");
@@ -101,5 +129,11 @@ public class ZhCnLangGenerator extends LanguageProvider {
         add(MiscUtils.WHITE, "精神");
         add(MiscUtils.BLACK, "侵蚀");
         add(MiscUtils.PALE, "灵魂");
+
+        //技能
+        //忏悔
+        add(PenitenceWeapon.WEAPON_PENITENCE1, "如果持有者的正义等级高于2级，每次攻击都有5%的概率恢复10点精神值");
+        add(PenitenceSuit.SUIT_PENITENCE1, "当穿戴者受到物理或侵蚀伤害时，有5%的概率恢复10点精神值");
+        add(PenitenceGift.GIFT_PENITENCE1, "对异想体“一罪与百善”进行工作的成功率提高10%");
     }
 }

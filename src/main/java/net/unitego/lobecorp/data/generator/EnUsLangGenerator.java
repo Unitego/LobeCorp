@@ -5,7 +5,10 @@ import net.neoforged.neoforge.common.data.LanguageProvider;
 import net.unitego.lobecorp.LobeCorp;
 import net.unitego.lobecorp.client.init.KeyInit;
 import net.unitego.lobecorp.common.component.LobeCorpEquipmentSlot;
+import net.unitego.lobecorp.common.item.ego.gift.head.PenitenceGift;
+import net.unitego.lobecorp.common.item.ego.suit.PenitenceSuit;
 import net.unitego.lobecorp.common.item.ego.weapon.EGOWeaponTemplate;
+import net.unitego.lobecorp.common.item.ego.weapon.mace.PenitenceWeapon;
 import net.unitego.lobecorp.common.util.MiscUtils;
 import net.unitego.lobecorp.registry.*;
 
@@ -52,6 +55,16 @@ public class EnUsLangGenerator extends LanguageProvider {
         add(ItemsRegistry.WHITE_RIOT_STICK.get(), "White Riot Stick");
         add(ItemsRegistry.BLACK_RIOT_STICK.get(), "Black Riot Stick");
         add(ItemsRegistry.PALE_RIOT_STICK.get(), "Pale Riot Stick");
+        //EGO武器
+        add(ItemsRegistry.STANDARD_TRAINING_EGO_WEAPON.get(), "Standard Training E.G.O");
+        add(ItemsRegistry.PENITENCE_WEAPON.get(), "Penitence");
+        //EGO护甲
+        add(ItemsRegistry.STANDARD_TRAINING_EGO_SUIT.get(), "Standard Training E.G.O");
+        add(ItemsRegistry.PENITENCE_SUIT.get(), "Penitence");
+        //EGO饰品
+        add(ItemsRegistry.STANDARD_TRAINING_EGO_GIFT.get(), "Standard Training E.G.O");
+        add(ItemsRegistry.PENITENCE_GIFT.get(), "Penitence");
+        add(ItemsRegistry.BLESS_GIFT.get(), "Bless");
         //菜单名
         add(MenusRegistry.CONTAINER_LOBECORP_EQUIPMENT, "Equipment");
         //效果名
@@ -81,6 +94,20 @@ public class EnUsLangGenerator extends LanguageProvider {
         add(LobeCorpEquipmentSlot.LOBECORP_SUIT.getSlotModifiersName(), "When in Suit Slot: ");
         add(LobeCorpEquipmentSlot.LOBECORP_BADGE.getSlotModifiersName(), "When in Badge Slot: ");
         add(LobeCorpEquipmentSlot.LOBECORP_TOOL.getSlotModifiersName(), "When in Tool Slot: ");
+        add(LobeCorpEquipmentSlot.LOBECORP_HAT.getSlotModifiersName(), "When in Hat Slot:");
+        add(LobeCorpEquipmentSlot.LOBECORP_HEAD.getSlotModifiersName(), "When in Head Slot:");
+        add(LobeCorpEquipmentSlot.LOBECORP_OCCIPUT.getSlotModifiersName(), "When in Occiput Slot:");
+        add(LobeCorpEquipmentSlot.LOBECORP_EYE.getSlotModifiersName(), "When in Eye Slot:");
+        add(LobeCorpEquipmentSlot.LOBECORP_FACE.getSlotModifiersName(), "When in Face Slot:");
+        add(LobeCorpEquipmentSlot.LOBECORP_CHEEK.getSlotModifiersName(), "When in Cheek Slot:");
+        add(LobeCorpEquipmentSlot.LOBECORP_MASK.getSlotModifiersName(), "When in Mask Slot:");
+        add(LobeCorpEquipmentSlot.LOBECORP_MOUTH.getSlotModifiersName(), "When in Mouth Slot:");
+        add(LobeCorpEquipmentSlot.LOBECORP_NECK.getSlotModifiersName(), "When in Neck Slot:");
+        add(LobeCorpEquipmentSlot.LOBECORP_CHEST.getSlotModifiersName(), "When in Chest Slot:");
+        add(LobeCorpEquipmentSlot.LOBECORP_HAND.getSlotModifiersName(), "When in Hand Slot:");
+        add(LobeCorpEquipmentSlot.LOBECORP_GLOVE.getSlotModifiersName(), "When in Glove Slot:");
+        add(LobeCorpEquipmentSlot.LOBECORP_RIGHTBACK.getSlotModifiersName(), "When in RightBack Slot:");
+        add(LobeCorpEquipmentSlot.LOBECORP_LEFTBACK.getSlotModifiersName(), "When in LeftBack Slot:");
 
         //脑叶公司
         add(MiscUtils.MOTTO, "Face the Fear, Build the Future");
@@ -101,5 +128,11 @@ public class EnUsLangGenerator extends LanguageProvider {
         add(MiscUtils.WHITE, "White");
         add(MiscUtils.BLACK, "Black");
         add(MiscUtils.PALE, "Pale");
+
+        //技能
+        //忏悔
+        add(PenitenceWeapon.WEAPON_PENITENCE1, "5% of healing 10 SP upon attacking with Justice Lvl 2+");
+        add(PenitenceSuit.SUIT_PENITENCE1, "5% of heal 10 SP when damaged by Red or Black");
+        add(PenitenceGift.GIFT_PENITENCE1, "Success Rate increases %10 with the corresponding Abnormality");
     }
 }

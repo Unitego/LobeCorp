@@ -7,7 +7,7 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.effect.MobEffects;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
-import net.unitego.lobecorp.client.gui.GuiResources;
+import net.unitego.lobecorp.client.gui.GuiResource;
 import net.unitego.lobecorp.client.gui.hud.BaseElement;
 import net.unitego.lobecorp.common.access.ManagerAccess;
 import net.unitego.lobecorp.common.manager.WaterManager;
@@ -40,7 +40,7 @@ public class WaterElement extends BaseElement {
         int offset = (int) (ratio * width);
 
         //渲染消耗度条
-        guiGraphics.blit(GuiResources.GAP_FULL, x, y, 0, 0, offset, size, width, size);
+        guiGraphics.blit(GuiResource.GAP_FULL, x, y, 0, 0, offset, size, width, size);
 
         //渲染干渴条
         for (int water = 0; water < 10; water++) {
@@ -48,13 +48,13 @@ public class WaterElement extends BaseElement {
             ResourceLocation halfSprite;
             ResourceLocation fullSprite;
             if (minecraft.player.hasEffect(MobEffects.HUNGER)) {
-                emptySprite = GuiResources.WATER_EMPTY_THIRST_SPRITE;
-                halfSprite = GuiResources.WATER_HALF_THIRST_SPRITE;
-                fullSprite = GuiResources.WATER_FULL_THIRST_SPRITE;
+                emptySprite = GuiResource.WATER_EMPTY_THIRST_SPRITE;
+                halfSprite = GuiResource.WATER_HALF_THIRST_SPRITE;
+                fullSprite = GuiResource.WATER_FULL_THIRST_SPRITE;
             } else {
-                emptySprite = GuiResources.WATER_EMPTY_SPRITE;
-                halfSprite = GuiResources.WATER_HALF_SPRITE;
-                fullSprite = GuiResources.WATER_FULL_SPRITE;
+                emptySprite = GuiResource.WATER_EMPTY_SPRITE;
+                halfSprite = GuiResource.WATER_HALF_SPRITE;
+                fullSprite = GuiResource.WATER_FULL_SPRITE;
             }
 
             if (waterManager.getHydrationLevel() <= 0.0F && minecraft.gui.getGuiTicks() % (waterLevel * 3 + 1) == 0) {
@@ -77,13 +77,13 @@ public class WaterElement extends BaseElement {
             float value = (hydrationLevel / 2.0F) - hydration;
             int posX = x + hydration * (size - 1);
             if (value > 0 && value < 0.33F) {
-                guiGraphics.blitSprite(GuiResources.HYDRATION_CRIT_SPRITE, posX, posY, size, size);
+                guiGraphics.blitSprite(GuiResource.HYDRATION_CRIT_SPRITE, posX, posY, size, size);
             } else if (value >= 0.33F && value < 0.66F) {
-                guiGraphics.blitSprite(GuiResources.HYDRATION_LOW_SPRITE, posX, posY, size, size);
+                guiGraphics.blitSprite(GuiResource.HYDRATION_LOW_SPRITE, posX, posY, size, size);
             } else if (value >= 0.66F && value < 1.0F) {
-                guiGraphics.blitSprite(GuiResources.HYDRATION_STAB_SPRITE, posX, posY, size, size);
+                guiGraphics.blitSprite(GuiResource.HYDRATION_STAB_SPRITE, posX, posY, size, size);
             } else if (value >= 1.0F) {
-                guiGraphics.blitSprite(GuiResources.HYDRATION_FULL_SPRITE, posX, posY, size, size);
+                guiGraphics.blitSprite(GuiResource.HYDRATION_FULL_SPRITE, posX, posY, size, size);
             }
         }
     }

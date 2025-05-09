@@ -6,7 +6,7 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.effect.MobEffects;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
-import net.unitego.lobecorp.client.gui.GuiResources;
+import net.unitego.lobecorp.client.gui.GuiResource;
 import net.unitego.lobecorp.client.gui.hud.BaseElement;
 
 import java.util.Objects;
@@ -39,7 +39,7 @@ public class HealthElement extends BaseElement {
         Component healthComponent;
         if (absorption > 0) {
             healthString = "(" + health + "+" + absorption + ")/" + maxHealth;
-            Component absorptionPart = Component.literal("+" + absorption).withStyle(style -> style.withColor(GuiResources.SHIELD_BAR));
+            Component absorptionPart = Component.literal("+" + absorption).withStyle(style -> style.withColor(GuiResource.SHIELD_BAR));
             healthComponent = Component.literal("(" + health).append(absorptionPart).append(")/" + maxHealth);
         } else {
             healthString = health + "/" + maxHealth;
@@ -49,36 +49,36 @@ public class HealthElement extends BaseElement {
         int heightOffset = size - minecraft.font.lineHeight / 2;
 
         //绘制生命条背景
-        drawRect(guiGraphics, x, y, width, height, GuiResources.BG1);
-        drawRect(guiGraphics, x + gap * 2, y + gap * 2, width - gap * 4, height - gap * 3, GuiResources.BG2);
+        drawRect(guiGraphics, x, y, width, height, GuiResource.BG1);
+        drawRect(guiGraphics, x + gap * 2, y + gap * 2, width - gap * 4, height - gap * 3, GuiResource.BG2);
         //渲染生命值背景
-        drawRect(guiGraphics, x + width + gap, y, size + healthOffset, size, GuiResources.BG1);
+        drawRect(guiGraphics, x + width + gap, y, size + healthOffset, size, GuiResource.BG1);
 
         //渲染生命条
-        guiGraphics.blitSprite(GuiResources.HEALTH_EMPTY_SPRITE, x + width + gap * 2, y, size, size);
+        guiGraphics.blitSprite(GuiResource.HEALTH_EMPTY_SPRITE, x + width + gap * 2, y, size, size);
         if (absorption > 0) {
-            drawRect(guiGraphics, x + gap * 2, y + gap * 2, (float) ((width - gap * 4) * absorptionRatio), height - gap * 3, GuiResources.SHIELD_BAR);
+            drawRect(guiGraphics, x + gap * 2, y + gap * 2, (float) ((width - gap * 4) * absorptionRatio), height - gap * 3, GuiResource.SHIELD_BAR);
         }
         if (minecraft.player.hasEffect(MobEffects.POISON)) {
-            drawRect(guiGraphics, x + gap * 2, y + gap * 2, (float) ((width - gap * 4) * healthRatio), height - gap * 3, GuiResources.POISON_HEALTH_BAR);
-            guiGraphics.blitSprite(GuiResources.HEALTH_POISON_SPRITE, x + width + gap * 2, y, size, size);
+            drawRect(guiGraphics, x + gap * 2, y + gap * 2, (float) ((width - gap * 4) * healthRatio), height - gap * 3, GuiResource.POISON_HEALTH_BAR);
+            guiGraphics.blitSprite(GuiResource.HEALTH_POISON_SPRITE, x + width + gap * 2, y, size, size);
         } else if (minecraft.player.hasEffect(MobEffects.WITHER)) {
-            drawRect(guiGraphics, x + gap * 2, y + gap * 2, (float) ((width - gap * 4) * healthRatio), height - gap * 3, GuiResources.WITHER_HEALTH_BAR);
-            guiGraphics.blitSprite(GuiResources.HEALTH_WITHER_SPRITE, x + width + gap * 2, y, size, size);
+            drawRect(guiGraphics, x + gap * 2, y + gap * 2, (float) ((width - gap * 4) * healthRatio), height - gap * 3, GuiResource.WITHER_HEALTH_BAR);
+            guiGraphics.blitSprite(GuiResource.HEALTH_WITHER_SPRITE, x + width + gap * 2, y, size, size);
         } else if (minecraft.player.isFreezing()) {
-            drawRect(guiGraphics, x + gap * 2, y + gap * 2, (float) ((width - gap * 4) * healthRatio), height - gap * 3, GuiResources.FROZEN_BAR);
-            guiGraphics.blitSprite(GuiResources.HEALTH_FROZEN_FULL_SPRITE, x + width + gap * 2, y, size, size);
+            drawRect(guiGraphics, x + gap * 2, y + gap * 2, (float) ((width - gap * 4) * healthRatio), height - gap * 3, GuiResource.FROZEN_BAR);
+            guiGraphics.blitSprite(GuiResource.HEALTH_FROZEN_FULL_SPRITE, x + width + gap * 2, y, size, size);
         } else {
-            drawRect(guiGraphics, x + gap * 2, y + gap * 2, (float) ((width - gap * 4) * healthRatio), height - gap * 3, GuiResources.NORMAL_HEALTH_BAR);
-            guiGraphics.blitSprite(GuiResources.HEALTH_FULL_SPRITE, x + width + gap * 2, y, size, size);
+            drawRect(guiGraphics, x + gap * 2, y + gap * 2, (float) ((width - gap * 4) * healthRatio), height - gap * 3, GuiResource.NORMAL_HEALTH_BAR);
+            guiGraphics.blitSprite(GuiResource.HEALTH_FULL_SPRITE, x + width + gap * 2, y, size, size);
         }
         if (absorption > 0) {
-            guiGraphics.blitSprite(GuiResources.ABSORPTION_FULL_SPRITE, x + width + gap * 2, y, size, size);
+            guiGraphics.blitSprite(GuiResource.ABSORPTION_FULL_SPRITE, x + width + gap * 2, y, size, size);
         }
 
         //渲染生命值字体
         guiGraphics.pose().scale(0.5f, 0.5f, 0.5f);
-        guiGraphics.drawCenteredString(minecraft.font, healthComponent, (x + width + gap * 2 + size) * 2 + healthOffset, y * 2 + heightOffset, GuiResources.NORMAL_HEALTH_BAR);
+        guiGraphics.drawCenteredString(minecraft.font, healthComponent, (x + width + gap * 2 + size) * 2 + healthOffset, y * 2 + heightOffset, GuiResource.NORMAL_HEALTH_BAR);
         guiGraphics.pose().scale(2.0f, 2.0f, 2.0f);
     }
 }

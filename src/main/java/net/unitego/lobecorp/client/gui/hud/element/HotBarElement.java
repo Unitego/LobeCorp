@@ -9,7 +9,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.GameType;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
-import net.unitego.lobecorp.client.gui.GuiResources;
+import net.unitego.lobecorp.client.gui.GuiResource;
 import net.unitego.lobecorp.client.gui.hud.BaseElement;
 
 import java.util.Objects;
@@ -39,30 +39,30 @@ public class HotBarElement extends BaseElement {
             int height = gap + size;
 
             //渲染快捷栏上部分背景
-            drawRect(guiGraphics, x, y, width, height, GuiResources.BG1);
+            drawRect(guiGraphics, x, y, width, height, GuiResource.BG1);
             //创造模式时补全渲染快捷栏下部分背景
             if (player.isCreative()) {
-                drawRect(guiGraphics, x, y + height, width, height - size, GuiResources.BG1);
+                drawRect(guiGraphics, x, y + height, width, height - size, GuiResource.BG1);
             }
             //渲染九个快捷栏栏位
             for (int slot = 0; slot < 9; slot++) {
-                drawRect(guiGraphics, x + gap + slot * (size + gap), y + gap, size, size, GuiResources.BG3);
+                drawRect(guiGraphics, x + gap + slot * (size + gap), y + gap, size, size, GuiResource.BG3);
             }
             //渲染当前快捷栏栏位
-            drawRect(guiGraphics, x + gap + player.getInventory().selected * (size + gap), y + gap, size, size, GuiResources.BG4);
+            drawRect(guiGraphics, x + gap + player.getInventory().selected * (size + gap), y + gap, size, size, GuiResource.BG4);
             //副手不为空时渲染副手栏
             if (!offhandItem.isEmpty()) {
                 if (mainArm == HumanoidArm.RIGHT) {
-                    drawRect(guiGraphics, x - gap * 3 - size, y, gap * 2 + size, gap + size, GuiResources.BG1);
-                    drawRect(guiGraphics, x - gap * 2 - size, y + gap, size, size, GuiResources.BG4);
+                    drawRect(guiGraphics, x - gap * 3 - size, y, gap * 2 + size, gap + size, GuiResource.BG1);
+                    drawRect(guiGraphics, x - gap * 2 - size, y + gap, size, size, GuiResource.BG4);
                     if (player.isCreative()) {
-                        drawRect(guiGraphics, x - gap * 3 - size, y + height, gap * 2 + size, gap, GuiResources.BG1);
+                        drawRect(guiGraphics, x - gap * 3 - size, y + height, gap * 2 + size, gap, GuiResource.BG1);
                     }
                 } else if (mainArm == HumanoidArm.LEFT) {
-                    drawRect(guiGraphics, x + width + gap, y, gap * 2 + size, gap + size, GuiResources.BG1);
-                    drawRect(guiGraphics, x + width + gap * 2, y + gap, size, size, GuiResources.BG4);
+                    drawRect(guiGraphics, x + width + gap, y, gap * 2 + size, gap + size, GuiResource.BG1);
+                    drawRect(guiGraphics, x + width + gap * 2, y + gap, size, size, GuiResource.BG4);
                     if (player.isCreative()) {
-                        drawRect(guiGraphics, x + width + gap, y + height, gap * 2 + size, gap, GuiResources.BG1);
+                        drawRect(guiGraphics, x + width + gap, y + height, gap * 2 + size, gap, GuiResource.BG1);
                     }
                 }
             }

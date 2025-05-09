@@ -1,10 +1,17 @@
-// 1.20.6	2025-05-06T04:48:46.9597664	Item Models: lobecorp
+// 1.20.6	2025-05-09T15:36:39.4754725	Item Models: lobecorp
 43d04a403cff597c0c90bbbe3db30c1be889c596 assets/lobecorp/models/item/black_riot_stick.json
+abb9fe2c8f562fe8145fdad18c52eb8850c8f6cc assets/lobecorp/models/item/bless_gift.json
 a0b244d215171bf7a46747da8be58490dd1f98ea assets/lobecorp/models/item/blue_leaf.json
 1cd5437807d9d0b4d782a779ec238f4931438851 assets/lobecorp/models/item/code_riot_stick.json
 88535cc235ee4958d129de65b49e34daf2deb8db assets/lobecorp/models/item/code_suit.json
 bb5bb1d80151ddc098e9e8ee4ee9bbe376f3c73a assets/lobecorp/models/item/lobecorp_logo.json
 8dc87044b4da864a50989aa595a0c5eaaf8658e2 assets/lobecorp/models/item/pale_riot_stick.json
+495de7024a539a35238d0a1ba4e13d53fd21991f assets/lobecorp/models/item/penitence_gift.json
+2b48c727c65d8c0b3e663eeed3f47ddc227e0cbc assets/lobecorp/models/item/penitence_suit.json
+3d60749c502d5d248832097a8962a1e8780a484b assets/lobecorp/models/item/penitence_weapon.json
 431d73d7dc32342ac37b2b1ba92a807189e9f46e assets/lobecorp/models/item/red_riot_stick.json
 656930bc723061d87a50a9d3c28d58b112edf559 assets/lobecorp/models/item/standard_suit.json
+d3b006efbc6fce93c8f21c81faf5a68d970a86bf assets/lobecorp/models/item/standard_training_ego_gift.json
+73de86f70b812dc8b60b895a22167161ff634e4b assets/lobecorp/models/item/standard_training_ego_suit.json
+9ee19c2e982cfc7b2cc1ebdfe445c91a5d04c1e1 assets/lobecorp/models/item/standard_training_ego_weapon.json
 4049c25a69b2b0176ae74f1ebcf4c17d5762f312 assets/lobecorp/models/item/white_riot_stick.json

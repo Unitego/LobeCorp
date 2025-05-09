@@ -4,7 +4,7 @@ import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.world.entity.LivingEntity;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
-import net.unitego.lobecorp.client.gui.GuiResources;
+import net.unitego.lobecorp.client.gui.GuiResource;
 import net.unitego.lobecorp.client.gui.hud.BaseElement;
 
 import java.util.Objects;
@@ -31,9 +31,9 @@ public class MountJumpElement extends BaseElement {
         int height = 10;
 
         //渲染坐骑跳跃条背景
-        drawRect(guiGraphics, x, y, width, height, GuiResources.BG1);
-        drawRect(guiGraphics, x + gap, y + gap, width - gap * 2, height - gap * 2, GuiResources.BG2);
+        drawRect(guiGraphics, x, y, width, height, GuiResource.BG1);
+        drawRect(guiGraphics, x + gap, y + gap, width - gap * 2, height - gap * 2, GuiResource.BG2);
         //渲染坐骑跳跃条
-        drawRect(guiGraphics, x + gap, y + gap, width * jumpRidingScale - gap * 2, height - gap * 2, GuiResources.MOUNT_JUMP_BAR);
+        drawRect(guiGraphics, x + gap, y + gap, width * jumpRidingScale - gap * 2, height - gap * 2, GuiResource.MOUNT_JUMP_BAR);
     }
 }

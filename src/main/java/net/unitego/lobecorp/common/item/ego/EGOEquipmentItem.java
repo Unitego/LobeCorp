@@ -21,6 +21,10 @@ public abstract class EGOEquipmentItem extends Item {
         this.egoSkillTranslationKeys = egoSkillTranslationKeys == null ? List.of() : List.copyOf(egoSkillTranslationKeys);
     }
 
+    protected static String egoSkillString(String skills){
+        return "ego.skill."+skills;
+    }
+
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @NotNull TooltipContext context,
                                 @NotNull List<Component> tooltipComponents, @NotNull TooltipFlag tooltipFlag) {
@@ -39,14 +43,14 @@ public abstract class EGOEquipmentItem extends Item {
                     int maxLength = 24;
                     tooltipComponents.add(Component.literal("●")
                             .append(Component.literal(text.substring(0, Math.min(maxLength, text.length())))
-                                    .withStyle(ChatFormatting.GOLD)));
+                                    ).withStyle(ChatFormatting.GOLD, ChatFormatting.ITALIC));
 
                     if (text.length() > maxLength) {
                         String remaining = text.substring(maxLength);
                         for (int i = 0; i < remaining.length(); i += maxLength) {
                             String line = remaining.substring(i, Math.min(i + maxLength, remaining.length()));
                             tooltipComponents.add(Component.literal(" ")
-                                    .append(Component.literal(line).withStyle(ChatFormatting.GOLD)));
+                                    .append(Component.literal(line).withStyle(ChatFormatting.GOLD, ChatFormatting.ITALIC)));
                         }
                     }
                 }

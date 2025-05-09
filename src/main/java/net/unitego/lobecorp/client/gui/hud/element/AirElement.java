@@ -3,7 +3,7 @@ package net.unitego.lobecorp.client.gui.hud.element;
 import net.minecraft.client.gui.GuiGraphics;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
-import net.unitego.lobecorp.client.gui.GuiResources;
+import net.unitego.lobecorp.client.gui.GuiResource;
 import net.unitego.lobecorp.client.gui.hud.BaseElement;
 
 import java.util.Objects;
@@ -33,9 +33,9 @@ public class AirElement extends BaseElement {
         double ratio = (double) airSupply / maxAirSupply;
 
         //渲染氧气条背景
-        drawRect(guiGraphics, x, y, width, height, GuiResources.BG1);
-        drawRect(guiGraphics, x + gap, y + gap, width - gap * 2, height - gap * 2, GuiResources.BG2);
+        drawRect(guiGraphics, x, y, width, height, GuiResource.BG1);
+        drawRect(guiGraphics, x + gap, y + gap, width - gap * 2, height - gap * 2, GuiResource.BG2);
         //渲染氧气条
-        drawRect(guiGraphics, x + gap, y + gap, (float) ((width * ratio) - gap * 2), height - gap * 2, GuiResources.AIR_BAR);
+        drawRect(guiGraphics, x + gap, y + gap, (float) ((width * ratio) - gap * 2), height - gap * 2, GuiResource.AIR_BAR);
     }
 }

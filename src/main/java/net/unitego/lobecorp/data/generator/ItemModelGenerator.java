@@ -13,6 +13,7 @@ public class ItemModelGenerator extends ItemModelProvider {
 
     @Override
     protected void registerModels() {
+        //脑叶公司
         basicItem(ItemsRegistry.LOBECORP_LOGO.get());
         basicItem(ItemsRegistry.BLUE_LEAF.get());
         basicItem(ItemsRegistry.CODE_SUIT.get());
@@ -22,5 +23,15 @@ public class ItemModelGenerator extends ItemModelProvider {
         basicItem(ItemsRegistry.WHITE_RIOT_STICK.get());
         basicItem(ItemsRegistry.BLACK_RIOT_STICK.get());
         basicItem(ItemsRegistry.PALE_RIOT_STICK.get());
+        //EGO武器
+        basicItem(ItemsRegistry.STANDARD_TRAINING_EGO_WEAPON.get());
+        basicItem(ItemsRegistry.PENITENCE_WEAPON.get());
+        //EGO护甲
+        basicItem(ItemsRegistry.STANDARD_TRAINING_EGO_SUIT.get());
+        basicItem(ItemsRegistry.PENITENCE_SUIT.get());
+        //EGO饰品
+        basicItem(ItemsRegistry.STANDARD_TRAINING_EGO_GIFT.get());
+        basicItem(ItemsRegistry.PENITENCE_GIFT.get());
+        basicItem(ItemsRegistry.BLESS_GIFT.get());
     }
 }

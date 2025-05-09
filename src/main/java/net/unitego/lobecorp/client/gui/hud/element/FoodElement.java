@@ -8,7 +8,7 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodData;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
-import net.unitego.lobecorp.client.gui.GuiResources;
+import net.unitego.lobecorp.client.gui.GuiResource;
 import net.unitego.lobecorp.client.gui.hud.BaseElement;
 
 import java.util.Objects;
@@ -39,7 +39,7 @@ public class FoodElement extends BaseElement {
         int offset = (int) (ratio * width);
 
         //渲染消耗度条
-        guiGraphics.blit(GuiResources.GAP_FULL, x - offset, y, width - offset, 0, offset, size, width, size);
+        guiGraphics.blit(GuiResource.GAP_FULL, x - offset, y, width - offset, 0, offset, size, width, size);
 
         //渲染饥饿条
         for (int food = 0; food < 10; food++) {
@@ -47,13 +47,13 @@ public class FoodElement extends BaseElement {
             ResourceLocation halfSprite;
             ResourceLocation fullSprite;
             if (minecraft.player.hasEffect(MobEffects.HUNGER)) {
-                emptySprite = GuiResources.FOOD_EMPTY_HUNGER_SPRITE;
-                halfSprite = GuiResources.FOOD_HALF_HUNGER_SPRITE;
-                fullSprite = GuiResources.FOOD_FULL_HUNGER_SPRITE;
+                emptySprite = GuiResource.FOOD_EMPTY_HUNGER_SPRITE;
+                halfSprite = GuiResource.FOOD_HALF_HUNGER_SPRITE;
+                fullSprite = GuiResource.FOOD_FULL_HUNGER_SPRITE;
             } else {
-                emptySprite = GuiResources.FOOD_EMPTY_SPRITE;
-                halfSprite = GuiResources.FOOD_HALF_SPRITE;
-                fullSprite = GuiResources.FOOD_FULL_SPRITE;
+                emptySprite = GuiResource.FOOD_EMPTY_SPRITE;
+                halfSprite = GuiResource.FOOD_HALF_SPRITE;
+                fullSprite = GuiResource.FOOD_FULL_SPRITE;
             }
 
             if (foodData.getSaturationLevel() <= 0.0F && minecraft.gui.getGuiTicks() % (foodLevel * 3 + 1) == 0) {
@@ -76,13 +76,13 @@ public class FoodElement extends BaseElement {
             float value = (saturationLevel / 2.0F) - saturation;
             int posX = x - saturation * (size - 1) - 9;
             if (value > 0 && value < 0.33F) {
-                guiGraphics.blitSprite(GuiResources.SATURATION_CRIT_SPRITE, posX, posY, size, size);
+                guiGraphics.blitSprite(GuiResource.SATURATION_CRIT_SPRITE, posX, posY, size, size);
             } else if (value >= 0.33F && value < 0.66F) {
-                guiGraphics.blitSprite(GuiResources.SATURATION_LOW_SPRITE, posX, posY, size, size);
+                guiGraphics.blitSprite(GuiResource.SATURATION_LOW_SPRITE, posX, posY, size, size);
             } else if (value >= 0.66F && value < 1.0F) {
-                guiGraphics.blitSprite(GuiResources.SATURATION_STAB_SPRITE, posX, posY, size, size);
+                guiGraphics.blitSprite(GuiResource.SATURATION_STAB_SPRITE, posX, posY, size, size);
             } else if (value >= 1.0F) {
-                guiGraphics.blitSprite(GuiResources.SATURATION_FULL_SPRITE, posX, posY, size, size);
+                guiGraphics.blitSprite(GuiResource.SATURATION_FULL_SPRITE, posX, posY, size, size);
             }
         }
     }

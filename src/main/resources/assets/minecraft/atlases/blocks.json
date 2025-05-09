@@ -15,6 +15,62 @@
     {
       "type": "single",
       "resource": "lobecorp:gui/sprites/empty_lobecorp_tool"
+    },
+    {
+      "type": "single",
+      "resource": "lobecorp:gui/sprites/empty_lobecorp_hat"
+    },
+    {
+      "type": "single",
+      "resource": "lobecorp:gui/sprites/empty_lobecorp_head"
+    },
+    {
+      "type": "single",
+      "resource": "lobecorp:gui/sprites/empty_lobecorp_occiput"
+    },
+    {
+      "type": "single",
+      "resource": "lobecorp:gui/sprites/empty_lobecorp_eye"
+    },
+    {
+      "type": "single",
+      "resource": "lobecorp:gui/sprites/empty_lobecorp_face"
+    },
+    {
+      "type": "single",
+      "resource": "lobecorp:gui/sprites/empty_lobecorp_cheek"
+    },
+    {
+      "type": "single",
+      "resource": "lobecorp:gui/sprites/empty_lobecorp_mask"
+    },
+    {
+      "type": "single",
+      "resource": "lobecorp:gui/sprites/empty_lobecorp_mouth"
+    },
+    {
+      "type": "single",
+      "resource": "lobecorp:gui/sprites/empty_lobecorp_neck"
+    },
+    {
+      "type": "single",
+      "resource": "lobecorp:gui/sprites/empty_lobecorp_chest"
+    },
+    {
+      "type": "single",
+      "resource": "lobecorp:gui/sprites/empty_lobecorp_hand"
+    },
+    {
+      "type": "single",
+      "resource": "lobecorp:gui/sprites/empty_lobecorp_glove"
+    },
+    {
+      "type": "single",
+      "resource": "lobecorp:gui/sprites/empty_lobecorp_rightback"
+    },
+    {
+      "type": "single",
+      "resource": "lobecorp:gui/sprites/empty_lobecorp_leftback"
     }
   ]
 }

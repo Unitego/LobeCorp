@@ -27,6 +27,13 @@ public class CreativeModeTabsRegistry {
                         output.accept(ItemsRegistry.WHITE_RIOT_STICK);
                         output.accept(ItemsRegistry.BLACK_RIOT_STICK);
                         output.accept(ItemsRegistry.PALE_RIOT_STICK);
+                        output.accept(ItemsRegistry.STANDARD_TRAINING_EGO_WEAPON);
+                        output.accept(ItemsRegistry.PENITENCE_WEAPON);
+                        output.accept(ItemsRegistry.STANDARD_TRAINING_EGO_SUIT);
+                        output.accept(ItemsRegistry.PENITENCE_SUIT);
+                        output.accept(ItemsRegistry.STANDARD_TRAINING_EGO_GIFT);
+                        output.accept(ItemsRegistry.PENITENCE_GIFT);
+                        output.accept(ItemsRegistry.BLESS_GIFT);
                     }).build());
 
     public static void init(IEventBus bus) {

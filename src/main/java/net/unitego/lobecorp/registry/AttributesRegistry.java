@@ -8,12 +8,7 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.unitego.lobecorp.LobeCorp;
 
-import java.util.UUID;
-
 public class AttributesRegistry {
-    public static final UUID ATTRIBUTE_ATTACK_VELOCITY_MODIFIER_ID = UUID.fromString("9F0BF5D-8C67-40D0-9A7C-C9E29011F02B");//攻击速率修饰ID
-    public static final UUID ATTRIBUTE_MOVE_VELOCITY_MODIFIER_ID = UUID.fromString("A12BFDCB-F7D2-458A-B2B5-9C4F7AFAC2E8");//移动速率修饰ID
-
     public static final DeferredRegister<Attribute> REGISTER = DeferredRegister
             .create(Registries.ATTRIBUTE, LobeCorp.MOD_ID);
 

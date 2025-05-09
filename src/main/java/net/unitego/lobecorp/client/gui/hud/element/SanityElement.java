@@ -6,7 +6,7 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.effect.MobEffects;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
-import net.unitego.lobecorp.client.gui.GuiResources;
+import net.unitego.lobecorp.client.gui.GuiResource;
 import net.unitego.lobecorp.client.gui.hud.BaseElement;
 import net.unitego.lobecorp.common.access.ManagerAccess;
 import net.unitego.lobecorp.common.manager.SanityManager;
@@ -42,7 +42,7 @@ public class SanityElement extends BaseElement {
         Component sanityComponent;
         if (assimilation > 0) {
             sanityString = "(" + sanity + "+" + assimilation + ")/" + maxSanity;
-            Component assimilationPart = Component.literal("+" + assimilation).withStyle(style -> style.withColor(GuiResources.SHIELD_BAR));
+            Component assimilationPart = Component.literal("+" + assimilation).withStyle(style -> style.withColor(GuiResource.SHIELD_BAR));
             sanityComponent = Component.literal("(" + sanity).append(assimilationPart).append(")/" + maxSanity);
         } else {
             sanityString = sanity + "/" + maxSanity;
@@ -52,36 +52,36 @@ public class SanityElement extends BaseElement {
         int heightOffset = size - minecraft.font.lineHeight / 2;
 
         //绘制精神条背景
-        drawRect(guiGraphics, x, y, width, height, GuiResources.BG1);
-        drawRect(guiGraphics, x + gap * 2, y + gap, width - gap * 4, height - gap * 3, GuiResources.BG2);
+        drawRect(guiGraphics, x, y, width, height, GuiResource.BG1);
+        drawRect(guiGraphics, x + gap * 2, y + gap, width - gap * 4, height - gap * 3, GuiResource.BG2);
         //渲染精神值背景
-        drawRect(guiGraphics, x + width + gap, y + gap, size + sanityOffset, size, GuiResources.BG1);
+        drawRect(guiGraphics, x + width + gap, y + gap, size + sanityOffset, size, GuiResource.BG1);
 
         //渲染精神条
-        guiGraphics.blitSprite(GuiResources.SANITY_EMPTY_SPRITE, x + width + gap * 2, y + gap, size, size);
+        guiGraphics.blitSprite(GuiResource.SANITY_EMPTY_SPRITE, x + width + gap * 2, y + gap, size, size);
         if (assimilation > 0) {
-            drawRect(guiGraphics, x + gap * 2, y + gap, (float) ((width - gap * 4) * assimilationRatio), height - gap * 3, GuiResources.SHIELD_BAR);
+            drawRect(guiGraphics, x + gap * 2, y + gap, (float) ((width - gap * 4) * assimilationRatio), height - gap * 3, GuiResource.SHIELD_BAR);
         }
         if (minecraft.player.hasEffect(MobEffects.POISON)) {
-            drawRect(guiGraphics, x + gap * 2, y + gap, (float) ((width - gap * 4) * sanityRatio), height - gap * 3, GuiResources.ABSENT_SANITY_BAR);
-            guiGraphics.blitSprite(GuiResources.SANITY_ABSENT_FULL_SPRITE, x + width + gap * 2, y + gap, size, size);
+            drawRect(guiGraphics, x + gap * 2, y + gap, (float) ((width - gap * 4) * sanityRatio), height - gap * 3, GuiResource.ABSENT_SANITY_BAR);
+            guiGraphics.blitSprite(GuiResource.SANITY_ABSENT_FULL_SPRITE, x + width + gap * 2, y + gap, size, size);
         } else if (minecraft.player.hasEffect(MobEffects.WITHER)) {
-            drawRect(guiGraphics, x + gap * 2, y + gap, (float) ((width - gap * 4) * sanityRatio), height - gap * 3, GuiResources.INSANE_SANITY_BAR);
-            guiGraphics.blitSprite(GuiResources.SANITY_INSANE_FULL_SPRITE, x + width + gap * 2, y + gap, size, size);
+            drawRect(guiGraphics, x + gap * 2, y + gap, (float) ((width - gap * 4) * sanityRatio), height - gap * 3, GuiResource.INSANE_SANITY_BAR);
+            guiGraphics.blitSprite(GuiResource.SANITY_INSANE_FULL_SPRITE, x + width + gap * 2, y + gap, size, size);
         } else if (minecraft.player.isFreezing()) {
-            drawRect(guiGraphics, x + gap * 2, y + gap, (float) ((width - gap * 4) * sanityRatio), height - gap * 3, GuiResources.FROZEN_BAR);
-            guiGraphics.blitSprite(GuiResources.SANITY_FROZEN_FULL_SPRITE, x + width + gap * 2, y + gap, size, size);
+            drawRect(guiGraphics, x + gap * 2, y + gap, (float) ((width - gap * 4) * sanityRatio), height - gap * 3, GuiResource.FROZEN_BAR);
+            guiGraphics.blitSprite(GuiResource.SANITY_FROZEN_FULL_SPRITE, x + width + gap * 2, y + gap, size, size);
         } else {
-            drawRect(guiGraphics, x + gap * 2, y + gap, (float) ((width - gap * 4) * sanityRatio), height - gap * 3, GuiResources.NORMAL_SANITY_BAR);
-            guiGraphics.blitSprite(GuiResources.SANITY_FULL_SPRITE, x + width + gap * 2, y + gap, size, size);
+            drawRect(guiGraphics, x + gap * 2, y + gap, (float) ((width - gap * 4) * sanityRatio), height - gap * 3, GuiResource.NORMAL_SANITY_BAR);
+            guiGraphics.blitSprite(GuiResource.SANITY_FULL_SPRITE, x + width + gap * 2, y + gap, size, size);
         }
         if (assimilation > 0) {
-            guiGraphics.blitSprite(GuiResources.ASSIMILATION_FULL_SPRITE, x + width + gap * 2, y + gap, size, size);
+            guiGraphics.blitSprite(GuiResource.ASSIMILATION_FULL_SPRITE, x + width + gap * 2, y + gap, size, size);
         }
 
         //渲染精神值字体
         guiGraphics.pose().scale(0.5f, 0.5f, 0.5f);
-        guiGraphics.drawCenteredString(minecraft.font, sanityComponent, (x + width + gap * 2 + size) * 2 + sanityOffset, (y + gap) * 2 + heightOffset, GuiResources.NORMAL_SANITY_BAR);
+        guiGraphics.drawCenteredString(minecraft.font, sanityComponent, (x + width + gap * 2 + size) * 2 + sanityOffset, (y + gap) * 2 + heightOffset, GuiResource.NORMAL_SANITY_BAR);
         guiGraphics.pose().scale(2.0f, 2.0f, 2.0f);
     }
 }

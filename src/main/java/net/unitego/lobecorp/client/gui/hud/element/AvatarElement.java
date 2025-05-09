@@ -4,7 +4,7 @@ import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
-import net.unitego.lobecorp.client.gui.GuiResources;
+import net.unitego.lobecorp.client.gui.GuiResource;
 import net.unitego.lobecorp.client.gui.hud.BaseElement;
 
 import java.util.Objects;
@@ -27,7 +27,7 @@ public class AvatarElement extends BaseElement {
         int height = 20;
 
         //渲染玩家头像背景
-        drawRect(guiGraphics, x, y, width, height, GuiResources.BG1);
+        drawRect(guiGraphics, x, y, width, height, GuiResource.BG1);
         //渲染玩家内层头像
         guiGraphics.pose().scale(0.5f, 0.5f, 0.5f);
         guiGraphics.blit(skin, x + 6, y + 6, 32, 32, 32, 32);
