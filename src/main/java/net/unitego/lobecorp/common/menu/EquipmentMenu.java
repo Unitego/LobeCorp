@@ -13,25 +13,25 @@ import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 import net.neoforged.neoforge.items.ItemStackHandler;
 import net.neoforged.neoforge.items.SlotItemHandler;
-import net.unitego.lobecorp.client.hud.HUDResource;
+import net.unitego.lobecorp.client.gui.GuiResources;
 import net.unitego.lobecorp.common.access.LobeCorpSlotAccess;
 import net.unitego.lobecorp.common.component.LobeCorpEquipmentSlot;
-import net.unitego.lobecorp.common.registry.ModAttachmentTypes;
-import net.unitego.lobecorp.common.registry.ModMenus;
+import net.unitego.lobecorp.registry.AttachmentTypesRegistry;
+import net.unitego.lobecorp.registry.MenusRegistry;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
 public class EquipmentMenu extends AbstractContainerMenu {
     private static final List<SlotFactory> SLOT_FACTORIES = List.of(
-            new SlotFactory(LobeCorpEquipmentSlot.LOBECORP_WEAPON, HUDResource.EMPTY_LOBECORP_WEAPON_SPRITE, 0, 62, 62),
-            new SlotFactory(LobeCorpEquipmentSlot.LOBECORP_SUIT, HUDResource.EMPTY_LOBECORP_SUIT_SPRITE, 1, 62, 44),
-            new SlotFactory(LobeCorpEquipmentSlot.LOBECORP_BADGE, HUDResource.EMPTY_LOBECORP_BADGE_SPRITE, 2, 62, 26),
-            new SlotFactory(LobeCorpEquipmentSlot.LOBECORP_TOOL, HUDResource.EMPTY_LOBECORP_TOOL_SPRITE, 3, 62, 8)
+            new SlotFactory(LobeCorpEquipmentSlot.LOBECORP_WEAPON, GuiResources.EMPTY_LOBECORP_WEAPON_SPRITE, 0, 62, 62),
+            new SlotFactory(LobeCorpEquipmentSlot.LOBECORP_SUIT, GuiResources.EMPTY_LOBECORP_SUIT_SPRITE, 1, 62, 44),
+            new SlotFactory(LobeCorpEquipmentSlot.LOBECORP_BADGE, GuiResources.EMPTY_LOBECORP_BADGE_SPRITE, 2, 62, 26),
+            new SlotFactory(LobeCorpEquipmentSlot.LOBECORP_TOOL, GuiResources.EMPTY_LOBECORP_TOOL_SPRITE, 3, 62, 8)
     );
 
     public EquipmentMenu(int containerId, Inventory playerInventory) {
-        super(ModMenus.EQUIPMENT_MENU.get(), containerId);
+        super(MenusRegistry.EQUIPMENT_MENU.get(), containerId);
         //一排快捷栏和三排背包
         for (int i = 0; i < 9; ++i) {
             addSlot(new Slot(playerInventory, i, 8 + i * 18, 142));
@@ -42,7 +42,7 @@ public class EquipmentMenu extends AbstractContainerMenu {
             }
         }
         //脑叶公司插槽
-        ItemStackHandler handler = playerInventory.player.getData(ModAttachmentTypes.LOBECORP_SLOTS);
+        ItemStackHandler handler = playerInventory.player.getData(AttachmentTypesRegistry.LOBECORP_STACK);
         for (SlotFactory factory : SLOT_FACTORIES) {
             addSlot(factory.createSlot(handler));
         }

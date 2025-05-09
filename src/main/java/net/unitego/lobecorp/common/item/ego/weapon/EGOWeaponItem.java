@@ -12,37 +12,40 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
+import net.unitego.lobecorp.common.access.ColorDamageAccess;
+import net.unitego.lobecorp.common.access.EGORankAccess;
+import net.unitego.lobecorp.common.access.EquipRequireAccess;
 import net.unitego.lobecorp.common.access.LobeCorpSlotAccess;
 import net.unitego.lobecorp.common.component.LobeCorpEquipmentSlot;
-import net.unitego.lobecorp.common.data.StaffData;
 import net.unitego.lobecorp.common.item.ego.EGOEquipmentItem;
-import net.unitego.lobecorp.common.registry.ModDamageTypes;
+import net.unitego.lobecorp.common.manager.StaffManager;
 import net.unitego.lobecorp.common.util.EGORank;
-import net.unitego.lobecorp.common.util.LobeCorpUtils;
+import net.unitego.lobecorp.common.util.MiscUtils;
+import net.unitego.lobecorp.registry.DamageTypesRegistry;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
-public class EGOWeaponItem extends EGOEquipmentItem implements LobeCorpSlotAccess {
+public class EGOWeaponItem extends EGOEquipmentItem implements LobeCorpSlotAccess, EGORankAccess, EquipRequireAccess, ColorDamageAccess {
     private static final List<ResourceKey<DamageType>> DAMAGE_ORDER = List.of(
-            ModDamageTypes.RED, ModDamageTypes.WHITE, ModDamageTypes.BLACK, ModDamageTypes.PALE
+            DamageTypesRegistry.RED, DamageTypesRegistry.WHITE, DamageTypesRegistry.BLACK, DamageTypesRegistry.PALE
     );
     private static final Map<ResourceKey<DamageType>, Component> DAMAGE_COMPONENTS = Map.of(
-            ModDamageTypes.RED, Component.translatable(LobeCorpUtils.RED).withStyle(ChatFormatting.DARK_RED),
-            ModDamageTypes.WHITE, Component.translatable(LobeCorpUtils.WHITE).withStyle(ChatFormatting.WHITE),
-            ModDamageTypes.BLACK, Component.translatable(LobeCorpUtils.BLACK).withStyle(ChatFormatting.DARK_PURPLE),
-            ModDamageTypes.PALE, Component.translatable(LobeCorpUtils.PALE).withStyle(ChatFormatting.AQUA)
+            DamageTypesRegistry.RED, Component.translatable(MiscUtils.RED).withStyle(ChatFormatting.DARK_RED),
+            DamageTypesRegistry.WHITE, Component.translatable(MiscUtils.WHITE).withStyle(ChatFormatting.WHITE),
+            DamageTypesRegistry.BLACK, Component.translatable(MiscUtils.BLACK).withStyle(ChatFormatting.DARK_PURPLE),
+            DamageTypesRegistry.PALE, Component.translatable(MiscUtils.PALE).withStyle(ChatFormatting.AQUA)
     );
     private final EGORank egoRank;
     private final EGOWeaponTemplate weaponTemplate;
     private final List<ResourceKey<DamageType>> damageTypes;
     private final double attackDamage;
-    private final StaffData.EquipRequire equipRequire;
+    private final StaffManager.EquipRequire equipRequire;
 
     public EGOWeaponItem(Properties properties, List<String> egoSkillTranslationKeys, EGORank egoRank, EGOWeaponTemplate weaponTemplate,
-                         List<ResourceKey<DamageType>> damageTypes, double attackDamage, StaffData.EquipRequire equipRequire) {
+                         List<ResourceKey<DamageType>> damageTypes, double attackDamage, StaffManager.EquipRequire equipRequire) {
 
         super(properties.component(DataComponents.ATTRIBUTE_MODIFIERS,
                         buildModifiers(attackDamage, weaponTemplate.getAttackSpeed(), weaponTemplate.getInteractionRange() - 3)),
@@ -59,8 +62,8 @@ public class EGOWeaponItem extends EGOEquipmentItem implements LobeCorpSlotAcces
         return ItemAttributeModifiers.builder()
                 .add(Attributes.ATTACK_DAMAGE, egoWeaponModifier(BASE_ATTACK_DAMAGE_UUID, attackDamage), EquipmentSlotGroup.MAINHAND)
                 .add(Attributes.ATTACK_SPEED, egoWeaponModifier(BASE_ATTACK_SPEED_UUID, attackSpeed), EquipmentSlotGroup.MAINHAND)
-                .add(Attributes.ENTITY_INTERACTION_RANGE, egoWeaponModifier(LobeCorpUtils.INTERACTION_RANGE_MODIFIER_ID, interactionRange), EquipmentSlotGroup.MAINHAND)
-                .add(Attributes.BLOCK_INTERACTION_RANGE, egoWeaponModifier(LobeCorpUtils.INTERACTION_RANGE_MODIFIER_ID, interactionRange), EquipmentSlotGroup.MAINHAND)
+                .add(Attributes.ENTITY_INTERACTION_RANGE, egoWeaponModifier(MiscUtils.INTERACTION_RANGE_MODIFIER_ID, interactionRange), EquipmentSlotGroup.MAINHAND)
+                .add(Attributes.BLOCK_INTERACTION_RANGE, egoWeaponModifier(MiscUtils.INTERACTION_RANGE_MODIFIER_ID, interactionRange), EquipmentSlotGroup.MAINHAND)
                 .build();
     }
 
@@ -74,10 +77,10 @@ public class EGOWeaponItem extends EGOEquipmentItem implements LobeCorpSlotAcces
         //EGO等级
         tooltipComponents.add(egoRank.getDisplayComponent());
         //武器模板
-        tooltipComponents.add(Component.translatable(LobeCorpUtils.WEAPON_TEMPLATE).withStyle(ChatFormatting.DARK_GRAY)
+        tooltipComponents.add(Component.translatable(MiscUtils.WEAPON_TEMPLATE).withStyle(ChatFormatting.DARK_GRAY)
                 .append(Component.translatable(weaponTemplate.getTranslationKey()).withStyle(ChatFormatting.GRAY)));
         //伤害类型
-        MutableComponent line = Component.translatable(LobeCorpUtils.DAMAGE_TYPE).withStyle(ChatFormatting.DARK_GRAY);
+        MutableComponent line = Component.translatable(MiscUtils.DAMAGE_TYPE).withStyle(ChatFormatting.DARK_GRAY);
         boolean first = true;
         for (ResourceKey<DamageType> type : DAMAGE_ORDER) {
             if (getDamageTypes().contains(type)) {
@@ -92,24 +95,27 @@ public class EGOWeaponItem extends EGOEquipmentItem implements LobeCorpSlotAcces
         super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
     }
 
-    public EGORank getEGORank() {
-        return egoRank;
-    }
-
-    public List<ResourceKey<DamageType>> getDamageTypes() {
-        return damageTypes;
-    }
-
     public double getAttackDamage() {
         return attackDamage;
-    }
-
-    public StaffData.EquipRequire getEquipRequire() {
-        return equipRequire;
     }
 
     @Override
     public LobeCorpEquipmentSlot getLobeCorpSlot() {
         return LobeCorpEquipmentSlot.LOBECORP_WEAPON;
+    }
+
+    @Override
+    public EGORank getEGORank() {
+        return egoRank;
+    }
+
+    @Override
+    public StaffManager.EquipRequire getEquipRequire() {
+        return equipRequire;
+    }
+
+    @Override
+    public List<ResourceKey<DamageType>> getDamageTypes() {
+        return damageTypes;
     }
 }

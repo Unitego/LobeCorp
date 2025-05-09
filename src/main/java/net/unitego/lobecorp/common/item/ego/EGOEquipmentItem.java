@@ -7,7 +7,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
-import net.unitego.lobecorp.common.util.LobeCorpUtils;
+import net.unitego.lobecorp.common.util.MiscUtils;
 import org.jetbrains.annotations.NotNull;
 import org.lwjgl.glfw.GLFW;
 
@@ -28,7 +28,7 @@ public abstract class EGOEquipmentItem extends Item {
         long window = Minecraft.getInstance().getWindow().getWindow();
         boolean keyDown = InputConstants.isKeyDown(window, GLFW.GLFW_KEY_LEFT_SHIFT);
         if (!keyDown) {
-            tooltipComponents.add(Component.translatable(LobeCorpUtils.HOLD_LEFT_SHIFT_SHOW_SKILL).withStyle(ChatFormatting.GOLD));
+            tooltipComponents.add(Component.translatable(MiscUtils.HOLD_LEFT_SHIFT_SHOW_SKILL).withStyle(ChatFormatting.GOLD));
             return;
         }
         for (String translationKey : egoSkillTranslationKeys) {

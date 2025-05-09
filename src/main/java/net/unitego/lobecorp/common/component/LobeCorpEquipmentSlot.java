@@ -33,4 +33,8 @@ public enum LobeCorpEquipmentSlot implements StringRepresentable {
     public @NotNull String getSerializedName() {
         return key;
     }
+
+    public String getSlotModifiersName() {
+        return "item.modifiers." + getSerializedName();
+    }
 }

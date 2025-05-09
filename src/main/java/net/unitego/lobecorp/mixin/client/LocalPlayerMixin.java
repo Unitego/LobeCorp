@@ -6,8 +6,8 @@ import net.minecraft.client.player.AbstractClientPlayer;
 import net.minecraft.client.player.LocalPlayer;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
-import net.unitego.lobecorp.common.access.DataAccess;
-import net.unitego.lobecorp.common.data.WaterData;
+import net.unitego.lobecorp.common.access.ManagerAccess;
+import net.unitego.lobecorp.common.manager.WaterManager;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -23,9 +23,9 @@ public abstract class LocalPlayerMixin extends AbstractClientPlayer {
     //冲刺条件加个干渴机制限制
     @Inject(method = "hasEnoughFoodToStartSprinting", at = @At("RETURN"), cancellable = true)
     private void hasEnoughFoodToStartSprintingMixin(CallbackInfoReturnable<Boolean> cir) {
-        WaterData waterData = ((DataAccess) this).lobeCorp$getWaterData();
+        WaterManager waterManager = ((ManagerAccess) this).lobeCorp$getWaterManager();
         cir.setReturnValue(isPassenger() || mayFly() ||
-                (waterData.getWaterLevel() > 6.0f && getFoodData().getFoodLevel() > 6.0f)
+                (waterManager.getWaterLevel() > 6.0f && getFoodData().getFoodLevel() > 6.0f)
         );
     }
 }

@@ -8,49 +8,38 @@ import net.neoforged.neoforge.client.event.RegisterKeyMappingsEvent;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.unitego.lobecorp.LobeCorp;
-import net.unitego.lobecorp.client.hud.BaseElement;
-import net.unitego.lobecorp.client.hud.HUDResource;
-import net.unitego.lobecorp.client.screen.EquipmentScreen;
-import net.unitego.lobecorp.common.network.handler.S2CUseLogoHandler;
-import net.unitego.lobecorp.common.network.payload.S2CUseLogoPayload;
-import net.unitego.lobecorp.common.registry.HUDRegistry;
-import net.unitego.lobecorp.common.registry.ModKeyMappings;
-import net.unitego.lobecorp.common.registry.ModMenus;
-import net.unitego.lobecorp.common.util.LobeCorpUtils;
+import net.unitego.lobecorp.client.init.HudInit;
+import net.unitego.lobecorp.client.init.KeyInit;
+import net.unitego.lobecorp.client.init.ScreenInit;
+import net.unitego.lobecorp.common.util.MiscUtils;
+import net.unitego.lobecorp.network.handler.S2CUseLogoHandler;
+import net.unitego.lobecorp.network.payload.S2CUseLogoPayload;
 
 @EventBusSubscriber(modid = LobeCorp.MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class ClientModEvents {
+    //网络注册
     @SubscribeEvent
     public static void onRegisterPayloadHandlers(RegisterPayloadHandlersEvent event) {
-        event.registrar(LobeCorpUtils.NETWORK_VERSION).playToClient(
+        event.registrar(MiscUtils.NETWORK_VERSION).playToClient(
                 S2CUseLogoPayload.TYPE, S2CUseLogoPayload.STREAM_CODEC, S2CUseLogoHandler::handle
         );
     }
 
-    //注册屏幕
+    //界面注册
     @SubscribeEvent
-    public static void onRegisterMenuScreensEvent(RegisterMenuScreensEvent event) {
-        event.register(ModMenus.EQUIPMENT_MENU.get(), EquipmentScreen::new);
+    public static void onRegisterMenuScreens(RegisterMenuScreensEvent event) {
+        ScreenInit.init(event);
     }
 
-    //注册按键绑定
+    //热键注册
     @SubscribeEvent
     public static void onRegisterKeyMappings(RegisterKeyMappingsEvent event) {
-        event.register(ModKeyMappings.TOGGLE_EQUIPMENT.get());
+        KeyInit.init(event);
     }
 
-    //渲染自定义HUD图层
+    //GUI注册
     @SubscribeEvent
     public static void onRegisterGuiLayers(RegisterGuiLayersEvent event) {
-        HUDRegistry.init();
-        event.registerAboveAll(HUDResource.LOBECORP_HUD, ((guiGraphics, partialTick) -> {
-            for (BaseElement element : HUDRegistry.getElements()) {
-                if (element.check()) {
-                    guiGraphics.pose().pushPose();
-                    element.draw(guiGraphics, partialTick, guiGraphics.guiWidth(), guiGraphics.guiHeight());
-                    guiGraphics.pose().popPose();
-                }
-            }
-        }));
+        HudInit.init(event);
     }
 }

@@ -1,0 +1,36 @@
+package net.unitego.lobecorp.network.handler;
+
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.world.entity.player.Player;
+import net.neoforged.neoforge.network.handling.IPayloadContext;
+import net.unitego.lobecorp.client.gui.screen.SetAttributeScreen;
+import net.unitego.lobecorp.common.access.ManagerAccess;
+import net.unitego.lobecorp.common.manager.StaffManager;
+import net.unitego.lobecorp.network.payload.C2SSetAttributePayload;
+
+import java.util.Map;
+import java.util.Objects;
+
+public class C2SSetAttributeHandler {
+    public static void handle(C2SSetAttributePayload payload, IPayloadContext context) {
+        context.enqueueWork(() -> {
+            Player player = context.player();
+            StaffManager staffManager = ((ManagerAccess) player).lobeCorp$getStaffManager();
+            Map<String, Double> values = payload.values();
+            for (int i = 0; i < SetAttributeScreen.ATTRIBUTES.length; i++) {
+                String key = Objects.requireNonNull(BuiltInRegistries.ATTRIBUTE.getKey(SetAttributeScreen.ATTRIBUTES[i])).getPath();
+                Double value = values.get(key);
+                if (value != null) {
+                    switch (i) {
+                        case 0 -> staffManager.setMaxHealth(value);
+                        case 1 -> staffManager.setMaxSanity(value);
+                        case 2 -> staffManager.setWorkSuccess(value);
+                        case 3 -> staffManager.setAttackVelocity(value);
+                        case 4 -> staffManager.setWorkVelocity(value);
+                        case 5 -> staffManager.setMoveVelocity(value);
+                    }
+                }
+            }
+        });
+    }
+}

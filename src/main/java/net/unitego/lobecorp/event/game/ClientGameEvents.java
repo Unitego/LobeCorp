@@ -25,82 +25,84 @@ import net.neoforged.neoforge.client.event.RenderGuiLayerEvent;
 import net.neoforged.neoforge.client.gui.VanillaGuiLayers;
 import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
 import net.unitego.lobecorp.LobeCorp;
-import net.unitego.lobecorp.common.access.DataAccess;
+import net.unitego.lobecorp.client.init.KeyInit;
+import net.unitego.lobecorp.common.access.ManagerAccess;
 import net.unitego.lobecorp.common.component.LobeCorpAttributeModifiers;
 import net.unitego.lobecorp.common.component.LobeCorpEquipmentSlot;
-import net.unitego.lobecorp.common.data.WaterData;
-import net.unitego.lobecorp.common.network.payload.C2SDrinkWaterPayload;
-import net.unitego.lobecorp.common.network.sender.C2SDrinkWaterSender;
-import net.unitego.lobecorp.common.network.sender.C2SOpenEquipmentSender;
-import net.unitego.lobecorp.common.registry.ModDataComponentTypes;
-import net.unitego.lobecorp.common.registry.ModKeyMappings;
-import net.unitego.lobecorp.common.util.LobeCorpUtils;
+import net.unitego.lobecorp.common.manager.WaterManager;
+import net.unitego.lobecorp.network.payload.C2SDrinkWaterPayload;
+import net.unitego.lobecorp.network.sender.C2SDrinkWaterSender;
+import net.unitego.lobecorp.network.sender.C2SOpenEquipmentSender;
+import net.unitego.lobecorp.registry.DataComponentTypesRegistry;
 import org.apache.commons.lang3.mutable.MutableBoolean;
 
 import java.util.List;
 
 @EventBusSubscriber(modid = LobeCorp.MOD_ID, bus = EventBusSubscriber.Bus.GAME, value = Dist.CLIENT)
 public class ClientGameEvents {
-    //附加工具提示
-    @SubscribeEvent
-    public static void onItemToolTip(ItemTooltipEvent event) {
-        ItemStack stack = event.getItemStack();
-        Player player = event.getEntity();
-        List<Component> toolTip = event.getToolTip();
-        LobeCorpAttributeModifiers component = stack.getOrDefault(ModDataComponentTypes.LOBECORP_ATTRIBUTE_MODIFIERS, LobeCorpAttributeModifiers.EMPTY);
-        if (!component.showInTooltip()) return;
-        for (LobeCorpEquipmentSlot slot : LobeCorpEquipmentSlot.values()) {
-            MutableBoolean mutableBoolean = new MutableBoolean(true);
-            LobeCorpUtils.forEachModifier(slot, stack, (attribute, modifier) -> {
-                if (mutableBoolean.isTrue()) {
-                    toolTip.add(CommonComponents.EMPTY);
-                    toolTip.add(Component.translatable("item.modifiers." + slot.getSerializedName()).withStyle(ChatFormatting.GRAY));
-                    mutableBoolean.setFalse();
-                }
-                LobeCorpUtils.addModifierTooltip(toolTip, player, attribute, modifier, stack);
-            });
-        }
-    }
-
-    //客户端喝水
+    //客户端Tick前
     @SubscribeEvent
     public static void onClientTickPre(ClientTickEvent.Pre event) {
         Minecraft minecraft = Minecraft.getInstance();
         LocalPlayer localPlayer = minecraft.player;
         ClientLevel clientLevel = minecraft.level;
-        if (localPlayer != null && clientLevel != null && minecraft.options.keyUse.isDown()) {
-            HitResult hitResult = localPlayer.pick(1.5f, 0.0f, true);
-            BlockPos blockPos = ((BlockHitResult) hitResult).getBlockPos();
-            BlockState blockState = clientLevel.getBlockState(blockPos);
-            WaterData waterData = ((DataAccess) localPlayer).lobeCorp$getWaterData();
-            //当玩家不为观察模式且下蹲时且主手为空
-            if (!localPlayer.isSpectator() && localPlayer.getUsedItemHand() == InteractionHand.MAIN_HAND &&
-                    localPlayer.isShiftKeyDown() && localPlayer.getMainHandItem().isEmpty()) {
-                if (!waterData.hasDrunkWater) {
-                    if (clientLevel.getFluidState(blockPos).is(FluidTags.WATER)) {
-                        C2SDrinkWaterSender.send(localPlayer, C2SDrinkWaterPayload.STREAM);
-                        waterData.hasDrunkWater = true;
-                    } else if (localPlayer.getXRot() < -80.0f && clientLevel.isRainingAt(localPlayer.blockPosition().above(2))) {
-                        C2SDrinkWaterSender.send(localPlayer, C2SDrinkWaterPayload.RAIN);
-                        waterData.hasDrunkWater = true;
-                    } else if (blockState.getBlock() == Blocks.WATER_CAULDRON && blockState.getValue(LayeredCauldronBlock.LEVEL) != 0) {
-                        C2SDrinkWaterSender.send(localPlayer, C2SDrinkWaterPayload.CAULDRON);
-                        waterData.hasDrunkWater = true;
+        if (localPlayer != null && clientLevel != null) {
+            if (minecraft.options.keyUse.isDown()) {
+                //喝水行为
+                HitResult hitResult = localPlayer.pick(1.5f, 0.0f, true);
+                BlockPos blockPos = ((BlockHitResult) hitResult).getBlockPos();
+                BlockState blockState = clientLevel.getBlockState(blockPos);
+                WaterManager waterManager = ((ManagerAccess) localPlayer).lobeCorp$getWaterManager();
+                //当玩家不为观察模式且下蹲时且主手为空
+                if (!localPlayer.isSpectator() && localPlayer.getUsedItemHand() == InteractionHand.MAIN_HAND &&
+                        localPlayer.isShiftKeyDown() && localPlayer.getMainHandItem().isEmpty()) {
+                    if (!waterManager.hasDrunkWater) {
+                        if (clientLevel.getFluidState(blockPos).is(FluidTags.WATER)) {
+                            C2SDrinkWaterSender.send(localPlayer, C2SDrinkWaterPayload.STREAM);
+                            waterManager.hasDrunkWater = true;
+                        } else if (localPlayer.getXRot() < -80.0f && clientLevel.isRainingAt(localPlayer.blockPosition().above(2))) {
+                            C2SDrinkWaterSender.send(localPlayer, C2SDrinkWaterPayload.RAIN);
+                            waterManager.hasDrunkWater = true;
+                        } else if (blockState.getBlock() == Blocks.WATER_CAULDRON && blockState.getValue(LayeredCauldronBlock.LEVEL) != 0) {
+                            C2SDrinkWaterSender.send(localPlayer, C2SDrinkWaterPayload.CAULDRON);
+                            waterManager.hasDrunkWater = true;
+                        }
                     }
                 }
             }
         }
     }
 
-    //客户端按下按键
+    //客户端Tick后
     @SubscribeEvent
     public static void onClientTickPost(ClientTickEvent.Post event) {
-        while (ModKeyMappings.TOGGLE_EQUIPMENT.get().consumeClick()) {
+        while (KeyInit.KEY_TOGGLE_EQUIPMENT.get().consumeClick()) {
             C2SOpenEquipmentSender.send();
         }
     }
 
-    //取消原版HUD图层
+    //物品工具提示
+    @SubscribeEvent
+    public static void onItemToolTip(ItemTooltipEvent event) {
+        ItemStack stack = event.getItemStack();
+        Player player = event.getEntity();
+        List<Component> toolTip = event.getToolTip();
+        LobeCorpAttributeModifiers component = stack.getOrDefault(DataComponentTypesRegistry.LOBECORP_ATTRIBUTE_MODIFIERS, LobeCorpAttributeModifiers.EMPTY);
+        if (!component.showInTooltip()) return;
+        for (LobeCorpEquipmentSlot slot : LobeCorpEquipmentSlot.values()) {
+            MutableBoolean mutableBoolean = new MutableBoolean(true);
+            LobeCorpAttributeModifiers.forEachModifier(slot, stack, (attribute, modifier) -> {
+                if (mutableBoolean.isTrue()) {
+                    toolTip.add(CommonComponents.EMPTY);
+                    toolTip.add(Component.translatable("item.modifiers." + slot.getSerializedName()).withStyle(ChatFormatting.GRAY));
+                    mutableBoolean.setFalse();
+                }
+                LobeCorpAttributeModifiers.addModifierTooltip(toolTip, player, attribute, modifier, stack);
+            });
+        }
+    }
+
+    //GUI渲染前
     @SubscribeEvent
     public static void onRenderGuiLayerPre(RenderGuiLayerEvent.Pre event) {
         ResourceLocation name = event.getName();

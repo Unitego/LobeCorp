@@ -5,9 +5,9 @@ import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.unitego.lobecorp.common.access.DataAccess;
-import net.unitego.lobecorp.common.data.SanityData;
-import net.unitego.lobecorp.common.registry.ModDamageTypes;
+import net.unitego.lobecorp.common.access.ManagerAccess;
+import net.unitego.lobecorp.common.manager.SanityManager;
+import net.unitego.lobecorp.registry.DamageTypesRegistry;
 import org.jetbrains.annotations.Nullable;
 
 public class CureOrHarmMobEffect extends InstantenousMobEffect {
@@ -21,11 +21,11 @@ public class CureOrHarmMobEffect extends InstantenousMobEffect {
     @Override
     public boolean applyEffectTick(LivingEntity livingEntity, int amplifier) {
         if (isHarm != livingEntity.isInvertedHealAndHarm()) {
-            livingEntity.hurt(livingEntity.damageSources().source(ModDamageTypes.MYSTIC), (float) (6 << amplifier));
+            livingEntity.hurt(livingEntity.damageSources().source(DamageTypesRegistry.MYSTIC), (float) (6 << amplifier));
         } else {
             if (livingEntity instanceof Player player) {
-                SanityData sanityData = ((DataAccess) player).lobeCorp$getSanityData();
-                sanityData.cure((float) Math.max(4 << amplifier, 0));
+                SanityManager sanityManager = ((ManagerAccess) player).lobeCorp$getSanityManager();
+                sanityManager.cure((float) Math.max(4 << amplifier, 0));
             }
         }
         return true;
@@ -36,15 +36,15 @@ public class CureOrHarmMobEffect extends InstantenousMobEffect {
         if (isHarm != livingEntity.isInvertedHealAndHarm()) {
             int j = (int) (health * (double) (6 << amplifier) + 0.5);
             if (source == null) {
-                livingEntity.hurt(livingEntity.damageSources().source(ModDamageTypes.MYSTIC), (float) j);
+                livingEntity.hurt(livingEntity.damageSources().source(DamageTypesRegistry.MYSTIC), (float) j);
             } else {
-                livingEntity.hurt(livingEntity.damageSources().source(ModDamageTypes.INDIRECT_MYSTIC, source, indirectSource), (float) j);
+                livingEntity.hurt(livingEntity.damageSources().source(DamageTypesRegistry.INDIRECT_MYSTIC, source, indirectSource), (float) j);
             }
         } else {
             if (livingEntity instanceof Player player) {
-                SanityData sanityData = ((DataAccess) player).lobeCorp$getSanityData();
+                SanityManager sanityManager = ((ManagerAccess) player).lobeCorp$getSanityManager();
                 int i = (int) (health * (double) (4 << amplifier) + 0.5);
-                sanityData.cure((float) i);
+                sanityManager.cure((float) i);
             }
         }
     }

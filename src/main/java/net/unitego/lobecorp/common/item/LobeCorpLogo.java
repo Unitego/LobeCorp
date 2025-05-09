@@ -1,5 +1,6 @@
 package net.unitego.lobecorp.common.item;
 
+
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
@@ -11,8 +12,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
-import net.unitego.lobecorp.common.network.sender.S2CUseLogoSender;
-import net.unitego.lobecorp.common.util.LobeCorpUtils;
+import net.unitego.lobecorp.common.util.MiscUtils;
+import net.unitego.lobecorp.network.sender.S2CUseLogoSender;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
@@ -32,6 +33,6 @@ public class LobeCorpLogo extends Item {
 
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @NotNull TooltipContext context, @NotNull List<Component> tooltipComponents, @NotNull TooltipFlag tooltipFlag) {
-        tooltipComponents.add(Component.literal("●").append(Component.translatable(LobeCorpUtils.MOTTO)).withStyle(ChatFormatting.GOLD));
+        tooltipComponents.add(Component.literal("●").append(Component.translatable(MiscUtils.MOTTO)).withStyle(ChatFormatting.GOLD));
     }
 }

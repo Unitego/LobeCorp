@@ -27,7 +27,7 @@ public enum EGORank {
     }
 
     public Component getDisplayComponent() {
-        return Component.translatable(LobeCorpUtils.EGO_RANK).withStyle(ChatFormatting.DARK_GRAY).append(
+        return Component.translatable(MiscUtils.EGO_RANK).withStyle(ChatFormatting.DARK_GRAY).append(
                 Component.literal(String.valueOf(this)).withStyle(getColor()));
     }
 

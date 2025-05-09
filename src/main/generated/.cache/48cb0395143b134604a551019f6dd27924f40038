@@ -1,6 +1,7 @@
-// 1.20.6	2025-05-06T03:25:32.1444395	Tags for minecraft:damage_type mod id lobecorp
+// 1.20.6	2025-05-08T17:07:28.819158	Tags for minecraft:damage_type mod id lobecorp
 5bc9df7453acd9d71c94b665d82c44ac9f99cc00 data/lobecorp/tags/damage_type/black_damage_type.json
-33de6a92359a4bd2a078d190324bd1cb47c56aef data/lobecorp/tags/damage_type/censored_damage_type.json
+4b749cfe2244ee30ec5b3802ce7934ec7c759120 data/lobecorp/tags/damage_type/censored_damage_type.json
+94d01d3c1dc9fa03b29e6185950620beda6a92cf data/lobecorp/tags/damage_type/depleted_damage_type.json
 8ca2867ee923b252885a717a3eadf0b90f1d50ca data/lobecorp/tags/damage_type/pale_damage_type.json
 2ec226fbc6f79b0f3e69b20501e749df981a48cf data/lobecorp/tags/damage_type/red_damage_type.json
 c15f2b42d4cf36f330825a2289f940997f7a2317 data/lobecorp/tags/damage_type/spirit_damage_type.json

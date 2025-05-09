@@ -5,13 +5,14 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.neoforged.neoforge.common.util.ITeleporter;
-import net.unitego.lobecorp.common.access.DataAccess;
-import net.unitego.lobecorp.common.data.SanityData;
-import net.unitego.lobecorp.common.data.WaterData;
-import net.unitego.lobecorp.common.network.sender.S2CSetSanitySender;
-import net.unitego.lobecorp.common.network.sender.S2CSyncEquipmentSender;
-import net.unitego.lobecorp.common.network.sender.S2CSyncStatsSender;
-import net.unitego.lobecorp.common.registry.ModAttributes;
+import net.unitego.lobecorp.common.access.ManagerAccess;
+import net.unitego.lobecorp.common.manager.SanityManager;
+import net.unitego.lobecorp.common.manager.StaffManager;
+import net.unitego.lobecorp.common.manager.WaterManager;
+import net.unitego.lobecorp.network.sender.S2CSetSanitySender;
+import net.unitego.lobecorp.network.sender.S2CSyncEquipmentSender;
+import net.unitego.lobecorp.network.sender.S2CSyncStatsSender;
+import net.unitego.lobecorp.registry.AttributesRegistry;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
@@ -27,9 +28,9 @@ public abstract class ServerPlayerMixin {
     final
     ServerPlayer lobeCorp$serverPlayer = (ServerPlayer) (Object) this;
     @Unique
-    private final WaterData lobeCorp$waterData = ((DataAccess) this).lobeCorp$getWaterData();
+    private final WaterManager lobeCorp$waterManager = ((ManagerAccess) this).lobeCorp$getWaterManager();
     @Unique
-    private final SanityData lobeCorp$sanityData = ((DataAccess) this).lobeCorp$getSanityData();
+    private final SanityManager lobeCorp$sanityManager = ((ManagerAccess) this).lobeCorp$getSanityManager();
     @Unique
     private float lobeCorp$lastSentSanity = -1.0E8F;
     @Unique
@@ -48,13 +49,13 @@ public abstract class ServerPlayerMixin {
     @Inject(method = "doTick", at = @At(value = "INVOKE",
             target = "Lnet/minecraft/server/level/ServerPlayer;getHealth()F", ordinal = 0))
     private void doTickMixin(CallbackInfo ci) {
-        if (lobeCorp$sanityData.getSanity() != lobeCorp$lastSentSanity
-                || lobeCorp$lastSentWater != lobeCorp$waterData.getWaterLevel() ||
-                lobeCorp$waterData.getHydrationLevel() == 0.0F != lobeCorp$lastWaterHydrationZero) {
+        if (lobeCorp$sanityManager.getSanity() != lobeCorp$lastSentSanity
+                || lobeCorp$lastSentWater != lobeCorp$waterManager.getWaterLevel() ||
+                lobeCorp$waterManager.getHydrationLevel() == 0.0F != lobeCorp$lastWaterHydrationZero) {
             S2CSetSanitySender.send(lobeCorp$serverPlayer);
-            lobeCorp$lastSentSanity = lobeCorp$sanityData.getSanity();
-            lobeCorp$lastSentWater = lobeCorp$waterData.getWaterLevel();
-            lobeCorp$lastWaterHydrationZero = lobeCorp$waterData.getHydrationLevel() == 0.0F;
+            lobeCorp$lastSentSanity = lobeCorp$sanityManager.getSanity();
+            lobeCorp$lastSentWater = lobeCorp$waterManager.getWaterLevel();
+            lobeCorp$lastWaterHydrationZero = lobeCorp$waterManager.getHydrationLevel() == 0.0F;
         }
     }
 
@@ -77,14 +78,24 @@ public abstract class ServerPlayerMixin {
     @Inject(method = "restoreFrom", at = @At(value = "INVOKE",
             target = "Lnet/minecraft/server/level/ServerPlayer;setHealth(F)V"))
     private void restoreFromMixin1(ServerPlayer that, boolean keepEverything, CallbackInfo ci) {
-        lobeCorp$sanityData.setSanity(((DataAccess) that).lobeCorp$getSanityData().getSanity());
-        lobeCorp$waterData.setWaterLevel(((DataAccess) that).lobeCorp$getWaterData().getWaterLevel());
-        lobeCorp$waterData.setHydration(((DataAccess) that).lobeCorp$getWaterData().getHydrationLevel());
-        lobeCorp$waterData.setDesiccation(((DataAccess) that).lobeCorp$getWaterData().getDesiccationLevel());
-        double maxSanityBaseValue = Objects.requireNonNull(that.getAttribute(ModAttributes.MAX_SANITY)).getBaseValue();
-        Objects.requireNonNull(lobeCorp$serverPlayer.getAttribute(ModAttributes.MAX_SANITY)).setBaseValue(maxSanityBaseValue);
-        double maxHealthBaseValue = Objects.requireNonNull(that.getAttribute(Attributes.MAX_HEALTH)).getBaseValue();
-        Objects.requireNonNull(lobeCorp$serverPlayer.getAttribute(Attributes.MAX_HEALTH)).setBaseValue(maxHealthBaseValue);
+        StaffManager staffManager = ((ManagerAccess) that).lobeCorp$getStaffManager();
+        //最大生命值
+        Objects.requireNonNull(lobeCorp$serverPlayer.getAttribute(Attributes.MAX_HEALTH)).setBaseValue(staffManager.getMaxHealth());
+        //最大精神值
+        Objects.requireNonNull(lobeCorp$serverPlayer.getAttribute(AttributesRegistry.MAX_SANITY)).setBaseValue(staffManager.getMaxSanity());
+        //工作成率和工作速率
+        Objects.requireNonNull(lobeCorp$serverPlayer.getAttribute(AttributesRegistry.WORK_SUCCESS)).setBaseValue(staffManager.getWorkSuccess());
+        Objects.requireNonNull(lobeCorp$serverPlayer.getAttribute(AttributesRegistry.WORK_VELOCITY)).setBaseValue(staffManager.getWorkVelocity());
+        //攻击速率和移动速率
+        Objects.requireNonNull(lobeCorp$serverPlayer.getAttribute(AttributesRegistry.ATTACK_VELOCITY)).setBaseValue(staffManager.getAttackVelocity());
+        Objects.requireNonNull(lobeCorp$serverPlayer.getAttribute(AttributesRegistry.MOVE_VELOCITY)).setBaseValue(staffManager.getMoveVelocity());
+        //其余同步
+        SanityManager sanityManager = ((ManagerAccess) that).lobeCorp$getSanityManager();
+        WaterManager waterManager = ((ManagerAccess) that).lobeCorp$getWaterManager();
+        lobeCorp$sanityManager.setSanity(sanityManager.getSanity());
+        lobeCorp$waterManager.setWaterLevel(waterManager.getWaterLevel());
+        lobeCorp$waterManager.setHydration(waterManager.getHydrationLevel());
+        lobeCorp$waterManager.setDesiccation(waterManager.getDesiccationLevel());
     }
 
     //实体复制同步

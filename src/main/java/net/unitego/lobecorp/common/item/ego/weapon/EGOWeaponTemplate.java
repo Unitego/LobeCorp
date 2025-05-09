@@ -9,9 +9,9 @@ public enum EGOWeaponTemplate {
      * 这样的话到时候就好直接让他被调用时默认4-3.5=0.5
      * 公式：attackSpeed=1s/?s-4
      */
-    MACE("mace", -3.5, 3.0),
-    AXE("axe", -3.0, 2.0),
-    KNIFE("knife", -2.5, 2.0);
+    MACE("mace", -3.5, 3.0),//棁
+    AXE("axe", -3.0, 2.0),//斧
+    KNIFE("knife", -2.5, 2.0);//刀
 
     private final String name;
     private final double attackSpeed;

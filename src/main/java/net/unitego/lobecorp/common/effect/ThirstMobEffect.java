@@ -4,8 +4,8 @@ import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.unitego.lobecorp.common.access.DataAccess;
-import net.unitego.lobecorp.common.data.WaterData;
+import net.unitego.lobecorp.common.access.ManagerAccess;
+import net.unitego.lobecorp.common.manager.WaterManager;
 import org.jetbrains.annotations.NotNull;
 
 public class ThirstMobEffect extends MobEffect {
@@ -17,8 +17,8 @@ public class ThirstMobEffect extends MobEffect {
     public boolean applyEffectTick(@NotNull LivingEntity livingEntity, int amplifier) {
         if (livingEntity instanceof Player player) {
             if (!player.getAbilities().invulnerable) {
-                WaterData waterData = ((DataAccess) player).lobeCorp$getWaterData();
-                waterData.addDesiccation(0.005F * (float) (amplifier + 1));
+                WaterManager waterManager = ((ManagerAccess) player).lobeCorp$getWaterManager();
+                waterManager.addDesiccation(0.005F * (float) (amplifier + 1));
             }
         }
         return true;
