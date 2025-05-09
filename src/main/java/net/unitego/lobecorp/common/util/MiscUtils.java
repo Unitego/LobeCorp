@@ -57,7 +57,7 @@ public class MiscUtils {
     public static final String BLACK = info("black");
     public static final String PALE = info("pale");
 
-    private static String info(String string) {
+    public static String info(String string) {
         return LobeCorp.MOD_ID + ".info." + string;
     }
 

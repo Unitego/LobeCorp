@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "lobecorp:item/architecture_team_badge"
+  }
+}

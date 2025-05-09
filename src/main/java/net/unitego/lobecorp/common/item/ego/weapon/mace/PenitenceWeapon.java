@@ -4,7 +4,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.unitego.lobecorp.common.access.ManagerAccess;
-import net.unitego.lobecorp.common.item.ego.weapon.EGOWeaponItem;
+import net.unitego.lobecorp.common.item.ego.EGOWeaponItem;
 import net.unitego.lobecorp.common.item.ego.weapon.EGOWeaponTemplate;
 import net.unitego.lobecorp.common.manager.StaffManager;
 import net.unitego.lobecorp.common.util.EGORank;

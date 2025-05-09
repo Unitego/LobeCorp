@@ -2,7 +2,7 @@ package net.unitego.lobecorp.common.item.ego.gift.occiput;
 
 import net.minecraft.world.item.Rarity;
 import net.unitego.lobecorp.common.component.LobeCorpEquipmentSlot;
-import net.unitego.lobecorp.common.item.ego.gift.EGOGiftItem;
+import net.unitego.lobecorp.common.item.ego.EGOGiftItem;
 
 import java.util.List;
 

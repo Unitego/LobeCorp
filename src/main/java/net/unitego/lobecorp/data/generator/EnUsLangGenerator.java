@@ -5,6 +5,7 @@ import net.neoforged.neoforge.common.data.LanguageProvider;
 import net.unitego.lobecorp.LobeCorp;
 import net.unitego.lobecorp.client.init.KeyInit;
 import net.unitego.lobecorp.common.component.LobeCorpEquipmentSlot;
+import net.unitego.lobecorp.common.item.badge.TeamBadge;
 import net.unitego.lobecorp.common.item.ego.gift.head.PenitenceGift;
 import net.unitego.lobecorp.common.item.ego.suit.PenitenceSuit;
 import net.unitego.lobecorp.common.item.ego.weapon.EGOWeaponTemplate;
@@ -46,6 +47,7 @@ public class EnUsLangGenerator extends LanguageProvider {
         add(DamageTypesRegistry.DEATH_ATTACK_PALE, "%2$s caused %1$s died from Soul Erasure");
         add(DamageTypesRegistry.DEATH_ATTACK_PALE_ITEM, "%2$s using %3$s caused %1$s died from Soul Erasure");
         //物品名
+        //脑叶公司
         add(ItemsRegistry.LOBECORP_LOGO.get(), "LobeCorp Logo");
         add(ItemsRegistry.BLUE_LEAF.get(), "Blue Leaf");
         add(ItemsRegistry.CODE_SUIT.get(), "Code Suit");
@@ -55,6 +57,17 @@ public class EnUsLangGenerator extends LanguageProvider {
         add(ItemsRegistry.WHITE_RIOT_STICK.get(), "White Riot Stick");
         add(ItemsRegistry.BLACK_RIOT_STICK.get(), "Black Riot Stick");
         add(ItemsRegistry.PALE_RIOT_STICK.get(), "Pale Riot Stick");
+        //部门袖标
+        add(ItemsRegistry.CONTROL_TEAM_BADGE.get(), "Control Team Badge");
+        add(ItemsRegistry.INFORMATION_TEAM_BADGE.get(), "Information Team Badge");
+        add(ItemsRegistry.SECURITY_TEAM_BADGE.get(), "Security Team Badge");
+        add(ItemsRegistry.TRAINING_TEAM_BADGE.get(), "Training Team Badge");
+        add(ItemsRegistry.CENTRAL_COMMAND_TEAM_BADGE.get(), "Central Command Team Badge");
+        add(ItemsRegistry.WELFARE_TEAM_BADGE.get(), "Welfare Team Badge");
+        add(ItemsRegistry.DISCIPLINARY_TEAM_BADGE.get(), "Disciplinary Team Badge");
+        add(ItemsRegistry.RECORD_TEAM_BADGE.get(), "Record Team Badge");
+        add(ItemsRegistry.EXTRACTION_TEAM_BADGE.get(), "Extraction Team Badge");
+        add(ItemsRegistry.ARCHITECTURE_TEAM_BADGE.get(), "Architecture Team Badge");
         //EGO武器
         add(ItemsRegistry.STANDARD_TRAINING_EGO_WEAPON.get(), "Standard Training E.G.O");
         add(ItemsRegistry.PENITENCE_WEAPON.get(), "Penitence");
@@ -128,6 +141,17 @@ public class EnUsLangGenerator extends LanguageProvider {
         add(MiscUtils.WHITE, "White");
         add(MiscUtils.BLACK, "Black");
         add(MiscUtils.PALE, "Pale");
+        //部门名
+        add(TeamBadge.teamBadgeString(TeamBadge.LobeCorpTeam.CONTROL_TEAM.getTeamName()), "[Control Team]");
+        add(TeamBadge.teamBadgeString(TeamBadge.LobeCorpTeam.INFORMATION_TEAM.getTeamName()), "[Information Team]");
+        add(TeamBadge.teamBadgeString(TeamBadge.LobeCorpTeam.SECURITY_TEAM.getTeamName()), "[Security Team]");
+        add(TeamBadge.teamBadgeString(TeamBadge.LobeCorpTeam.TRAINING_TEAM.getTeamName()), "[Training Team]");
+        add(TeamBadge.teamBadgeString(TeamBadge.LobeCorpTeam.CENTRAL_COMMAND_TEAM.getTeamName()), "[Central Command Team]");
+        add(TeamBadge.teamBadgeString(TeamBadge.LobeCorpTeam.WELFARE_TEAM.getTeamName()), "[Welfare Team]");
+        add(TeamBadge.teamBadgeString(TeamBadge.LobeCorpTeam.DISCIPLINARY_TEAM.getTeamName()), "[Disciplinary Team]");
+        add(TeamBadge.teamBadgeString(TeamBadge.LobeCorpTeam.RECORD_TEAM.getTeamName()), "[Record Team]");
+        add(TeamBadge.teamBadgeString(TeamBadge.LobeCorpTeam.EXTRACTION_TEAM.getTeamName()), "[Extraction Team]");
+        add(TeamBadge.teamBadgeString(TeamBadge.LobeCorpTeam.ARCHITECTURE_TEAM.getTeamName()), "[Architecture Team]");
 
         //技能
         //忏悔

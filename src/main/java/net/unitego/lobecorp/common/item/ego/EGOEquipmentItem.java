@@ -21,8 +21,8 @@ public abstract class EGOEquipmentItem extends Item {
         this.egoSkillTranslationKeys = egoSkillTranslationKeys == null ? List.of() : List.copyOf(egoSkillTranslationKeys);
     }
 
-    protected static String egoSkillString(String skills){
-        return "ego.skill."+skills;
+    protected static String egoSkillString(String skills) {
+        return "ego.skill." + skills;
     }
 
     @Override
@@ -43,7 +43,7 @@ public abstract class EGOEquipmentItem extends Item {
                     int maxLength = 24;
                     tooltipComponents.add(Component.literal("●")
                             .append(Component.literal(text.substring(0, Math.min(maxLength, text.length())))
-                                    ).withStyle(ChatFormatting.GOLD, ChatFormatting.ITALIC));
+                            ).withStyle(ChatFormatting.GOLD, ChatFormatting.ITALIC));
 
                     if (text.length() > maxLength) {
                         String remaining = text.substring(maxLength);

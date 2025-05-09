@@ -51,7 +51,7 @@ public class EquipmentMenu extends AbstractContainerMenu {
         }
         //脑叶公司插槽
         ItemStackHandler handler = playerInventory.player.getData(AttachmentTypesRegistry.LOBECORP_STACK);
-        LOBECORP_SLOT_FACTORIES.forEach(factory -> addSlot(factory.createSlot(handler)));
+        LOBECORP_SLOT_FACTORIES.forEach(factory -> addSlot(factory.createSlot(handler, playerInventory.player)));
     }
 
     @Override
@@ -86,8 +86,8 @@ public class EquipmentMenu extends AbstractContainerMenu {
 
     //脑叶公司插槽工厂
     private record LobeCorpSlotFactory(LobeCorpEquipmentSlot slot, ResourceLocation icon, int index, int x, int y) {
-        public LobeCorpSlot createSlot(ItemStackHandler handler) {
-            return new LobeCorpSlot(handler, index, x, y, slot, icon);
+        public LobeCorpSlot createSlot(ItemStackHandler handler, Player player) {
+            return new LobeCorpSlot(handler, index, x, y, player, slot, icon);
         }
     }
 }

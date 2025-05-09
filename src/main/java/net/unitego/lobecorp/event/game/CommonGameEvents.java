@@ -1,5 +1,8 @@
 package net.unitego.lobecorp.event.game;
 
+import net.minecraft.commands.CommandSourceStack;
+import net.minecraft.commands.Commands;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
@@ -18,7 +21,8 @@ import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import net.unitego.lobecorp.LobeCorp;
 import net.unitego.lobecorp.common.access.ManagerAccess;
 import net.unitego.lobecorp.common.component.LobeCorpEquipmentSlot;
-import net.unitego.lobecorp.common.item.ego.weapon.EGOWeaponItem;
+import net.unitego.lobecorp.common.item.badge.TeamBadge;
+import net.unitego.lobecorp.common.item.ego.EGOWeaponItem;
 import net.unitego.lobecorp.common.manager.StaffManager;
 import net.unitego.lobecorp.common.manager.WaterManager;
 import net.unitego.lobecorp.common.util.DamageUtils;
@@ -31,7 +35,7 @@ import net.unitego.lobecorp.network.sender.S2CSyncStatsSender;
 public class CommonGameEvents {
     //攻击实体
     @SubscribeEvent
-    public static void onAttackEntity(AttackEntityEvent event) {
+    public static void onLivingEquipmentChange(AttackEntityEvent event) {
         Entity target = event.getTarget();
         Player player = event.getEntity();
         ItemStack mainHandItem = player.getMainHandItem();
@@ -78,7 +82,13 @@ public class CommonGameEvents {
     //服务端开始
     @SubscribeEvent
     public static void onServerStarting(ServerStartingEvent event) {
-        HydratingFoodLoader.load(event.getServer()).thenRun(() -> {
+        MinecraftServer server = event.getServer();
+        Commands commands = server.getCommands();
+        //脑叶公司部门创建
+        CommandSourceStack commandSourceStack = server.createCommandSourceStack();
+        TeamBadge.createTeam(commands, commandSourceStack);
+        //数据驱动文件加载
+        HydratingFoodLoader.load(server).thenRun(() -> {
         });
     }
 

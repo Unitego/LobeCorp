@@ -23,6 +23,17 @@ public class ItemModelGenerator extends ItemModelProvider {
         basicItem(ItemsRegistry.WHITE_RIOT_STICK.get());
         basicItem(ItemsRegistry.BLACK_RIOT_STICK.get());
         basicItem(ItemsRegistry.PALE_RIOT_STICK.get());
+        //部门袖标
+        basicItem(ItemsRegistry.CONTROL_TEAM_BADGE.get());
+        basicItem(ItemsRegistry.INFORMATION_TEAM_BADGE.get());
+        basicItem(ItemsRegistry.SECURITY_TEAM_BADGE.get());
+        basicItem(ItemsRegistry.TRAINING_TEAM_BADGE.get());
+        basicItem(ItemsRegistry.CENTRAL_COMMAND_TEAM_BADGE.get());
+        basicItem(ItemsRegistry.WELFARE_TEAM_BADGE.get());
+        basicItem(ItemsRegistry.DISCIPLINARY_TEAM_BADGE.get());
+        basicItem(ItemsRegistry.RECORD_TEAM_BADGE.get());
+        basicItem(ItemsRegistry.EXTRACTION_TEAM_BADGE.get());
+        basicItem(ItemsRegistry.ARCHITECTURE_TEAM_BADGE.get());
         //EGO武器
         basicItem(ItemsRegistry.STANDARD_TRAINING_EGO_WEAPON.get());
         basicItem(ItemsRegistry.PENITENCE_WEAPON.get());

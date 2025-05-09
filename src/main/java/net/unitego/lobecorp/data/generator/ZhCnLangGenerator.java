@@ -5,6 +5,7 @@ import net.neoforged.neoforge.common.data.LanguageProvider;
 import net.unitego.lobecorp.LobeCorp;
 import net.unitego.lobecorp.client.init.KeyInit;
 import net.unitego.lobecorp.common.component.LobeCorpEquipmentSlot;
+import net.unitego.lobecorp.common.item.badge.TeamBadge;
 import net.unitego.lobecorp.common.item.ego.gift.head.PenitenceGift;
 import net.unitego.lobecorp.common.item.ego.suit.PenitenceSuit;
 import net.unitego.lobecorp.common.item.ego.weapon.EGOWeaponTemplate;
@@ -56,6 +57,17 @@ public class ZhCnLangGenerator extends LanguageProvider {
         add(ItemsRegistry.WHITE_RIOT_STICK.get(), "精神镇暴棍");
         add(ItemsRegistry.BLACK_RIOT_STICK.get(), "侵蚀镇暴棍");
         add(ItemsRegistry.PALE_RIOT_STICK.get(), "灵魂镇暴棍");
+        //部门袖标
+        add(ItemsRegistry.CONTROL_TEAM_BADGE.get(), "控制部袖标");
+        add(ItemsRegistry.INFORMATION_TEAM_BADGE.get(), "情报部袖标");
+        add(ItemsRegistry.SECURITY_TEAM_BADGE.get(), "安保部袖标");
+        add(ItemsRegistry.TRAINING_TEAM_BADGE.get(), "培训部袖标");
+        add(ItemsRegistry.CENTRAL_COMMAND_TEAM_BADGE.get(), "中央本部袖标");
+        add(ItemsRegistry.WELFARE_TEAM_BADGE.get(), "福利部袖标");
+        add(ItemsRegistry.DISCIPLINARY_TEAM_BADGE.get(), "惩戒部袖标");
+        add(ItemsRegistry.RECORD_TEAM_BADGE.get(), "记录部袖标");
+        add(ItemsRegistry.EXTRACTION_TEAM_BADGE.get(), "研发部袖标");
+        add(ItemsRegistry.ARCHITECTURE_TEAM_BADGE.get(), "构筑部袖标");
         //EGO武器
         add(ItemsRegistry.STANDARD_TRAINING_EGO_WEAPON.get(), "教学用E.G.O");
         add(ItemsRegistry.PENITENCE_WEAPON.get(), "忏悔");
@@ -129,6 +141,17 @@ public class ZhCnLangGenerator extends LanguageProvider {
         add(MiscUtils.WHITE, "精神");
         add(MiscUtils.BLACK, "侵蚀");
         add(MiscUtils.PALE, "灵魂");
+        //部门名
+        add(TeamBadge.teamBadgeString(TeamBadge.LobeCorpTeam.CONTROL_TEAM.getTeamName()), "[控制部]");
+        add(TeamBadge.teamBadgeString(TeamBadge.LobeCorpTeam.INFORMATION_TEAM.getTeamName()), "[情报部]");
+        add(TeamBadge.teamBadgeString(TeamBadge.LobeCorpTeam.SECURITY_TEAM.getTeamName()), "[安保部]");
+        add(TeamBadge.teamBadgeString(TeamBadge.LobeCorpTeam.TRAINING_TEAM.getTeamName()), "[培训部]");
+        add(TeamBadge.teamBadgeString(TeamBadge.LobeCorpTeam.CENTRAL_COMMAND_TEAM.getTeamName()), "[中央本部]");
+        add(TeamBadge.teamBadgeString(TeamBadge.LobeCorpTeam.WELFARE_TEAM.getTeamName()), "[福利部]");
+        add(TeamBadge.teamBadgeString(TeamBadge.LobeCorpTeam.DISCIPLINARY_TEAM.getTeamName()), "[惩戒部]");
+        add(TeamBadge.teamBadgeString(TeamBadge.LobeCorpTeam.RECORD_TEAM.getTeamName()), "[记录部]");
+        add(TeamBadge.teamBadgeString(TeamBadge.LobeCorpTeam.EXTRACTION_TEAM.getTeamName()), "[研发部]");
+        add(TeamBadge.teamBadgeString(TeamBadge.LobeCorpTeam.ARCHITECTURE_TEAM.getTeamName()), "[构筑部]");
 
         //技能
         //忏悔

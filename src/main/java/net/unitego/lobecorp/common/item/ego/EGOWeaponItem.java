@@ -1,4 +1,4 @@
-package net.unitego.lobecorp.common.item.ego.weapon;
+package net.unitego.lobecorp.common.item.ego;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.component.DataComponents;
@@ -17,7 +17,7 @@ import net.unitego.lobecorp.common.access.EGORankAccess;
 import net.unitego.lobecorp.common.access.EquipRequireAccess;
 import net.unitego.lobecorp.common.access.LobeCorpSlotAccess;
 import net.unitego.lobecorp.common.component.LobeCorpEquipmentSlot;
-import net.unitego.lobecorp.common.item.ego.EGOEquipmentItem;
+import net.unitego.lobecorp.common.item.ego.weapon.EGOWeaponTemplate;
 import net.unitego.lobecorp.common.manager.StaffManager;
 import net.unitego.lobecorp.common.util.EGORank;
 import net.unitego.lobecorp.common.util.MiscUtils;

@@ -28,8 +28,8 @@ import net.neoforged.neoforge.event.EventHooks;
 import net.unitego.lobecorp.common.access.ManagerAccess;
 import net.unitego.lobecorp.common.component.LobeCorpEquipmentSlot;
 import net.unitego.lobecorp.common.entity.abnormality.Abnormality;
-import net.unitego.lobecorp.common.item.ego.suit.EGOSuitItem;
-import net.unitego.lobecorp.common.item.ego.weapon.EGOWeaponItem;
+import net.unitego.lobecorp.common.item.ego.EGOSuitItem;
+import net.unitego.lobecorp.common.item.ego.EGOWeaponItem;
 import net.unitego.lobecorp.common.manager.SanityManager;
 import net.unitego.lobecorp.common.tag.DamageTypeTags;
 

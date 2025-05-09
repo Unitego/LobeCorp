@@ -1,11 +1,10 @@
-package net.unitego.lobecorp.common.item.ego.gift;
+package net.unitego.lobecorp.common.item.ego;
 
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.unitego.lobecorp.common.access.LobeCorpSlotAccess;
 import net.unitego.lobecorp.common.component.LobeCorpAttributeModifiers;
 import net.unitego.lobecorp.common.component.LobeCorpEquipmentSlot;
-import net.unitego.lobecorp.common.item.ego.EGOEquipmentItem;
 import net.unitego.lobecorp.registry.AttributesRegistry;
 import net.unitego.lobecorp.registry.DataComponentTypesRegistry;
 
@@ -43,6 +42,11 @@ public class EGOGiftItem extends EGOEquipmentItem implements LobeCorpSlotAccess 
         String slotName = slot.name().toLowerCase();
         String uuidInput = BASE_GIFT_MODIFIER_ID.substring(0, 14) + slotName.hashCode() + BASE_GIFT_MODIFIER_ID.substring(14);
         return UUID.nameUUIDFromBytes(uuidInput.getBytes());
+    }
+
+    @Override
+    public LobeCorpEquipmentSlot getLobeCorpSlot() {
+        return lobeCorpEquipmentSlot;
     }
 
     public record EGOGiftBonus(int maxHealth, int maxSanity,
@@ -94,10 +98,5 @@ public class EGOGiftItem extends EGOEquipmentItem implements LobeCorpSlotAccess 
                 return new EGOGiftBonus(maxHealth, maxSanity, workSuccess, workVelocity, attackVelocity, moveVelocity);
             }
         }
-    }
-
-    @Override
-    public LobeCorpEquipmentSlot getLobeCorpSlot() {
-        return lobeCorpEquipmentSlot;
     }
 }

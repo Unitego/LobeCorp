@@ -120,12 +120,12 @@ public class EGOGiftWidget implements Renderable, GuiEventListener, NarratableEn
     }
 
     @Override
-    public void setFocused(boolean focused) {
+    public boolean isFocused() {
+        return false;
     }
 
     @Override
-    public boolean isFocused() {
-        return false;
+    public void setFocused(boolean focused) {
     }
 
     @Override

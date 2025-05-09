@@ -7,6 +7,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.unitego.lobecorp.common.access.ManagerAccess;
 import net.unitego.lobecorp.common.component.LobeCorpEquipmentSlot;
+import net.unitego.lobecorp.common.item.ego.EGOSuitItem;
 import net.unitego.lobecorp.common.manager.StaffManager;
 import net.unitego.lobecorp.common.util.EGORank;
 import net.unitego.lobecorp.common.util.MiscUtils;

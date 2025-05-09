@@ -46,9 +46,9 @@ public class DelayedTaskUtils {
     }
 
     private static class DelayedTask {
-        int delay;
         final Runnable runnable;
         final BooleanSupplier condition;
+        int delay;
 
         DelayedTask(int delay, Runnable runnable, BooleanSupplier condition) {
             this.delay = delay;

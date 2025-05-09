@@ -18,7 +18,7 @@ public class CreativeModeTabsRegistry {
             () -> CreativeModeTab.builder().title(Component.translatable(LOBECORP_TAB_NAME)).icon(() ->
                             ItemsRegistry.LOBECORP_LOGO.get().getDefaultInstance())
                     .displayItems((parameters, output) -> {
-                        output.accept(ItemsRegistry.LOBECORP_LOGO.get());
+                        output.accept(ItemsRegistry.LOBECORP_LOGO);
                         output.accept(ItemsRegistry.BLUE_LEAF);
                         output.accept(ItemsRegistry.CODE_SUIT);
                         output.accept(ItemsRegistry.CODE_RIOT_STICK);
@@ -27,6 +27,16 @@ public class CreativeModeTabsRegistry {
                         output.accept(ItemsRegistry.WHITE_RIOT_STICK);
                         output.accept(ItemsRegistry.BLACK_RIOT_STICK);
                         output.accept(ItemsRegistry.PALE_RIOT_STICK);
+                        output.accept(ItemsRegistry.CONTROL_TEAM_BADGE);
+                        output.accept(ItemsRegistry.INFORMATION_TEAM_BADGE);
+                        output.accept(ItemsRegistry.SECURITY_TEAM_BADGE);
+                        output.accept(ItemsRegistry.TRAINING_TEAM_BADGE);
+                        output.accept(ItemsRegistry.CENTRAL_COMMAND_TEAM_BADGE);
+                        output.accept(ItemsRegistry.WELFARE_TEAM_BADGE);
+                        output.accept(ItemsRegistry.DISCIPLINARY_TEAM_BADGE);
+                        output.accept(ItemsRegistry.RECORD_TEAM_BADGE);
+                        output.accept(ItemsRegistry.EXTRACTION_TEAM_BADGE);
+                        output.accept(ItemsRegistry.ARCHITECTURE_TEAM_BADGE);
                         output.accept(ItemsRegistry.STANDARD_TRAINING_EGO_WEAPON);
                         output.accept(ItemsRegistry.PENITENCE_WEAPON);
                         output.accept(ItemsRegistry.STANDARD_TRAINING_EGO_SUIT);
