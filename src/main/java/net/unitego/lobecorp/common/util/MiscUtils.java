@@ -1,8 +1,16 @@
 package net.unitego.lobecorp.common.util;
 
+import net.minecraft.core.Holder;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.tags.DamageTypeTags;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.damagesource.DamageType;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.player.Player;
@@ -10,6 +18,7 @@ import net.minecraft.world.item.ItemStack;
 import net.unitego.lobecorp.LobeCorp;
 import net.unitego.lobecorp.common.component.LobeCorpEquipmentSlot;
 import net.unitego.lobecorp.registry.AttachmentTypesRegistry;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.UUID;
 
@@ -88,5 +97,17 @@ public class MiscUtils {
         }
         // 添加新修饰符
         instance.addPermanentModifier(new AttributeModifier(modifierId, name, newAmount, operation));
+    }
+
+    //无击退伤害源
+    public static DamageSource noKnockBackDamageSource(ResourceKey<DamageType> key, Entity entity) {
+        Holder<DamageType> damageType = entity.level().registryAccess().registryOrThrow(Registries.DAMAGE_TYPE)
+                .getHolderOrThrow(key);
+        return new DamageSource(damageType, entity) {
+            @Override
+            public boolean is(@NotNull TagKey<DamageType> tag) {
+                return tag == DamageTypeTags.NO_KNOCKBACK || super.is(tag);
+            }
+        };
     }
 }

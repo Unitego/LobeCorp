@@ -3,10 +3,17 @@ package net.unitego.lobecorp.common.manager;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.util.Mth;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.unitego.lobecorp.common.access.EGORankAccess;
+import net.unitego.lobecorp.common.access.EquipRequireAccess;
+import net.unitego.lobecorp.common.util.DelayedTaskUtils;
 import net.unitego.lobecorp.common.util.MiscUtils;
 import net.unitego.lobecorp.registry.AttributesRegistry;
+import net.unitego.lobecorp.registry.DamageTypesRegistry;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -112,6 +119,22 @@ public class StaffManager {
 
     public StaffRank getStaffRank() {
         return calculateStaffRank(getFortitudeRank(), getPrudenceRank(), getTemperanceRank(), getJusticeRank());
+    }
+
+    public void checkEGO(ItemStack stack) {
+        if (!player.isInvulnerable()) {
+            if (stack.getItem() instanceof EquipRequireAccess equipRequireAccess && stack.getItem() instanceof EGORankAccess egoRankAccess) {
+                EquipRequire equipRequire = equipRequireAccess.getEquipRequire();
+                if (!equipRequire.isSatisfiedBy(this)) {
+                    player.addEffect(new MobEffectInstance(MobEffects.CONFUSION, 200, 254, false, false, false));
+                    DelayedTaskUtils.runLater(200, () -> {
+                        if (!player.isInvulnerable()) {
+                            player.hurt(MiscUtils.noKnockBackDamageSource(DamageTypesRegistry.BLACK, player), egoRankAccess.getEGORank().getValue() * 2);
+                        }
+                    });
+                }
+            }
+        }
     }
 
     //职员等级

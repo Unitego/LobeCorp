@@ -41,7 +41,6 @@ public class EGOWeaponItem extends EGOEquipmentItem implements LobeCorpSlotAcces
     private final EGORank egoRank;
     private final EGOWeaponTemplate weaponTemplate;
     private final List<ResourceKey<DamageType>> damageTypes;
-    private final double attackDamage;
     private final StaffManager.EquipRequire equipRequire;
 
     public EGOWeaponItem(Properties properties, List<String> egoSkillTranslationKeys, EGORank egoRank, EGOWeaponTemplate weaponTemplate,
@@ -54,7 +53,6 @@ public class EGOWeaponItem extends EGOEquipmentItem implements LobeCorpSlotAcces
         this.egoRank = egoRank;
         this.weaponTemplate = weaponTemplate;
         this.damageTypes = damageTypes;
-        this.attackDamage = attackDamage;
         this.equipRequire = equipRequire;
     }
 
@@ -93,10 +91,6 @@ public class EGOWeaponItem extends EGOEquipmentItem implements LobeCorpSlotAcces
         tooltipComponents.addAll(equipRequire.getDisplayTooltip());
 
         super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
-    }
-
-    public double getAttackDamage() {
-        return attackDamage;
     }
 
     @Override

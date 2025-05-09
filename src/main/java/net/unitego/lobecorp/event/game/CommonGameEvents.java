@@ -17,6 +17,7 @@ import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import net.unitego.lobecorp.LobeCorp;
 import net.unitego.lobecorp.common.access.ManagerAccess;
+import net.unitego.lobecorp.common.component.LobeCorpEquipmentSlot;
 import net.unitego.lobecorp.common.item.ego.weapon.EGOWeaponItem;
 import net.unitego.lobecorp.common.manager.StaffManager;
 import net.unitego.lobecorp.common.manager.WaterManager;
@@ -47,6 +48,11 @@ public class CommonGameEvents {
         if (player.level().isClientSide) return;
         //恐慌状态
         ((ManagerAccess) player).lobeCorp$getSanityManager().panicState();
+        //EGO反噬
+        ((ManagerAccess) player).lobeCorp$getStaffManager().checkEGO(player.getMainHandItem());
+        ((ManagerAccess) player).lobeCorp$getStaffManager().checkEGO(player.getOffhandItem());
+        ((ManagerAccess) player).lobeCorp$getStaffManager().checkEGO(MiscUtils.getLobeCorpStack(player, LobeCorpEquipmentSlot.LOBECORP_WEAPON));
+        ((ManagerAccess) player).lobeCorp$getStaffManager().checkEGO(MiscUtils.getLobeCorpStack(player, LobeCorpEquipmentSlot.LOBECORP_SUIT));
         //脑叶公司攻击速率移动速率修饰原版攻击速度移动速度
         StaffManager staffManager = ((ManagerAccess) player).lobeCorp$getStaffManager();
         double attackVelocity = staffManager.getAttackVelocity();
