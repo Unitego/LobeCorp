@@ -66,7 +66,7 @@ public class SetAttributeScreen extends Screen {
                 if (attribute != null) {
                     AttributeInstance instance = player.getAttribute(attribute);
                     if (instance != null) {
-                        double attributeValue = instance.getValue();
+                        double attributeValue = instance.getBaseValue();
                         box.setValue(String.format("%d", (int) attributeValue));
                     }
                 }
@@ -107,7 +107,7 @@ public class SetAttributeScreen extends Screen {
                     } else {
                         if (Minecraft.getInstance().player != null) {
                             onClose();
-                            Minecraft.getInstance().player.displayClientMessage(Component.translatable(MiscUtils.INVALID_VALUE), true);
+                            MiscUtils.sendCenterClientMessage(MiscUtils.INVALID_VALUE);
                         }
                     }
                 }

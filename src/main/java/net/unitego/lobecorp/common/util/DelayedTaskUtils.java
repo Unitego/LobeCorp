@@ -9,6 +9,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.function.BooleanSupplier;
 
+//延迟任务工具
 public class DelayedTaskUtils {
     private static final List<DelayedTask> TASKS = new LinkedList<>();
     private static boolean initialized = false;

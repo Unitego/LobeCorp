@@ -1,15 +1,19 @@
 package net.unitego.lobecorp.common.item.ego;
 
+import com.google.common.collect.ArrayListMultimap;
+import com.google.common.collect.Multimap;
 import net.minecraft.ChatFormatting;
+import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.unitego.lobecorp.common.access.ColorResistAccess;
 import net.unitego.lobecorp.common.access.EGORankAccess;
 import net.unitego.lobecorp.common.access.EquipRequireAccess;
-import net.unitego.lobecorp.common.access.LobeCorpSlotAccess;
 import net.unitego.lobecorp.common.component.LobeCorpAttributeModifiers;
 import net.unitego.lobecorp.common.component.LobeCorpEquipmentSlot;
 import net.unitego.lobecorp.common.manager.StaffManager;
@@ -20,7 +24,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-public class EGOSuitItem extends EGOEquipmentItem implements LobeCorpSlotAccess, EGORankAccess, EquipRequireAccess, ColorResistAccess {
+public class EGOSuitItem extends EGOEquipmentItem implements EGORankAccess, EquipRequireAccess, ColorResistAccess {
     private final EGORank egoRank;
     private final float redResist;
     private final float whiteResist;
@@ -76,6 +80,26 @@ public class EGOSuitItem extends EGOEquipmentItem implements LobeCorpSlotAccess,
     @Override
     public LobeCorpEquipmentSlot getLobeCorpSlot() {
         return LobeCorpEquipmentSlot.LOBECORP_SUIT;
+    }
+
+    @Override
+    public void onLobeCorpTick(Player player) {
+
+    }
+
+    @Override
+    public Multimap<Holder<Attribute>, AttributeModifier> getModifiers(ItemStack itemStack) {
+        return ArrayListMultimap.create();
+    }
+
+    @Override
+    public boolean isInValidSlot(Player player, ItemStack itemStack) {
+        return MiscUtils.getLobeCorpStack(player, LobeCorpEquipmentSlot.LOBECORP_SUIT) == itemStack;
+    }
+
+    @Override
+    public boolean shouldApply(Player player) {
+        return false;
     }
 
     @Override

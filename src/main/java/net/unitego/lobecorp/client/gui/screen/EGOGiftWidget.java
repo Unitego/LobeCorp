@@ -9,7 +9,7 @@ import net.minecraft.world.inventory.Slot;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 import net.unitego.lobecorp.client.gui.GuiResource;
-import net.unitego.lobecorp.common.component.LobeCorpSlot;
+import net.unitego.lobecorp.common.component.LobeCorpSlotItemHandler;
 import net.unitego.lobecorp.common.menu.EquipmentMenu;
 import org.jetbrains.annotations.NotNull;
 
@@ -90,12 +90,12 @@ public class EGOGiftWidget implements Renderable, GuiEventListener, NarratableEn
         //此处指的9个快捷栏加27个背包栏以及weapon、suit、badge、tool4个，从0开始索引
         Slot slot = menu.getSlot(40 + i);
         int startSlotIndex = Math.max(0, (sliderPosY * VISIBLE_SLOTS) / (SCROLL_BAR_HEIGHT - SLIDER_HEIGHT));
-        if (slot instanceof LobeCorpSlot lobecorpSlot) {
+        if (slot instanceof LobeCorpSlotItemHandler lobecorpSlotItemHandler) {
             if (i >= startSlotIndex && i < startSlotIndex + VISIBLE_SLOTS) {
-                lobecorpSlot.y = 11 + ((i - startSlotIndex) % VISIBLE_SLOTS) * SLOT_SIZE;
-                lobecorpSlot.setActive(true);
+                lobecorpSlotItemHandler.y = 11 + ((i - startSlotIndex) % VISIBLE_SLOTS) * SLOT_SIZE;
+                lobecorpSlotItemHandler.setActive(true);
             } else {
-                lobecorpSlot.setActive(false);
+                lobecorpSlotItemHandler.setActive(false);
             }
         }
     }
@@ -104,7 +104,8 @@ public class EGOGiftWidget implements Renderable, GuiEventListener, NarratableEn
     public void closeSlot() {
         for (int i = 0; i < TOTAL_SLOTS; i++) {
             Slot slot = menu.getSlot(40 + i);
-            if (slot instanceof LobeCorpSlot lobecorpSlot) lobecorpSlot.setActive(false);
+            if (slot instanceof LobeCorpSlotItemHandler lobecorpSlotItemHandler)
+                lobecorpSlotItemHandler.setActive(false);
         }
     }
 

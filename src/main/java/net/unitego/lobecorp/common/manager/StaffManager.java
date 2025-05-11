@@ -3,17 +3,10 @@ package net.unitego.lobecorp.common.manager;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.util.Mth;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.unitego.lobecorp.common.access.EGORankAccess;
-import net.unitego.lobecorp.common.access.EquipRequireAccess;
-import net.unitego.lobecorp.common.util.DelayedTaskUtils;
 import net.unitego.lobecorp.common.util.MiscUtils;
 import net.unitego.lobecorp.registry.AttributesRegistry;
-import net.unitego.lobecorp.registry.DamageTypesRegistry;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -57,7 +50,11 @@ public class StaffManager {
         return player.getAttributeValue(Attributes.MAX_HEALTH);
     }
 
-    public void setMaxHealth(double maxHealth) {
+    public double getMaxHealthBaseValue() {
+        return player.getAttributeBaseValue(Attributes.MAX_HEALTH);
+    }
+
+    public void setMaxHealthBaseValue(double maxHealth) {
         Objects.requireNonNull(player.getAttribute(Attributes.MAX_HEALTH)).setBaseValue(maxHealth);
     }
 
@@ -65,7 +62,11 @@ public class StaffManager {
         return player.getAttributeValue(AttributesRegistry.MAX_SANITY);
     }
 
-    public void setMaxSanity(double maxSanity) {
+    public double getMaxSanityBaseValue() {
+        return player.getAttributeBaseValue(AttributesRegistry.MAX_SANITY);
+    }
+
+    public void setMaxSanityBaseValue(double maxSanity) {
         Objects.requireNonNull(player.getAttribute(AttributesRegistry.MAX_SANITY)).setBaseValue(maxSanity);
     }
 
@@ -73,7 +74,11 @@ public class StaffManager {
         return player.getAttributeValue(AttributesRegistry.WORK_SUCCESS);
     }
 
-    public void setWorkSuccess(double workSuccess) {
+    public double getWorkSuccessBaseValue() {
+        return player.getAttributeBaseValue(AttributesRegistry.WORK_SUCCESS);
+    }
+
+    public void setWorkSuccessBaseValue(double workSuccess) {
         Objects.requireNonNull(player.getAttribute(AttributesRegistry.WORK_SUCCESS)).setBaseValue(workSuccess);
     }
 
@@ -81,7 +86,11 @@ public class StaffManager {
         return player.getAttributeValue(AttributesRegistry.WORK_VELOCITY);
     }
 
-    public void setWorkVelocity(double workVelocity) {
+    public double getWorkVelocityBaseValue() {
+        return player.getAttributeBaseValue(AttributesRegistry.WORK_VELOCITY);
+    }
+
+    public void setWorkVelocityBaseValue(double workVelocity) {
         Objects.requireNonNull(player.getAttribute(AttributesRegistry.WORK_VELOCITY)).setBaseValue(workVelocity);
     }
 
@@ -89,7 +98,11 @@ public class StaffManager {
         return player.getAttributeValue(AttributesRegistry.ATTACK_VELOCITY);
     }
 
-    public void setAttackVelocity(double attackVelocity) {
+    public double getAttackVelocityBaseValue() {
+        return player.getAttributeBaseValue(AttributesRegistry.ATTACK_VELOCITY);
+    }
+
+    public void setAttackVelocityBaseValue(double attackVelocity) {
         Objects.requireNonNull(player.getAttribute(AttributesRegistry.ATTACK_VELOCITY)).setBaseValue(attackVelocity);
     }
 
@@ -97,44 +110,32 @@ public class StaffManager {
         return player.getAttributeValue(AttributesRegistry.MOVE_VELOCITY);
     }
 
-    public void setMoveVelocity(double moveVelocity) {
+    public double getMoveVelocityBaseValue() {
+        return player.getAttributeBaseValue(AttributesRegistry.MOVE_VELOCITY);
+    }
+
+    public void setMoveVelocityBaseValue(double moveVelocity) {
         Objects.requireNonNull(player.getAttribute(AttributesRegistry.MOVE_VELOCITY)).setBaseValue(moveVelocity);
     }
 
     public StaffRank getJusticeRank() {
-        return calculateVirtueRank((int) ((getAttackVelocity() + getMoveVelocity()) / 2));
+        return calculateVirtueRank((int) ((getAttackVelocityBaseValue() + getMoveVelocityBaseValue()) / 2));
     }
 
     public StaffRank getTemperanceRank() {
-        return calculateVirtueRank((int) ((getWorkSuccess() + getWorkVelocity()) / 2));
+        return calculateVirtueRank((int) ((getWorkSuccessBaseValue() + getWorkVelocityBaseValue()) / 2));
     }
 
     public StaffRank getPrudenceRank() {
-        return calculateVirtueRank((int) getMaxSanity());
+        return calculateVirtueRank((int) getMaxSanityBaseValue());
     }
 
     public StaffRank getFortitudeRank() {
-        return calculateVirtueRank((int) getMaxHealth());
+        return calculateVirtueRank((int) getMaxHealthBaseValue());
     }
 
     public StaffRank getStaffRank() {
         return calculateStaffRank(getFortitudeRank(), getPrudenceRank(), getTemperanceRank(), getJusticeRank());
-    }
-
-    public void checkEGO(ItemStack stack) {
-        if (!player.isInvulnerable()) {
-            if (stack.getItem() instanceof EquipRequireAccess equipRequireAccess && stack.getItem() instanceof EGORankAccess egoRankAccess) {
-                EquipRequire equipRequire = equipRequireAccess.getEquipRequire();
-                if (!equipRequire.isSatisfiedBy(this)) {
-                    player.addEffect(new MobEffectInstance(MobEffects.CONFUSION, 200, 254, false, false, false));
-                    DelayedTaskUtils.runLater(200, () -> {
-                        if (!player.isInvulnerable()) {
-                            player.hurt(MiscUtils.noKnockBackDamageSource(DamageTypesRegistry.BLACK, player), egoRankAccess.getEGORank().getValue() * 2);
-                        }
-                    });
-                }
-            }
-        }
     }
 
     //职员等级
@@ -171,12 +172,12 @@ public class StaffManager {
             return new Builder();
         }
 
-        public boolean isSatisfiedBy(StaffManager data) {
-            return (staffRank == null || data.getStaffRank().getValue() >= staffRank.getValue()) &&
-                    (fortitudeRank == null || data.getFortitudeRank().getValue() >= fortitudeRank.getValue()) &&
-                    (prudenceRank == null || data.getPrudenceRank().getValue() >= prudenceRank.getValue()) &&
-                    (temperanceRank == null || data.getTemperanceRank().getValue() >= temperanceRank.getValue()) &&
-                    (justiceRank == null || data.getJusticeRank().getValue() >= justiceRank.getValue());
+        public boolean isNotSatisfiedBy(StaffManager data) {
+            return (staffRank != null && data.getStaffRank().getValue() < staffRank.getValue()) ||
+                    (fortitudeRank != null && data.getFortitudeRank().getValue() < fortitudeRank.getValue()) ||
+                    (prudenceRank != null && data.getPrudenceRank().getValue() < prudenceRank.getValue()) ||
+                    (temperanceRank != null && data.getTemperanceRank().getValue() < temperanceRank.getValue()) ||
+                    (justiceRank != null && data.getJusticeRank().getValue() < justiceRank.getValue());
         }
 
         public List<Component> getDisplayTooltip() {

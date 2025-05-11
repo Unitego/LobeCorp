@@ -61,6 +61,9 @@ public class DamageUtils {
                 defender.setAbsorptionAmount(defender.getAbsorptionAmount() - (rawAmount * resistResult.redResist * resistResult.rankResist - healthAmount));
             }
             defender.setHealth(defender.getHealth() - healthAmount);
+            if (resistResult.redResist > 1) {
+                LowResistSlowUtils.apply(defender);
+            }
         } else if (source.is(DamageTypeTags.WHITE_DAMAGE_TYPE.get())) {
             float sanityAmount = rawAmount * resistResult.whiteResist * resistResult.rankResist;
             if (sanityAmount > sanityManager.getAssimilationAmount()) sanityManager.setAssimilationAmount(0);
@@ -77,6 +80,9 @@ public class DamageUtils {
                     }
                 }
             } else sanityManager.setSanity(sanityManager.getSanity() - sanityAmount);
+            if (resistResult.whiteResist > 1) {
+                LowResistSlowUtils.apply(defender);
+            }
         } else if (source.is(DamageTypeTags.BLACK_DAMAGE_TYPE.get())) {
             float healthAmount = rawAmount * resistResult.blackResist * resistResult.rankResist;
             float sanityAmount = rawAmount * resistResult.blackResist * resistResult.rankResist;
@@ -94,6 +100,9 @@ public class DamageUtils {
                     sanityManager.setSanity(sanityManager.getSanity() + sanityAmount);
                 }
             } else sanityManager.setSanity(sanityManager.getSanity() - sanityAmount);
+            if (resistResult.blackResist > 1) {
+                LowResistSlowUtils.apply(defender);
+            }
         } else if (source.is(DamageTypeTags.PALE_DAMAGE_TYPE.get())) {
             float healthAmount = (rawAmount / 100.0f) * defender.getMaxHealth() * resistResult.paleResist * resistResult.rankResist;
             if (healthAmount > defender.getAbsorptionAmount()) defender.setAbsorptionAmount(0);
@@ -102,6 +111,9 @@ public class DamageUtils {
                 defender.setAbsorptionAmount(defender.getAbsorptionAmount() - ((rawAmount / 100.0f) * defender.getMaxHealth() * resistResult.paleResist * resistResult.rankResist - healthAmount));
             }
             defender.setHealth(defender.getHealth() - healthAmount);
+            if (resistResult.paleResist > 1) {
+                LowResistSlowUtils.apply(defender);
+            }
         } else {
             float healthAmount = rawAmount;
             healthAmount = Math.max(healthAmount - defender.getAbsorptionAmount(), 0);
@@ -232,6 +244,12 @@ public class DamageUtils {
                         }
                         Vec3 vec3 = target.getDeltaMovement();
                         boolean flag5 = false;
+                        // 蓄力不足则空挥退出
+                        if (f2 < 1.0f) {
+                            player.level().playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.PLAYER_ATTACK_NODAMAGE, player.getSoundSource(), 1.0F, 1.0F);
+                            player.resetAttackStrengthTicker();
+                            return;
+                        }
                         //造成伤害
                         for (ResourceKey<DamageType> damageType : egoWeaponItem.getDamageTypes()) {
                             target.invulnerableTime = 0;

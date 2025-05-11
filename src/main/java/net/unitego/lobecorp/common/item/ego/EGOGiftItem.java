@@ -1,17 +1,23 @@
 package net.unitego.lobecorp.common.item.ego;
 
+import com.google.common.collect.ArrayListMultimap;
+import com.google.common.collect.Multimap;
+import net.minecraft.core.Holder;
+import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.unitego.lobecorp.common.access.LobeCorpSlotAccess;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.unitego.lobecorp.common.component.LobeCorpAttributeModifiers;
 import net.unitego.lobecorp.common.component.LobeCorpEquipmentSlot;
+import net.unitego.lobecorp.common.util.MiscUtils;
 import net.unitego.lobecorp.registry.AttributesRegistry;
 import net.unitego.lobecorp.registry.DataComponentTypesRegistry;
 
 import java.util.List;
 import java.util.UUID;
 
-public class EGOGiftItem extends EGOEquipmentItem implements LobeCorpSlotAccess {
+public class EGOGiftItem extends EGOEquipmentItem {
     private static final String BASE_GIFT_MODIFIER_ID = "D0B1526D-85FF-4FE6-9C37-C18C18A30126";
     private final LobeCorpEquipmentSlot lobeCorpEquipmentSlot;
 
@@ -47,6 +53,26 @@ public class EGOGiftItem extends EGOEquipmentItem implements LobeCorpSlotAccess 
     @Override
     public LobeCorpEquipmentSlot getLobeCorpSlot() {
         return lobeCorpEquipmentSlot;
+    }
+
+    @Override
+    public void onLobeCorpTick(Player player) {
+
+    }
+
+    @Override
+    public Multimap<Holder<Attribute>, AttributeModifier> getModifiers(ItemStack itemStack) {
+        return ArrayListMultimap.create();
+    }
+
+    @Override
+    public boolean isInValidSlot(Player player, ItemStack itemStack) {
+        return MiscUtils.getLobeCorpStack(player, lobeCorpEquipmentSlot) == itemStack;
+    }
+
+    @Override
+    public boolean shouldApply(Player player) {
+        return false;
     }
 
     public record EGOGiftBonus(int maxHealth, int maxSanity,

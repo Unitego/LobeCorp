@@ -8,8 +8,11 @@ import net.unitego.lobecorp.common.component.LobeCorpEquipmentSlot;
 import net.unitego.lobecorp.common.item.badge.TeamBadge;
 import net.unitego.lobecorp.common.item.ego.gift.head.PenitenceGift;
 import net.unitego.lobecorp.common.item.ego.suit.PenitenceSuit;
+import net.unitego.lobecorp.common.item.ego.suit.RedEyesSuit;
 import net.unitego.lobecorp.common.item.ego.weapon.EGOWeaponTemplate;
 import net.unitego.lobecorp.common.item.ego.weapon.mace.PenitenceWeapon;
+import net.unitego.lobecorp.common.item.ego.weapon.mace.RedEyesWeapon;
+import net.unitego.lobecorp.common.item.ego.weapon.spear.FragmentsFromSomewhereWeapon;
 import net.unitego.lobecorp.common.util.MiscUtils;
 import net.unitego.lobecorp.registry.*;
 
@@ -71,12 +74,36 @@ public class EnUsLangGenerator extends LanguageProvider {
         //EGO武器
         add(ItemsRegistry.STANDARD_TRAINING_EGO_WEAPON.get(), "Standard Training E.G.O");
         add(ItemsRegistry.PENITENCE_WEAPON.get(), "Penitence");
+        add(ItemsRegistry.WING_BEAT_WEAPON.get(), "Wing Beat");
+        add(ItemsRegistry.RED_EYES_WEAPON.get(), "Red Eyes");
+        add(ItemsRegistry.CHRISTMAS_WEAPON.get(), "Christmas");
+        add(ItemsRegistry.HORN_WEAPON.get(), "Horn");
+        add(ItemsRegistry.FRAGMENTS_FROM_SOMEWHERE_WEAPON.get(), "Fragments From Somewhere");
+        add(ItemsRegistry.REGRET_WEAPON.get(), "Regret");
+        add(ItemsRegistry.LOGGING_WEAPON.get(), "Logging");
+
         //EGO护甲
         add(ItemsRegistry.STANDARD_TRAINING_EGO_SUIT.get(), "Standard Training E.G.O");
         add(ItemsRegistry.PENITENCE_SUIT.get(), "Penitence");
+        add(ItemsRegistry.WING_BEAT_SUIT.get(), "Wing Beat");
+        add(ItemsRegistry.RED_EYES_SUIT.get(), "Red Eyes");
+        add(ItemsRegistry.CHRISTMAS_SUIT.get(), "Christmas");
+        add(ItemsRegistry.HORN_SUIT.get(), "Horn");
+        add(ItemsRegistry.FRAGMENTS_FROM_SOMEWHERE_SUIT.get(), "Fragments From Somewhere");
+        add(ItemsRegistry.REGRET_SUIT.get(), "Regret");
+        add(ItemsRegistry.LOGGING_SUIT.get(), "Logging");
+
         //EGO饰品
         add(ItemsRegistry.STANDARD_TRAINING_EGO_GIFT.get(), "Standard Training E.G.O");
         add(ItemsRegistry.PENITENCE_GIFT.get(), "Penitence");
+        add(ItemsRegistry.WING_BEAT_GIFT.get(), "Wing Beat");
+        add(ItemsRegistry.RED_EYES_GIFT.get(), "Red Eyes");
+        add(ItemsRegistry.CHRISTMAS_GIFT.get(), "Christmas");
+        add(ItemsRegistry.HORN_GIFT.get(), "Horn");
+        add(ItemsRegistry.FRAGMENTS_FROM_SOMEWHERE_GIFT.get(), "Fragments From Somewhere");
+        add(ItemsRegistry.REGRET_GIFT.get(), "Regret");
+        add(ItemsRegistry.LOGGING_GIFT.get(), "Logging");
+
         add(ItemsRegistry.BLESS_GIFT.get(), "Bless");
         //菜单名
         add(MenusRegistry.CONTAINER_LOBECORP_EQUIPMENT, "Equipment");
@@ -102,6 +129,9 @@ public class EnUsLangGenerator extends LanguageProvider {
         add(EGOWeaponTemplate.MACE.getTranslationKey(), "Mace");
         add(EGOWeaponTemplate.AXE.getTranslationKey(), "Axe");
         add(EGOWeaponTemplate.KNIFE.getTranslationKey(), "Knife");
+        add(EGOWeaponTemplate.SPEAR.getTranslationKey(), "Spear");
+        add(EGOWeaponTemplate.HAMMER.getTranslationKey(), "Hammer");
+        add(EGOWeaponTemplate.FIST.getTranslationKey(), "Fist");
         //插槽名
         add(LobeCorpEquipmentSlot.LOBECORP_WEAPON.getSlotModifiersName(), "When in Weapon Slot: ");
         add(LobeCorpEquipmentSlot.LOBECORP_SUIT.getSlotModifiersName(), "When in Suit Slot: ");
@@ -126,6 +156,8 @@ public class EnUsLangGenerator extends LanguageProvider {
         add(MiscUtils.MOTTO, "Face the Fear, Build the Future");
         add(MiscUtils.CONFIRM, "Confirm");
         add(MiscUtils.INVALID_VALUE, "Invalid Input，please check the values.");
+        add(MiscUtils.ENTERED_COMBAT, "Entered Combat Status.");
+        add(MiscUtils.LEFT_COMBAT, "Left Combat Status.");
         add(MiscUtils.STAFF_RANK, "Staff Rank");
         add(MiscUtils.STAFF_FORTITUDE, "Fortitude");
         add(MiscUtils.STAFF_PRUDENCE, "Prudence");
@@ -155,8 +187,13 @@ public class EnUsLangGenerator extends LanguageProvider {
 
         //技能
         //忏悔
-        add(PenitenceWeapon.WEAPON_PENITENCE1, "5% of healing 10 SP upon attacking with Justice Lvl 2+");
-        add(PenitenceSuit.SUIT_PENITENCE1, "5% of heal 10 SP when damaged by Red or Black");
-        add(PenitenceGift.GIFT_PENITENCE1, "Success Rate increases %10 with the corresponding Abnormality");
+        add(PenitenceWeapon.WEAPON_PENITENCE_1, "5% chance to recover 10 SP on attack if wielder has 2+ Justice");
+        add(PenitenceSuit.SUIT_PENITENCE_1, "Heal SP +10 with a 5% chance upon receiving RED or BLACK damage");
+        add(PenitenceGift.GIFT_PENITENCE_1, "Success Rate increases %10 with the corresponding Abnormality");
+        //赤瞳
+        add(RedEyesWeapon.WEAPON_RED_EYES_1, "Movement Speed +2.5 when suppressing if wielder has 2+ Fortitude");
+        add(RedEyesSuit.SUIT_RED_EYES_1, "Movement Speed +2.5 when suppressing if wielder has 2+ Fortitude");
+        //彼方的裂片
+        add(FragmentsFromSomewhereWeapon.WEAPON_FRAGMENTS_FROM_SOMEWHERE_1, "Max SP +40% for 30 seconds (10% chance) when used by an employee whose Prudence Level is 4 or below");
     }
 }

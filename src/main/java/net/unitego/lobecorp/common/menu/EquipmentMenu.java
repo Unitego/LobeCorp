@@ -9,7 +9,7 @@ import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.items.ItemStackHandler;
 import net.unitego.lobecorp.client.gui.GuiResource;
 import net.unitego.lobecorp.common.component.LobeCorpEquipmentSlot;
-import net.unitego.lobecorp.common.component.LobeCorpSlot;
+import net.unitego.lobecorp.common.component.LobeCorpSlotItemHandler;
 import net.unitego.lobecorp.registry.AttachmentTypesRegistry;
 import net.unitego.lobecorp.registry.MenusRegistry;
 import org.jetbrains.annotations.NotNull;
@@ -51,7 +51,7 @@ public class EquipmentMenu extends AbstractContainerMenu {
         }
         //脑叶公司插槽
         ItemStackHandler handler = playerInventory.player.getData(AttachmentTypesRegistry.LOBECORP_STACK);
-        LOBECORP_SLOT_FACTORIES.forEach(factory -> addSlot(factory.createSlot(handler, playerInventory.player)));
+        LOBECORP_SLOT_FACTORIES.forEach(factory -> addSlot(factory.createSlot(handler)));
     }
 
     @Override
@@ -86,8 +86,8 @@ public class EquipmentMenu extends AbstractContainerMenu {
 
     //脑叶公司插槽工厂
     private record LobeCorpSlotFactory(LobeCorpEquipmentSlot slot, ResourceLocation icon, int index, int x, int y) {
-        public LobeCorpSlot createSlot(ItemStackHandler handler, Player player) {
-            return new LobeCorpSlot(handler, index, x, y, player, slot, icon);
+        public LobeCorpSlotItemHandler createSlot(ItemStackHandler handler) {
+            return new LobeCorpSlotItemHandler(handler, index, x, y, slot, icon);
         }
     }
 }

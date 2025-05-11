@@ -3,9 +3,9 @@ package net.unitego.lobecorp.common.manager;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.util.Mth;
-import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.player.Player;
+import net.unitego.lobecorp.common.util.MiscUtils;
 import net.unitego.lobecorp.registry.AttributesRegistry;
 import net.unitego.lobecorp.registry.DamageTypesRegistry;
 
@@ -41,6 +41,7 @@ public class SanityManager {
     }
 
     public void cure(float cureAmount) {
+        if (player.level().isClientSide) return;
         if (cureAmount <= 0) return;
         float f = getSanity();
         if (f > 0.0F) {
@@ -50,7 +51,7 @@ public class SanityManager {
 
     //恐慌状态
     public void panicState() {
-        if (!player.isInvulnerable()) {
+        if (!(player.isCreative() || player.isSpectator())) {
             if (isPanicOrCrazing()) {
                 ++panicTickTimer;
                 if (panicTickTimer >= 900) {
@@ -58,8 +59,8 @@ public class SanityManager {
                     sanityKill();
                     panicTickTimer = 0;
                 } else {
-                    player.addEffect(new MobEffectInstance(MobEffects.CONFUSION, 900, 254, false, false, false));
-                    player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 900, 254, false, false, false));
+                    MiscUtils.hiddenEffect(player, MobEffects.CONFUSION, 900, 254);
+                    MiscUtils.hiddenEffect(player, MobEffects.MOVEMENT_SLOWDOWN, 900, 254);
                 }
             } else {
                 panicTickTimer = 0;

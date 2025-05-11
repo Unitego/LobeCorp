@@ -8,8 +8,11 @@ import net.unitego.lobecorp.common.component.LobeCorpEquipmentSlot;
 import net.unitego.lobecorp.common.item.badge.TeamBadge;
 import net.unitego.lobecorp.common.item.ego.gift.head.PenitenceGift;
 import net.unitego.lobecorp.common.item.ego.suit.PenitenceSuit;
+import net.unitego.lobecorp.common.item.ego.suit.RedEyesSuit;
 import net.unitego.lobecorp.common.item.ego.weapon.EGOWeaponTemplate;
 import net.unitego.lobecorp.common.item.ego.weapon.mace.PenitenceWeapon;
+import net.unitego.lobecorp.common.item.ego.weapon.mace.RedEyesWeapon;
+import net.unitego.lobecorp.common.item.ego.weapon.spear.FragmentsFromSomewhereWeapon;
 import net.unitego.lobecorp.common.util.MiscUtils;
 import net.unitego.lobecorp.registry.*;
 
@@ -71,12 +74,36 @@ public class ZhCnLangGenerator extends LanguageProvider {
         //EGO武器
         add(ItemsRegistry.STANDARD_TRAINING_EGO_WEAPON.get(), "教学用E.G.O");
         add(ItemsRegistry.PENITENCE_WEAPON.get(), "忏悔");
+        add(ItemsRegistry.WING_BEAT_WEAPON.get(), "振翅");
+        add(ItemsRegistry.RED_EYES_WEAPON.get(), "赤瞳");
+        add(ItemsRegistry.CHRISTMAS_WEAPON.get(), "悲惨圣诞");
+        add(ItemsRegistry.HORN_WEAPON.get(), "犄角");
+        add(ItemsRegistry.FRAGMENTS_FROM_SOMEWHERE_WEAPON.get(), "彼方的裂片");
+        add(ItemsRegistry.REGRET_WEAPON.get(), "悔恨");
+        add(ItemsRegistry.LOGGING_WEAPON.get(), "伐木者");
+
         //EGO护甲
         add(ItemsRegistry.STANDARD_TRAINING_EGO_SUIT.get(), "教学用E.G.O");
         add(ItemsRegistry.PENITENCE_SUIT.get(), "忏悔");
+        add(ItemsRegistry.WING_BEAT_SUIT.get(), "振翅");
+        add(ItemsRegistry.RED_EYES_SUIT.get(), "赤瞳");
+        add(ItemsRegistry.CHRISTMAS_SUIT.get(), "悲惨圣诞");
+        add(ItemsRegistry.HORN_SUIT.get(), "犄角");
+        add(ItemsRegistry.FRAGMENTS_FROM_SOMEWHERE_SUIT.get(), "彼方的裂片");
+        add(ItemsRegistry.REGRET_SUIT.get(), "悔恨");
+        add(ItemsRegistry.LOGGING_SUIT.get(), "伐木者");
+
         //EGO饰品
         add(ItemsRegistry.STANDARD_TRAINING_EGO_GIFT.get(), "教学用E.G.O");
         add(ItemsRegistry.PENITENCE_GIFT.get(), "忏悔");
+        add(ItemsRegistry.WING_BEAT_GIFT.get(), "振翅");
+        add(ItemsRegistry.RED_EYES_GIFT.get(), "赤瞳");
+        add(ItemsRegistry.CHRISTMAS_GIFT.get(), "悲惨圣诞");
+        add(ItemsRegistry.HORN_GIFT.get(), "犄角");
+        add(ItemsRegistry.FRAGMENTS_FROM_SOMEWHERE_GIFT.get(), "彼方的裂片");
+        add(ItemsRegistry.REGRET_GIFT.get(), "悔恨");
+        add(ItemsRegistry.LOGGING_GIFT.get(), "伐木者");
+
         add(ItemsRegistry.BLESS_GIFT.get(), "祝福");
         //菜单名
         add(MenusRegistry.CONTAINER_LOBECORP_EQUIPMENT, "装备");
@@ -102,6 +129,9 @@ public class ZhCnLangGenerator extends LanguageProvider {
         add(EGOWeaponTemplate.MACE.getTranslationKey(), "棁");
         add(EGOWeaponTemplate.AXE.getTranslationKey(), "斧");
         add(EGOWeaponTemplate.KNIFE.getTranslationKey(), "刀");
+        add(EGOWeaponTemplate.SPEAR.getTranslationKey(), "矛");
+        add(EGOWeaponTemplate.HAMMER.getTranslationKey(), "锤");
+        add(EGOWeaponTemplate.FIST.getTranslationKey(), "拳套");
         //插槽名
         add(LobeCorpEquipmentSlot.LOBECORP_WEAPON.getSlotModifiersName(), "在武器位时：");
         add(LobeCorpEquipmentSlot.LOBECORP_SUIT.getSlotModifiersName(), "在护甲位时：");
@@ -126,6 +156,8 @@ public class ZhCnLangGenerator extends LanguageProvider {
         add(MiscUtils.MOTTO, "直面恐惧，创造未来");
         add(MiscUtils.CONFIRM, "确认");
         add(MiscUtils.INVALID_VALUE, "输入无效，请检查输入值。");
+        add(MiscUtils.ENTERED_COMBAT, "已进入战斗状态。");
+        add(MiscUtils.LEFT_COMBAT, "已脱离战斗状态。");
         add(MiscUtils.STAFF_RANK, "职员等级");
         add(MiscUtils.STAFF_FORTITUDE, "勇气");
         add(MiscUtils.STAFF_PRUDENCE, "谨慎");
@@ -155,8 +187,13 @@ public class ZhCnLangGenerator extends LanguageProvider {
 
         //技能
         //忏悔
-        add(PenitenceWeapon.WEAPON_PENITENCE1, "如果持有者的正义等级高于2级，每次攻击都有5%的概率恢复10点精神值");
-        add(PenitenceSuit.SUIT_PENITENCE1, "当穿戴者受到物理或侵蚀伤害时，有5%的概率恢复10点精神值");
-        add(PenitenceGift.GIFT_PENITENCE1, "对异想体“一罪与百善”进行工作的成功率提高10%");
+        add(PenitenceWeapon.WEAPON_PENITENCE_1, "如果持有者的正义等级高于2级，每次攻击都有5%的概率恢复10点精神值");
+        add(PenitenceSuit.SUIT_PENITENCE_1, "当穿戴者受到物理或侵蚀伤害时，有5%的概率恢复10点精神值");
+        add(PenitenceGift.GIFT_PENITENCE_1, "对异想体“一罪与百善”进行工作的成功率提高10%");
+        //赤瞳
+        add(RedEyesWeapon.WEAPON_RED_EYES_1, "如果持有者的勇气等级高于2级，进入战斗后会提高2.5点移动速度");
+        add(RedEyesSuit.SUIT_RED_EYES_1, "如果穿戴者的勇气等级高于2级，进入战斗后会提高2.5点移动速度");
+        //彼方的裂片
+        add(FragmentsFromSomewhereWeapon.WEAPON_FRAGMENTS_FROM_SOMEWHERE_1, "如果持有者的谨慎等级低于5级，进入战斗后有10%的概率提升40%的最大精神值。效果持续30秒");
     }
 }

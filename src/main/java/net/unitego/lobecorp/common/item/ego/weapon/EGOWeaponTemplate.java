@@ -9,18 +9,23 @@ public enum EGOWeaponTemplate {
      * 这样的话到时候就好直接让他被调用时默认4-3.5=0.5
      * 公式：attackSpeed=1s/?s-4
      */
-    MACE("mace", -3.5, 3.0),//棁
-    AXE("axe", -3.0, 2.0),//斧
-    KNIFE("knife", -2.5, 2.0);//刀
+    MACE("mace", -3.5, 3.0, false),//棁
+    AXE("axe", -3.0, 2.0, false),//斧
+    KNIFE("knife", -2.5, 2.0, false),//刀
+    SPEAR("spear", -3.3, 4.0, true),//矛
+    HAMMER("hammer", -3.7, 5.0, true),//锤
+    FIST("fist", -3.5, 2.0, true);//拳套
 
     private final String name;
     private final double attackSpeed;
     private final double interactionRange;
+    private final boolean isBothHands;
 
-    EGOWeaponTemplate(String name, double attackSpeed, double interactionRange) {
+    EGOWeaponTemplate(String name, double attackSpeed, double interactionRange, boolean isBothHands) {
         this.name = name;
         this.attackSpeed = attackSpeed;
         this.interactionRange = interactionRange;
+        this.isBothHands = isBothHands;
     }
 
     public String getTranslationKey() {
@@ -33,5 +38,9 @@ public enum EGOWeaponTemplate {
 
     public double getInteractionRange() {
         return interactionRange;
+    }
+
+    public boolean isBothHands() {
+        return isBothHands;
     }
 }

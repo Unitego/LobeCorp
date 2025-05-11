@@ -37,12 +37,36 @@ public class ItemModelGenerator extends ItemModelProvider {
         //EGO武器
         basicItem(ItemsRegistry.STANDARD_TRAINING_EGO_WEAPON.get());
         basicItem(ItemsRegistry.PENITENCE_WEAPON.get());
+        basicItem(ItemsRegistry.WING_BEAT_WEAPON.get());
+        basicItem(ItemsRegistry.RED_EYES_WEAPON.get());
+        basicItem(ItemsRegistry.CHRISTMAS_WEAPON.get());
+        basicItem(ItemsRegistry.HORN_WEAPON.get());
+        basicItem(ItemsRegistry.FRAGMENTS_FROM_SOMEWHERE_WEAPON.get());
+        basicItem(ItemsRegistry.REGRET_WEAPON.get());
+        basicItem(ItemsRegistry.LOGGING_WEAPON.get());
+
         //EGO护甲
         basicItem(ItemsRegistry.STANDARD_TRAINING_EGO_SUIT.get());
         basicItem(ItemsRegistry.PENITENCE_SUIT.get());
+        basicItem(ItemsRegistry.WING_BEAT_SUIT.get());
+        basicItem(ItemsRegistry.RED_EYES_SUIT.get());
+        basicItem(ItemsRegistry.CHRISTMAS_SUIT.get());
+        basicItem(ItemsRegistry.HORN_SUIT.get());
+        basicItem(ItemsRegistry.FRAGMENTS_FROM_SOMEWHERE_SUIT.get());
+        basicItem(ItemsRegistry.REGRET_SUIT.get());
+        basicItem(ItemsRegistry.LOGGING_SUIT.get());
+
         //EGO饰品
         basicItem(ItemsRegistry.STANDARD_TRAINING_EGO_GIFT.get());
         basicItem(ItemsRegistry.PENITENCE_GIFT.get());
+        basicItem(ItemsRegistry.WING_BEAT_GIFT.get());
+        basicItem(ItemsRegistry.RED_EYES_GIFT.get());
+        basicItem(ItemsRegistry.CHRISTMAS_GIFT.get());
+        basicItem(ItemsRegistry.HORN_GIFT.get());
+        basicItem(ItemsRegistry.FRAGMENTS_FROM_SOMEWHERE_GIFT.get());
+        basicItem(ItemsRegistry.REGRET_GIFT.get());
+        basicItem(ItemsRegistry.LOGGING_GIFT.get());
+
         basicItem(ItemsRegistry.BLESS_GIFT.get());
     }
 }

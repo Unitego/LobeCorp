@@ -70,23 +70,29 @@ public class EquipmentScreen extends EffectRenderingInventoryScreen<EquipmentMen
         //属性
         guiGraphics.pose().scale(0.5f, 0.5f, 0.5f);
         guiGraphics.drawString(minecraft.font, Component.literal("●").withStyle(style -> style.withColor(ChatFormatting.GOLD).withBold(true))
-                .append(Component.translatable(Attributes.MAX_HEALTH.value().getDescriptionId()))
-                .append(": " + (int) staffManager.getMaxHealth()), (x + 3) * 2, (y - 50 + 18) * 2 - 18, GuiResource.TXT, false);
+                        .append(Component.translatable(Attributes.MAX_HEALTH.value().getDescriptionId()))
+                        .append(": " + (float) staffManager.getMaxHealthBaseValue() + "+" + (float) (staffManager.getMaxHealth() - staffManager.getMaxHealthBaseValue())),
+                (x + 3) * 2, (y - 50 + 18) * 2 - 18, GuiResource.TXT, false);
         guiGraphics.drawString(minecraft.font, Component.literal("●").withStyle(style -> style.withColor(ChatFormatting.GOLD).withBold(true))
-                .append(Component.translatable(AttributesRegistry.MAX_SANITY.value().getDescriptionId()))
-                .append(": " + (int) staffManager.getMaxSanity()), (x + 3) * 2, (y - 36 + 18) * 2 - 18, GuiResource.TXT, false);
+                        .append(Component.translatable(AttributesRegistry.MAX_SANITY.value().getDescriptionId()))
+                        .append(": " + (float) staffManager.getMaxSanityBaseValue() + "+" + (float) (staffManager.getMaxSanity() - staffManager.getMaxSanityBaseValue())),
+                (x + 3) * 2, (y - 36 + 18) * 2 - 18, GuiResource.TXT, false);
         guiGraphics.drawString(minecraft.font, Component.literal("●").withStyle(style -> style.withColor(ChatFormatting.GOLD).withBold(true))
-                .append(Component.translatable(AttributesRegistry.WORK_SUCCESS.value().getDescriptionId()))
-                .append(": " + (int) staffManager.getWorkSuccess()), (x + 3) * 2, (y - 22 + 18) * 2 - 18, GuiResource.TXT, false);
+                        .append(Component.translatable(AttributesRegistry.WORK_SUCCESS.value().getDescriptionId()))
+                        .append(": " + (float) staffManager.getWorkSuccessBaseValue() + "+" + (float) (staffManager.getWorkSuccess() - staffManager.getWorkSuccessBaseValue())),
+                (x + 3) * 2, (y - 22 + 18) * 2 - 18, GuiResource.TXT, false);
         guiGraphics.drawString(minecraft.font, Component.literal("●").withStyle(style -> style.withColor(ChatFormatting.GOLD).withBold(true))
-                .append(Component.translatable(AttributesRegistry.WORK_VELOCITY.value().getDescriptionId()))
-                .append(": " + (int) staffManager.getWorkVelocity()), (x + 3) * 2, (y - 22 + 18) * 2 - 9, GuiResource.TXT, false);
+                        .append(Component.translatable(AttributesRegistry.WORK_VELOCITY.value().getDescriptionId()))
+                        .append(": " + (float) staffManager.getWorkVelocityBaseValue() + "+" + (float) (staffManager.getWorkVelocity() - staffManager.getWorkVelocityBaseValue())),
+                (x + 3) * 2, (y - 22 + 18) * 2 - 9, GuiResource.TXT, false);
         guiGraphics.drawString(minecraft.font, Component.literal("●").withStyle(style -> style.withColor(ChatFormatting.GOLD).withBold(true))
-                .append(Component.translatable(AttributesRegistry.ATTACK_VELOCITY.value().getDescriptionId()))
-                .append(": " + (int) staffManager.getAttackVelocity()), (x + 3) * 2, (y - 4 + 18) * 2 - 18, GuiResource.TXT, false);
+                        .append(Component.translatable(AttributesRegistry.ATTACK_VELOCITY.value().getDescriptionId()))
+                        .append(": " + (float) staffManager.getAttackVelocityBaseValue() + "+" + (float) (staffManager.getAttackVelocity() - staffManager.getAttackVelocityBaseValue())),
+                (x + 3) * 2, (y - 4 + 18) * 2 - 18, GuiResource.TXT, false);
         guiGraphics.drawString(minecraft.font, Component.literal("●").withStyle(style -> style.withColor(ChatFormatting.GOLD).withBold(true))
-                .append(Component.translatable(AttributesRegistry.MOVE_VELOCITY.value().getDescriptionId()))
-                .append(": " + (int) staffManager.getMoveVelocity()), (x + 3) * 2, (y - 4 + 18) * 2 - 9, GuiResource.TXT, false);
+                        .append(Component.translatable(AttributesRegistry.MOVE_VELOCITY.value().getDescriptionId()))
+                        .append(": " + (float) staffManager.getMoveVelocityBaseValue() + "+" + (float) (staffManager.getMoveVelocity() - staffManager.getMoveVelocityBaseValue())),
+                (x + 3) * 2, (y - 4 + 18) * 2 - 9, GuiResource.TXT, false);
         guiGraphics.pose().scale(2.0f, 2.0f, 2.0f);
     }
 

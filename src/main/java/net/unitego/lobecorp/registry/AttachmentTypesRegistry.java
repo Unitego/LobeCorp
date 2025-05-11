@@ -14,7 +14,7 @@ public class AttachmentTypesRegistry {
             .create(NeoForgeRegistries.ATTACHMENT_TYPES, LobeCorp.MOD_ID);
 
     public static final Supplier<AttachmentType<ItemStackHandler>> LOBECORP_STACK = REGISTER.register(
-            "lobecorp_stack", () -> AttachmentType.serializable(() -> new ItemStackHandler(18)).build());
+            "lobecorp_stack", () -> AttachmentType.serializable(() -> new ItemStackHandler(18)).copyOnDeath().build());
 
     public static void init(IEventBus bus) {
         REGISTER.register(bus);

@@ -1,19 +1,30 @@
 package net.unitego.lobecorp.common.item.badge;
 
+import com.google.common.collect.ArrayListMultimap;
+import com.google.common.collect.Multimap;
 import com.mojang.brigadier.ParseResults;
 import net.minecraft.ChatFormatting;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
+import net.minecraft.core.Holder;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.entity.ai.attributes.Attribute;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.unitego.lobecorp.LobeCorp;
 import net.unitego.lobecorp.common.access.LobeCorpSlotAccess;
 import net.unitego.lobecorp.common.component.LobeCorpEquipmentSlot;
+import net.unitego.lobecorp.common.util.MiscUtils;
 
+import java.util.Map;
 import java.util.Objects;
+import java.util.UUID;
+import java.util.WeakHashMap;
 
 public class TeamBadge extends Item implements LobeCorpSlotAccess {
+    private static final Map<UUID, ItemStack> lastBadgeStackMap = new WeakHashMap<>();
     private final LobeCorpTeam team;
 
     public TeamBadge(Properties properties, LobeCorpTeam team) {
@@ -28,14 +39,22 @@ public class TeamBadge extends Item implements LobeCorpSlotAccess {
     }
 
     //部门同步
-    public static void syncTeam(ItemStack itemStack, ServerPlayer serverPlayer) {
+    public static void syncTeam(Player player) {
+        if (!(player instanceof ServerPlayer serverPlayer)) return;
+        UUID uuid = serverPlayer.getUUID();
+        ItemStack current = MiscUtils.getLobeCorpStack(serverPlayer, LobeCorpEquipmentSlot.LOBECORP_BADGE);
+        ItemStack last = lastBadgeStackMap.getOrDefault(uuid, ItemStack.EMPTY);
+        // 如果 itemStack 没变就跳过（注意不能用 == 比较）
+        if (ItemStack.isSameItem(current, last)) return;
         Commands commands = Objects.requireNonNull(serverPlayer.getServer()).getCommands();
         CommandSourceStack commandSourceStack = serverPlayer.createCommandSourceStack();
-        if (itemStack.getItem() instanceof TeamBadge teamBadge) {
+        if (current.getItem() instanceof TeamBadge teamBadge) {
             executeCommand(commands, commandSourceStack, "team join " + teamBadge.team.getTeamName() + " " + serverPlayer.getName().getString());
-        } else if (itemStack.isEmpty()) {
+        } else if (current.isEmpty()) {
             executeCommand(commands, commandSourceStack, "team leave " + serverPlayer.getName().getString());
         }
+        // 更新记录
+        lastBadgeStackMap.put(uuid, current.copy());
     }
 
     //创建部门
@@ -57,6 +76,26 @@ public class TeamBadge extends Item implements LobeCorpSlotAccess {
     @Override
     public LobeCorpEquipmentSlot getLobeCorpSlot() {
         return LobeCorpEquipmentSlot.LOBECORP_BADGE;
+    }
+
+    @Override
+    public void onLobeCorpTick(Player player) {
+
+    }
+
+    @Override
+    public Multimap<Holder<Attribute>, AttributeModifier> getModifiers(ItemStack itemStack) {
+        return ArrayListMultimap.create();
+    }
+
+    @Override
+    public boolean isInValidSlot(Player player, ItemStack itemStack) {
+        return MiscUtils.getLobeCorpStack(player, LobeCorpEquipmentSlot.LOBECORP_BADGE) == itemStack;
+    }
+
+    @Override
+    public boolean shouldApply(Player player) {
+        return false;
     }
 
     //脑叶公司部门

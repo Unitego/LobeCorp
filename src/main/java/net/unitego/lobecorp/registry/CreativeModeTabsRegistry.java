@@ -27,6 +27,7 @@ public class CreativeModeTabsRegistry {
                         output.accept(ItemsRegistry.WHITE_RIOT_STICK);
                         output.accept(ItemsRegistry.BLACK_RIOT_STICK);
                         output.accept(ItemsRegistry.PALE_RIOT_STICK);
+                        //部门袖标
                         output.accept(ItemsRegistry.CONTROL_TEAM_BADGE);
                         output.accept(ItemsRegistry.INFORMATION_TEAM_BADGE);
                         output.accept(ItemsRegistry.SECURITY_TEAM_BADGE);
@@ -37,12 +38,39 @@ public class CreativeModeTabsRegistry {
                         output.accept(ItemsRegistry.RECORD_TEAM_BADGE);
                         output.accept(ItemsRegistry.EXTRACTION_TEAM_BADGE);
                         output.accept(ItemsRegistry.ARCHITECTURE_TEAM_BADGE);
+                        //EGO武器
                         output.accept(ItemsRegistry.STANDARD_TRAINING_EGO_WEAPON);
                         output.accept(ItemsRegistry.PENITENCE_WEAPON);
+                        output.accept(ItemsRegistry.WING_BEAT_WEAPON);
+                        output.accept(ItemsRegistry.RED_EYES_WEAPON);
+                        output.accept(ItemsRegistry.CHRISTMAS_WEAPON);
+                        output.accept(ItemsRegistry.HORN_WEAPON);
+                        output.accept(ItemsRegistry.FRAGMENTS_FROM_SOMEWHERE_WEAPON);
+                        output.accept(ItemsRegistry.REGRET_WEAPON);
+                        output.accept(ItemsRegistry.LOGGING_WEAPON);
+
+                        //EGO护甲
                         output.accept(ItemsRegistry.STANDARD_TRAINING_EGO_SUIT);
                         output.accept(ItemsRegistry.PENITENCE_SUIT);
+                        output.accept(ItemsRegistry.WING_BEAT_SUIT);
+                        output.accept(ItemsRegistry.RED_EYES_SUIT);
+                        output.accept(ItemsRegistry.CHRISTMAS_SUIT);
+                        output.accept(ItemsRegistry.HORN_SUIT);
+                        output.accept(ItemsRegistry.FRAGMENTS_FROM_SOMEWHERE_SUIT);
+                        output.accept(ItemsRegistry.REGRET_SUIT);
+                        output.accept(ItemsRegistry.LOGGING_SUIT);
+
+                        //EGO饰品
                         output.accept(ItemsRegistry.STANDARD_TRAINING_EGO_GIFT);
                         output.accept(ItemsRegistry.PENITENCE_GIFT);
+                        output.accept(ItemsRegistry.WING_BEAT_GIFT);
+                        output.accept(ItemsRegistry.RED_EYES_GIFT);
+                        output.accept(ItemsRegistry.CHRISTMAS_GIFT);
+                        output.accept(ItemsRegistry.HORN_GIFT);
+                        output.accept(ItemsRegistry.FRAGMENTS_FROM_SOMEWHERE_GIFT);
+                        output.accept(ItemsRegistry.REGRET_GIFT);
+                        output.accept(ItemsRegistry.LOGGING_GIFT);
+
                         output.accept(ItemsRegistry.BLESS_GIFT);
                     }).build());
 

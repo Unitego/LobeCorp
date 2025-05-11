@@ -3,7 +3,6 @@ package net.unitego.lobecorp.mixin;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.neoforged.neoforge.common.util.ITeleporter;
 import net.unitego.lobecorp.common.access.ManagerAccess;
 import net.unitego.lobecorp.common.manager.SanityManager;
@@ -12,15 +11,12 @@ import net.unitego.lobecorp.common.manager.WaterManager;
 import net.unitego.lobecorp.network.sender.S2CSetSanitySender;
 import net.unitego.lobecorp.network.sender.S2CSyncEquipmentSender;
 import net.unitego.lobecorp.network.sender.S2CSyncStatsSender;
-import net.unitego.lobecorp.registry.AttributesRegistry;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
-
-import java.util.Objects;
 
 @Mixin(ServerPlayer.class)
 public abstract class ServerPlayerMixin {
@@ -80,15 +76,15 @@ public abstract class ServerPlayerMixin {
     private void restoreFromMixin1(ServerPlayer that, boolean keepEverything, CallbackInfo ci) {
         StaffManager staffManager = ((ManagerAccess) that).lobeCorp$getStaffManager();
         //最大生命值
-        Objects.requireNonNull(lobeCorp$serverPlayer.getAttribute(Attributes.MAX_HEALTH)).setBaseValue(staffManager.getMaxHealth());
+        staffManager.setMaxHealthBaseValue(staffManager.getMaxHealthBaseValue());
         //最大精神值
-        Objects.requireNonNull(lobeCorp$serverPlayer.getAttribute(AttributesRegistry.MAX_SANITY)).setBaseValue(staffManager.getMaxSanity());
+        staffManager.setMaxSanityBaseValue(staffManager.getMaxSanityBaseValue());
         //工作成率和工作速率
-        Objects.requireNonNull(lobeCorp$serverPlayer.getAttribute(AttributesRegistry.WORK_SUCCESS)).setBaseValue(staffManager.getWorkSuccess());
-        Objects.requireNonNull(lobeCorp$serverPlayer.getAttribute(AttributesRegistry.WORK_VELOCITY)).setBaseValue(staffManager.getWorkVelocity());
+        staffManager.setWorkSuccessBaseValue(staffManager.getWorkSuccessBaseValue());
+        staffManager.setWorkVelocityBaseValue(staffManager.getWorkVelocityBaseValue());
         //攻击速率和移动速率
-        Objects.requireNonNull(lobeCorp$serverPlayer.getAttribute(AttributesRegistry.ATTACK_VELOCITY)).setBaseValue(staffManager.getAttackVelocity());
-        Objects.requireNonNull(lobeCorp$serverPlayer.getAttribute(AttributesRegistry.MOVE_VELOCITY)).setBaseValue(staffManager.getMoveVelocity());
+        staffManager.setAttackVelocityBaseValue(staffManager.getAttackVelocityBaseValue());
+        staffManager.setMoveVelocityBaseValue(staffManager.getMoveVelocityBaseValue());
         //其余同步
         SanityManager sanityManager = ((ManagerAccess) that).lobeCorp$getSanityManager();
         WaterManager waterManager = ((ManagerAccess) that).lobeCorp$getWaterManager();

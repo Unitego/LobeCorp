@@ -1,21 +1,25 @@
 package net.unitego.lobecorp.common.item.ego;
 
+import com.google.common.collect.ArrayListMultimap;
+import com.google.common.collect.Multimap;
 import net.minecraft.ChatFormatting;
+import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.damagesource.DamageType;
 import net.minecraft.world.entity.EquipmentSlotGroup;
+import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.unitego.lobecorp.common.access.ColorDamageAccess;
 import net.unitego.lobecorp.common.access.EGORankAccess;
 import net.unitego.lobecorp.common.access.EquipRequireAccess;
-import net.unitego.lobecorp.common.access.LobeCorpSlotAccess;
 import net.unitego.lobecorp.common.component.LobeCorpEquipmentSlot;
 import net.unitego.lobecorp.common.item.ego.weapon.EGOWeaponTemplate;
 import net.unitego.lobecorp.common.manager.StaffManager;
@@ -28,7 +32,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
-public class EGOWeaponItem extends EGOEquipmentItem implements LobeCorpSlotAccess, EGORankAccess, EquipRequireAccess, ColorDamageAccess {
+public class EGOWeaponItem extends EGOEquipmentItem implements EGORankAccess, EquipRequireAccess, ColorDamageAccess {
     private static final List<ResourceKey<DamageType>> DAMAGE_ORDER = List.of(
             DamageTypesRegistry.RED, DamageTypesRegistry.WHITE, DamageTypesRegistry.BLACK, DamageTypesRegistry.PALE
     );
@@ -96,6 +100,25 @@ public class EGOWeaponItem extends EGOEquipmentItem implements LobeCorpSlotAcces
     @Override
     public LobeCorpEquipmentSlot getLobeCorpSlot() {
         return LobeCorpEquipmentSlot.LOBECORP_WEAPON;
+    }
+
+    @Override
+    public void onLobeCorpTick(Player player) {
+    }
+
+    @Override
+    public Multimap<Holder<Attribute>, AttributeModifier> getModifiers(ItemStack itemStack) {
+        return ArrayListMultimap.create();
+    }
+
+    @Override
+    public boolean isInValidSlot(Player player, ItemStack itemStack) {
+        return player.getMainHandItem() == itemStack;
+    }
+
+    @Override
+    public boolean shouldApply(Player player) {
+        return false;
     }
 
     @Override

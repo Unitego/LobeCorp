@@ -7,13 +7,14 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
+import net.unitego.lobecorp.common.access.LobeCorpSlotAccess;
 import net.unitego.lobecorp.common.util.MiscUtils;
 import org.jetbrains.annotations.NotNull;
 import org.lwjgl.glfw.GLFW;
 
 import java.util.List;
 
-public abstract class EGOEquipmentItem extends Item {
+public abstract class EGOEquipmentItem extends Item implements LobeCorpSlotAccess {
     private final List<String> egoSkillTranslationKeys;
 
     public EGOEquipmentItem(Properties properties, List<String> egoSkillTranslationKeys) {

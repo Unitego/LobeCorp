@@ -22,12 +22,12 @@ public class C2SSetAttributeHandler {
                 Double value = values.get(key);
                 if (value != null) {
                     switch (i) {
-                        case 0 -> staffManager.setMaxHealth(value);
-                        case 1 -> staffManager.setMaxSanity(value);
-                        case 2 -> staffManager.setWorkSuccess(value);
-                        case 3 -> staffManager.setAttackVelocity(value);
-                        case 4 -> staffManager.setWorkVelocity(value);
-                        case 5 -> staffManager.setMoveVelocity(value);
+                        case 0 -> staffManager.setMaxHealthBaseValue(value);
+                        case 1 -> staffManager.setMaxSanityBaseValue(value);
+                        case 2 -> staffManager.setWorkSuccessBaseValue(value);
+                        case 3 -> staffManager.setAttackVelocityBaseValue(value);
+                        case 4 -> staffManager.setWorkVelocityBaseValue(value);
+                        case 5 -> staffManager.setMoveVelocityBaseValue(value);
                     }
                 }
             }
