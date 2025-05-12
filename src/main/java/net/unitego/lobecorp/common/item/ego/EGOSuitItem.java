@@ -1,6 +1,6 @@
 package net.unitego.lobecorp.common.item.ego;
 
-import com.google.common.collect.ArrayListMultimap;
+import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.Holder;
@@ -88,8 +88,8 @@ public class EGOSuitItem extends EGOEquipmentItem implements EGORankAccess, Equi
     }
 
     @Override
-    public Multimap<Holder<Attribute>, AttributeModifier> getModifiers(ItemStack itemStack) {
-        return ArrayListMultimap.create();
+    public Multimap<Holder<Attribute>, AttributeModifier> getModifiers(Player player, ItemStack itemStack) {
+        return HashMultimap.create();
     }
 
     @Override

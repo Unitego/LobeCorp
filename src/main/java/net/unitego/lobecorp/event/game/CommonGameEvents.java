@@ -4,7 +4,10 @@ import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -24,6 +27,7 @@ import net.unitego.lobecorp.LobeCorp;
 import net.unitego.lobecorp.common.access.LobeCorpSlotAccess;
 import net.unitego.lobecorp.common.access.ManagerAccess;
 import net.unitego.lobecorp.common.component.LobeCorpEquipmentSlot;
+import net.unitego.lobecorp.common.effect.AbstractVulnerableEffect;
 import net.unitego.lobecorp.common.item.badge.TeamBadge;
 import net.unitego.lobecorp.common.item.ego.EGOWeaponItem;
 import net.unitego.lobecorp.common.manager.WaterManager;
@@ -38,7 +42,19 @@ public class CommonGameEvents {
     //生物受伤
     @SubscribeEvent
     public static void onLivingHurt(LivingHurtEvent event) {
-        if (!(event.getEntity() instanceof ServerPlayer serverPlayer)) return;
+        LivingEntity living = event.getEntity();
+        DamageSource source = event.getSource();
+        float amount = event.getAmount();
+        //易伤效果处理
+        for (MobEffectInstance activeEffect : living.getActiveEffects()) {
+            if (activeEffect.getEffect().value() instanceof AbstractVulnerableEffect vulnerableEffect) {
+                if (source.is(vulnerableEffect.getDamageType())) {
+                    event.setAmount(amount * (activeEffect.getAmplifier() + 1) * 1.5f);
+                    return;
+                }
+            }
+        }
+        if (!(living instanceof ServerPlayer serverPlayer)) return;
         //玩家进入战斗状态标记
         CombatStatusUtils.enteredCombat(serverPlayer);
     }

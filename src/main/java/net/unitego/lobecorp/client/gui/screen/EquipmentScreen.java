@@ -1,11 +1,13 @@
 package net.unitego.lobecorp.client.gui.screen;
 
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.ImageButton;
 import net.minecraft.client.gui.screens.inventory.EffectRenderingInventoryScreen;
 import net.minecraft.client.gui.screens.inventory.InventoryScreen;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Inventory;
 import net.neoforged.api.distmarker.Dist;
@@ -69,29 +71,23 @@ public class EquipmentScreen extends EffectRenderingInventoryScreen<EquipmentMen
                 staffManager.getJusticeRank().getRank()).withStyle(ChatFormatting.AQUA), x, y - 4, GuiResource.TXT);
         //属性
         guiGraphics.pose().scale(0.5f, 0.5f, 0.5f);
-        guiGraphics.drawString(minecraft.font, Component.literal("●").withStyle(style -> style.withColor(ChatFormatting.GOLD).withBold(true))
-                        .append(Component.translatable(Attributes.MAX_HEALTH.value().getDescriptionId()))
-                        .append(": " + (float) staffManager.getMaxHealthBaseValue() + "+" + (float) (staffManager.getMaxHealth() - staffManager.getMaxHealthBaseValue())),
+        guiGraphics.drawString(minecraft.font, formatAttributeValue(Attributes.MAX_HEALTH.value().getDescriptionId(),
+                        staffManager.getMaxHealthBaseValue(), (staffManager.getMaxHealth() - staffManager.getMaxHealthBaseValue())),
                 (x + 3) * 2, (y - 50 + 18) * 2 - 18, GuiResource.TXT, false);
-        guiGraphics.drawString(minecraft.font, Component.literal("●").withStyle(style -> style.withColor(ChatFormatting.GOLD).withBold(true))
-                        .append(Component.translatable(AttributesRegistry.MAX_SANITY.value().getDescriptionId()))
-                        .append(": " + (float) staffManager.getMaxSanityBaseValue() + "+" + (float) (staffManager.getMaxSanity() - staffManager.getMaxSanityBaseValue())),
+        guiGraphics.drawString(minecraft.font, formatAttributeValue(AttributesRegistry.MAX_SANITY.value().getDescriptionId(),
+                        staffManager.getMaxSanityBaseValue(), (staffManager.getMaxSanity() - staffManager.getMaxSanityBaseValue())),
                 (x + 3) * 2, (y - 36 + 18) * 2 - 18, GuiResource.TXT, false);
-        guiGraphics.drawString(minecraft.font, Component.literal("●").withStyle(style -> style.withColor(ChatFormatting.GOLD).withBold(true))
-                        .append(Component.translatable(AttributesRegistry.WORK_SUCCESS.value().getDescriptionId()))
-                        .append(": " + (float) staffManager.getWorkSuccessBaseValue() + "+" + (float) (staffManager.getWorkSuccess() - staffManager.getWorkSuccessBaseValue())),
+        guiGraphics.drawString(minecraft.font, formatAttributeValue(AttributesRegistry.WORK_SUCCESS.value().getDescriptionId(),
+                        staffManager.getWorkSuccessBaseValue(), (staffManager.getWorkSuccess() - staffManager.getWorkSuccessBaseValue())),
                 (x + 3) * 2, (y - 22 + 18) * 2 - 18, GuiResource.TXT, false);
-        guiGraphics.drawString(minecraft.font, Component.literal("●").withStyle(style -> style.withColor(ChatFormatting.GOLD).withBold(true))
-                        .append(Component.translatable(AttributesRegistry.WORK_VELOCITY.value().getDescriptionId()))
-                        .append(": " + (float) staffManager.getWorkVelocityBaseValue() + "+" + (float) (staffManager.getWorkVelocity() - staffManager.getWorkVelocityBaseValue())),
+        guiGraphics.drawString(minecraft.font, formatAttributeValue(AttributesRegistry.WORK_VELOCITY.value().getDescriptionId(),
+                        staffManager.getWorkVelocityBaseValue(), (staffManager.getWorkVelocity() - staffManager.getWorkVelocityBaseValue())),
                 (x + 3) * 2, (y - 22 + 18) * 2 - 9, GuiResource.TXT, false);
-        guiGraphics.drawString(minecraft.font, Component.literal("●").withStyle(style -> style.withColor(ChatFormatting.GOLD).withBold(true))
-                        .append(Component.translatable(AttributesRegistry.ATTACK_VELOCITY.value().getDescriptionId()))
-                        .append(": " + (float) staffManager.getAttackVelocityBaseValue() + "+" + (float) (staffManager.getAttackVelocity() - staffManager.getAttackVelocityBaseValue())),
+        guiGraphics.drawString(minecraft.font, formatAttributeValue(AttributesRegistry.ATTACK_VELOCITY.value().getDescriptionId(),
+                        staffManager.getAttackVelocityBaseValue(), (staffManager.getAttackVelocity() - staffManager.getAttackVelocityBaseValue())),
                 (x + 3) * 2, (y - 4 + 18) * 2 - 18, GuiResource.TXT, false);
-        guiGraphics.drawString(minecraft.font, Component.literal("●").withStyle(style -> style.withColor(ChatFormatting.GOLD).withBold(true))
-                        .append(Component.translatable(AttributesRegistry.MOVE_VELOCITY.value().getDescriptionId()))
-                        .append(": " + (float) staffManager.getMoveVelocityBaseValue() + "+" + (float) (staffManager.getMoveVelocity() - staffManager.getMoveVelocityBaseValue())),
+        guiGraphics.drawString(minecraft.font, formatAttributeValue(AttributesRegistry.MOVE_VELOCITY.value().getDescriptionId(),
+                        staffManager.getMoveVelocityBaseValue(), (staffManager.getMoveVelocity() - staffManager.getMoveVelocityBaseValue())),
                 (x + 3) * 2, (y - 4 + 18) * 2 - 9, GuiResource.TXT, false);
         guiGraphics.pose().scale(2.0f, 2.0f, 2.0f);
     }
@@ -141,5 +137,30 @@ public class EquipmentScreen extends EffectRenderingInventoryScreen<EquipmentMen
     public boolean mouseScrolled(double mouseX, double mouseY, double scrollX, double scrollY) {
         egoGiftWidget.mouseScrolled(mouseX, mouseY, scrollX, scrollY);
         return super.mouseScrolled(mouseX, mouseY, scrollX, scrollY);
+    }
+
+    private Component formatAttributeValue(String name, double base, double bonus) {
+        MutableComponent prefix = Component.literal("●")
+                .withStyle(style -> style.withColor(ChatFormatting.GOLD).withBold(true));
+        MutableComponent nameComponent = Component.translatable(name);
+        MutableComponent baseValue = Component.literal(": " + base);
+        MutableComponent result = prefix.append(nameComponent).append(baseValue);
+
+        if (bonus > 0) {
+            MutableComponent bonusValue = Component.literal("+" + bonus)
+                    .withStyle(style -> style.withColor(ChatFormatting.BLUE));
+            result.append(bonusValue);
+        } else if (bonus < 0) {
+            MutableComponent penaltyValue = Component.literal(String.valueOf(bonus))
+                    .withStyle(style -> style.withColor(ChatFormatting.RED));
+            result.append(penaltyValue);
+        }
+        return result;
+    }
+
+    @Override
+    public void resize(@NotNull Minecraft minecraft, int width, int height) {
+        super.resize(minecraft, width, height);
+        egoGiftWidget.setOpen(true);
     }
 }

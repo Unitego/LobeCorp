@@ -19,14 +19,15 @@ public class PenitenceWeapon extends EGOWeaponItem {
 
     public PenitenceWeapon() {
         super(new Properties(), List.of(WEAPON_PENITENCE_1),
-                EGORank.ZAYIN, EGOWeaponTemplate.MACE, List.of(DamageTypesRegistry.WHITE), 5.0f, StaffManager.EquipRequire.NONE);
+                EGORank.ZAYIN, EGOWeaponTemplate.MACE, List.of(DamageTypesRegistry.WHITE), 5.0f,
+                StaffManager.EquipRequire.NONE);
     }
 
     @Override
     public boolean hurtEnemy(@NotNull ItemStack stack, @NotNull LivingEntity target, @NotNull LivingEntity attacker) {
         if (!(attacker instanceof Player player)) return false;
         if (!(player.getMainHandItem().getItem() instanceof PenitenceWeapon)) return false;
-        if (((ManagerAccess) player).lobeCorp$getStaffManager().getJusticeRank().getValue() <= 2) return false;
+        if (!(((ManagerAccess) player).lobeCorp$getStaffManager().getJusticeRank().getValue() > 2)) return false;
         if (MiscUtils.roll(player, 0.05f)) {
             ((ManagerAccess) player).lobeCorp$getSanityManager().cure(10);
             return true;

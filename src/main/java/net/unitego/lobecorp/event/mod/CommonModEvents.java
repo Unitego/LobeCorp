@@ -33,6 +33,9 @@ public class CommonModEvents {
         event.registrar(MiscUtils.NETWORK_VERSION).playToServer(
                 C2SSetAttributePayload.TYPE, C2SSetAttributePayload.STREAM_CODEC, C2SSetAttributeHandler::handle
         );
+        event.registrar(MiscUtils.NETWORK_VERSION).playToServer(
+                C2SSwitchWeaponPayload.TYPE, C2SSwitchWeaponPayload.STREAM_CODEC, C2SSwitchWeaponHandler::handle
+        );
         event.registrar(MiscUtils.NETWORK_VERSION).playToClient(
                 S2CDrinkResetPayload.TYPE, S2CDrinkResetPayload.STREAM_CODEC, S2CDrinkResetHandler::handle
         );

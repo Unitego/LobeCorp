@@ -1,6 +1,6 @@
 package net.unitego.lobecorp.common.util;
 
-import com.google.common.collect.ArrayListMultimap;
+import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.core.Holder;
 import net.minecraft.world.entity.ai.attributes.Attribute;
@@ -25,7 +25,7 @@ public class EquipmentModifierUtils {
     private static final Map<UUID, Holder<Attribute>> APPLIED_UUIDS = new HashMap<>();
 
     public static void tick(Player player) {
-        Multimap<Holder<Attribute>, AttributeModifier> modifiers = ArrayListMultimap.create();
+        Multimap<Holder<Attribute>, AttributeModifier> modifiers = HashMultimap.create();
         Map<AttributeModifier, ItemStack> itemMap = new HashMap<>();
         checkItem(player, player.getMainHandItem(), modifiers, itemMap);
         ItemStackHandler handler = player.getData(AttachmentTypesRegistry.LOBECORP_STACK);
@@ -39,7 +39,7 @@ public class EquipmentModifierUtils {
     private static void checkItem(Player player, ItemStack stack, Multimap<Holder<Attribute>, AttributeModifier> modifiers, Map<AttributeModifier, ItemStack> itemMap) {
         if (!(stack.getItem() instanceof LobeCorpSlotAccess access)) return;
         if (!access.isInValidSlot(player, stack)) return;
-        for (Map.Entry<Holder<Attribute>, AttributeModifier> entry : access.getModifiers(stack).entries()) {
+        for (Map.Entry<Holder<Attribute>, AttributeModifier> entry : access.getModifiers(player, stack).entries()) {
             modifiers.put(entry.getKey(), entry.getValue());
             itemMap.put(entry.getValue(), stack);
         }

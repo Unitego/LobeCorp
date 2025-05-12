@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "lobecorp:item/sanguine_desire_weapon"
+  }
+}

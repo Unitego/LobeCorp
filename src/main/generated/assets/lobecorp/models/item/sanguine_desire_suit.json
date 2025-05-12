@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "lobecorp:item/sanguine_desire_suit"
+  }
+}

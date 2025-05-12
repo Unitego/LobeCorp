@@ -33,6 +33,7 @@ import net.unitego.lobecorp.common.manager.WaterManager;
 import net.unitego.lobecorp.network.payload.C2SDrinkWaterPayload;
 import net.unitego.lobecorp.network.sender.C2SDrinkWaterSender;
 import net.unitego.lobecorp.network.sender.C2SOpenEquipmentSender;
+import net.unitego.lobecorp.network.sender.C2SSwitchWeaponSender;
 import net.unitego.lobecorp.registry.DataComponentTypesRegistry;
 import org.apache.commons.lang3.mutable.MutableBoolean;
 
@@ -78,6 +79,9 @@ public class ClientGameEvents {
     public static void onClientTickPost(ClientTickEvent.Post event) {
         while (KeyInit.KEY_TOGGLE_EQUIPMENT.get().consumeClick()) {
             C2SOpenEquipmentSender.send();
+        }
+        while (KeyInit.KEY_SWITCH_WEAPON.get().consumeClick()) {
+            C2SSwitchWeaponSender.send();
         }
     }
 

@@ -6,13 +6,20 @@ import net.unitego.lobecorp.LobeCorp;
 import net.unitego.lobecorp.client.init.KeyInit;
 import net.unitego.lobecorp.common.component.LobeCorpEquipmentSlot;
 import net.unitego.lobecorp.common.item.badge.TeamBadge;
+import net.unitego.lobecorp.common.item.ego.gift.chest.GreenStemGift;
 import net.unitego.lobecorp.common.item.ego.gift.head.PenitenceGift;
+import net.unitego.lobecorp.common.item.ego.gift.mouth.SanguineDesireGift;
+import net.unitego.lobecorp.common.item.ego.suit.FleshBoundSuit;
 import net.unitego.lobecorp.common.item.ego.suit.PenitenceSuit;
 import net.unitego.lobecorp.common.item.ego.suit.RedEyesSuit;
 import net.unitego.lobecorp.common.item.ego.weapon.EGOWeaponTemplate;
+import net.unitego.lobecorp.common.item.ego.weapon.axe.SanguineDesireWeapon;
+import net.unitego.lobecorp.common.item.ego.weapon.hammer.LampWeapon;
 import net.unitego.lobecorp.common.item.ego.weapon.mace.PenitenceWeapon;
 import net.unitego.lobecorp.common.item.ego.weapon.mace.RedEyesWeapon;
 import net.unitego.lobecorp.common.item.ego.weapon.spear.FragmentsFromSomewhereWeapon;
+import net.unitego.lobecorp.common.item.ego.weapon.spear.FrostSplinterWeapon;
+import net.unitego.lobecorp.common.item.ego.weapon.spear.SporeWeapon;
 import net.unitego.lobecorp.common.util.MiscUtils;
 import net.unitego.lobecorp.registry.*;
 
@@ -77,10 +84,20 @@ public class EnUsLangGenerator extends LanguageProvider {
         add(ItemsRegistry.WING_BEAT_WEAPON.get(), "Wing Beat");
         add(ItemsRegistry.RED_EYES_WEAPON.get(), "Red Eyes");
         add(ItemsRegistry.CHRISTMAS_WEAPON.get(), "Christmas");
+        add(ItemsRegistry.DIFFRACTION_WEAPON.get(), "Diffraction");
+        add(ItemsRegistry.SANGUINE_DESIRE_WEAPON.get(), "Sanguine Desire");
+        add(ItemsRegistry.WRIST_CUTTER_WEAPON.get(), "Wrist Cutter");
         add(ItemsRegistry.HORN_WEAPON.get(), "Horn");
         add(ItemsRegistry.FRAGMENTS_FROM_SOMEWHERE_WEAPON.get(), "Fragments From Somewhere");
+        add(ItemsRegistry.HARVEST_WEAPON.get(), "Harvest");
+        add(ItemsRegistry.FROST_SPLINTER_WEAPON.get(), "Frost Splinter");
+        add(ItemsRegistry.GREEN_STEM_WEAPON.get(), "Green Stem");
+        add(ItemsRegistry.HEAVEN_WEAPON.get(), "Heaven");
+        add(ItemsRegistry.SPORE_WEAPON.get(), "Spore");
         add(ItemsRegistry.REGRET_WEAPON.get(), "Regret");
+        add(ItemsRegistry.LANTERN_WEAPON.get(), "Lantern");
         add(ItemsRegistry.LOGGING_WEAPON.get(), "Logging");
+        add(ItemsRegistry.LAMP_WEAPON.get(), "Lamp");
 
         //EGO护甲
         add(ItemsRegistry.STANDARD_TRAINING_EGO_SUIT.get(), "Standard Training E.G.O");
@@ -88,10 +105,19 @@ public class EnUsLangGenerator extends LanguageProvider {
         add(ItemsRegistry.WING_BEAT_SUIT.get(), "Wing Beat");
         add(ItemsRegistry.RED_EYES_SUIT.get(), "Red Eyes");
         add(ItemsRegistry.CHRISTMAS_SUIT.get(), "Christmas");
+        add(ItemsRegistry.SANGUINE_DESIRE_SUIT.get(), "Sanguine Desire");
+        add(ItemsRegistry.WRIST_CUTTER_SUIT.get(), "Wrist Cutter");
         add(ItemsRegistry.HORN_SUIT.get(), "Horn");
         add(ItemsRegistry.FRAGMENTS_FROM_SOMEWHERE_SUIT.get(), "Fragments From Somewhere");
+        add(ItemsRegistry.HARVEST_SUIT.get(), "Harvest");
+        add(ItemsRegistry.FROST_SPLINTER_SUIT.get(), "Frost Splinter");
+        add(ItemsRegistry.GREEN_STEM_SUIT.get(), "Green Stem");
+        add(ItemsRegistry.HEAVEN_SUIT.get(), "Heaven");
+        add(ItemsRegistry.SPORE_SUIT.get(), "Spore");
         add(ItemsRegistry.REGRET_SUIT.get(), "Regret");
+        add(ItemsRegistry.LANTERN_SUIT.get(), "Lantern");
         add(ItemsRegistry.LOGGING_SUIT.get(), "Logging");
+        add(ItemsRegistry.LAMP_SUIT.get(), "Lamp");
 
         //EGO饰品
         add(ItemsRegistry.STANDARD_TRAINING_EGO_GIFT.get(), "Standard Training E.G.O");
@@ -99,10 +125,26 @@ public class EnUsLangGenerator extends LanguageProvider {
         add(ItemsRegistry.WING_BEAT_GIFT.get(), "Wing Beat");
         add(ItemsRegistry.RED_EYES_GIFT.get(), "Red Eyes");
         add(ItemsRegistry.CHRISTMAS_GIFT.get(), "Christmas");
+        add(ItemsRegistry.DIFFRACTION_GIFT.get(), "Diffraction");
+        add(ItemsRegistry.SANGUINE_DESIRE_GIFT.get(), "Sanguine Desire");
+        add(ItemsRegistry.WRIST_CUTTER_GIFT.get(), "Wrist Cutter");
         add(ItemsRegistry.HORN_GIFT.get(), "Horn");
         add(ItemsRegistry.FRAGMENTS_FROM_SOMEWHERE_GIFT.get(), "Fragments From Somewhere");
+        add(ItemsRegistry.HARVEST_GIFT.get(), "Harvest");
+        add(ItemsRegistry.FROST_SPLINTER_GIFT.get(), "Frost Splinter");
+        add(ItemsRegistry.GREEN_STEM_GIFT.get(), "Green Stem");
+        add(ItemsRegistry.HEAVEN_GIFT.get(), "Heaven");
+        add(ItemsRegistry.SPORE_GIFT.get(), "Spore");
         add(ItemsRegistry.REGRET_GIFT.get(), "Regret");
+        add(ItemsRegistry.LANTERN_GIFT.get(), "Lantern");
         add(ItemsRegistry.LOGGING_GIFT.get(), "Logging");
+        add(ItemsRegistry.LAMP_GIFT.get(), "Lamp");
+
+        //自定义
+        //血肉契约——苏玖
+        add(ItemsRegistry.FLESH_BOUND_WEAPON.get(), "Flesh Bound");
+        add(ItemsRegistry.FLESH_BOUND_SUIT.get(), "Flesh Bound");
+        add(ItemsRegistry.FLESH_BOUND_GIFT.get(), "Flesh Bound");
 
         add(ItemsRegistry.BLESS_GIFT.get(), "Bless");
         //菜单名
@@ -117,13 +159,19 @@ public class EnUsLangGenerator extends LanguageProvider {
         add(MobEffectsRegistry.THIRST.get(), "Thirst");
         add(MobEffectsRegistry.INSTANT_SANITY.get(), "Instant Sanity");
         add(MobEffectsRegistry.INSTANT_INJURY.get(), "Instant Injury");
+        add(MobEffectsRegistry.VULNERABLE_RED.get(), "Vulnerable Red");
+        add(MobEffectsRegistry.VULNERABLE_WHITE.get(), "Vulnerable White");
+        add(MobEffectsRegistry.VULNERABLE_BLACK.get(), "Vulnerable Black");
+        add(MobEffectsRegistry.VULNERABLE_PALE.get(), "Vulnerable Pale");
         //声音名
         add(SoundEventsRegistry.SWALLOW_WATER.get().getLocation().toLanguageKey(), "Swallow Water");
         add(SoundEventsRegistry.CHANGE_EQUIPMENT.get().getLocation().toLanguageKey(), "Change Equipment");
+        add(SoundEventsRegistry.SWITCH_WEAPON.get().getLocation().toLanguageKey(), "Switch Weapon");
 
         //按键名
         add(KeyInit.KEY_CATEGORIES_LOBECORP, "Lobe Corp");
         add(KeyInit.KEY_TOGGLE_EQUIPMENT.get().getName(), "Open/Close Equipment");
+        add(KeyInit.KEY_SWITCH_WEAPON.get().getName(), "Switch Weapon");
 
         //武器模板
         add(EGOWeaponTemplate.MACE.getTranslationKey(), "Mace");
@@ -189,11 +237,26 @@ public class EnUsLangGenerator extends LanguageProvider {
         //忏悔
         add(PenitenceWeapon.WEAPON_PENITENCE_1, "5% chance to recover 10 SP on attack if wielder has 2+ Justice");
         add(PenitenceSuit.SUIT_PENITENCE_1, "Heal SP +10 with a 5% chance upon receiving RED or BLACK damage");
-        add(PenitenceGift.GIFT_PENITENCE_1, "Success Rate increases %10 with the corresponding Abnormality");
+        add(PenitenceGift.GIFT_PENITENCE_1, "Work Success increases %10 with the corresponding Abnormality");
         //赤瞳
-        add(RedEyesWeapon.WEAPON_RED_EYES_1, "Movement Speed +2.5 when suppressing if wielder has 2+ Fortitude");
-        add(RedEyesSuit.SUIT_RED_EYES_1, "Movement Speed +2.5 when suppressing if wielder has 2+ Fortitude");
+        add(RedEyesWeapon.WEAPON_RED_EYES_1, "Move Velocity +2.5 when suppressing if wielder has 2+ Fortitude");
+        add(RedEyesSuit.SUIT_RED_EYES_1, "Move Velocity +2.5 when suppressing if wielder has 2+ Fortitude");
         //彼方的裂片
         add(FragmentsFromSomewhereWeapon.WEAPON_FRAGMENTS_FROM_SOMEWHERE_1, "Max SP +40% for 30 seconds (10% chance) when used by an employee whose Prudence Level is 4 or below");
+        //血之渴望
+        add(SanguineDesireWeapon.WEAPON_SANGUINE_DESIRE_1, "Increases Attack Power if the wielder's Temperance level is less than 3. Max. SP -4% on each attack.");
+        add(SanguineDesireGift.GIFT_SANGUINE_DESIRE_1, "When equipped with the same E.G.O. Weapon, decreases the Work Success and Work Velocity by -10 and increases the Attack Velocity by +10");
+        //霜之碎片
+        add(FrostSplinterWeapon.WEAPON_FROST_SPLINTER_1, "Reduces the Movement Speed of the target by 30% for 3 seconds");
+        //绿色枝干
+        add(GreenStemGift.GIFT_GREEN_STEM_1, "When the E.G.O. Weapon of the same Abnormality is equipped, its Attack Power increases by 5");
+        //荧光菌孢
+        add(SporeWeapon.WEAPON_SPORE_1, "25% chance to make the target more vulnerable to WHITE damage");
+        //目灯
+        add(LampWeapon.WEAPON_LAMP_1, "Has a 25% chance of making the target more vulnerable to BLACK damage");
+
+        //自定义
+        //血肉契约——苏玖
+        add(FleshBoundSuit.SUIT_FLESH_BOUND_1, "When equipped with the same E.G.O. Weapon, its Max Health increases by 10");
     }
 }

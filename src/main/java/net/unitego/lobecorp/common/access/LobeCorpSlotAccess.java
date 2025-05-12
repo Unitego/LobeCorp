@@ -14,7 +14,7 @@ public interface LobeCorpSlotAccess {
 
     void onLobeCorpTick(Player player);
 
-    Multimap<Holder<Attribute>, AttributeModifier> getModifiers(ItemStack itemStack);
+    Multimap<Holder<Attribute>, AttributeModifier> getModifiers(Player player, ItemStack itemStack);
 
     boolean isInValidSlot(Player player, ItemStack itemStack);
 

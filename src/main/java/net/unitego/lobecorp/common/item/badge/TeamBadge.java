@@ -1,6 +1,6 @@
 package net.unitego.lobecorp.common.item.badge;
 
-import com.google.common.collect.ArrayListMultimap;
+import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import com.mojang.brigadier.ParseResults;
 import net.minecraft.ChatFormatting;
@@ -84,8 +84,8 @@ public class TeamBadge extends Item implements LobeCorpSlotAccess {
     }
 
     @Override
-    public Multimap<Holder<Attribute>, AttributeModifier> getModifiers(ItemStack itemStack) {
-        return ArrayListMultimap.create();
+    public Multimap<Holder<Attribute>, AttributeModifier> getModifiers(Player player, ItemStack itemStack) {
+        return HashMultimap.create();
     }
 
     @Override

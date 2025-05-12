@@ -15,7 +15,12 @@ public class KeyInit {
             "key.lobecorp.toggle_equipment", GLFW.GLFW_KEY_Z, KEY_CATEGORIES_LOBECORP
     ));
 
+    public static final Lazy<KeyMapping> KEY_SWITCH_WEAPON = Lazy.of(() -> new KeyMapping(
+            "key.lobecorp.switch_weapon", GLFW.GLFW_KEY_X, KEY_CATEGORIES_LOBECORP
+    ));
+
     public static void init(RegisterKeyMappingsEvent event) {
         event.register(KEY_TOGGLE_EQUIPMENT.get());
+        event.register(KEY_SWITCH_WEAPON.get());
     }
 }

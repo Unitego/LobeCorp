@@ -1,6 +1,6 @@
 package net.unitego.lobecorp.common.item.ego.weapon.mace;
 
-import com.google.common.collect.ArrayListMultimap;
+import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.core.Holder;
 import net.minecraft.world.entity.ai.attributes.Attribute;
@@ -25,12 +25,13 @@ public class RedEyesWeapon extends EGOWeaponItem {
 
     public RedEyesWeapon() {
         super(new Properties(), List.of(WEAPON_RED_EYES_1),
-                EGORank.TETH, EGOWeaponTemplate.MACE, List.of(DamageTypesRegistry.RED), 7.0f, StaffManager.EquipRequire.NONE);
+                EGORank.TETH, EGOWeaponTemplate.MACE, List.of(DamageTypesRegistry.RED), 7.0f,
+                StaffManager.EquipRequire.NONE);
     }
 
     @Override
-    public Multimap<Holder<Attribute>, AttributeModifier> getModifiers(ItemStack itemStack) {
-        Multimap<Holder<Attribute>, AttributeModifier> modifiers = ArrayListMultimap.create();
+    public Multimap<Holder<Attribute>, AttributeModifier> getModifiers(Player player, ItemStack itemStack) {
+        Multimap<Holder<Attribute>, AttributeModifier> modifiers = HashMultimap.create();
         modifiers.put(AttributesRegistry.MOVE_VELOCITY, new AttributeModifier(
                 EquipmentModifierUtils.getStableModifierId(MODIFIER_ID_1), MODIFIER_ID_1,
                 2.5f, AttributeModifier.Operation.ADD_VALUE));

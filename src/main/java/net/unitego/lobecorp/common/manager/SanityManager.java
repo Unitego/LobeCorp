@@ -51,7 +51,7 @@ public class SanityManager {
 
     //恐慌状态
     public void panicState() {
-        if (!(player.isCreative() || player.isSpectator())) {
+        if (!(player.isCreative() || player.isSpectator()) && player.isAlive()) {
             if (isPanicOrCrazing()) {
                 ++panicTickTimer;
                 if (panicTickTimer >= 900) {

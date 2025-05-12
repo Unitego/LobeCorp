@@ -16,7 +16,8 @@ public class PenitenceSuit extends EGOSuitItem {
 
     public PenitenceSuit() {
         super(new Properties(), List.of(SUIT_PENITENCE_1),
-                EGORank.ZAYIN, 0.9f, 0.8f, 0.9f, 2.0f, StaffManager.EquipRequire.NONE);
+                EGORank.ZAYIN, 0.9f, 0.8f, 0.9f, 2.0f,
+                StaffManager.EquipRequire.NONE);
     }
 
     @Override

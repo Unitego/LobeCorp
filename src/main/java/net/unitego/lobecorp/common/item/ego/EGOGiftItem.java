@@ -1,6 +1,6 @@
 package net.unitego.lobecorp.common.item.ego;
 
-import com.google.common.collect.ArrayListMultimap;
+import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.core.Holder;
 import net.minecraft.world.entity.ai.attributes.Attribute;
@@ -61,8 +61,8 @@ public class EGOGiftItem extends EGOEquipmentItem {
     }
 
     @Override
-    public Multimap<Holder<Attribute>, AttributeModifier> getModifiers(ItemStack itemStack) {
-        return ArrayListMultimap.create();
+    public Multimap<Holder<Attribute>, AttributeModifier> getModifiers(Player player, ItemStack itemStack) {
+        return HashMultimap.create();
     }
 
     @Override
@@ -75,47 +75,47 @@ public class EGOGiftItem extends EGOEquipmentItem {
         return false;
     }
 
-    public record EGOGiftBonus(int maxHealth, int maxSanity,
-                               int workSuccess, int workVelocity,
-                               int attackVelocity, int moveVelocity) {
+    public record EGOGiftBonus(float maxHealth, float maxSanity,
+                               float workSuccess, float workVelocity,
+                               float attackVelocity, float moveVelocity) {
         public static Builder builder() {
             return new Builder();
         }
 
         public static class Builder {
-            private int maxHealth;
-            private int maxSanity;
-            private int workSuccess;
-            private int workVelocity;
-            private int attackVelocity;
-            private int moveVelocity;
+            private float maxHealth;
+            private float maxSanity;
+            private float workSuccess;
+            private float workVelocity;
+            private float attackVelocity;
+            private float moveVelocity;
 
-            public Builder maxHealth(int maxHealth) {
+            public Builder maxHealth(float maxHealth) {
                 this.maxHealth = maxHealth;
                 return this;
             }
 
-            public Builder maxSanity(int maxSanity) {
+            public Builder maxSanity(float maxSanity) {
                 this.maxSanity = maxSanity;
                 return this;
             }
 
-            public Builder workSuccess(int workSuccess) {
+            public Builder workSuccess(float workSuccess) {
                 this.workSuccess = workSuccess;
                 return this;
             }
 
-            public Builder workVelocity(int workVelocity) {
+            public Builder workVelocity(float workVelocity) {
                 this.workVelocity = workVelocity;
                 return this;
             }
 
-            public Builder attackVelocity(int attackVelocity) {
+            public Builder attackVelocity(float attackVelocity) {
                 this.attackVelocity = attackVelocity;
                 return this;
             }
 
-            public Builder moveVelocity(int moveVelocity) {
+            public Builder moveVelocity(float moveVelocity) {
                 this.moveVelocity = moveVelocity;
                 return this;
             }

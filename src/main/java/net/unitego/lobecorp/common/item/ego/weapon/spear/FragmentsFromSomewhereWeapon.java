@@ -1,6 +1,6 @@
 package net.unitego.lobecorp.common.item.ego.weapon.spear;
 
-import com.google.common.collect.ArrayListMultimap;
+import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.core.Holder;
 import net.minecraft.world.entity.ai.attributes.Attribute;
@@ -25,12 +25,13 @@ public class FragmentsFromSomewhereWeapon extends EGOWeaponItem {
 
     public FragmentsFromSomewhereWeapon() {
         super(new Properties(), List.of(WEAPON_FRAGMENTS_FROM_SOMEWHERE_1),
-                EGORank.TETH, EGOWeaponTemplate.SPEAR, List.of(DamageTypesRegistry.BLACK), 6.0f, StaffManager.EquipRequire.NONE);
+                EGORank.TETH, EGOWeaponTemplate.SPEAR, List.of(DamageTypesRegistry.BLACK), 6.0f,
+                StaffManager.EquipRequire.NONE);
     }
 
     @Override
-    public Multimap<Holder<Attribute>, AttributeModifier> getModifiers(ItemStack itemStack) {
-        Multimap<Holder<Attribute>, AttributeModifier> modifiers = ArrayListMultimap.create();
+    public Multimap<Holder<Attribute>, AttributeModifier> getModifiers(Player player, ItemStack itemStack) {
+        Multimap<Holder<Attribute>, AttributeModifier> modifiers = HashMultimap.create();
         modifiers.put(AttributesRegistry.MAX_SANITY, new AttributeModifier(
                 EquipmentModifierUtils.getStableModifierId(MODIFIER_ID_1), MODIFIER_ID_1,
                 0.4f, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
@@ -39,7 +40,7 @@ public class FragmentsFromSomewhereWeapon extends EGOWeaponItem {
 
     @Override
     public boolean shouldApply(Player player) {
-        if (((ManagerAccess) player).lobeCorp$getStaffManager().getPrudenceRank().getValue() >= 5) return false;
+        if (!(((ManagerAccess) player).lobeCorp$getStaffManager().getPrudenceRank().getValue() < 5)) return false;
         CombatStatusUtils.registerCombatChance(player, MODIFIER_ID_1, 0.10f, 600);
         return CombatStatusUtils.getCombatChance(player, MODIFIER_ID_1);
     }

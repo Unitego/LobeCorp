@@ -41,6 +41,14 @@ public class MobEffectsRegistry {
                             4.0, AttributeModifier.Operation.ADD_VALUE));//精神提升
     public static final DeferredHolder<MobEffect, MobEffect> THIRST = REGISTER.register("thirst",
             () -> new ThirstMobEffect(MobEffectCategory.HARMFUL, 13819490));//干渴
+    public static final DeferredHolder<MobEffect, MobEffect> VULNERABLE_RED = REGISTER.register("vulnerable_red",
+            () -> new AbstractVulnerableEffect(MobEffectCategory.HARMFUL, 11141120, DamageTypesRegistry.RED));//物理易伤
+    public static final DeferredHolder<MobEffect, MobEffect> VULNERABLE_WHITE = REGISTER.register("vulnerable_white",
+            () -> new AbstractVulnerableEffect(MobEffectCategory.HARMFUL, 16777215, DamageTypesRegistry.WHITE));//精神易伤
+    public static final DeferredHolder<MobEffect, MobEffect> VULNERABLE_BLACK = REGISTER.register("vulnerable_black",
+            () -> new AbstractVulnerableEffect(MobEffectCategory.HARMFUL, 11141290, DamageTypesRegistry.BLACK));//侵蚀易伤
+    public static final DeferredHolder<MobEffect, MobEffect> VULNERABLE_PALE = REGISTER.register("vulnerable_pale",
+            () -> new AbstractVulnerableEffect(MobEffectCategory.HARMFUL, 5636095, DamageTypesRegistry.PALE));//灵魂易伤
 
     public static void init(IEventBus bus) {
         REGISTER.register(bus);

@@ -6,13 +6,20 @@ import net.unitego.lobecorp.LobeCorp;
 import net.unitego.lobecorp.client.init.KeyInit;
 import net.unitego.lobecorp.common.component.LobeCorpEquipmentSlot;
 import net.unitego.lobecorp.common.item.badge.TeamBadge;
+import net.unitego.lobecorp.common.item.ego.gift.chest.GreenStemGift;
 import net.unitego.lobecorp.common.item.ego.gift.head.PenitenceGift;
+import net.unitego.lobecorp.common.item.ego.gift.mouth.SanguineDesireGift;
+import net.unitego.lobecorp.common.item.ego.suit.FleshBoundSuit;
 import net.unitego.lobecorp.common.item.ego.suit.PenitenceSuit;
 import net.unitego.lobecorp.common.item.ego.suit.RedEyesSuit;
 import net.unitego.lobecorp.common.item.ego.weapon.EGOWeaponTemplate;
+import net.unitego.lobecorp.common.item.ego.weapon.axe.SanguineDesireWeapon;
+import net.unitego.lobecorp.common.item.ego.weapon.hammer.LampWeapon;
 import net.unitego.lobecorp.common.item.ego.weapon.mace.PenitenceWeapon;
 import net.unitego.lobecorp.common.item.ego.weapon.mace.RedEyesWeapon;
 import net.unitego.lobecorp.common.item.ego.weapon.spear.FragmentsFromSomewhereWeapon;
+import net.unitego.lobecorp.common.item.ego.weapon.spear.FrostSplinterWeapon;
+import net.unitego.lobecorp.common.item.ego.weapon.spear.SporeWeapon;
 import net.unitego.lobecorp.common.util.MiscUtils;
 import net.unitego.lobecorp.registry.*;
 
@@ -77,10 +84,20 @@ public class ZhCnLangGenerator extends LanguageProvider {
         add(ItemsRegistry.WING_BEAT_WEAPON.get(), "振翅");
         add(ItemsRegistry.RED_EYES_WEAPON.get(), "赤瞳");
         add(ItemsRegistry.CHRISTMAS_WEAPON.get(), "悲惨圣诞");
+        add(ItemsRegistry.DIFFRACTION_WEAPON.get(), "虚无衍射体");
+        add(ItemsRegistry.SANGUINE_DESIRE_WEAPON.get(), "血之渴望");
+        add(ItemsRegistry.WRIST_CUTTER_WEAPON.get(), "割腕者");
         add(ItemsRegistry.HORN_WEAPON.get(), "犄角");
         add(ItemsRegistry.FRAGMENTS_FROM_SOMEWHERE_WEAPON.get(), "彼方的裂片");
+        add(ItemsRegistry.HARVEST_WEAPON.get(), "猎头长耙");
+        add(ItemsRegistry.FROST_SPLINTER_WEAPON.get(), "霜之碎片");
+        add(ItemsRegistry.GREEN_STEM_WEAPON.get(), "绿色枝干");
+        add(ItemsRegistry.HEAVEN_WEAPON.get(), "穿刺极乐");
+        add(ItemsRegistry.SPORE_WEAPON.get(), "荧光菌孢");
         add(ItemsRegistry.REGRET_WEAPON.get(), "悔恨");
+        add(ItemsRegistry.LANTERN_WEAPON.get(), "诱捕幻灯");
         add(ItemsRegistry.LOGGING_WEAPON.get(), "伐木者");
+        add(ItemsRegistry.LAMP_WEAPON.get(), "目灯");
 
         //EGO护甲
         add(ItemsRegistry.STANDARD_TRAINING_EGO_SUIT.get(), "教学用E.G.O");
@@ -88,10 +105,19 @@ public class ZhCnLangGenerator extends LanguageProvider {
         add(ItemsRegistry.WING_BEAT_SUIT.get(), "振翅");
         add(ItemsRegistry.RED_EYES_SUIT.get(), "赤瞳");
         add(ItemsRegistry.CHRISTMAS_SUIT.get(), "悲惨圣诞");
+        add(ItemsRegistry.SANGUINE_DESIRE_SUIT.get(), "血之渴望");
+        add(ItemsRegistry.WRIST_CUTTER_SUIT.get(), "割腕者");
         add(ItemsRegistry.HORN_SUIT.get(), "犄角");
         add(ItemsRegistry.FRAGMENTS_FROM_SOMEWHERE_SUIT.get(), "彼方的裂片");
+        add(ItemsRegistry.HARVEST_SUIT.get(), "猎头长耙");
+        add(ItemsRegistry.FROST_SPLINTER_SUIT.get(), "霜之碎片");
+        add(ItemsRegistry.GREEN_STEM_SUIT.get(), "绿色枝干");
+        add(ItemsRegistry.HEAVEN_SUIT.get(), "穿刺极乐");
+        add(ItemsRegistry.SPORE_SUIT.get(), "荧光菌孢");
         add(ItemsRegistry.REGRET_SUIT.get(), "悔恨");
+        add(ItemsRegistry.LANTERN_SUIT.get(), "诱捕幻灯");
         add(ItemsRegistry.LOGGING_SUIT.get(), "伐木者");
+        add(ItemsRegistry.LAMP_SUIT.get(), "目灯");
 
         //EGO饰品
         add(ItemsRegistry.STANDARD_TRAINING_EGO_GIFT.get(), "教学用E.G.O");
@@ -99,12 +125,29 @@ public class ZhCnLangGenerator extends LanguageProvider {
         add(ItemsRegistry.WING_BEAT_GIFT.get(), "振翅");
         add(ItemsRegistry.RED_EYES_GIFT.get(), "赤瞳");
         add(ItemsRegistry.CHRISTMAS_GIFT.get(), "悲惨圣诞");
+        add(ItemsRegistry.DIFFRACTION_GIFT.get(), "虚无衍射体");
+        add(ItemsRegistry.SANGUINE_DESIRE_GIFT.get(), "血之渴望");
+        add(ItemsRegistry.WRIST_CUTTER_GIFT.get(), "割腕者");
         add(ItemsRegistry.HORN_GIFT.get(), "犄角");
         add(ItemsRegistry.FRAGMENTS_FROM_SOMEWHERE_GIFT.get(), "彼方的裂片");
+        add(ItemsRegistry.HARVEST_GIFT.get(), "猎头长耙");
+        add(ItemsRegistry.FROST_SPLINTER_GIFT.get(), "霜之碎片");
+        add(ItemsRegistry.GREEN_STEM_GIFT.get(), "绿色枝干");
+        add(ItemsRegistry.HEAVEN_GIFT.get(), "穿刺极乐");
+        add(ItemsRegistry.SPORE_GIFT.get(), "荧光菌孢");
         add(ItemsRegistry.REGRET_GIFT.get(), "悔恨");
+        add(ItemsRegistry.LANTERN_GIFT.get(), "诱捕幻灯");
         add(ItemsRegistry.LOGGING_GIFT.get(), "伐木者");
+        add(ItemsRegistry.LAMP_GIFT.get(), "目灯");
 
         add(ItemsRegistry.BLESS_GIFT.get(), "祝福");
+
+        //自定义
+        //血肉契约——苏玖
+        add(ItemsRegistry.FLESH_BOUND_WEAPON.get(), "血肉契约");
+        add(ItemsRegistry.FLESH_BOUND_SUIT.get(), "血肉契约");
+        add(ItemsRegistry.FLESH_BOUND_GIFT.get(), "血肉契约");
+
         //菜单名
         add(MenusRegistry.CONTAINER_LOBECORP_EQUIPMENT, "装备");
         //效果名
@@ -117,13 +160,19 @@ public class ZhCnLangGenerator extends LanguageProvider {
         add(MobEffectsRegistry.THIRST.get(), "干渴");
         add(MobEffectsRegistry.INSTANT_SANITY.get(), "瞬间镇定");
         add(MobEffectsRegistry.INSTANT_INJURY.get(), "瞬间损伤");
+        add(MobEffectsRegistry.VULNERABLE_RED.get(), "物理易伤");
+        add(MobEffectsRegistry.VULNERABLE_WHITE.get(), "精神易伤");
+        add(MobEffectsRegistry.VULNERABLE_BLACK.get(), "侵蚀易伤");
+        add(MobEffectsRegistry.VULNERABLE_PALE.get(), "灵魂易伤");
         //声音名
         add(SoundEventsRegistry.SWALLOW_WATER.get().getLocation().toLanguageKey(), "咽水");
         add(SoundEventsRegistry.CHANGE_EQUIPMENT.get().getLocation().toLanguageKey(), "变换装备");
+        add(SoundEventsRegistry.SWITCH_WEAPON.get().getLocation().toLanguageKey(), "切换武器");
 
         //按键名
         add(KeyInit.KEY_CATEGORIES_LOBECORP, "脑叶公司");
         add(KeyInit.KEY_TOGGLE_EQUIPMENT.get().getName(), "开启/关闭 装备");
+        add(KeyInit.KEY_SWITCH_WEAPON.get().getName(), "切换武器");
 
         //武器模板
         add(EGOWeaponTemplate.MACE.getTranslationKey(), "棁");
@@ -189,11 +238,26 @@ public class ZhCnLangGenerator extends LanguageProvider {
         //忏悔
         add(PenitenceWeapon.WEAPON_PENITENCE_1, "如果持有者的正义等级高于2级，每次攻击都有5%的概率恢复10点精神值");
         add(PenitenceSuit.SUIT_PENITENCE_1, "当穿戴者受到物理或侵蚀伤害时，有5%的概率恢复10点精神值");
-        add(PenitenceGift.GIFT_PENITENCE_1, "对异想体“一罪与百善”进行工作的成功率提高10%");
+        add(PenitenceGift.GIFT_PENITENCE_1, "对异想体“一罪与百善”的工作成率提高10%");
         //赤瞳
-        add(RedEyesWeapon.WEAPON_RED_EYES_1, "如果持有者的勇气等级高于2级，进入战斗后会提高2.5点移动速度");
-        add(RedEyesSuit.SUIT_RED_EYES_1, "如果穿戴者的勇气等级高于2级，进入战斗后会提高2.5点移动速度");
+        add(RedEyesWeapon.WEAPON_RED_EYES_1, "如果持有者的勇气等级高于2级，进入战斗后会提高2.5点移动速率");
+        add(RedEyesSuit.SUIT_RED_EYES_1, "如果穿戴者的勇气等级高于2级，进入战斗后会提高2.5点移动速率");
         //彼方的裂片
         add(FragmentsFromSomewhereWeapon.WEAPON_FRAGMENTS_FROM_SOMEWHERE_1, "如果持有者的谨慎等级低于5级，进入战斗后有10%的概率提升40%的最大精神值。效果持续30秒");
+        //血之渴望
+        add(SanguineDesireWeapon.WEAPON_SANGUINE_DESIRE_1, "如果持有者的自律等级低于3级则会提高攻击力。但代价是每次攻击都会丧失等同于最大精神值4%的精神值");
+        add(SanguineDesireGift.GIFT_SANGUINE_DESIRE_1, "持有“红舞鞋”E.G.O武器时，降低10点工作成率和工作速率，提高10点攻击速率");
+        //霜之碎片
+        add(FrostSplinterWeapon.WEAPON_FROST_SPLINTER_1, "被这支武器刺中的目标会减少30%的移动速度，持续3秒");
+        //绿色枝干
+        add(GreenStemGift.GIFT_GREEN_STEM_1, "持有“绿色枝干”时，提高5点攻击力");
+        //荧光菌孢
+        add(SporeWeapon.WEAPON_SPORE_1, "持有者攻击时有25%的概率为目标添加一个易伤效果，使其受到的精神伤害加深");
+        //目灯
+        add(LampWeapon.WEAPON_LAMP_1, "攻击时有25%的概率给目标添加一个易伤效果，使其受到的侵蚀伤害加深");
+
+        //自定义
+        //血肉契约——苏玖
+        add(FleshBoundSuit.SUIT_FLESH_BOUND_1, "穿戴者持有“血肉契约”武器，最大生命值+10");
     }
 }
