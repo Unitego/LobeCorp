@@ -11,6 +11,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.unitego.lobecorp.common.access.ManagerAccess;
 import net.unitego.lobecorp.common.item.ego.EGOWeaponItem;
+import net.unitego.lobecorp.common.item.ego.weapon.EGOWeaponProfile;
 import net.unitego.lobecorp.common.item.ego.weapon.EGOWeaponTemplate;
 import net.unitego.lobecorp.common.manager.SanityManager;
 import net.unitego.lobecorp.common.manager.StaffManager;
@@ -27,7 +28,7 @@ public class SanguineDesireWeapon extends EGOWeaponItem {
 
     public SanguineDesireWeapon() {
         super(new Properties(), List.of(WEAPON_SANGUINE_DESIRE_1),
-                EGORank.HE, EGOWeaponTemplate.AXE, List.of(DamageTypesRegistry.RED), 5.0f,
+                EGORank.HE, new EGOWeaponProfile(EGOWeaponTemplate.AXE), List.of(DamageTypesRegistry.RED), 5.0f,
                 StaffManager.EquipRequire.NONE);
     }
 

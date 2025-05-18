@@ -21,7 +21,7 @@ import net.unitego.lobecorp.common.access.ColorDamageAccess;
 import net.unitego.lobecorp.common.access.EGORankAccess;
 import net.unitego.lobecorp.common.access.EquipRequireAccess;
 import net.unitego.lobecorp.common.component.LobeCorpEquipmentSlot;
-import net.unitego.lobecorp.common.item.ego.weapon.EGOWeaponTemplate;
+import net.unitego.lobecorp.common.item.ego.weapon.EGOWeaponProfile;
 import net.unitego.lobecorp.common.manager.StaffManager;
 import net.unitego.lobecorp.common.util.EGORank;
 import net.unitego.lobecorp.common.util.MiscUtils;
@@ -43,19 +43,19 @@ public class EGOWeaponItem extends EGOEquipmentItem implements EGORankAccess, Eq
             DamageTypesRegistry.PALE, Component.translatable(MiscUtils.PALE).withStyle(ChatFormatting.AQUA)
     );
     private final EGORank egoRank;
-    private final EGOWeaponTemplate weaponTemplate;
+    private final EGOWeaponProfile egoWeaponProfile;
     private final List<ResourceKey<DamageType>> damageTypes;
     private final StaffManager.EquipRequire equipRequire;
 
-    public EGOWeaponItem(Properties properties, List<String> egoSkillTranslationKeys, EGORank egoRank, EGOWeaponTemplate weaponTemplate,
+    public EGOWeaponItem(Properties properties, List<String> egoSkillTranslationKeys, EGORank egoRank, EGOWeaponProfile egoWeaponProfile,
                          List<ResourceKey<DamageType>> damageTypes, double attackDamage, StaffManager.EquipRequire equipRequire) {
 
         super(properties.component(DataComponents.ATTRIBUTE_MODIFIERS,
-                        buildModifiers(attackDamage, weaponTemplate.getAttackSpeed(), weaponTemplate.getInteractionRange() - 3)),
+                        buildModifiers(attackDamage, egoWeaponProfile.getAttackSpeed(), egoWeaponProfile.getInteractionRange() - 3)),
                 egoSkillTranslationKeys);
 
         this.egoRank = egoRank;
-        this.weaponTemplate = weaponTemplate;
+        this.egoWeaponProfile = egoWeaponProfile;
         this.damageTypes = damageTypes;
         this.equipRequire = equipRequire;
     }
@@ -80,7 +80,7 @@ public class EGOWeaponItem extends EGOEquipmentItem implements EGORankAccess, Eq
         tooltipComponents.add(egoRank.getDisplayComponent());
         //武器模板
         tooltipComponents.add(Component.translatable(MiscUtils.WEAPON_TEMPLATE).withStyle(ChatFormatting.DARK_GRAY)
-                .append(Component.translatable(weaponTemplate.getTranslationKey()).withStyle(ChatFormatting.GRAY)));
+                .append(Component.translatable(egoWeaponProfile.getTranslationKey()).withStyle(ChatFormatting.GRAY)));
         //伤害类型
         MutableComponent line = Component.translatable(MiscUtils.DAMAGE_TYPE).withStyle(ChatFormatting.DARK_GRAY);
         boolean first = true;
@@ -134,5 +134,9 @@ public class EGOWeaponItem extends EGOEquipmentItem implements EGORankAccess, Eq
     @Override
     public List<ResourceKey<DamageType>> getDamageTypes() {
         return damageTypes;
+    }
+
+    public EGOWeaponProfile getEgoWeaponProfile() {
+        return egoWeaponProfile;
     }
 }

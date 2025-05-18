@@ -9,23 +9,26 @@ public enum EGOWeaponTemplate {
      * 这样的话到时候就好直接让他被调用时默认4-3.5=0.5
      * 公式：attackSpeed=1s/?s-4
      */
-    MACE("mace", -3.5, 3.0, false),//棁
-    AXE("axe", -3.0, 2.0, false),//斧
-    KNIFE("knife", -2.5, 2.0, false),//刀
-    SPEAR("spear", -3.3, 4.0, true),//矛
-    HAMMER("hammer", -3.7, 5.0, true),//锤
-    FIST("fist", -3.5, 2.0, true);//拳套
+    MACE("mace", -3.50f, 3.00f, false, 1),//棁
+    AXE("axe", -3.00f, 2.00f, false, 1),//斧
+    KNIFE("knife", -2.50f, 2.00f, false, 1),//刀
+    SPEAR("spear", -3.30f, 4.00f, true, 1),//矛
+    HAMMER("hammer", -3.70f, 5.00f, true, 1),//锤
+    FIST("fist", -3.50f, 2.00f, true, 2),//拳套
+    SPECIAL("special", 0.00f, 0.00f, false, 0);//特殊
 
     private final String name;
     private final double attackSpeed;
     private final double interactionRange;
     private final boolean isBothHands;
+    private final int attackCount;
 
-    EGOWeaponTemplate(String name, double attackSpeed, double interactionRange, boolean isBothHands) {
+    EGOWeaponTemplate(String name, double attackSpeed, double interactionRange, boolean isBothHands, int attackCount) {
         this.name = name;
         this.attackSpeed = attackSpeed;
         this.interactionRange = interactionRange;
         this.isBothHands = isBothHands;
+        this.attackCount = attackCount;
     }
 
     public String getTranslationKey() {
@@ -42,5 +45,9 @@ public enum EGOWeaponTemplate {
 
     public boolean isBothHands() {
         return isBothHands;
+    }
+
+    public int getAttackCount() {
+        return attackCount;
     }
 }

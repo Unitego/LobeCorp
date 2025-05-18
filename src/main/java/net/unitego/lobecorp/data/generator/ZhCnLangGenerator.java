@@ -7,6 +7,8 @@ import net.unitego.lobecorp.client.init.KeyInit;
 import net.unitego.lobecorp.common.component.LobeCorpEquipmentSlot;
 import net.unitego.lobecorp.common.item.badge.TeamBadge;
 import net.unitego.lobecorp.common.item.ego.gift.chest.GreenStemGift;
+import net.unitego.lobecorp.common.item.ego.gift.eye.GrinderMk4Gift;
+import net.unitego.lobecorp.common.item.ego.gift.head.BearPawsGift;
 import net.unitego.lobecorp.common.item.ego.gift.head.PenitenceGift;
 import net.unitego.lobecorp.common.item.ego.gift.mouth.SanguineDesireGift;
 import net.unitego.lobecorp.common.item.ego.suit.FleshBoundSuit;
@@ -98,6 +100,12 @@ public class ZhCnLangGenerator extends LanguageProvider {
         add(ItemsRegistry.LANTERN_WEAPON.get(), "诱捕幻灯");
         add(ItemsRegistry.LOGGING_WEAPON.get(), "伐木者");
         add(ItemsRegistry.LAMP_WEAPON.get(), "目灯");
+        add(ItemsRegistry.SO_CUTE_WEAPON.get(), "超特么可爱！！！");
+        add(ItemsRegistry.BEAR_PAWS_WEAPON.get(), "熊熊抱");
+
+        add(ItemsRegistry.GRINDER_MK4_WEAPON.get(), "粉碎机Mk4");
+        add(ItemsRegistry.LIFE_FOR_A_DAREDEVIL_WEAPON.get(), "决死之心");
+        add(ItemsRegistry.AMITA_WEAPON.get(), "无量");
 
         //EGO护甲
         add(ItemsRegistry.STANDARD_TRAINING_EGO_SUIT.get(), "教学用E.G.O");
@@ -118,6 +126,12 @@ public class ZhCnLangGenerator extends LanguageProvider {
         add(ItemsRegistry.LANTERN_SUIT.get(), "诱捕幻灯");
         add(ItemsRegistry.LOGGING_SUIT.get(), "伐木者");
         add(ItemsRegistry.LAMP_SUIT.get(), "目灯");
+        add(ItemsRegistry.SO_CUTE_SUIT.get(), "超特么可爱！！！");
+        add(ItemsRegistry.BEAR_PAWS_SUIT.get(), "熊熊抱");
+
+        add(ItemsRegistry.GRINDER_MK4_SUIT.get(), "粉碎机Mk4");
+        add(ItemsRegistry.LIFE_FOR_A_DAREDEVIL_SUIT.get(), "决死之心");
+        add(ItemsRegistry.AMITA_SUIT.get(), "无量");
 
         //EGO饰品
         add(ItemsRegistry.STANDARD_TRAINING_EGO_GIFT.get(), "教学用E.G.O");
@@ -139,6 +153,11 @@ public class ZhCnLangGenerator extends LanguageProvider {
         add(ItemsRegistry.LANTERN_GIFT.get(), "诱捕幻灯");
         add(ItemsRegistry.LOGGING_GIFT.get(), "伐木者");
         add(ItemsRegistry.LAMP_GIFT.get(), "目灯");
+        add(ItemsRegistry.SO_CUTE_GIFT.get(), "超特么可爱！！！");
+        add(ItemsRegistry.BEAR_PAWS_GIFT.get(), "熊熊抱");
+
+        add(ItemsRegistry.GRINDER_MK4_GIFT.get(), "粉碎机Mk4");
+        add(ItemsRegistry.AMITA_GIFT.get(), "无量");
 
         add(ItemsRegistry.BLESS_GIFT.get(), "祝福");
 
@@ -181,6 +200,7 @@ public class ZhCnLangGenerator extends LanguageProvider {
         add(EGOWeaponTemplate.SPEAR.getTranslationKey(), "矛");
         add(EGOWeaponTemplate.HAMMER.getTranslationKey(), "锤");
         add(EGOWeaponTemplate.FIST.getTranslationKey(), "拳套");
+        add(EGOWeaponTemplate.SPECIAL.getTranslationKey(), "特殊");
         //插槽名
         add(LobeCorpEquipmentSlot.LOBECORP_WEAPON.getSlotModifiersName(), "在武器位时：");
         add(LobeCorpEquipmentSlot.LOBECORP_SUIT.getSlotModifiersName(), "在护甲位时：");
@@ -255,6 +275,10 @@ public class ZhCnLangGenerator extends LanguageProvider {
         add(SporeWeapon.WEAPON_SPORE_1, "持有者攻击时有25%的概率为目标添加一个易伤效果，使其受到的精神伤害加深");
         //目灯
         add(LampWeapon.WEAPON_LAMP_1, "攻击时有25%的概率给目标添加一个易伤效果，使其受到的侵蚀伤害加深");
+        //熊熊抱
+        add(BearPawsGift.GIFT_BEAR_PAWS_1, "沟通工作的成功率提高3%");
+        //粉碎机Mk4
+        add(GrinderMk4Gift.GIFT_GRINDER_MK4_1, "洞察工作的成功率提高3%");
 
         //自定义
         //血肉契约——苏玖

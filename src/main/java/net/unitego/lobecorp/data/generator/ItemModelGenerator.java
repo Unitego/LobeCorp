@@ -60,6 +60,12 @@ public class ItemModelGenerator extends ItemModelProvider {
         handheldItem(ItemsRegistry.LANTERN_WEAPON.get());
         handheldItem(ItemsRegistry.LOGGING_WEAPON.get());
         handheldItem(ItemsRegistry.LAMP_WEAPON.get());
+        handheldItem(ItemsRegistry.SO_CUTE_WEAPON.get());
+        handheldItem(ItemsRegistry.BEAR_PAWS_WEAPON.get());
+
+        handheldItem(ItemsRegistry.GRINDER_MK4_WEAPON.get());
+        handheldItem(ItemsRegistry.LIFE_FOR_A_DAREDEVIL_WEAPON.get());
+        handheldItem(ItemsRegistry.AMITA_WEAPON.get());
 
         //EGO护甲
         basicItem(ItemsRegistry.STANDARD_TRAINING_EGO_SUIT.get());
@@ -80,6 +86,12 @@ public class ItemModelGenerator extends ItemModelProvider {
         basicItem(ItemsRegistry.LANTERN_SUIT.get());
         basicItem(ItemsRegistry.LOGGING_SUIT.get());
         basicItem(ItemsRegistry.LAMP_SUIT.get());
+        basicItem(ItemsRegistry.SO_CUTE_SUIT.get());
+        basicItem(ItemsRegistry.BEAR_PAWS_SUIT.get());
+
+        basicItem(ItemsRegistry.GRINDER_MK4_SUIT.get());
+        basicItem(ItemsRegistry.LIFE_FOR_A_DAREDEVIL_SUIT.get());
+        basicItem(ItemsRegistry.AMITA_SUIT.get());
 
         //EGO饰品
         basicItem(ItemsRegistry.STANDARD_TRAINING_EGO_GIFT.get());
@@ -101,6 +113,11 @@ public class ItemModelGenerator extends ItemModelProvider {
         basicItem(ItemsRegistry.LANTERN_GIFT.get());
         basicItem(ItemsRegistry.LOGGING_GIFT.get());
         basicItem(ItemsRegistry.LAMP_GIFT.get());
+        basicItem(ItemsRegistry.SO_CUTE_GIFT.get());
+        basicItem(ItemsRegistry.BEAR_PAWS_GIFT.get());
+
+        basicItem(ItemsRegistry.GRINDER_MK4_GIFT.get());
+        basicItem(ItemsRegistry.AMITA_GIFT.get());
 
         //自定义
         //血肉契约——苏玖

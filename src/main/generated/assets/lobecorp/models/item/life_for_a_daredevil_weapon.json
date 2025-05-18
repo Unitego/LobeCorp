@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "lobecorp:item/life_for_a_daredevil_weapon"
+  }
+}

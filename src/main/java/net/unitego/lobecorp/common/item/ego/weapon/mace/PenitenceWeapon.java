@@ -5,6 +5,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.unitego.lobecorp.common.access.ManagerAccess;
 import net.unitego.lobecorp.common.item.ego.EGOWeaponItem;
+import net.unitego.lobecorp.common.item.ego.weapon.EGOWeaponProfile;
 import net.unitego.lobecorp.common.item.ego.weapon.EGOWeaponTemplate;
 import net.unitego.lobecorp.common.manager.StaffManager;
 import net.unitego.lobecorp.common.util.EGORank;
@@ -19,7 +20,7 @@ public class PenitenceWeapon extends EGOWeaponItem {
 
     public PenitenceWeapon() {
         super(new Properties(), List.of(WEAPON_PENITENCE_1),
-                EGORank.ZAYIN, EGOWeaponTemplate.MACE, List.of(DamageTypesRegistry.WHITE), 5.0f,
+                EGORank.ZAYIN, new EGOWeaponProfile(EGOWeaponTemplate.MACE), List.of(DamageTypesRegistry.WHITE), 5.0f,
                 StaffManager.EquipRequire.NONE);
     }
 

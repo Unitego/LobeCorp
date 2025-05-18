@@ -58,6 +58,12 @@ public class CreativeModeTabsRegistry {
                         output.accept(ItemsRegistry.LANTERN_WEAPON);
                         output.accept(ItemsRegistry.LOGGING_WEAPON);
                         output.accept(ItemsRegistry.LAMP_WEAPON);
+                        output.accept(ItemsRegistry.SO_CUTE_WEAPON);
+                        output.accept(ItemsRegistry.BEAR_PAWS_WEAPON);
+
+                        output.accept(ItemsRegistry.GRINDER_MK4_WEAPON);
+                        output.accept(ItemsRegistry.LIFE_FOR_A_DAREDEVIL_WEAPON);
+                        output.accept(ItemsRegistry.AMITA_WEAPON);
 
                         //EGO护甲
                         output.accept(ItemsRegistry.STANDARD_TRAINING_EGO_SUIT);
@@ -78,6 +84,12 @@ public class CreativeModeTabsRegistry {
                         output.accept(ItemsRegistry.LANTERN_SUIT);
                         output.accept(ItemsRegistry.LOGGING_SUIT);
                         output.accept(ItemsRegistry.LAMP_SUIT);
+                        output.accept(ItemsRegistry.SO_CUTE_SUIT);
+                        output.accept(ItemsRegistry.BEAR_PAWS_SUIT);
+
+                        output.accept(ItemsRegistry.GRINDER_MK4_SUIT);
+                        output.accept(ItemsRegistry.LIFE_FOR_A_DAREDEVIL_SUIT);
+                        output.accept(ItemsRegistry.AMITA_SUIT);
 
                         //EGO饰品
                         output.accept(ItemsRegistry.STANDARD_TRAINING_EGO_GIFT);
@@ -99,6 +111,11 @@ public class CreativeModeTabsRegistry {
                         output.accept(ItemsRegistry.LANTERN_GIFT);
                         output.accept(ItemsRegistry.LOGGING_GIFT);
                         output.accept(ItemsRegistry.LAMP_GIFT);
+                        output.accept(ItemsRegistry.SO_CUTE_GIFT);
+                        output.accept(ItemsRegistry.BEAR_PAWS_GIFT);
+
+                        output.accept(ItemsRegistry.GRINDER_MK4_GIFT);
+                        output.accept(ItemsRegistry.AMITA_GIFT);
 
                         output.accept(ItemsRegistry.BLESS_GIFT);
 

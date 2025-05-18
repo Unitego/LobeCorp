@@ -14,12 +14,15 @@ import net.unitego.lobecorp.common.item.ego.EGOGiftItem;
 import net.unitego.lobecorp.common.item.ego.EGOSuitItem;
 import net.unitego.lobecorp.common.item.ego.EGOWeaponItem;
 import net.unitego.lobecorp.common.item.ego.gift.chest.GreenStemGift;
+import net.unitego.lobecorp.common.item.ego.gift.eye.GrinderMk4Gift;
+import net.unitego.lobecorp.common.item.ego.gift.head.BearPawsGift;
 import net.unitego.lobecorp.common.item.ego.gift.head.PenitenceGift;
 import net.unitego.lobecorp.common.item.ego.gift.mouth.SanguineDesireGift;
 import net.unitego.lobecorp.common.item.ego.gift.occiput.BlessGift;
 import net.unitego.lobecorp.common.item.ego.suit.FleshBoundSuit;
 import net.unitego.lobecorp.common.item.ego.suit.PenitenceSuit;
 import net.unitego.lobecorp.common.item.ego.suit.RedEyesSuit;
+import net.unitego.lobecorp.common.item.ego.weapon.EGOWeaponProfile;
 import net.unitego.lobecorp.common.item.ego.weapon.EGOWeaponTemplate;
 import net.unitego.lobecorp.common.item.ego.weapon.axe.SanguineDesireWeapon;
 import net.unitego.lobecorp.common.item.ego.weapon.hammer.LampWeapon;
@@ -44,65 +47,81 @@ public class ItemsRegistry {
             new EGOSuitItem(new Item.Properties().rarity(Rarity.RARE), List.of(), EGORank.ZAYIN,
                     0.0f, 0.0f, 0.0f, 0.0f, StaffManager.EquipRequire.NONE));//代码西装
     public static final DeferredItem<EGOWeaponItem> CODE_RIOT_STICK = REGISTER.register("code_riot_stick", () ->
-            new EGOWeaponItem(new Item.Properties().rarity(Rarity.RARE), List.of(), EGORank.ZAYIN, EGOWeaponTemplate.MACE,
+            new EGOWeaponItem(new Item.Properties().rarity(Rarity.RARE), List.of(), EGORank.ZAYIN, new EGOWeaponProfile(EGOWeaponTemplate.MACE),
                     List.of(DamageTypesRegistry.RED, DamageTypesRegistry.WHITE, DamageTypesRegistry.BLACK, DamageTypesRegistry.PALE), 65535.0f, StaffManager.EquipRequire.NONE));//代码镇暴棍
     public static final DeferredItem<EGOSuitItem> STANDARD_SUIT = REGISTER.register("standard_suit", () ->
             new EGOSuitItem(new Item.Properties().rarity(Rarity.UNCOMMON), List.of(), EGORank.ZAYIN,
                     1.0f, 1.0f, 1.5f, 2.0f, StaffManager.EquipRequire.NONE));//标准西装
     public static final DeferredItem<EGOWeaponItem> RED_RIOT_STICK = REGISTER.register("red_riot_stick", () ->
-            new EGOWeaponItem(new Item.Properties().rarity(Rarity.UNCOMMON), List.of(), EGORank.ZAYIN, EGOWeaponTemplate.MACE,
+            new EGOWeaponItem(new Item.Properties().rarity(Rarity.UNCOMMON), List.of(), EGORank.ZAYIN, new EGOWeaponProfile(EGOWeaponTemplate.MACE),
                     List.of(DamageTypesRegistry.RED), 4.0f, StaffManager.EquipRequire.NONE));//物理镇暴棍
     public static final DeferredItem<EGOWeaponItem> WHITE_RIOT_STICK = REGISTER.register("white_riot_stick", () ->
-            new EGOWeaponItem(new Item.Properties().rarity(Rarity.UNCOMMON), List.of(), EGORank.ZAYIN, EGOWeaponTemplate.MACE,
+            new EGOWeaponItem(new Item.Properties().rarity(Rarity.UNCOMMON), List.of(), EGORank.ZAYIN, new EGOWeaponProfile(EGOWeaponTemplate.MACE),
                     List.of(DamageTypesRegistry.WHITE), 4.0f, StaffManager.EquipRequire.NONE));//精神镇暴棍
     public static final DeferredItem<EGOWeaponItem> BLACK_RIOT_STICK = REGISTER.register("black_riot_stick", () ->
-            new EGOWeaponItem(new Item.Properties().rarity(Rarity.UNCOMMON), List.of(), EGORank.ZAYIN, EGOWeaponTemplate.MACE,
+            new EGOWeaponItem(new Item.Properties().rarity(Rarity.UNCOMMON), List.of(), EGORank.ZAYIN, new EGOWeaponProfile(EGOWeaponTemplate.MACE),
                     List.of(DamageTypesRegistry.BLACK), 4.0f, StaffManager.EquipRequire.NONE));//侵蚀镇暴棍
     public static final DeferredItem<EGOWeaponItem> PALE_RIOT_STICK = REGISTER.register("pale_riot_stick", () ->
-            new EGOWeaponItem(new Item.Properties().rarity(Rarity.UNCOMMON), List.of(), EGORank.ZAYIN, EGOWeaponTemplate.MACE,
+            new EGOWeaponItem(new Item.Properties().rarity(Rarity.UNCOMMON), List.of(), EGORank.ZAYIN, new EGOWeaponProfile(EGOWeaponTemplate.MACE),
                     List.of(DamageTypesRegistry.PALE), 4.0f, StaffManager.EquipRequire.NONE));//灵魂镇暴棍
 
     //EGO武器
     //棁
     public static final DeferredItem<EGOWeaponItem> STANDARD_TRAINING_EGO_WEAPON = REGISTER.register("standard_training_ego_weapon", () ->
-            new EGOWeaponItem(new Item.Properties(), List.of(), EGORank.TETH, EGOWeaponTemplate.MACE, List.of(DamageTypesRegistry.WHITE), 5.0f, StaffManager.EquipRequire.NONE));
+            new EGOWeaponItem(new Item.Properties(), List.of(), EGORank.TETH, new EGOWeaponProfile(EGOWeaponTemplate.MACE), List.of(DamageTypesRegistry.WHITE), 5.0f, StaffManager.EquipRequire.NONE));
     public static final DeferredItem<PenitenceWeapon> PENITENCE_WEAPON = REGISTER.register("penitence_weapon", PenitenceWeapon::new);
     public static final DeferredItem<EGOWeaponItem> WING_BEAT_WEAPON = REGISTER.register("wing_beat_weapon", () ->
-            new EGOWeaponItem(new Item.Properties(), List.of(), EGORank.ZAYIN, EGOWeaponTemplate.MACE, List.of(DamageTypesRegistry.RED), 5.0f, StaffManager.EquipRequire.NONE));
+            new EGOWeaponItem(new Item.Properties(), List.of(), EGORank.ZAYIN, new EGOWeaponProfile(EGOWeaponTemplate.MACE), List.of(DamageTypesRegistry.RED), 5.0f, StaffManager.EquipRequire.NONE));
     public static final DeferredItem<RedEyesWeapon> RED_EYES_WEAPON = REGISTER.register("red_eyes_weapon", RedEyesWeapon::new);
     public static final DeferredItem<EGOWeaponItem> CHRISTMAS_WEAPON = REGISTER.register("christmas_weapon", () ->
-            new EGOWeaponItem(new Item.Properties(), List.of(), EGORank.HE, EGOWeaponTemplate.MACE, List.of(DamageTypesRegistry.WHITE), 11.0f, StaffManager.EquipRequire.NONE));
+            new EGOWeaponItem(new Item.Properties(), List.of(), EGORank.HE, new EGOWeaponProfile(EGOWeaponTemplate.MACE), List.of(DamageTypesRegistry.WHITE), 11.0f, StaffManager.EquipRequire.NONE));
     public static final DeferredItem<EGOWeaponItem> DIFFRACTION_WEAPON = REGISTER.register("diffraction_weapon", () ->
-            new EGOWeaponItem(new Item.Properties(), List.of(), EGORank.WAW, EGOWeaponTemplate.MACE, List.of(DamageTypesRegistry.WHITE), 15.0f,
+            new EGOWeaponItem(new Item.Properties(), List.of(), EGORank.WAW, new EGOWeaponProfile(EGOWeaponTemplate.MACE), List.of(DamageTypesRegistry.WHITE), 15.0f,
                     StaffManager.EquipRequire.builder().prudence(StaffManager.StaffRank.III).build()));
     //斧
     public static final DeferredItem<SanguineDesireWeapon> SANGUINE_DESIRE_WEAPON = REGISTER.register("sanguine_desire_weapon", SanguineDesireWeapon::new);
     //刀
     public static final DeferredItem<EGOWeaponItem> WRIST_CUTTER_WEAPON = REGISTER.register("wrist_cutter_weapon", () ->
-            new EGOWeaponItem(new Item.Properties(), List.of(), EGORank.TETH, EGOWeaponTemplate.KNIFE, List.of(DamageTypesRegistry.WHITE), 1.5f, StaffManager.EquipRequire.NONE));
+            new EGOWeaponItem(new Item.Properties(), List.of(), EGORank.TETH, new EGOWeaponProfile(EGOWeaponTemplate.KNIFE), List.of(DamageTypesRegistry.WHITE), 1.5f, StaffManager.EquipRequire.NONE));
     //矛
     public static final DeferredItem<EGOWeaponItem> HORN_WEAPON = REGISTER.register("horn_weapon", () ->
-            new EGOWeaponItem(new Item.Properties(), List.of(), EGORank.TETH, EGOWeaponTemplate.SPEAR, List.of(DamageTypesRegistry.RED), 6.0f, StaffManager.EquipRequire.NONE));
+            new EGOWeaponItem(new Item.Properties(), List.of(), EGORank.TETH, new EGOWeaponProfile(EGOWeaponTemplate.SPEAR), List.of(DamageTypesRegistry.RED), 6.0f, StaffManager.EquipRequire.NONE));
     public static final DeferredItem<EGOWeaponItem> FRAGMENTS_FROM_SOMEWHERE_WEAPON = REGISTER.register("fragments_from_somewhere_weapon", FragmentsFromSomewhereWeapon::new);
     public static final DeferredItem<EGOWeaponItem> HARVEST_WEAPON = REGISTER.register("harvest_weapon", () ->
-            new EGOWeaponItem(new Item.Properties(), List.of(), EGORank.HE, EGOWeaponTemplate.SPEAR, List.of(DamageTypesRegistry.BLACK), 8.0f, StaffManager.EquipRequire.NONE));
+            new EGOWeaponItem(new Item.Properties(), List.of(), EGORank.HE, new EGOWeaponProfile(EGOWeaponTemplate.SPEAR), List.of(DamageTypesRegistry.BLACK), 8.0f, StaffManager.EquipRequire.NONE));
     public static final DeferredItem<FrostSplinterWeapon> FROST_SPLINTER_WEAPON = REGISTER.register("frost_splinter_weapon", FrostSplinterWeapon::new);
     public static final DeferredItem<EGOWeaponItem> GREEN_STEM_WEAPON = REGISTER.register("green_stem_weapon", () ->
-            new EGOWeaponItem(new Item.Properties(), List.of(), EGORank.WAW, EGOWeaponTemplate.SPEAR, List.of(DamageTypesRegistry.BLACK), 11.0f,
+            new EGOWeaponItem(new Item.Properties(), List.of(), EGORank.WAW, new EGOWeaponProfile(EGOWeaponTemplate.SPEAR), List.of(DamageTypesRegistry.BLACK), 11.0f,
                     StaffManager.EquipRequire.builder().temperance(StaffManager.StaffRank.III).build()));
     public static final DeferredItem<EGOWeaponItem> HEAVEN_WEAPON = REGISTER.register("heaven_weapon", () ->
-            new EGOWeaponItem(new Item.Properties(), List.of(), EGORank.WAW, EGOWeaponTemplate.SPEAR, List.of(DamageTypesRegistry.RED), 11.0f,
+            new EGOWeaponItem(new Item.Properties(), List.of(), EGORank.WAW, new EGOWeaponProfile(EGOWeaponTemplate.SPEAR), List.of(DamageTypesRegistry.RED), 11.0f,
                     StaffManager.EquipRequire.builder().staff(StaffManager.StaffRank.III).build()));
     public static final DeferredItem<SporeWeapon> SPORE_WEAPON = REGISTER.register("spore_weapon", SporeWeapon::new);
     //锤
     public static final DeferredItem<EGOWeaponItem> REGRET_WEAPON = REGISTER.register("regret_weapon", () ->
-            new EGOWeaponItem(new Item.Properties(), List.of(), EGORank.TETH, EGOWeaponTemplate.HAMMER, List.of(DamageTypesRegistry.RED), 14.0f, StaffManager.EquipRequire.NONE));
+            new EGOWeaponItem(new Item.Properties(), List.of(), EGORank.TETH, new EGOWeaponProfile(EGOWeaponTemplate.HAMMER), List.of(DamageTypesRegistry.RED), 14.0f, StaffManager.EquipRequire.NONE));
     public static final DeferredItem<EGOWeaponItem> LANTERN_WEAPON = REGISTER.register("lantern_weapon", () ->
-            new EGOWeaponItem(new Item.Properties(), List.of(), EGORank.TETH, EGOWeaponTemplate.HAMMER, List.of(DamageTypesRegistry.BLACK), 14.0f, StaffManager.EquipRequire.NONE));
+            new EGOWeaponItem(new Item.Properties(), List.of(), EGORank.TETH, new EGOWeaponProfile(EGOWeaponTemplate.HAMMER), List.of(DamageTypesRegistry.BLACK), 14.0f, StaffManager.EquipRequire.NONE));
     public static final DeferredItem<EGOWeaponItem> LOGGING_WEAPON = REGISTER.register("logging_weapon", () ->
-            new EGOWeaponItem(new Item.Properties(), List.of(), EGORank.HE, EGOWeaponTemplate.HAMMER, List.of(DamageTypesRegistry.RED), 17.0f,
+            new EGOWeaponItem(new Item.Properties(), List.of(), EGORank.HE, new EGOWeaponProfile(EGOWeaponTemplate.HAMMER), List.of(DamageTypesRegistry.RED), 17.0f,
                     StaffManager.EquipRequire.builder().temperance(StaffManager.StaffRank.II).build()));
     public static final DeferredItem<LampWeapon> LAMP_WEAPON = REGISTER.register("lamp_weapon", LampWeapon::new);
+    //拳套
+    public static final DeferredItem<EGOWeaponItem> SO_CUTE_WEAPON = REGISTER.register("so_cute_weapon", () ->
+            new EGOWeaponItem(new Item.Properties(), List.of(), EGORank.TETH, new EGOWeaponProfile(EGOWeaponTemplate.FIST), List.of(DamageTypesRegistry.RED), 4.0f, StaffManager.EquipRequire.NONE));
+    public static final DeferredItem<EGOWeaponItem> BEAR_PAWS_WEAPON = REGISTER.register("bear_paws_weapon", () ->
+            new EGOWeaponItem(new Item.Properties(), List.of(), EGORank.HE, new EGOWeaponProfile(EGOWeaponTemplate.FIST), List.of(DamageTypesRegistry.RED), 6.0f,
+                    StaffManager.EquipRequire.builder().fortitude(StaffManager.StaffRank.II).build()));
+    //特殊
+    public static final DeferredItem<EGOWeaponItem> GRINDER_MK4_WEAPON = REGISTER.register("grinder_mk4_weapon", () ->
+            new EGOWeaponItem(new Item.Properties(), List.of(), EGORank.HE, new EGOWeaponProfile(-3.40f, 4.00f, true, 6), List.of(DamageTypesRegistry.RED),
+                    1.0f, StaffManager.EquipRequire.builder().fortitude(StaffManager.StaffRank.II).build()));
+    public static final DeferredItem<EGOWeaponItem> LIFE_FOR_A_DAREDEVIL_WEAPON = REGISTER.register("life_for_a_daredevil_weapon", () ->
+            new EGOWeaponItem(new Item.Properties(), List.of(), EGORank.HE, new EGOWeaponProfile(-3.25f, 4.00f, true, 1), List.of(DamageTypesRegistry.PALE),
+                    7.0f, StaffManager.EquipRequire.builder().justice(StaffManager.StaffRank.II).build()));
+    public static final DeferredItem<EGOWeaponItem> AMITA_WEAPON = REGISTER.register("amita_weapon", () ->
+            new EGOWeaponItem(new Item.Properties(), List.of(), EGORank.WAW, new EGOWeaponProfile(-3.57f, 4.00f, false, 3), List.of(DamageTypesRegistry.RED),
+                    2.5f, StaffManager.EquipRequire.builder().staff(StaffManager.StaffRank.III).temperance(StaffManager.StaffRank.III).build()));
     //EGO护甲
     public static final DeferredItem<EGOSuitItem> STANDARD_TRAINING_EGO_SUIT = REGISTER.register("standard_training_ego_suit", () ->
             new EGOSuitItem(new Item.Properties(), List.of(), EGORank.TETH, 0.5f, 1.0f, 1.5f, 2.0f, StaffManager.EquipRequire.NONE));
@@ -146,6 +165,21 @@ public class ItemsRegistry {
     public static final DeferredItem<EGOSuitItem> LAMP_SUIT = REGISTER.register("lamp_suit", () ->
             new EGOSuitItem(new Item.Properties(), List.of(), EGORank.WAW, 0.8f, 0.7f, 0.4f, 1.5f,
                     StaffManager.EquipRequire.builder().staff(StaffManager.StaffRank.IV).temperance(StaffManager.StaffRank.III).justice(StaffManager.StaffRank.III).build()));
+    public static final DeferredItem<EGOSuitItem> SO_CUTE_SUIT = REGISTER.register("so_cute_suit", () ->
+            new EGOSuitItem(new Item.Properties(), List.of(), EGORank.TETH, 0.8f, 1.5f, 0.8f, 2.0f, StaffManager.EquipRequire.NONE));
+    public static final DeferredItem<EGOSuitItem> BEAR_PAWS_SUIT = REGISTER.register("bear_paws_suit", () ->
+            new EGOSuitItem(new Item.Properties(), List.of(), EGORank.HE, 0.8f, 1.0f, 1.0f, 1.5f,
+                    StaffManager.EquipRequire.builder().staff(StaffManager.StaffRank.II).build()));
+
+    public static final DeferredItem<EGOSuitItem> GRINDER_MK4_SUIT = REGISTER.register("grinder_mk4_suit", () ->
+            new EGOSuitItem(new Item.Properties(), List.of(), EGORank.HE, 0.6f, 1.3f, 0.9f, 1.5f,
+                    StaffManager.EquipRequire.builder().prudence(StaffManager.StaffRank.II).build()));
+    public static final DeferredItem<EGOSuitItem> LIFE_FOR_A_DAREDEVIL_SUIT = REGISTER.register("life_for_a_daredevil_suit", () ->
+            new EGOSuitItem(new Item.Properties(), List.of(), EGORank.TETH, 0.6f, 0.9f, 0.9f, 2.0f,
+                    StaffManager.EquipRequire.builder().temperance(StaffManager.StaffRank.II).build()));
+    public static final DeferredItem<EGOSuitItem> AMITA_SUIT = REGISTER.register("amita_suit", () ->
+            new EGOSuitItem(new Item.Properties(), List.of(), EGORank.WAW, 0.5f, 1.3f, 0.7f, 1.5f,
+                    StaffManager.EquipRequire.builder().prudence(StaffManager.StaffRank.II).temperance(StaffManager.StaffRank.II).build()));
     //EGO饰品
     public static final DeferredItem<EGOGiftItem> STANDARD_TRAINING_EGO_GIFT = REGISTER.register("standard_training_ego_gift", () ->
             new EGOGiftItem(new Item.Properties(), List.of(), EGOGiftItem.EGOGiftBonus.builder().maxHealth(2).maxSanity(2).build(), LobeCorpEquipmentSlot.LOBECORP_HEAD));
@@ -182,13 +216,20 @@ public class ItemsRegistry {
             new EGOGiftItem(new Item.Properties(), List.of(), EGOGiftItem.EGOGiftBonus.builder().maxHealth(2).workSuccess(2).workVelocity(2).build(), LobeCorpEquipmentSlot.LOBECORP_CHEST));
     public static final DeferredItem<EGOGiftItem> LAMP_GIFT = REGISTER.register("lamp_gift", () ->
             new EGOGiftItem(new Item.Properties(), List.of(), EGOGiftItem.EGOGiftBonus.builder().maxHealth(3).workSuccess(3).workVelocity(3).build(), LobeCorpEquipmentSlot.LOBECORP_HAT));
+    public static final DeferredItem<EGOGiftItem> SO_CUTE_GIFT = REGISTER.register("so_cute_gift", () ->
+            new EGOGiftItem(new Item.Properties(), List.of(), EGOGiftItem.EGOGiftBonus.builder().maxHealth(4).workSuccess(-2).workVelocity(-2).build(), LobeCorpEquipmentSlot.LOBECORP_HEAD));
+    public static final DeferredItem<BearPawsGift> BEAR_PAWS_GIFT = REGISTER.register("bear_paws_gift", BearPawsGift::new);
+
+    public static final DeferredItem<GrinderMk4Gift> GRINDER_MK4_GIFT = REGISTER.register("grinder_mk4_gift", GrinderMk4Gift::new);
+    public static final DeferredItem<EGOGiftItem> AMITA_GIFT = REGISTER.register("amita_gift", () ->
+            new EGOGiftItem(new Item.Properties(), List.of(), EGOGiftItem.EGOGiftBonus.builder().maxHealth(10).maxSanity(-4).build(), LobeCorpEquipmentSlot.LOBECORP_HAND));
 
     public static final DeferredItem<BlessGift> BLESS_GIFT = REGISTER.register("bless_gift", BlessGift::new);
 
     //自定义
     //血肉契约——苏玖
     public static final DeferredItem<EGOWeaponItem> FLESH_BOUND_WEAPON = REGISTER.register("flesh_bound_weapon", () ->
-            new EGOWeaponItem(new Item.Properties(), List.of(), EGORank.HE, EGOWeaponTemplate.SPEAR, List.of(DamageTypesRegistry.RED), 8.0f,
+            new EGOWeaponItem(new Item.Properties(), List.of(), EGORank.HE, new EGOWeaponProfile(EGOWeaponTemplate.SPEAR), List.of(DamageTypesRegistry.RED), 8.0f,
                     StaffManager.EquipRequire.builder().staff(StaffManager.StaffRank.II).build()));
     public static final DeferredItem<FleshBoundSuit> FLESH_BOUND_SUIT = REGISTER.register("flesh_bound_suit", FleshBoundSuit::new);
     public static final DeferredItem<EGOGiftItem> FLESH_BOUND_GIFT = REGISTER.register("flesh_bound_gift", () ->

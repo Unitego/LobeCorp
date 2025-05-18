@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "lobecorp:item/life_for_a_daredevil_suit"
+  }
+}

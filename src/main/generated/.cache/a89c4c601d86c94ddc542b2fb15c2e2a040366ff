@@ -1,5 +1,11 @@
-// 1.20.6	2025-05-12T08:28:09.2527753	Item Models: lobecorp
+// 1.20.6	2025-05-17T15:40:11.2064019	Item Models: lobecorp
+cc49740f0472fe9742d6e2b45655a7feffc98634 assets/lobecorp/models/item/amita_gift.json
+862de0a59f6db975ad19aeade04ee8d41b64df80 assets/lobecorp/models/item/amita_suit.json
+d4710965df1c7c4c040b8fd9d454462f71d65596 assets/lobecorp/models/item/amita_weapon.json
 4c1c6024c51e4f79404d53976d2187b88b4fb4fc assets/lobecorp/models/item/architecture_team_badge.json
+46aa235f4bb90dfa7fe20cbc702dcb529af368a9 assets/lobecorp/models/item/bear_paws_gift.json
+4510fd2efff524dd7ad02d18b9bf306bca2bdc3f assets/lobecorp/models/item/bear_paws_suit.json
+384e1be46b6ff3e6b94faeda238ca17ef6290e4f assets/lobecorp/models/item/bear_paws_weapon.json
 43d04a403cff597c0c90bbbe3db30c1be889c596 assets/lobecorp/models/item/black_riot_stick.json
 abb9fe2c8f562fe8145fdad18c52eb8850c8f6cc assets/lobecorp/models/item/bless_gift.json
 a0b244d215171bf7a46747da8be58490dd1f98ea assets/lobecorp/models/item/blue_leaf.json
@@ -26,6 +32,9 @@ ce1919950d0f451733e64c7990e2a46249fb2408 assets/lobecorp/models/item/frost_splin
 ebe4ae6c3e0b178f2bc5607be2906d0f5f0ed388 assets/lobecorp/models/item/green_stem_gift.json
 ec6f14c054f9512ff85cf62559eb476acabfc46d assets/lobecorp/models/item/green_stem_suit.json
 d0eecda3b508419184af10e6bcfa68aa44034b40 assets/lobecorp/models/item/green_stem_weapon.json
+5b8a4e4ec3014c95b8b1451ee816662ffdc00f25 assets/lobecorp/models/item/grinder_mk4_gift.json
+8d59a8686860bc4cc8e54dc156842e14845d8988 assets/lobecorp/models/item/grinder_mk4_suit.json
+8b1b986e19a3a2fc76e81e6909175f7f995d0b67 assets/lobecorp/models/item/grinder_mk4_weapon.json
 37645d52136a7fa3d9a9d434981a8c4a6cfd348b assets/lobecorp/models/item/harvest_gift.json
 e90fc3573cb30a014cbc56acddb0db19b1ebdcf6 assets/lobecorp/models/item/harvest_suit.json
 72bd582aa585ada1b72f8003ed3bbdf9e940ef40 assets/lobecorp/models/item/harvest_weapon.json
@@ -42,6 +51,8 @@ ce5ccc9e71ddbb5920d9d7c743db2ee521f52104 assets/lobecorp/models/item/lamp_gift.j
 15f8b7a24392354fbab9a7aae18aa83efcb653f5 assets/lobecorp/models/item/lantern_gift.json
 3e21a9889ecb8e279327b573ba01f27d3b4c9983 assets/lobecorp/models/item/lantern_suit.json
 b3e1133ee53ad07e4fe19b6b9b3fe505966f2d4e assets/lobecorp/models/item/lantern_weapon.json
+06215fd8bdfb418623d1395155c74c9f912938df assets/lobecorp/models/item/life_for_a_daredevil_suit.json
+5f75e4914c9e72acccc3d5449daeb13759ab68c0 assets/lobecorp/models/item/life_for_a_daredevil_weapon.json
 bb5bb1d80151ddc098e9e8ee4ee9bbe376f3c73a assets/lobecorp/models/item/lobecorp_logo.json
 c5390b29cf55f9bd969ed0946517bc7146581671 assets/lobecorp/models/item/logging_gift.json
 5c2fc6d2097a4f69cfab019de56f42040d1e8208 assets/lobecorp/models/item/logging_suit.json
@@ -62,6 +73,9 @@ af7212af8f2a68213622442ce45afd9f76c06882 assets/lobecorp/models/item/sanguine_de
 592546d173bae4e4a196c6463221c0f2dfbce3c6 assets/lobecorp/models/item/sanguine_desire_suit.json
 fbe53d4eff9f4600da84154fc6f2bcf79afe3740 assets/lobecorp/models/item/sanguine_desire_weapon.json
 c7dfd5de879ef4e558f5558a9962d2c6a67e66a4 assets/lobecorp/models/item/security_team_badge.json
+9439c9af141e1f53e54fbc3e3744ac9a21590c39 assets/lobecorp/models/item/so_cute_gift.json
+0634bc7e91db463676141e0aeadadeb7fc199ee0 assets/lobecorp/models/item/so_cute_suit.json
+897010842e563fca5c19724d68998a508a14116c assets/lobecorp/models/item/so_cute_weapon.json
 18a1e650cde053556e2b0cad9135c5f762b274b6 assets/lobecorp/models/item/spore_gift.json
 33a24b1c84c30532416d00a8423cad1ebfbff8ea assets/lobecorp/models/item/spore_suit.json
 1f9d853ab36cf3b82f29c89489444ab9d0201da4 assets/lobecorp/models/item/spore_weapon.json

@@ -9,6 +9,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.unitego.lobecorp.common.access.ManagerAccess;
 import net.unitego.lobecorp.common.item.ego.EGOWeaponItem;
+import net.unitego.lobecorp.common.item.ego.weapon.EGOWeaponProfile;
 import net.unitego.lobecorp.common.item.ego.weapon.EGOWeaponTemplate;
 import net.unitego.lobecorp.common.manager.StaffManager;
 import net.unitego.lobecorp.common.util.CombatStatusUtils;
@@ -25,7 +26,7 @@ public class FragmentsFromSomewhereWeapon extends EGOWeaponItem {
 
     public FragmentsFromSomewhereWeapon() {
         super(new Properties(), List.of(WEAPON_FRAGMENTS_FROM_SOMEWHERE_1),
-                EGORank.TETH, EGOWeaponTemplate.SPEAR, List.of(DamageTypesRegistry.BLACK), 6.0f,
+                EGORank.TETH, new EGOWeaponProfile(EGOWeaponTemplate.SPEAR), List.of(DamageTypesRegistry.BLACK), 6.0f,
                 StaffManager.EquipRequire.NONE);
     }
 

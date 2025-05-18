@@ -252,9 +252,11 @@ public class DamageUtils {
                         }
                         //造成伤害
                         for (ResourceKey<DamageType> damageType : egoWeaponItem.getDamageTypes()) {
-                            target.invulnerableTime = 0;
-                            boolean success = target.hurt(player.damageSources().source(damageType, player), f);
-                            flag5 |= success;
+                            for (int attackCount = 0; attackCount < egoWeaponItem.getEgoWeaponProfile().getAttackCount(); attackCount++) {
+                                target.invulnerableTime = 0;
+                                boolean success = target.hurt(player.damageSources().source(damageType, player), f);
+                                flag5 |= success;
+                            }
                         }
                         //如果造成伤害
                         if (flag5) {

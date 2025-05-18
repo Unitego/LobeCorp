@@ -7,6 +7,8 @@ import net.unitego.lobecorp.client.init.KeyInit;
 import net.unitego.lobecorp.common.component.LobeCorpEquipmentSlot;
 import net.unitego.lobecorp.common.item.badge.TeamBadge;
 import net.unitego.lobecorp.common.item.ego.gift.chest.GreenStemGift;
+import net.unitego.lobecorp.common.item.ego.gift.eye.GrinderMk4Gift;
+import net.unitego.lobecorp.common.item.ego.gift.head.BearPawsGift;
 import net.unitego.lobecorp.common.item.ego.gift.head.PenitenceGift;
 import net.unitego.lobecorp.common.item.ego.gift.mouth.SanguineDesireGift;
 import net.unitego.lobecorp.common.item.ego.suit.FleshBoundSuit;
@@ -88,7 +90,7 @@ public class EnUsLangGenerator extends LanguageProvider {
         add(ItemsRegistry.SANGUINE_DESIRE_WEAPON.get(), "Sanguine Desire");
         add(ItemsRegistry.WRIST_CUTTER_WEAPON.get(), "Wrist Cutter");
         add(ItemsRegistry.HORN_WEAPON.get(), "Horn");
-        add(ItemsRegistry.FRAGMENTS_FROM_SOMEWHERE_WEAPON.get(), "Fragments From Somewhere");
+        add(ItemsRegistry.FRAGMENTS_FROM_SOMEWHERE_WEAPON.get(), "Fragments from Somewhere");
         add(ItemsRegistry.HARVEST_WEAPON.get(), "Harvest");
         add(ItemsRegistry.FROST_SPLINTER_WEAPON.get(), "Frost Splinter");
         add(ItemsRegistry.GREEN_STEM_WEAPON.get(), "Green Stem");
@@ -98,6 +100,12 @@ public class EnUsLangGenerator extends LanguageProvider {
         add(ItemsRegistry.LANTERN_WEAPON.get(), "Lantern");
         add(ItemsRegistry.LOGGING_WEAPON.get(), "Logging");
         add(ItemsRegistry.LAMP_WEAPON.get(), "Lamp");
+        add(ItemsRegistry.SO_CUTE_WEAPON.get(), "So Cute!!!");
+        add(ItemsRegistry.BEAR_PAWS_WEAPON.get(), "Bear Paws");
+
+        add(ItemsRegistry.GRINDER_MK4_WEAPON.get(), "Grinder Mk4");
+        add(ItemsRegistry.LIFE_FOR_A_DAREDEVIL_WEAPON.get(), "Life for a Daredevil");
+        add(ItemsRegistry.AMITA_WEAPON.get(), "Amita");
 
         //EGO护甲
         add(ItemsRegistry.STANDARD_TRAINING_EGO_SUIT.get(), "Standard Training E.G.O");
@@ -108,7 +116,7 @@ public class EnUsLangGenerator extends LanguageProvider {
         add(ItemsRegistry.SANGUINE_DESIRE_SUIT.get(), "Sanguine Desire");
         add(ItemsRegistry.WRIST_CUTTER_SUIT.get(), "Wrist Cutter");
         add(ItemsRegistry.HORN_SUIT.get(), "Horn");
-        add(ItemsRegistry.FRAGMENTS_FROM_SOMEWHERE_SUIT.get(), "Fragments From Somewhere");
+        add(ItemsRegistry.FRAGMENTS_FROM_SOMEWHERE_SUIT.get(), "Fragments from Somewhere");
         add(ItemsRegistry.HARVEST_SUIT.get(), "Harvest");
         add(ItemsRegistry.FROST_SPLINTER_SUIT.get(), "Frost Splinter");
         add(ItemsRegistry.GREEN_STEM_SUIT.get(), "Green Stem");
@@ -118,6 +126,12 @@ public class EnUsLangGenerator extends LanguageProvider {
         add(ItemsRegistry.LANTERN_SUIT.get(), "Lantern");
         add(ItemsRegistry.LOGGING_SUIT.get(), "Logging");
         add(ItemsRegistry.LAMP_SUIT.get(), "Lamp");
+        add(ItemsRegistry.SO_CUTE_SUIT.get(), "So Cute!!!");
+        add(ItemsRegistry.BEAR_PAWS_SUIT.get(), "Bear Paws");
+
+        add(ItemsRegistry.GRINDER_MK4_SUIT.get(), "Grinder Mk4");
+        add(ItemsRegistry.LIFE_FOR_A_DAREDEVIL_SUIT.get(), "Life for a Daredevil");
+        add(ItemsRegistry.AMITA_SUIT.get(), "Amita");
 
         //EGO饰品
         add(ItemsRegistry.STANDARD_TRAINING_EGO_GIFT.get(), "Standard Training E.G.O");
@@ -129,7 +143,7 @@ public class EnUsLangGenerator extends LanguageProvider {
         add(ItemsRegistry.SANGUINE_DESIRE_GIFT.get(), "Sanguine Desire");
         add(ItemsRegistry.WRIST_CUTTER_GIFT.get(), "Wrist Cutter");
         add(ItemsRegistry.HORN_GIFT.get(), "Horn");
-        add(ItemsRegistry.FRAGMENTS_FROM_SOMEWHERE_GIFT.get(), "Fragments From Somewhere");
+        add(ItemsRegistry.FRAGMENTS_FROM_SOMEWHERE_GIFT.get(), "Fragments from Somewhere");
         add(ItemsRegistry.HARVEST_GIFT.get(), "Harvest");
         add(ItemsRegistry.FROST_SPLINTER_GIFT.get(), "Frost Splinter");
         add(ItemsRegistry.GREEN_STEM_GIFT.get(), "Green Stem");
@@ -139,6 +153,13 @@ public class EnUsLangGenerator extends LanguageProvider {
         add(ItemsRegistry.LANTERN_GIFT.get(), "Lantern");
         add(ItemsRegistry.LOGGING_GIFT.get(), "Logging");
         add(ItemsRegistry.LAMP_GIFT.get(), "Lamp");
+        add(ItemsRegistry.SO_CUTE_GIFT.get(), "So Cute!!!");
+        add(ItemsRegistry.BEAR_PAWS_GIFT.get(), "Bear Paws");
+
+        add(ItemsRegistry.GRINDER_MK4_GIFT.get(), "Grinder Mk4");
+        add(ItemsRegistry.AMITA_GIFT.get(), "Amita");
+
+        add(ItemsRegistry.BLESS_GIFT.get(), "Bless");
 
         //自定义
         //血肉契约——苏玖
@@ -146,7 +167,6 @@ public class EnUsLangGenerator extends LanguageProvider {
         add(ItemsRegistry.FLESH_BOUND_SUIT.get(), "Flesh Bound");
         add(ItemsRegistry.FLESH_BOUND_GIFT.get(), "Flesh Bound");
 
-        add(ItemsRegistry.BLESS_GIFT.get(), "Bless");
         //菜单名
         add(MenusRegistry.CONTAINER_LOBECORP_EQUIPMENT, "Equipment");
         //效果名
@@ -180,6 +200,7 @@ public class EnUsLangGenerator extends LanguageProvider {
         add(EGOWeaponTemplate.SPEAR.getTranslationKey(), "Spear");
         add(EGOWeaponTemplate.HAMMER.getTranslationKey(), "Hammer");
         add(EGOWeaponTemplate.FIST.getTranslationKey(), "Fist");
+        add(EGOWeaponTemplate.SPECIAL.getTranslationKey(), "Special");
         //插槽名
         add(LobeCorpEquipmentSlot.LOBECORP_WEAPON.getSlotModifiersName(), "When in Weapon Slot: ");
         add(LobeCorpEquipmentSlot.LOBECORP_SUIT.getSlotModifiersName(), "When in Suit Slot: ");
@@ -254,6 +275,10 @@ public class EnUsLangGenerator extends LanguageProvider {
         add(SporeWeapon.WEAPON_SPORE_1, "25% chance to make the target more vulnerable to WHITE damage");
         //目灯
         add(LampWeapon.WEAPON_LAMP_1, "Has a 25% chance of making the target more vulnerable to BLACK damage");
+        //熊熊抱
+        add(BearPawsGift.GIFT_BEAR_PAWS_1, "Attachment Work Success increased by 3%");
+        //粉碎机Mk4
+        add(GrinderMk4Gift.GIFT_GRINDER_MK4_1, "Insight Work Success increased by 3%");
 
         //自定义
         //血肉契约——苏玖

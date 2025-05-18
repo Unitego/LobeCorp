@@ -3,10 +3,14 @@ package net.unitego.lobecorp.common.item.ego;
 import com.mojang.blaze3d.platform.InputConstants;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
+import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.state.BlockState;
 import net.unitego.lobecorp.common.access.LobeCorpSlotAccess;
 import net.unitego.lobecorp.common.util.MiscUtils;
 import org.jetbrains.annotations.NotNull;
@@ -24,6 +28,11 @@ public abstract class EGOEquipmentItem extends Item implements LobeCorpSlotAcces
 
     protected static String egoSkillString(String skills) {
         return "ego.skill." + skills;
+    }
+
+    @Override
+    public boolean canAttackBlock(@NotNull BlockState state, @NotNull Level level, @NotNull BlockPos pos, @NotNull Player player) {
+        return !player.isCreative();
     }
 
     @Override

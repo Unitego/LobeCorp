@@ -5,6 +5,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.unitego.lobecorp.common.item.ego.EGOWeaponItem;
+import net.unitego.lobecorp.common.item.ego.weapon.EGOWeaponProfile;
 import net.unitego.lobecorp.common.item.ego.weapon.EGOWeaponTemplate;
 import net.unitego.lobecorp.common.manager.StaffManager;
 import net.unitego.lobecorp.common.util.EGORank;
@@ -20,7 +21,7 @@ public class SporeWeapon extends EGOWeaponItem {
 
     public SporeWeapon() {
         super(new Properties(), List.of(WEAPON_SPORE_1),
-                EGORank.WAW, EGOWeaponTemplate.SPEAR, List.of(DamageTypesRegistry.WHITE), 11.0f,
+                EGORank.WAW, new EGOWeaponProfile(EGOWeaponTemplate.SPEAR), List.of(DamageTypesRegistry.WHITE), 11.0f,
                 StaffManager.EquipRequire.builder().staff(StaffManager.StaffRank.II).temperance(StaffManager.StaffRank.II).build());
     }
 
